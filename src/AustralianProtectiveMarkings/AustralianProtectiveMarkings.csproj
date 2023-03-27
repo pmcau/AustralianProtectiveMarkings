@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageTags>Australia, Security, Classification</PackageTags>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFrameworks>net48;net7.0</TargetFrameworks>
     <Description>A dotnet representaion of the Australian Protective Security Policy Framework</Description>
     <RootNamespace>AustralianElectorates</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Using Remove="System.Net.Http" />
+    <PackageReference Include="Polyfill" Version="1.7.0" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
   </ItemGroup>

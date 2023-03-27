@@ -1,1507 +1,1251 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-public class CountryCodes
+[Flags]
+public enum CountryCodes
 {
-    static Dictionary<string, CountryCode> lettersToCode = new()
-    {
-        {
-            "ABW", CountryCode.Aruba
-        },
-        {
-            "AFG", CountryCode.Afghanistan
-        },
-        {
-            "AGO", CountryCode.Angola
-        },
-        {
-            "AIA", CountryCode.Anguilla
-        },
-        {
-            "ALA", CountryCode.ÅlandIslands
-        },
-        {
-            "ALB", CountryCode.Albania
-        },
-        {
-            "AND", CountryCode.Andorra
-        },
-        {
-            "ARE", CountryCode.UnitedArabEmirates
-        },
-        {
-            "ARG", CountryCode.Argentina
-        },
-        {
-            "ARM", CountryCode.Armenia
-        },
-        {
-            "ASM", CountryCode.AmericanSamoa
-        },
-        {
-            "ATA", CountryCode.Antarctica
-        },
-        {
-            "ATF", CountryCode.FrenchSouthernTerritories
-        },
-        {
-            "ATG", CountryCode.AntiguaAndBarbuda
-        },
-        {
-            "AUS", CountryCode.Australia
-        },
-        {
-            "AUT", CountryCode.Austria
-        },
-        {
-            "AZE", CountryCode.Azerbaijan
-        },
-        {
-            "BDI", CountryCode.Burundi
-        },
-        {
-            "BEL", CountryCode.Belgium
-        },
-        {
-            "BEN", CountryCode.Benin
-        },
-        {
-            "BES", CountryCode.CaribbeanNetherlands
-        },
-        {
-            "BFA", CountryCode.BurkinaFaso
-        },
-        {
-            "BGD", CountryCode.Bangladesh
-        },
-        {
-            "BGR", CountryCode.Bulgaria
-        },
-        {
-            "BHR", CountryCode.Bahrain
-        },
-        {
-            "BHS", CountryCode.Bahamas
-        },
-        {
-            "BIH", CountryCode.BosniaAndHerzegovina
-        },
-        {
-            "BLM", CountryCode.SaintBarthélemy
-        },
-        {
-            "BLR", CountryCode.Belarus
-        },
-        {
-            "BLZ", CountryCode.Belize
-        },
-        {
-            "BMU", CountryCode.Bermuda
-        },
-        {
-            "BOL", CountryCode.Bolivia
-        },
-        {
-            "BRA", CountryCode.Brazil
-        },
-        {
-            "BRB", CountryCode.Barbados
-        },
-        {
-            "BRN", CountryCode.Brunei
-        },
-        {
-            "BTN", CountryCode.Bhutan
-        },
-        {
-            "BVT", CountryCode.BouvetIsland
-        },
-        {
-            "BWA", CountryCode.Botswana
-        },
-        {
-            "CAF", CountryCode.CentralAfricanRepublic
-        },
-        {
-            "CAN", CountryCode.Canada
-        },
-        {
-            "CCK", CountryCode.CocosKeelingIslands
-        },
-        {
-            "CHE", CountryCode.Switzerland
-        },
-        {
-            "CHL", CountryCode.Chile
-        },
-        {
-            "CHN", CountryCode.China
-        },
-        {
-            "CIV", CountryCode.IvoryCoast
-        },
-        {
-            "CMR", CountryCode.Cameroon
-        },
-        {
-            "COD", CountryCode.DemocraticRepublicOfTheCongo
-        },
-        {
-            "COG", CountryCode.RepublicOfTheCongo
-        },
-        {
-            "COK", CountryCode.CookIslands
-        },
-        {
-            "COL", CountryCode.Colombia
-        },
-        {
-            "COM", CountryCode.Comoros
-        },
-        {
-            "CPV", CountryCode.CaboVerde
-        },
-        {
-            "CRI", CountryCode.CostaRica
-        },
-        {
-            "CUB", CountryCode.Cuba
-        },
-        {
-            "CUW", CountryCode.Curaçao
-        },
-        {
-            "CXR", CountryCode.ChristmasIsland
-        },
-        {
-            "CYM", CountryCode.CaymanIslands
-        },
-        {
-            "CYP", CountryCode.Cyprus
-        },
-        {
-            "CZE", CountryCode.Czechia
-        },
-        {
-            "DEU", CountryCode.Germany
-        },
-        {
-            "DJI", CountryCode.Djibouti
-        },
-        {
-            "DMA", CountryCode.Dominica
-        },
-        {
-            "DNK", CountryCode.Denmark
-        },
-        {
-            "DOM", CountryCode.DominicanRepublic
-        },
-        {
-            "DZA", CountryCode.Algeria
-        },
-        {
-            "ECU", CountryCode.Ecuador
-        },
-        {
-            "EGY", CountryCode.Egypt
-        },
-        {
-            "ERI", CountryCode.Eritrea
-        },
-        {
-            "ESH", CountryCode.WesternSahara
-        },
-        {
-            "ESP", CountryCode.Spain
-        },
-        {
-            "EST", CountryCode.Estonia
-        },
-        {
-            "ETH", CountryCode.Ethiopia
-        },
-        {
-            "FIN", CountryCode.Finland
-        },
-        {
-            "FJI", CountryCode.Fiji
-        },
-        {
-            "FLK", CountryCode.FalklandIslands
-        },
-        {
-            "FRA", CountryCode.France
-        },
-        {
-            "FRO", CountryCode.FaroeIslands
-        },
-        {
-            "FSM", CountryCode.Micronesia
-        },
-        {
-            "GAB", CountryCode.Gabon
-        },
-        {
-            "GBR", CountryCode.UnitedKingdom
-        },
-        {
-            "GEO", CountryCode.Georgia
-        },
-        {
-            "GGY", CountryCode.Guernsey
-        },
-        {
-            "GHA", CountryCode.Ghana
-        },
-        {
-            "GIB", CountryCode.Gibraltar
-        },
-        {
-            "GIN", CountryCode.Guinea
-        },
-        {
-            "GLP", CountryCode.Guadeloupe
-        },
-        {
-            "GMB", CountryCode.Gambia
-        },
-        {
-            "GNB", CountryCode.GuineaBissau
-        },
-        {
-            "GNQ", CountryCode.EquatorialGuinea
-        },
-        {
-            "GRC", CountryCode.Greece
-        },
-        {
-            "GRD", CountryCode.Grenada
-        },
-        {
-            "GRL", CountryCode.Greenland
-        },
-        {
-            "GTM", CountryCode.Guatemala
-        },
-        {
-            "GUF", CountryCode.FrenchGuiana
-        },
-        {
-            "GUM", CountryCode.Guam
-        },
-        {
-            "GUY", CountryCode.Guyana
-        },
-        {
-            "HKG", CountryCode.HongKong
-        },
-        {
-            "HMD", CountryCode.HeardIslandAndMcDonaldIslands
-        },
-        {
-            "HND", CountryCode.Honduras
-        },
-        {
-            "HRV", CountryCode.Croatia
-        },
-        {
-            "HTI", CountryCode.Haiti
-        },
-        {
-            "HUN", CountryCode.Hungary
-        },
-        {
-            "IDN", CountryCode.Indonesia
-        },
-        {
-            "IMN", CountryCode.IsleOfMan
-        },
-        {
-            "IND", CountryCode.India
-        },
-        {
-            "IOT", CountryCode.BritishIndianOceanTerritory
-        },
-        {
-            "IRL", CountryCode.Ireland
-        },
-        {
-            "IRN", CountryCode.Iran
-        },
-        {
-            "IRQ", CountryCode.Iraq
-        },
-        {
-            "ISL", CountryCode.Iceland
-        },
-        {
-            "ISR", CountryCode.Israel
-        },
-        {
-            "ITA", CountryCode.Italy
-        },
-        {
-            "JAM", CountryCode.Jamaica
-        },
-        {
-            "JEY", CountryCode.Jersey
-        },
-        {
-            "JOR", CountryCode.Jordan
-        },
-        {
-            "JPN", CountryCode.Japan
-        },
-        {
-            "KAZ", CountryCode.Kazakhstan
-        },
-        {
-            "KEN", CountryCode.Kenya
-        },
-        {
-            "KGZ", CountryCode.Kyrgyzstan
-        },
-        {
-            "KHM", CountryCode.Cambodia
-        },
-        {
-            "KIR", CountryCode.Kiribati
-        },
-        {
-            "KNA", CountryCode.SaintKittsAndNevis
-        },
-        {
-            "KOR", CountryCode.SouthKorea
-        },
-        {
-            "KWT", CountryCode.Kuwait
-        },
-        {
-            "LAO", CountryCode.Laos
-        },
-        {
-            "LBN", CountryCode.Lebanon
-        },
-        {
-            "LBR", CountryCode.Liberia
-        },
-        {
-            "LBY", CountryCode.Libya
-        },
-        {
-            "LCA", CountryCode.SaintLucia
-        },
-        {
-            "LIE", CountryCode.Liechtenstein
-        },
-        {
-            "LKA", CountryCode.SriLanka
-        },
-        {
-            "LSO", CountryCode.Lesotho
-        },
-        {
-            "LTU", CountryCode.Lithuania
-        },
-        {
-            "LUX", CountryCode.Luxembourg
-        },
-        {
-            "LVA", CountryCode.Latvia
-        },
-        {
-            "MAC", CountryCode.Macao
-        },
-        {
-            "MAF", CountryCode.CollectivityOfSaintMartin
-        },
-        {
-            "MAR", CountryCode.Morocco
-        },
-        {
-            "MCO", CountryCode.Monaco
-        },
-        {
-            "MDA", CountryCode.Moldova
-        },
-        {
-            "MDG", CountryCode.Madagascar
-        },
-        {
-            "MDV", CountryCode.Maldives
-        },
-        {
-            "MEX", CountryCode.Mexico
-        },
-        {
-            "MHL", CountryCode.MarshallIslands
-        },
-        {
-            "MKD", CountryCode.NorthMacedonia
-        },
-        {
-            "MLI", CountryCode.Mali
-        },
-        {
-            "MLT", CountryCode.Malta
-        },
-        {
-            "MMR", CountryCode.Myanmar
-        },
-        {
-            "MNE", CountryCode.Montenegro
-        },
-        {
-            "MNG", CountryCode.Mongolia
-        },
-        {
-            "MNP", CountryCode.NorthernMarianaIslands
-        },
-        {
-            "MOZ", CountryCode.Mozambique
-        },
-        {
-            "MRT", CountryCode.Mauritania
-        },
-        {
-            "MSR", CountryCode.Montserrat
-        },
-        {
-            "MTQ", CountryCode.Martinique
-        },
-        {
-            "MUS", CountryCode.Mauritius
-        },
-        {
-            "MWI", CountryCode.Malawi
-        },
-        {
-            "MYS", CountryCode.Malaysia
-        },
-        {
-            "MYT", CountryCode.Mayotte
-        },
-        {
-            "NAM", CountryCode.Namibia
-        },
-        {
-            "NCL", CountryCode.NewCaledonia
-        },
-        {
-            "NER", CountryCode.Niger
-        },
-        {
-            "NFK", CountryCode.NorfolkIsland
-        },
-        {
-            "NGA", CountryCode.Nigeria
-        },
-        {
-            "NIC", CountryCode.Nicaragua
-        },
-        {
-            "NIU", CountryCode.Niue
-        },
-        {
-            "NLD", CountryCode.Netherlands
-        },
-        {
-            "NOR", CountryCode.Norway
-        },
-        {
-            "NPL", CountryCode.Nepal
-        },
-        {
-            "NRU", CountryCode.Nauru
-        },
-        {
-            "NZL", CountryCode.NewZealand
-        },
-        {
-            "OMN", CountryCode.Oman
-        },
-        {
-            "PAK", CountryCode.Pakistan
-        },
-        {
-            "PAN", CountryCode.Panama
-        },
-        {
-            "PCN", CountryCode.Pitcairn
-        },
-        {
-            "PER", CountryCode.Peru
-        },
-        {
-            "PHL", CountryCode.Philippines
-        },
-        {
-            "PLW", CountryCode.Palau
-        },
-        {
-            "PNG", CountryCode.PapuaNewGuinea
-        },
-        {
-            "POL", CountryCode.Poland
-        },
-        {
-            "PRI", CountryCode.PuertoRico
-        },
-        {
-            "PRK", CountryCode.NorthKorea
-        },
-        {
-            "PRT", CountryCode.Portugal
-        },
-        {
-            "PRY", CountryCode.Paraguay
-        },
-        {
-            "PSE", CountryCode.Palestine
-        },
-        {
-            "PYF", CountryCode.FrenchPolynesia
-        },
-        {
-            "QAT", CountryCode.Qatar
-        },
-        {
-            "REU", CountryCode.Réunion
-        },
-        {
-            "ROU", CountryCode.Romania
-        },
-        {
-            "RUS", CountryCode.Russia
-        },
-        {
-            "RWA", CountryCode.Rwanda
-        },
-        {
-            "SAU", CountryCode.SaudiArabia
-        },
-        {
-            "SDN", CountryCode.Sudan
-        },
-        {
-            "SEN", CountryCode.Senegal
-        },
-        {
-            "SGP", CountryCode.Singapore
-        },
-        {
-            "SGS", CountryCode.SouthGeorgiaAndTheSouthSandwichIslands
-        },
-        {
-            "SHN", CountryCode.SaintHelenaAscensionAndTristandaCunha
-        },
-        {
-            "SJM", CountryCode.SvalbardAndJanMayen
-        },
-        {
-            "SLB", CountryCode.SolomonIslands
-        },
-        {
-            "SLE", CountryCode.SierraLeone
-        },
-        {
-            "SLV", CountryCode.ElSalvador
-        },
-        {
-            "SMR", CountryCode.SanMarino
-        },
-        {
-            "SOM", CountryCode.Somalia
-        },
-        {
-            "SPM", CountryCode.SaintPierreAndMiquelon
-        },
-        {
-            "SRB", CountryCode.Serbia
-        },
-        {
-            "SSD", CountryCode.SouthSudan
-        },
-        {
-            "STP", CountryCode.SãoToméAndPríncipe
-        },
-        {
-            "SUR", CountryCode.Suriname
-        },
-        {
-            "SVK", CountryCode.Slovakia
-        },
-        {
-            "SVN", CountryCode.Slovenia
-        },
-        {
-            "SWE", CountryCode.Sweden
-        },
-        {
-            "SWZ", CountryCode.Eswatini
-        },
-        {
-            "SXM", CountryCode.SintMaarten
-        },
-        {
-            "SYC", CountryCode.Seychelles
-        },
-        {
-            "SYR", CountryCode.Syria
-        },
-        {
-            "TCA", CountryCode.TurksAndCaicosIslands
-        },
-        {
-            "TCD", CountryCode.Chad
-        },
-        {
-            "TGO", CountryCode.Togo
-        },
-        {
-            "THA", CountryCode.Thailand
-        },
-        {
-            "TJK", CountryCode.Tajikistan
-        },
-        {
-            "TKL", CountryCode.Tokelau
-        },
-        {
-            "TKM", CountryCode.Turkmenistan
-        },
-        {
-            "TLS", CountryCode.TimorLeste
-        },
-        {
-            "TON", CountryCode.Tonga
-        },
-        {
-            "TTO", CountryCode.TrinidadAndTobago
-        },
-        {
-            "TUN", CountryCode.Tunisia
-        },
-        {
-            "TUR", CountryCode.Turkey
-        },
-        {
-            "TUV", CountryCode.Tuvalu
-        },
-        {
-            "TWN", CountryCode.Taiwan
-        },
-        {
-            "TZA", CountryCode.Tanzania
-        },
-        {
-            "UGA", CountryCode.Uganda
-        },
-        {
-            "UKR", CountryCode.Ukraine
-        },
-        {
-            "UMI", CountryCode.UnitedStatesMinorOutlyingIslands
-        },
-        {
-            "URY", CountryCode.Uruguay
-        },
-        {
-            "USA", CountryCode.UnitedStatesOfAmerica
-        },
-        {
-            "UZB", CountryCode.Uzbekistan
-        },
-        {
-            "VAT", CountryCode.VaticanCity
-        },
-        {
-            "VCT", CountryCode.SaintVincentAndTheGrenadines
-        },
-        {
-            "VEN", CountryCode.Venezuela
-        },
-        {
-            "VGB", CountryCode.BritishVirginIslands
-        },
-        {
-            "VIR", CountryCode.UnitedStatesVirginIslands
-        },
-        {
-            "VNM", CountryCode.VietNam
-        },
-        {
-            "VUT", CountryCode.Vanuatu
-        },
-        {
-            "WLF", CountryCode.WallisAndFutuna
-        },
-        {
-            "WSM", CountryCode.Samoa
-        },
-        {
-            "YEM", CountryCode.Yemen
-        },
-        {
-            "ZAF", CountryCode.SouthAfrica
-        },
-        {
-            "ZMB", CountryCode.Zambia
-        },
-        {
-            "ZWE", CountryCode.Zimbabwe
-        },
+    /// <summary>
+    /// Aruba - ABW
+    /// </summary>
+    Aruba = 1 << 0,
 
-    };
+    /// <summary>
+    /// Afghanistan - AFG
+    /// </summary>
+    Afghanistan = 1 << 1,
 
-    static Dictionary<CountryCode, string> codeToLetters = new()
-    {
-        {
-            CountryCode.Aruba, "ABW"
-        },
-        {
-            CountryCode.Afghanistan, "AFG"
-        },
-        {
-            CountryCode.Angola, "AGO"
-        },
-        {
-            CountryCode.Anguilla, "AIA"
-        },
-        {
-            CountryCode.ÅlandIslands, "ALA"
-        },
-        {
-            CountryCode.Albania, "ALB"
-        },
-        {
-            CountryCode.Andorra, "AND"
-        },
-        {
-            CountryCode.UnitedArabEmirates, "ARE"
-        },
-        {
-            CountryCode.Argentina, "ARG"
-        },
-        {
-            CountryCode.Armenia, "ARM"
-        },
-        {
-            CountryCode.AmericanSamoa, "ASM"
-        },
-        {
-            CountryCode.Antarctica, "ATA"
-        },
-        {
-            CountryCode.FrenchSouthernTerritories, "ATF"
-        },
-        {
-            CountryCode.AntiguaAndBarbuda, "ATG"
-        },
-        {
-            CountryCode.Australia, "AUS"
-        },
-        {
-            CountryCode.Austria, "AUT"
-        },
-        {
-            CountryCode.Azerbaijan, "AZE"
-        },
-        {
-            CountryCode.Burundi, "BDI"
-        },
-        {
-            CountryCode.Belgium, "BEL"
-        },
-        {
-            CountryCode.Benin, "BEN"
-        },
-        {
-            CountryCode.CaribbeanNetherlands, "BES"
-        },
-        {
-            CountryCode.BurkinaFaso, "BFA"
-        },
-        {
-            CountryCode.Bangladesh, "BGD"
-        },
-        {
-            CountryCode.Bulgaria, "BGR"
-        },
-        {
-            CountryCode.Bahrain, "BHR"
-        },
-        {
-            CountryCode.Bahamas, "BHS"
-        },
-        {
-            CountryCode.BosniaAndHerzegovina, "BIH"
-        },
-        {
-            CountryCode.SaintBarthélemy, "BLM"
-        },
-        {
-            CountryCode.Belarus, "BLR"
-        },
-        {
-            CountryCode.Belize, "BLZ"
-        },
-        {
-            CountryCode.Bermuda, "BMU"
-        },
-        {
-            CountryCode.Bolivia, "BOL"
-        },
-        {
-            CountryCode.Brazil, "BRA"
-        },
-        {
-            CountryCode.Barbados, "BRB"
-        },
-        {
-            CountryCode.Brunei, "BRN"
-        },
-        {
-            CountryCode.Bhutan, "BTN"
-        },
-        {
-            CountryCode.BouvetIsland, "BVT"
-        },
-        {
-            CountryCode.Botswana, "BWA"
-        },
-        {
-            CountryCode.CentralAfricanRepublic, "CAF"
-        },
-        {
-            CountryCode.Canada, "CAN"
-        },
-        {
-            CountryCode.CocosKeelingIslands, "CCK"
-        },
-        {
-            CountryCode.Switzerland, "CHE"
-        },
-        {
-            CountryCode.Chile, "CHL"
-        },
-        {
-            CountryCode.China, "CHN"
-        },
-        {
-            CountryCode.IvoryCoast, "CIV"
-        },
-        {
-            CountryCode.Cameroon, "CMR"
-        },
-        {
-            CountryCode.DemocraticRepublicOfTheCongo, "COD"
-        },
-        {
-            CountryCode.RepublicOfTheCongo, "COG"
-        },
-        {
-            CountryCode.CookIslands, "COK"
-        },
-        {
-            CountryCode.Colombia, "COL"
-        },
-        {
-            CountryCode.Comoros, "COM"
-        },
-        {
-            CountryCode.CaboVerde, "CPV"
-        },
-        {
-            CountryCode.CostaRica, "CRI"
-        },
-        {
-            CountryCode.Cuba, "CUB"
-        },
-        {
-            CountryCode.Curaçao, "CUW"
-        },
-        {
-            CountryCode.ChristmasIsland, "CXR"
-        },
-        {
-            CountryCode.CaymanIslands, "CYM"
-        },
-        {
-            CountryCode.Cyprus, "CYP"
-        },
-        {
-            CountryCode.Czechia, "CZE"
-        },
-        {
-            CountryCode.Germany, "DEU"
-        },
-        {
-            CountryCode.Djibouti, "DJI"
-        },
-        {
-            CountryCode.Dominica, "DMA"
-        },
-        {
-            CountryCode.Denmark, "DNK"
-        },
-        {
-            CountryCode.DominicanRepublic, "DOM"
-        },
-        {
-            CountryCode.Algeria, "DZA"
-        },
-        {
-            CountryCode.Ecuador, "ECU"
-        },
-        {
-            CountryCode.Egypt, "EGY"
-        },
-        {
-            CountryCode.Eritrea, "ERI"
-        },
-        {
-            CountryCode.WesternSahara, "ESH"
-        },
-        {
-            CountryCode.Spain, "ESP"
-        },
-        {
-            CountryCode.Estonia, "EST"
-        },
-        {
-            CountryCode.Ethiopia, "ETH"
-        },
-        {
-            CountryCode.Finland, "FIN"
-        },
-        {
-            CountryCode.Fiji, "FJI"
-        },
-        {
-            CountryCode.FalklandIslands, "FLK"
-        },
-        {
-            CountryCode.France, "FRA"
-        },
-        {
-            CountryCode.FaroeIslands, "FRO"
-        },
-        {
-            CountryCode.Micronesia, "FSM"
-        },
-        {
-            CountryCode.Gabon, "GAB"
-        },
-        {
-            CountryCode.UnitedKingdom, "GBR"
-        },
-        {
-            CountryCode.Georgia, "GEO"
-        },
-        {
-            CountryCode.Guernsey, "GGY"
-        },
-        {
-            CountryCode.Ghana, "GHA"
-        },
-        {
-            CountryCode.Gibraltar, "GIB"
-        },
-        {
-            CountryCode.Guinea, "GIN"
-        },
-        {
-            CountryCode.Guadeloupe, "GLP"
-        },
-        {
-            CountryCode.Gambia, "GMB"
-        },
-        {
-            CountryCode.GuineaBissau, "GNB"
-        },
-        {
-            CountryCode.EquatorialGuinea, "GNQ"
-        },
-        {
-            CountryCode.Greece, "GRC"
-        },
-        {
-            CountryCode.Grenada, "GRD"
-        },
-        {
-            CountryCode.Greenland, "GRL"
-        },
-        {
-            CountryCode.Guatemala, "GTM"
-        },
-        {
-            CountryCode.FrenchGuiana, "GUF"
-        },
-        {
-            CountryCode.Guam, "GUM"
-        },
-        {
-            CountryCode.Guyana, "GUY"
-        },
-        {
-            CountryCode.HongKong, "HKG"
-        },
-        {
-            CountryCode.HeardIslandAndMcDonaldIslands, "HMD"
-        },
-        {
-            CountryCode.Honduras, "HND"
-        },
-        {
-            CountryCode.Croatia, "HRV"
-        },
-        {
-            CountryCode.Haiti, "HTI"
-        },
-        {
-            CountryCode.Hungary, "HUN"
-        },
-        {
-            CountryCode.Indonesia, "IDN"
-        },
-        {
-            CountryCode.IsleOfMan, "IMN"
-        },
-        {
-            CountryCode.India, "IND"
-        },
-        {
-            CountryCode.BritishIndianOceanTerritory, "IOT"
-        },
-        {
-            CountryCode.Ireland, "IRL"
-        },
-        {
-            CountryCode.Iran, "IRN"
-        },
-        {
-            CountryCode.Iraq, "IRQ"
-        },
-        {
-            CountryCode.Iceland, "ISL"
-        },
-        {
-            CountryCode.Israel, "ISR"
-        },
-        {
-            CountryCode.Italy, "ITA"
-        },
-        {
-            CountryCode.Jamaica, "JAM"
-        },
-        {
-            CountryCode.Jersey, "JEY"
-        },
-        {
-            CountryCode.Jordan, "JOR"
-        },
-        {
-            CountryCode.Japan, "JPN"
-        },
-        {
-            CountryCode.Kazakhstan, "KAZ"
-        },
-        {
-            CountryCode.Kenya, "KEN"
-        },
-        {
-            CountryCode.Kyrgyzstan, "KGZ"
-        },
-        {
-            CountryCode.Cambodia, "KHM"
-        },
-        {
-            CountryCode.Kiribati, "KIR"
-        },
-        {
-            CountryCode.SaintKittsAndNevis, "KNA"
-        },
-        {
-            CountryCode.SouthKorea, "KOR"
-        },
-        {
-            CountryCode.Kuwait, "KWT"
-        },
-        {
-            CountryCode.Laos, "LAO"
-        },
-        {
-            CountryCode.Lebanon, "LBN"
-        },
-        {
-            CountryCode.Liberia, "LBR"
-        },
-        {
-            CountryCode.Libya, "LBY"
-        },
-        {
-            CountryCode.SaintLucia, "LCA"
-        },
-        {
-            CountryCode.Liechtenstein, "LIE"
-        },
-        {
-            CountryCode.SriLanka, "LKA"
-        },
-        {
-            CountryCode.Lesotho, "LSO"
-        },
-        {
-            CountryCode.Lithuania, "LTU"
-        },
-        {
-            CountryCode.Luxembourg, "LUX"
-        },
-        {
-            CountryCode.Latvia, "LVA"
-        },
-        {
-            CountryCode.Macao, "MAC"
-        },
-        {
-            CountryCode.CollectivityOfSaintMartin, "MAF"
-        },
-        {
-            CountryCode.Morocco, "MAR"
-        },
-        {
-            CountryCode.Monaco, "MCO"
-        },
-        {
-            CountryCode.Moldova, "MDA"
-        },
-        {
-            CountryCode.Madagascar, "MDG"
-        },
-        {
-            CountryCode.Maldives, "MDV"
-        },
-        {
-            CountryCode.Mexico, "MEX"
-        },
-        {
-            CountryCode.MarshallIslands, "MHL"
-        },
-        {
-            CountryCode.NorthMacedonia, "MKD"
-        },
-        {
-            CountryCode.Mali, "MLI"
-        },
-        {
-            CountryCode.Malta, "MLT"
-        },
-        {
-            CountryCode.Myanmar, "MMR"
-        },
-        {
-            CountryCode.Montenegro, "MNE"
-        },
-        {
-            CountryCode.Mongolia, "MNG"
-        },
-        {
-            CountryCode.NorthernMarianaIslands, "MNP"
-        },
-        {
-            CountryCode.Mozambique, "MOZ"
-        },
-        {
-            CountryCode.Mauritania, "MRT"
-        },
-        {
-            CountryCode.Montserrat, "MSR"
-        },
-        {
-            CountryCode.Martinique, "MTQ"
-        },
-        {
-            CountryCode.Mauritius, "MUS"
-        },
-        {
-            CountryCode.Malawi, "MWI"
-        },
-        {
-            CountryCode.Malaysia, "MYS"
-        },
-        {
-            CountryCode.Mayotte, "MYT"
-        },
-        {
-            CountryCode.Namibia, "NAM"
-        },
-        {
-            CountryCode.NewCaledonia, "NCL"
-        },
-        {
-            CountryCode.Niger, "NER"
-        },
-        {
-            CountryCode.NorfolkIsland, "NFK"
-        },
-        {
-            CountryCode.Nigeria, "NGA"
-        },
-        {
-            CountryCode.Nicaragua, "NIC"
-        },
-        {
-            CountryCode.Niue, "NIU"
-        },
-        {
-            CountryCode.Netherlands, "NLD"
-        },
-        {
-            CountryCode.Norway, "NOR"
-        },
-        {
-            CountryCode.Nepal, "NPL"
-        },
-        {
-            CountryCode.Nauru, "NRU"
-        },
-        {
-            CountryCode.NewZealand, "NZL"
-        },
-        {
-            CountryCode.Oman, "OMN"
-        },
-        {
-            CountryCode.Pakistan, "PAK"
-        },
-        {
-            CountryCode.Panama, "PAN"
-        },
-        {
-            CountryCode.Pitcairn, "PCN"
-        },
-        {
-            CountryCode.Peru, "PER"
-        },
-        {
-            CountryCode.Philippines, "PHL"
-        },
-        {
-            CountryCode.Palau, "PLW"
-        },
-        {
-            CountryCode.PapuaNewGuinea, "PNG"
-        },
-        {
-            CountryCode.Poland, "POL"
-        },
-        {
-            CountryCode.PuertoRico, "PRI"
-        },
-        {
-            CountryCode.NorthKorea, "PRK"
-        },
-        {
-            CountryCode.Portugal, "PRT"
-        },
-        {
-            CountryCode.Paraguay, "PRY"
-        },
-        {
-            CountryCode.Palestine, "PSE"
-        },
-        {
-            CountryCode.FrenchPolynesia, "PYF"
-        },
-        {
-            CountryCode.Qatar, "QAT"
-        },
-        {
-            CountryCode.Réunion, "REU"
-        },
-        {
-            CountryCode.Romania, "ROU"
-        },
-        {
-            CountryCode.Russia, "RUS"
-        },
-        {
-            CountryCode.Rwanda, "RWA"
-        },
-        {
-            CountryCode.SaudiArabia, "SAU"
-        },
-        {
-            CountryCode.Sudan, "SDN"
-        },
-        {
-            CountryCode.Senegal, "SEN"
-        },
-        {
-            CountryCode.Singapore, "SGP"
-        },
-        {
-            CountryCode.SouthGeorgiaAndTheSouthSandwichIslands, "SGS"
-        },
-        {
-            CountryCode.SaintHelenaAscensionAndTristandaCunha, "SHN"
-        },
-        {
-            CountryCode.SvalbardAndJanMayen, "SJM"
-        },
-        {
-            CountryCode.SolomonIslands, "SLB"
-        },
-        {
-            CountryCode.SierraLeone, "SLE"
-        },
-        {
-            CountryCode.ElSalvador, "SLV"
-        },
-        {
-            CountryCode.SanMarino, "SMR"
-        },
-        {
-            CountryCode.Somalia, "SOM"
-        },
-        {
-            CountryCode.SaintPierreAndMiquelon, "SPM"
-        },
-        {
-            CountryCode.Serbia, "SRB"
-        },
-        {
-            CountryCode.SouthSudan, "SSD"
-        },
-        {
-            CountryCode.SãoToméAndPríncipe, "STP"
-        },
-        {
-            CountryCode.Suriname, "SUR"
-        },
-        {
-            CountryCode.Slovakia, "SVK"
-        },
-        {
-            CountryCode.Slovenia, "SVN"
-        },
-        {
-            CountryCode.Sweden, "SWE"
-        },
-        {
-            CountryCode.Eswatini, "SWZ"
-        },
-        {
-            CountryCode.SintMaarten, "SXM"
-        },
-        {
-            CountryCode.Seychelles, "SYC"
-        },
-        {
-            CountryCode.Syria, "SYR"
-        },
-        {
-            CountryCode.TurksAndCaicosIslands, "TCA"
-        },
-        {
-            CountryCode.Chad, "TCD"
-        },
-        {
-            CountryCode.Togo, "TGO"
-        },
-        {
-            CountryCode.Thailand, "THA"
-        },
-        {
-            CountryCode.Tajikistan, "TJK"
-        },
-        {
-            CountryCode.Tokelau, "TKL"
-        },
-        {
-            CountryCode.Turkmenistan, "TKM"
-        },
-        {
-            CountryCode.TimorLeste, "TLS"
-        },
-        {
-            CountryCode.Tonga, "TON"
-        },
-        {
-            CountryCode.TrinidadAndTobago, "TTO"
-        },
-        {
-            CountryCode.Tunisia, "TUN"
-        },
-        {
-            CountryCode.Turkey, "TUR"
-        },
-        {
-            CountryCode.Tuvalu, "TUV"
-        },
-        {
-            CountryCode.Taiwan, "TWN"
-        },
-        {
-            CountryCode.Tanzania, "TZA"
-        },
-        {
-            CountryCode.Uganda, "UGA"
-        },
-        {
-            CountryCode.Ukraine, "UKR"
-        },
-        {
-            CountryCode.UnitedStatesMinorOutlyingIslands, "UMI"
-        },
-        {
-            CountryCode.Uruguay, "URY"
-        },
-        {
-            CountryCode.UnitedStatesOfAmerica, "USA"
-        },
-        {
-            CountryCode.Uzbekistan, "UZB"
-        },
-        {
-            CountryCode.VaticanCity, "VAT"
-        },
-        {
-            CountryCode.SaintVincentAndTheGrenadines, "VCT"
-        },
-        {
-            CountryCode.Venezuela, "VEN"
-        },
-        {
-            CountryCode.BritishVirginIslands, "VGB"
-        },
-        {
-            CountryCode.UnitedStatesVirginIslands, "VIR"
-        },
-        {
-            CountryCode.VietNam, "VNM"
-        },
-        {
-            CountryCode.Vanuatu, "VUT"
-        },
-        {
-            CountryCode.WallisAndFutuna, "WLF"
-        },
-        {
-            CountryCode.Samoa, "WSM"
-        },
-        {
-            CountryCode.Yemen, "YEM"
-        },
-        {
-            CountryCode.SouthAfrica, "ZAF"
-        },
-        {
-            CountryCode.Zambia, "ZMB"
-        },
-        {
-            CountryCode.Zimbabwe, "ZWE"
-        },
-    };
+    /// <summary>
+    /// Angola - AGO
+    /// </summary>
+    Angola = 1 << 2,
+
+    /// <summary>
+    /// Anguilla - AIA
+    /// </summary>
+    Anguilla = 1 << 3,
+
+    /// <summary>
+    /// Åland Islands - ALA
+    /// </summary>
+    ÅlandIslands = 1 << 4,
+
+    /// <summary>
+    /// Albania - ALB
+    /// </summary>
+    Albania = 1 << 5,
+
+    /// <summary>
+    /// Andorra - AND
+    /// </summary>
+    Andorra = 1 << 6,
+
+    /// <summary>
+    /// United Arab Emirates - ARE
+    /// </summary>
+    UnitedArabEmirates = 1 << 7,
+
+    /// <summary>
+    /// Argentina - ARG
+    /// </summary>
+    Argentina = 1 << 8,
+
+    /// <summary>
+    /// Armenia - ARM
+    /// </summary>
+    Armenia = 1 << 9,
+
+    /// <summary>
+    /// American Samoa - ASM
+    /// </summary>
+    AmericanSamoa = 1 << 10,
+
+    /// <summary>
+    /// Antarctica - ATA
+    /// </summary>
+    Antarctica = 1 << 11,
+
+    /// <summary>
+    /// French Southern Territories - ATF
+    /// </summary>
+    FrenchSouthernTerritories = 1 << 12,
+
+    /// <summary>
+    /// Antigua and Barbuda - ATG
+    /// </summary>
+    AntiguaAndBarbuda = 1 << 13,
+
+    /// <summary>
+    /// Australia - AUS
+    /// </summary>
+    Australia = 1 << 14,
+
+    /// <summary>
+    /// Austria - AUT
+    /// </summary>
+    Austria = 1 << 15,
+
+    /// <summary>
+    /// Azerbaijan - AZE
+    /// </summary>
+    Azerbaijan = 1 << 16,
+
+    /// <summary>
+    /// Burundi - BDI
+    /// </summary>
+    Burundi = 1 << 17,
+
+    /// <summary>
+    /// Belgium - BEL
+    /// </summary>
+    Belgium = 1 << 18,
+
+    /// <summary>
+    /// Benin - BEN
+    /// </summary>
+    Benin = 1 << 19,
+
+    /// <summary>
+    /// Caribbean Netherlands - BES
+    /// </summary>
+    CaribbeanNetherlands = 1 << 20,
+
+    /// <summary>
+    /// Burkina Faso - BFA
+    /// </summary>
+    BurkinaFaso = 1 << 21,
+
+    /// <summary>
+    /// Bangladesh - BGD
+    /// </summary>
+    Bangladesh = 1 << 22,
+
+    /// <summary>
+    /// Bulgaria - BGR
+    /// </summary>
+    Bulgaria = 1 << 23,
+
+    /// <summary>
+    /// Bahrain - BHR
+    /// </summary>
+    Bahrain = 1 << 24,
+
+    /// <summary>
+    /// Bahamas - BHS
+    /// </summary>
+    Bahamas = 1 << 25,
+
+    /// <summary>
+    /// Bosnia and Herzegovina - BIH
+    /// </summary>
+    BosniaAndHerzegovina = 1 << 26,
+
+    /// <summary>
+    /// Saint Barthélemy - BLM
+    /// </summary>
+    SaintBarthélemy = 1 << 27,
+
+    /// <summary>
+    /// Belarus - BLR
+    /// </summary>
+    Belarus = 1 << 28,
+
+    /// <summary>
+    /// Belize - BLZ
+    /// </summary>
+    Belize = 1 << 29,
+
+    /// <summary>
+    /// Bermuda - BMU
+    /// </summary>
+    Bermuda = 1 << 30,
+
+    /// <summary>
+    /// Bolivia - BOL
+    /// </summary>
+    Bolivia,
+
+    /// <summary>
+    /// Brazil - BRA
+    /// </summary>
+    Brazil,
+
+    /// <summary>
+    /// Barbados - BRB
+    /// </summary>
+    Barbados,
+
+    /// <summary>
+    /// Brunei - BRN
+    /// </summary>
+    Brunei,
+
+    /// <summary>
+    /// Bhutan - BTN
+    /// </summary>
+    Bhutan,
+
+    /// <summary>
+    /// Bouvet Island - BVT
+    /// </summary>
+    BouvetIsland,
+
+    /// <summary>
+    /// Botswana - BWA
+    /// </summary>
+    Botswana,
+
+    /// <summary>
+    /// Central African Republic - CAF
+    /// </summary>
+    CentralAfricanRepublic,
+
+    /// <summary>
+    /// Canada - CAN
+    /// </summary>
+    Canada,
+
+    /// <summary>
+    /// CocosKeelingIslands - CCK
+    /// </summary>
+    CocosKeelingIslands,
+
+    /// <summary>
+    /// Switzerland - CHE
+    /// </summary>
+    Switzerland,
+
+    /// <summary>
+    /// Chile - CHL
+    /// </summary>
+    Chile,
+
+    /// <summary>
+    /// China - CHN
+    /// </summary>
+    China,
+
+    /// <summary>
+    /// Ivory Coast - CIV
+    /// </summary>
+    IvoryCoast,
+
+    /// <summary>
+    /// Cameroon - CMR
+    /// </summary>
+    Cameroon,
+
+    /// <summary>
+    /// Democratic Republic of the Congo - COD
+    /// </summary>
+    DemocraticRepublicOfTheCongo,
+
+    /// <summary>
+    /// Republic of the Congo - COG
+    /// </summary>
+    RepublicOfTheCongo,
+
+    /// <summary>
+    /// Cook Islands - COK
+    /// </summary>
+    CookIslands,
+
+    /// <summary>
+    /// Colombia - COL
+    /// </summary>
+    Colombia,
+
+    /// <summary>
+    /// Comoros - COM
+    /// </summary>
+    Comoros,
+
+    /// <summary>
+    /// Cabo Verde - CPV
+    /// </summary>
+    CaboVerde,
+
+    /// <summary>
+    /// Costa Rica - CRI
+    /// </summary>
+    CostaRica,
+
+    /// <summary>
+    /// Cuba - CUB
+    /// </summary>
+    Cuba,
+
+    /// <summary>
+    /// Curaçao - CUW
+    /// </summary>
+    Curaçao,
+
+    /// <summary>
+    /// Christmas Island - CXR
+    /// </summary>
+    ChristmasIsland,
+
+    /// <summary>
+    /// Cayman Islands - CYM
+    /// </summary>
+    CaymanIslands,
+
+    /// <summary>
+    /// Cyprus - CYP
+    /// </summary>
+    Cyprus,
+
+    /// <summary>
+    /// Czechia - CZE
+    /// </summary>
+    Czechia,
+
+    /// <summary>
+    /// Germany - DEU
+    /// </summary>
+    Germany,
+
+    /// <summary>
+    /// Djibouti - DJI
+    /// </summary>
+    Djibouti,
+
+    /// <summary>
+    /// Dominica - DMA
+    /// </summary>
+    Dominica,
+
+    /// <summary>
+    /// Denmark - DNK
+    /// </summary>
+    Denmark,
+
+    /// <summary>
+    /// Dominican Republic - DOM
+    /// </summary>
+    DominicanRepublic,
+
+    /// <summary>
+    /// Algeria - DZA
+    /// </summary>
+    Algeria,
+
+    /// <summary>
+    /// Ecuador - ECU
+    /// </summary>
+    Ecuador,
+
+    /// <summary>
+    /// Egypt - EGY
+    /// </summary>
+    Egypt,
+
+    /// <summary>
+    /// Eritrea - ERI
+    /// </summary>
+    Eritrea,
+
+    /// <summary>
+    /// Western Sahara - ESH
+    /// </summary>
+    WesternSahara,
+
+    /// <summary>
+    /// Spain - ESP
+    /// </summary>
+    Spain,
+
+    /// <summary>
+    /// Estonia - EST
+    /// </summary>
+    Estonia,
+
+    /// <summary>
+    /// Ethiopia - ETH
+    /// </summary>
+    Ethiopia,
+
+    /// <summary>
+    /// Finland - FIN
+    /// </summary>
+    Finland,
+
+    /// <summary>
+    /// Fiji - FJI
+    /// </summary>
+    Fiji,
+
+    /// <summary>
+    /// Falkland Islands - FLK
+    /// </summary>
+    FalklandIslands,
+
+    /// <summary>
+    /// France - FRA
+    /// </summary>
+    France,
+
+    /// <summary>
+    /// Faroe Islands - FRO
+    /// </summary>
+    FaroeIslands,
+
+    /// <summary>
+    /// Micronesia - FSM
+    /// </summary>
+    Micronesia,
+
+    /// <summary>
+    /// Gabon - GAB
+    /// </summary>
+    Gabon,
+
+    /// <summary>
+    /// United Kingdom - GBR
+    /// </summary>
+    UnitedKingdom,
+
+    /// <summary>
+    /// Georgia - GEO
+    /// </summary>
+    Georgia,
+
+    /// <summary>
+    /// Guernsey - GGY
+    /// </summary>
+    Guernsey,
+
+    /// <summary>
+    /// Ghana - GHA
+    /// </summary>
+    Ghana,
+
+    /// <summary>
+    /// Gibraltar - GIB
+    /// </summary>
+    Gibraltar,
+
+    /// <summary>
+    /// Guinea - GIN
+    /// </summary>
+    Guinea,
+
+    /// <summary>
+    /// Guadeloupe - GLP
+    /// </summary>
+    Guadeloupe,
+
+    /// <summary>
+    /// Gambia - GMB
+    /// </summary>
+    Gambia,
+
+    /// <summary>
+    /// Guinea-Bissau - GNB
+    /// </summary>
+    GuineaBissau,
+
+    /// <summary>
+    /// Equatorial Guinea - GNQ
+    /// </summary>
+    EquatorialGuinea,
+
+    /// <summary>
+    /// Greece - GRC
+    /// </summary>
+    Greece,
+
+    /// <summary>
+    /// Grenada - GRD
+    /// </summary>
+    Grenada,
+
+    /// <summary>
+    /// Greenland - GRL
+    /// </summary>
+    Greenland,
+
+    /// <summary>
+    /// Guatemala - GTM
+    /// </summary>
+    Guatemala,
+
+    /// <summary>
+    /// French Guiana - GUF
+    /// </summary>
+    FrenchGuiana,
+
+    /// <summary>
+    /// Guam - GUM
+    /// </summary>
+    Guam,
+
+    /// <summary>
+    /// Guyana - GUY
+    /// </summary>
+    Guyana,
+
+    /// <summary>
+    /// Hong Kong - HKG
+    /// </summary>
+    HongKong,
+
+    /// <summary>
+    /// Heard Island and McDonald Islands - HMD
+    /// </summary>
+    HeardIslandAndMcDonaldIslands,
+
+    /// <summary>
+    /// Honduras - HND
+    /// </summary>
+    Honduras,
+
+    /// <summary>
+    /// Croatia - HRV
+    /// </summary>
+    Croatia,
+
+    /// <summary>
+    /// Haiti - HTI
+    /// </summary>
+    Haiti,
+
+    /// <summary>
+    /// Hungary - HUN
+    /// </summary>
+    Hungary,
+
+    /// <summary>
+    /// Indonesia - IDN
+    /// </summary>
+    Indonesia,
+
+    /// <summary>
+    /// Isle of Man - IMN
+    /// </summary>
+    IsleOfMan,
+
+    /// <summary>
+    /// India - IND
+    /// </summary>
+    India,
+
+    /// <summary>
+    /// British Indian Ocean Territory - IOT
+    /// </summary>
+    BritishIndianOceanTerritory,
+
+    /// <summary>
+    /// Ireland - IRL
+    /// </summary>
+    Ireland,
+
+    /// <summary>
+    /// Iran - IRN
+    /// </summary>
+    Iran,
+
+    /// <summary>
+    /// Iraq - IRQ
+    /// </summary>
+    Iraq,
+
+    /// <summary>
+    /// Iceland - ISL
+    /// </summary>
+    Iceland,
+
+    /// <summary>
+    /// Israel - ISR
+    /// </summary>
+    Israel,
+
+    /// <summary>
+    /// Italy - ITA
+    /// </summary>
+    Italy,
+
+    /// <summary>
+    /// Jamaica - JAM
+    /// </summary>
+    Jamaica,
+
+    /// <summary>
+    /// Jersey - JEY
+    /// </summary>
+    Jersey,
+
+    /// <summary>
+    /// Jordan - JOR
+    /// </summary>
+    Jordan,
+
+    /// <summary>
+    /// Japan - JPN
+    /// </summary>
+    Japan,
+
+    /// <summary>
+    /// Kazakhstan - KAZ
+    /// </summary>
+    Kazakhstan,
+
+    /// <summary>
+    /// Kenya - KEN
+    /// </summary>
+    Kenya,
+
+    /// <summary>
+    /// Kyrgyzstan - KGZ
+    /// </summary>
+    Kyrgyzstan,
+
+    /// <summary>
+    /// Cambodia - KHM
+    /// </summary>
+    Cambodia,
+
+    /// <summary>
+    /// Kiribati - KIR
+    /// </summary>
+    Kiribati,
+
+    /// <summary>
+    /// Saint Kitts and Nevis - KNA
+    /// </summary>
+    SaintKittsAndNevis,
+
+    /// <summary>
+    /// South Korea - KOR
+    /// </summary>
+    SouthKorea,
+
+    /// <summary>
+    /// Kuwait - KWT
+    /// </summary>
+    Kuwait,
+
+    /// <summary>
+    /// Laos - LAO
+    /// </summary>
+    Laos,
+
+    /// <summary>
+    /// Lebanon - LBN
+    /// </summary>
+    Lebanon,
+
+    /// <summary>
+    /// Liberia - LBR
+    /// </summary>
+    Liberia,
+
+    /// <summary>
+    /// Libya - LBY
+    /// </summary>
+    Libya,
+
+    /// <summary>
+    /// Saint Lucia - LCA
+    /// </summary>
+    SaintLucia,
+
+    /// <summary>
+    /// Liechtenstein - LIE
+    /// </summary>
+    Liechtenstein,
+
+    /// <summary>
+    /// Sri Lanka - LKA
+    /// </summary>
+    SriLanka,
+
+    /// <summary>
+    /// Lesotho - LSO
+    /// </summary>
+    Lesotho,
+
+    /// <summary>
+    /// Lithuania - LTU
+    /// </summary>
+    Lithuania,
+
+    /// <summary>
+    /// Luxembourg - LUX
+    /// </summary>
+    Luxembourg,
+
+    /// <summary>
+    /// Latvia - LVA
+    /// </summary>
+    Latvia,
+
+    /// <summary>
+    /// Macao - MAC
+    /// </summary>
+    Macao,
+
+    /// <summary>
+    /// Collectivity of Saint Martin - MAF
+    /// </summary>
+    CollectivityOfSaintMartin,
+
+    /// <summary>
+    /// Morocco - MAR
+    /// </summary>
+    Morocco,
+
+    /// <summary>
+    /// Monaco - MCO
+    /// </summary>
+    Monaco,
+
+    /// <summary>
+    /// Moldova - MDA
+    /// </summary>
+    Moldova,
+
+    /// <summary>
+    /// Madagascar - MDG
+    /// </summary>
+    Madagascar,
+
+    /// <summary>
+    /// Maldives - MDV
+    /// </summary>
+    Maldives,
+
+    /// <summary>
+    /// Mexico - MEX
+    /// </summary>
+    Mexico,
+
+    /// <summary>
+    /// Marshall Islands - MHL
+    /// </summary>
+    MarshallIslands,
+
+    /// <summary>
+    /// North Macedonia - MKD
+    /// </summary>
+    NorthMacedonia,
+
+    /// <summary>
+    /// Mali - MLI
+    /// </summary>
+    Mali,
+
+    /// <summary>
+    /// Malta - MLT
+    /// </summary>
+    Malta,
+
+    /// <summary>
+    /// Myanmar - MMR
+    /// </summary>
+    Myanmar,
+
+    /// <summary>
+    /// Montenegro - MNE
+    /// </summary>
+    Montenegro,
+
+    /// <summary>
+    /// Mongolia - MNG
+    /// </summary>
+    Mongolia,
+
+    /// <summary>
+    /// Northern Mariana Islands - MNP
+    /// </summary>
+    NorthernMarianaIslands,
+
+    /// <summary>
+    /// Mozambique - MOZ
+    /// </summary>
+    Mozambique,
+
+    /// <summary>
+    /// Mauritania - MRT
+    /// </summary>
+    Mauritania,
+
+    /// <summary>
+    /// Montserrat - MSR
+    /// </summary>
+    Montserrat,
+
+    /// <summary>
+    /// Martinique - MTQ
+    /// </summary>
+    Martinique,
+
+    /// <summary>
+    /// Mauritius - MUS
+    /// </summary>
+    Mauritius,
+
+    /// <summary>
+    /// Malawi - MWI
+    /// </summary>
+    Malawi,
+
+    /// <summary>
+    /// Malaysia - MYS
+    /// </summary>
+    Malaysia,
+
+    /// <summary>
+    /// Mayotte - MYT
+    /// </summary>
+    Mayotte,
+
+    /// <summary>
+    /// Namibia - NAM
+    /// </summary>
+    Namibia,
+
+    /// <summary>
+    /// New Caledonia - NCL
+    /// </summary>
+    NewCaledonia,
+
+    /// <summary>
+    /// Niger - NER
+    /// </summary>
+    Niger,
+
+    /// <summary>
+    /// Norfolk Island - NFK
+    /// </summary>
+    NorfolkIsland,
+
+    /// <summary>
+    /// Nigeria - NGA
+    /// </summary>
+    Nigeria,
+
+    /// <summary>
+    /// Nicaragua - NIC
+    /// </summary>
+    Nicaragua,
+
+    /// <summary>
+    /// Niue - NIU
+    /// </summary>
+    Niue,
+
+    /// <summary>
+    /// Netherlands - NLD
+    /// </summary>
+    Netherlands,
+
+    /// <summary>
+    /// Norway - NOR
+    /// </summary>
+    Norway,
+
+    /// <summary>
+    /// Nepal - NPL
+    /// </summary>
+    Nepal,
+
+    /// <summary>
+    /// Nauru - NRU
+    /// </summary>
+    Nauru,
+
+    /// <summary>
+    /// New Zealand - NZL
+    /// </summary>
+    NewZealand,
+
+    /// <summary>
+    /// Oman - OMN
+    /// </summary>
+    Oman,
+
+    /// <summary>
+    /// Pakistan - PAK
+    /// </summary>
+    Pakistan,
+
+    /// <summary>
+    /// Panama - PAN
+    /// </summary>
+    Panama,
+
+    /// <summary>
+    /// Pitcairn - PCN
+    /// </summary>
+    Pitcairn,
+
+    /// <summary>
+    /// Peru - PER
+    /// </summary>
+    Peru,
+
+    /// <summary>
+    /// Philippines - PHL
+    /// </summary>
+    Philippines,
+
+    /// <summary>
+    /// Palau - PLW
+    /// </summary>
+    Palau,
+
+    /// <summary>
+    /// Papua New Guinea - PNG
+    /// </summary>
+    PapuaNewGuinea,
+
+    /// <summary>
+    /// Poland - POL
+    /// </summary>
+    Poland,
+
+    /// <summary>
+    /// Puerto Rico - PRI
+    /// </summary>
+    PuertoRico,
+
+    /// <summary>
+    /// North Korea - PRK
+    /// </summary>
+    NorthKorea,
+
+    /// <summary>
+    /// Portugal - PRT
+    /// </summary>
+    Portugal,
+
+    /// <summary>
+    /// Paraguay - PRY
+    /// </summary>
+    Paraguay,
+
+    /// <summary>
+    /// Palestine - PSE
+    /// </summary>
+    Palestine,
+
+    /// <summary>
+    /// French Polynesia - PYF
+    /// </summary>
+    FrenchPolynesia,
+
+    /// <summary>
+    /// Qatar - QAT
+    /// </summary>
+    Qatar,
+
+    /// <summary>
+    /// Réunion - REU
+    /// </summary>
+    Réunion,
+
+    /// <summary>
+    /// Romania - ROU
+    /// </summary>
+    Romania,
+
+    /// <summary>
+    /// Russia - RUS
+    /// </summary>
+    Russia,
+
+    /// <summary>
+    /// Rwanda - RWA
+    /// </summary>
+    Rwanda,
+
+    /// <summary>
+    /// Saudi Arabia - SAU
+    /// </summary>
+    SaudiArabia,
+
+    /// <summary>
+    /// Sudan - SDN
+    /// </summary>
+    Sudan,
+
+    /// <summary>
+    /// Senegal - SEN
+    /// </summary>
+    Senegal,
+
+    /// <summary>
+    /// Singapore - SGP
+    /// </summary>
+    Singapore,
+
+    /// <summary>
+    /// South Georgia and the South Sandwich Islands - SGS
+    /// </summary>
+    SouthGeorgiaAndTheSouthSandwichIslands,
+
+    /// <summary>
+    /// Saint Helena, Ascension and Tristan da Cunha - SHN
+    /// </summary>
+    SaintHelenaAscensionAndTristandaCunha,
+
+    /// <summary>
+    /// Svalbard and Jan Mayen - SJM
+    /// </summary>
+    SvalbardAndJanMayen,
+
+    /// <summary>
+    /// Solomon Islands - SLB
+    /// </summary>
+    SolomonIslands,
+
+    /// <summary>
+    /// Sierra Leone - SLE
+    /// </summary>
+    SierraLeone,
+
+    /// <summary>
+    /// El Salvador - SLV
+    /// </summary>
+    ElSalvador,
+
+    /// <summary>
+    /// San Marino - SMR
+    /// </summary>
+    SanMarino,
+
+    /// <summary>
+    /// Somalia - SOM
+    /// </summary>
+    Somalia,
+
+    /// <summary>
+    /// Saint Pierre and Miquelon - SPM
+    /// </summary>
+    SaintPierreAndMiquelon,
+
+    /// <summary>
+    /// Serbia - SRB
+    /// </summary>
+    Serbia,
+
+    /// <summary>
+    /// South Sudan - SSD
+    /// </summary>
+    SouthSudan,
+
+    /// <summary>
+    /// São Tomé and Príncipe - STP
+    /// </summary>
+    SãoToméAndPríncipe,
+
+    /// <summary>
+    /// Suriname - SUR
+    /// </summary>
+    Suriname,
+
+    /// <summary>
+    /// Slovakia - SVK
+    /// </summary>
+    Slovakia,
+
+    /// <summary>
+    /// Slovenia - SVN
+    /// </summary>
+    Slovenia,
+
+    /// <summary>
+    /// Sweden - SWE
+    /// </summary>
+    Sweden,
+
+    /// <summary>
+    /// Eswatini - SWZ
+    /// </summary>
+    Eswatini,
+
+    /// <summary>
+    /// Sint Maarten - SXM
+    /// </summary>
+    SintMaarten,
+
+    /// <summary>
+    /// Seychelles - SYC
+    /// </summary>
+    Seychelles,
+
+    /// <summary>
+    /// Syria - SYR
+    /// </summary>
+    Syria,
+
+    /// <summary>
+    /// Turks and Caicos Islands - TCA
+    /// </summary>
+    TurksAndCaicosIslands,
+
+    /// <summary>
+    /// Chad - TCD
+    /// </summary>
+    Chad,
+
+    /// <summary>
+    /// Togo - TGO
+    /// </summary>
+    Togo,
+
+    /// <summary>
+    /// Thailand - THA
+    /// </summary>
+    Thailand,
+
+    /// <summary>
+    /// Tajikistan - TJK
+    /// </summary>
+    Tajikistan,
+
+    /// <summary>
+    /// Tokelau - TKL
+    /// </summary>
+    Tokelau,
+
+    /// <summary>
+    /// Turkmenistan - TKM
+    /// </summary>
+    Turkmenistan,
+
+    /// <summary>
+    /// Timor-Leste - TLS
+    /// </summary>
+    TimorLeste,
+
+    /// <summary>
+    /// Tonga - TON
+    /// </summary>
+    Tonga,
+
+    /// <summary>
+    /// Trinidad and Tobago - TTO
+    /// </summary>
+    TrinidadAndTobago,
+
+    /// <summary>
+    /// Tunisia - TUN
+    /// </summary>
+    Tunisia,
+
+    /// <summary>
+    /// Turkey - TUR
+    /// </summary>
+    Turkey,
+
+    /// <summary>
+    /// Tuvalu - TUV
+    /// </summary>
+    Tuvalu,
+
+    /// <summary>
+    /// Taiwan - TWN
+    /// </summary>
+    Taiwan,
+
+    /// <summary>
+    /// Tanzania - TZA
+    /// </summary>
+    Tanzania,
+
+    /// <summary>
+    /// Uganda - UGA
+    /// </summary>
+    Uganda,
+
+    /// <summary>
+    /// Ukraine - UKR
+    /// </summary>
+    Ukraine,
+
+    /// <summary>
+    /// United States Minor Outlying Islands - UMI
+    /// </summary>
+    UnitedStatesMinorOutlyingIslands,
+
+    /// <summary>
+    /// Uruguay - URY
+    /// </summary>
+    Uruguay,
+
+    /// <summary>
+    /// United States of America - USA
+    /// </summary>
+    UnitedStatesOfAmerica,
+
+    /// <summary>
+    /// Uzbekistan - UZB
+    /// </summary>
+    Uzbekistan,
+
+    /// <summary>
+    /// Vatican City - VAT
+    /// </summary>
+    VaticanCity,
+
+    /// <summary>
+    /// Saint Vincent and the Grenadines - VCT
+    /// </summary>
+    SaintVincentAndTheGrenadines,
+
+    /// <summary>
+    /// Venezuela - VEN
+    /// </summary>
+    Venezuela,
+
+    /// <summary>
+    /// British Virgin Islands - VGB
+    /// </summary>
+    BritishVirginIslands,
+
+    /// <summary>
+    /// United States Virgin Islands - VIR
+    /// </summary>
+    UnitedStatesVirginIslands,
+
+    /// <summary>
+    /// Viet Nam - VNM
+    /// </summary>
+    VietNam,
+
+    /// <summary>
+    /// Vanuatu - VUT
+    /// </summary>
+    Vanuatu,
+
+    /// <summary>
+    /// Wallis and Futuna - WLF
+    /// </summary>
+    WallisAndFutuna,
+
+    /// <summary>
+    /// Samoa - WSM
+    /// </summary>
+    Samoa,
+
+    /// <summary>
+    /// Yemen - YEM
+    /// </summary>
+    Yemen,
+
+    /// <summary>
+    /// South Africa - ZAF
+    /// </summary>
+    SouthAfrica,
+
+    /// <summary>
+    /// Zambia - ZMB
+    /// </summary>
+    Zambia,
+
+    /// <summary>
+    /// Zimbabwe - ZWE
+    /// </summary>
+    Zimbabwe,
+
 }

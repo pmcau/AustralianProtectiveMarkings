@@ -1,0 +1,16 @@
+﻿{
+  SecurityClassification: Secret,
+  Caveats: {
+    CodewordCaveats: [
+      codeword1
+    ],
+    ForeignGovernmentCaveats: [
+      usa caveat
+    ],
+    SpecialHandlingCaveats: [
+      {
+        Type: Cabinet
+      }
+    ]
+  }
+}
