@@ -262,11 +262,12 @@ ZWE	Zimbabwe";
         }
         foreach (var (key, value) in dictionary)
         {
+            var replace = value.Replace(" and "," And ").Replace(" of "," Of ").Replace(" the "," The ").Replace(" ","").Replace(",","").Replace("-","");
             Console.Write($@"
 /// <summary>
 /// {value} - {key}
 /// </summary>
-{value.Replace(" and ","And").Replace(" of ","Of").Replace(" ","").Replace("-","")},
+{replace},
 ");
         }
     }

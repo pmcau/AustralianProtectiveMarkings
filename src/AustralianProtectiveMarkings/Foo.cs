@@ -51,6 +51,17 @@ public enum ReleasabilityIndicator
     ReleasabilityIndicator
 }
 
+public class CountryCodes
+{
+
+    static Dictionary<CountryCode, string> lettersToCode = new()
+    {
+    };
+
+    static Dictionary<CountryCode, string> codeToLetters = new()
+    {
+    };
+}
 public enum CountryCode
 {
     /// <summary>
@@ -286,12 +297,12 @@ Cameroon,
 /// <summary>
 /// Democratic Republic of the Congo - COD
 /// </summary>
-DemocraticRepublicOftheCongo,
+DemocraticRepublicOfTheCongo,
 
 /// <summary>
 /// Republic of the Congo - COG
 /// </summary>
-RepublicOftheCongo,
+RepublicOfTheCongo,
 
 /// <summary>
 /// Cook Islands - COK
@@ -589,7 +600,7 @@ BritishIndianOceanTerritory,
 Ireland,
 
 /// <summary>
-/// Iran) - IRN
+/// Iran - IRN
 /// </summary>
 Iran,
 
@@ -1031,12 +1042,12 @@ Singapore,
 /// <summary>
 /// South Georgia and the South Sandwich Islands - SGS
 /// </summary>
-SouthGeorgiaAndtheSouthSandwichIslands,
+SouthGeorgiaAndTheSouthSandwichIslands,
 
 /// <summary>
 /// Saint Helena, Ascension and Tristan da Cunha - SHN
 /// </summary>
-SaintHelena,AscensionAndTristandaCunha,
+SaintHelenaAscensionAndTristandaCunha,
 
 /// <summary>
 /// Svalbard and Jan Mayen - SJM
@@ -1241,7 +1252,7 @@ VaticanCity,
 /// <summary>
 /// Saint Vincent and the Grenadines - VCT
 /// </summary>
-SaintVincentAndtheGrenadines,
+SaintVincentAndTheGrenadines,
 
 /// <summary>
 /// Venezuela - VEN
