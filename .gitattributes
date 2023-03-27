@@ -1,0 +1,4 @@
+*.png binary
+*.snk binary
+*.json -text
+*.pdf binary
