@@ -4,18 +4,18 @@ public record struct SpecialHandlingCaveat(
     SpecialHandlingCaveatType Type,
     string? Value = null)
 {
-    public SpecialHandlingCaveat DelicateSource() =>
+    public static SpecialHandlingCaveat DelicateSource() =>
         new(SpecialHandlingCaveatType.DelicateSource);
 
-    public SpecialHandlingCaveat Orcon() =>
+    public static SpecialHandlingCaveat Orcon() =>
         new(SpecialHandlingCaveatType.Orcon);
 
-    public SpecialHandlingCaveat ExclusiveFor(string personOrIndicator) =>
+    public static SpecialHandlingCaveat ExclusiveFor(string personOrIndicator) =>
         new(SpecialHandlingCaveatType.ExclusiveFor, personOrIndicator);
 
-    public SpecialHandlingCaveat Cabinet() =>
+    public static SpecialHandlingCaveat Cabinet() =>
         new(SpecialHandlingCaveatType.Cabinet);
 
-    public SpecialHandlingCaveat Rel() =>
+    public static SpecialHandlingCaveat Rel() =>
         new(SpecialHandlingCaveatType.NationalCabinet);
 }

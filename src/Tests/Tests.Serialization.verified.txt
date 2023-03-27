@@ -1,15 +1,33 @@
 ﻿{
   SecurityClassification: Secret,
+  InformationManagementMarkers: PersonalPrivacy,
+  Event: null,
+  GenDate: Date_MinValue,
   Caveats: {
-    CodewordCaveats: [
+    Codeword: [
       codeword1
     ],
-    ForeignGovernmentCaveats: [
+    ForeignGovernment: [
       usa caveat
     ],
-    SpecialHandlingCaveats: [
+    ReleasabilityIndicator: [
       {
-        Type: Cabinet
+        Type: Agao,
+        CountryCodes: null
+      },
+      {
+        Type: Rel,
+        CountryCodes: Afghanistan
+      }
+    ],
+    SpecialHandling: [
+      {
+        Type: Cabinet,
+        Value: null
+      },
+      {
+        Type: ExclusiveFor,
+        Value: person
       }
     ]
   }

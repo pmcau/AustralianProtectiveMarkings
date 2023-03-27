@@ -4,12 +4,12 @@ public record struct ReleasabilityIndicatorCaveat(
     ReleasabilityIndicatorCaveatType Type,
     CountryCodes? CountryCodes = null)
 {
-    public ReleasabilityIndicatorCaveat Agao() =>
+    public static ReleasabilityIndicatorCaveat Agao() =>
         new(ReleasabilityIndicatorCaveatType.Agao);
 
-    public ReleasabilityIndicatorCaveat Austeo() =>
+    public static ReleasabilityIndicatorCaveat Austeo() =>
         new(ReleasabilityIndicatorCaveatType.Austeo);
 
-    public ReleasabilityIndicatorCaveat Rel(CountryCodes countryCodes) =>
+    public static ReleasabilityIndicatorCaveat Rel(CountryCodes countryCodes) =>
         new(ReleasabilityIndicatorCaveatType.Rel, countryCodes);
 }

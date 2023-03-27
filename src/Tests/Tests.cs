@@ -1,4 +1,3 @@
-using Argon;
 using AustralianProtectiveMarkings;
 
 [TestFixture]
@@ -7,26 +6,32 @@ public class Tests
     [Test]
     public Task Serialization()
     {
-        var protectiveMarking = new ProtectiveMarking(SecurityClassification.Secret)
+        var marking = new ProtectiveMarking(SecurityClassification.Secret)
         {
             Caveats = new Caveats(
-                CodewordCaveats: new[]
+                Codeword: new[]
                 {
                     "codeword1"
                 },
-                ForeignGovernmentCaveats: new[]
+                ForeignGovernment: new[]
                 {
                     "usa caveat"
                 },
-                SpecialHandlingCaveats: new[]
+                ReleasabilityIndicator: new[]
                 {
-                    new SpecialHandlingCaveat(SpecialHandlingCaveatType.Cabinet)
+                    ReleasabilityIndicatorCaveat.Agao(),
+                    ReleasabilityIndicatorCaveat.Rel(CountryCodes.Afghanistan),
+                },
+                SpecialHandling: new[]
+                {
+                    SpecialHandlingCaveat.Cabinet(),
+                    SpecialHandlingCaveat.ExclusiveFor("person"),
                 })
         };
-        var serialized1 = JsonConvert.SerializeObject(protectiveMarking);
+        var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);
         var serialized2 = JsonConvert.SerializeObject(deserialized);
         Assert.AreEqual(serialized1, serialized2);
-        return Verify(protectiveMarking);
+        return Verify(marking);
     }
 }
