@@ -7,7 +7,7 @@ public class RendererTests
         var marking = new ProtectiveMarking(SecurityClassification.Secret)
         {
             Event = "the event",
-            GenDate = new(new(2020,10,1)),
+            GenDate = new(new(2020, 10, 1)),
             InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]

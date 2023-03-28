@@ -1,6 +1,6 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-public class CountryCodes
+public static class CountryCodes
 {
     public static bool TryGetLettersForCode(
         CountryCode code,
@@ -16,7 +16,7 @@ public class CountryCodes
         return false;
     }
 
-    public static string GetLettersForCode(CountryCode code)
+    public static string GetLettersForCode(this CountryCode code)
     {
         if(TryGetLettersForCode(code, out var value))
         {
