@@ -6,7 +6,11 @@ public readonly record struct ProtectiveMarking
 {
     readonly Expiry? expiry;
     public required SecurityClassification SecurityClassification { get; init; }
-    public Caveats? Caveats { get; init; }
+    public IReadOnlyCollection<string>? CodewordCaveats { get; init; }
+    public IReadOnlyCollection<string>? ForeignGovernmentCaveats { get; init; }
+    public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
+    public IReadOnlyCollection<string>? ExclusiveForCaveats { get; init; }
+    public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
 
     public Expiry? Expiry
     {

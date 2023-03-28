@@ -50,30 +50,27 @@ public class RendererTests
             {
                 InformationManagementMarker.LegalPrivilege
             },
-            Caveats = new Caveats
+            CodewordCaveats = new[]
             {
-                CodewordCaveats = new[]
-                {
-                    "codeword1"
-                },
-                ForeignGovernmentCaveats = new[]
-                {
-                    "usa caveat"
-                },
-                CaveatTypes = new[]
-                {
-                    CaveatType.Agao,
-                    CaveatType.Cabinet,
-                },
-                ExclusiveForCaveats = new[]
-                {
-                    "person"
-                },
-                CountryCodeCaveats = new[]
-                {
-                    CountryCode.Afghanistan,
-                    CountryCode.Algeria
-                }
+                "codeword1"
+            },
+            ForeignGovernmentCaveats = new[]
+            {
+                "usa caveat"
+            },
+            CaveatTypes = new[]
+            {
+                CaveatType.Agao,
+                CaveatType.Cabinet,
+            },
+            ExclusiveForCaveats = new[]
+            {
+                "person"
+            },
+            CountryCodeCaveats = new[]
+            {
+                CountryCode.Afghanistan,
+                CountryCode.Algeria
             }
         };
 }
