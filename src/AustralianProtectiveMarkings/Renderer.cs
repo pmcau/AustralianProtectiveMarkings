@@ -14,6 +14,7 @@ public static class Renderer
         builder.Append(']');
         return builder.ToString();
     }
+
     public static string RenderHeader(this ProtectiveMarking marking)
     {
         var builder = new StringBuilder("VER=2018.4, NS=gov.au, ");
