@@ -4,6 +4,30 @@ namespace AustralianProtectiveMarkings;
 
 public class CountryCodeHelper
 {
+    public static bool TryGetLettersForCode(
+        CountryCodes code,
+        [NotNullWhen(true)]out string? letters)
+    {
+        if(codeToLetters.TryGetValue(code, out var value))
+        {
+            letters = value;
+            return true;
+        }
+
+        letters = null;
+        return false;
+    }
+
+    public static string GetLettersForCode(CountryCodes code)
+    {
+        if(TryGetLettersForCode(code, out var value))
+        {
+            return value;
+        }
+
+        throw new ArgumentException($"Could not find country code letters for '{code}'");
+    }
+
     public static bool TryGetCodeForLetters(
         string letters,
         [NotNullWhen(true)]out CountryCodes? codes)
