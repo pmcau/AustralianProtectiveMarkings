@@ -1,10 +1,5 @@
 ﻿{
   SecurityClassification: Secret,
-  InformationManagementMarkers: [
-    LegalPrivilege
-  ],
-  Event: the event,
-  GenDate: DateTimeOffset_1,
   Caveats: {
     Codeword: [
       codeword1
@@ -24,5 +19,10 @@
       Algeria
     ]
   },
-  DownTo: null
+  Event: the event,
+  GenDate: DateTimeOffset_1,
+  DownTo: null,
+  InformationManagementMarkers: [
+    LegalPrivilege
+  ]
 }
