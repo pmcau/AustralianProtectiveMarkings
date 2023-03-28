@@ -33,12 +33,12 @@ public class CountryCodeHelperTests
     [Test]
     public void TryGetLettersForCode()
     {
-        var found = CountryCodeHelper.TryGetLettersForCode(CountryCodes.Aruba, out var letter);
+        var found = CountryCodeHelper.TryGetLettersForCode(CountryCodes.Aruba, out var letters);
         Assert.IsTrue(found);
-        Assert.AreEqual(CountryCodes.Aruba, letter);
-        found = CountryCodeHelper.TryGetLettersForCode((CountryCodes) 999, out letter);
+        Assert.AreEqual("ABW", letters);
+        found = CountryCodeHelper.TryGetLettersForCode((CountryCodes) 999, out letters);
         Assert.IsFalse(found);
-        Assert.IsNull(letter);
+        Assert.IsNull(letters);
     }
 
     [Test]
