@@ -17,6 +17,11 @@ public readonly record struct ProtectiveMarking
                 return;
             }
 
+            if (value.Value.DownTo >= SecurityClassification)
+            {
+                throw new($"Expiry DownTo {value.Value.DownTo} must be less than the SecurityClassification or the ProtectiveMarking {SecurityClassification}.");
+            }
+
             var @event = value.Value.Event;
             var genDate = value.Value.GenDate;
 

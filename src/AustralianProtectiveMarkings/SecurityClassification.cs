@@ -6,11 +6,10 @@
 /// </summary>
 public enum SecurityClassification
 {
+    Unofficial,
+    Official,
+    OfficialSensitive,
     Protected,
     Secret,
     TopSecret,
-    // the below are email only
-    Unofficial,
-    Official,
-    OfficialSensitive
 }

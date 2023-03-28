@@ -38,7 +38,7 @@ public class RendererTests
     static ProtectiveMarking BuildMarking() =>
         new()
         {
-            SecurityClassification = SecurityClassification.Secret,
+            SecurityClassification = SecurityClassification.TopSecret,
             Expiry = new Expiry
             {
                 DownTo = SecurityClassification.Official,
