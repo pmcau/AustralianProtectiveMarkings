@@ -1,20 +1,20 @@
 ﻿{
   SecurityClassification: Secret,
   Caveats: {
-    Codeword: [
+    CodewordCaveats: [
       codeword1
     ],
-    ForeignGovernment: [
+    ForeignGovernmentCaveats: [
       usa caveat
     ],
     CaveatTypes: [
       Agao,
       Cabinet
     ],
-    ExclusiveFor: [
+    ExclusiveForCaveats: [
       person
     ],
-    CountryCodes: [
+    CountryCodeCaveats: [
       Afghanistan,
       Algeria
     ]

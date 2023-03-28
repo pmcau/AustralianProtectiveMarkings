@@ -91,31 +91,46 @@ public static class Renderer
             return;
         }
 
-        var (codewords, foreignGovernment, caveatTypes, exclusiveFor, countryCodes) = marking.Caveats.Value;
+        var caveats = marking.Caveats.Value;
 
-        foreach (var caveat in codewords)
+        if (caveats.CodewordCaveats != null)
         {
-            builder.Append($"CAVEAT=C:{caveat}, ");
+            foreach (var caveat in caveats.CodewordCaveats)
+            {
+                builder.Append($"CAVEAT=C:{caveat}, ");
+            }
         }
 
-        foreach (var caveat in foreignGovernment)
+        if (caveats.ForeignGovernmentCaveats != null)
         {
-            builder.Append($"CAVEAT=FG:{caveat}, ");
+            foreach (var caveat in caveats.ForeignGovernmentCaveats)
+            {
+                builder.Append($"CAVEAT=FG:{caveat}, ");
+            }
         }
 
-        foreach (var caveat in caveatTypes)
+        if (caveats.CaveatTypes != null)
         {
-            builder.Append($"CAVEAT={caveat.Render()}, ");
+            foreach (var caveat in caveats.CaveatTypes)
+            {
+                builder.Append($"CAVEAT={caveat.Render()}, ");
+            }
         }
 
-        foreach (var personOrIndicator in exclusiveFor)
+        if (caveats.ExclusiveForCaveats != null)
         {
-            builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
+            foreach (var personOrIndicator in caveats.ExclusiveForCaveats)
+            {
+                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
+            }
         }
 
-        foreach (var countryCode in countryCodes)
+        if (caveats.CountryCodeCaveats != null)
         {
-            builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
+            foreach (var countryCode in caveats.CountryCodeCaveats)
+            {
+                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
+            }
         }
     }
 

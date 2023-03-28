@@ -12,30 +12,35 @@ public class Tests
                 DownTo = SecurityClassification.Official,
                 GenDate = new DateTimeOffset(new(2020, 10, 1)),
             },
-            InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},
-            Caveats = new Caveats(
-                Codeword: new[]
+            InformationManagementMarkers = new[]
+            {
+                InformationManagementMarker.LegalPrivilege
+            },
+            Caveats = new Caveats
+            {
+                CodewordCaveats = new[]
                 {
                     "codeword1"
                 },
-                ForeignGovernment: new[]
+                ForeignGovernmentCaveats = new[]
                 {
                     "usa caveat"
                 },
-                CaveatTypes: new[]
+                CaveatTypes = new[]
                 {
                     CaveatType.Agao,
                     CaveatType.Cabinet,
                 },
-                ExclusiveFor: new[]
+                ExclusiveForCaveats = new[]
                 {
                     "person"
                 },
-                CountryCodes: new[]
+                CountryCodeCaveats = new[]
                 {
                     CountryCode.Afghanistan,
                     CountryCode.Algeria
-                })
+                }
+            }
         };
         var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);

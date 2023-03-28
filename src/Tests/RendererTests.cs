@@ -46,29 +46,34 @@ public class RendererTests
             },
             Note = "the notes",
             Origin = "the origin",
-            InformationManagementMarkers = new[] {InformationManagementMarker.LegalPrivilege},
-            Caveats = new Caveats(
-                Codeword: new[]
+            InformationManagementMarkers = new[]
+            {
+                InformationManagementMarker.LegalPrivilege
+            },
+            Caveats = new Caveats
+            {
+                CodewordCaveats = new[]
                 {
                     "codeword1"
                 },
-                ForeignGovernment: new[]
+                ForeignGovernmentCaveats = new[]
                 {
                     "usa caveat"
                 },
-                CaveatTypes: new[]
+                CaveatTypes = new[]
                 {
                     CaveatType.Agao,
                     CaveatType.Cabinet,
                 },
-                ExclusiveFor: new[]
+                ExclusiveForCaveats = new[]
                 {
                     "person"
                 },
-                CountryCodes: new[]
+                CountryCodeCaveats = new[]
                 {
                     CountryCode.Afghanistan,
                     CountryCode.Algeria
-                })
+                }
+            }
         };
 }
