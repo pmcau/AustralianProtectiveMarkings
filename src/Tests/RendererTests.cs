@@ -2,14 +2,29 @@
 public class RendererTests
 {
     [Test]
-    public Task Serialization()
+    public Task Subject()
+    {
+        var marking = BuildMarking();
+        return Verify(marking.RenderSubject());
+    }
+
+    [Test]
+    public Task Header()
+    {
+        var marking = BuildMarking();
+        return Verify(marking.RenderHeader());
+    }
+
+    static ProtectiveMarking BuildMarking()
     {
         var marking = new ProtectiveMarking(SecurityClassification.Secret)
         {
             DownTo = SecurityClassification.Official,
             Event = "the event",
+            Note = "the notes",
+            Origin = "the origin",
             GenDate = new(new(2020, 10, 1)),
-            InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},
+            InformationManagementMarkers = new[] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]
                 {
@@ -34,6 +49,6 @@ public class RendererTests
                     CountryCode.Algeria
                 })
         };
-        return Verify(marking.RenderSubject());
+        return marking;
     }
 }

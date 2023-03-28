@@ -4,17 +4,32 @@ public static class Renderer
 {
     public static string RenderSubject(this ProtectiveMarking marking)
     {
-        var builder = new StringBuilder();
-        builder.Append($"SEC={Render(marking.SecurityClassification)}, ");
+        var builder = new StringBuilder("[");
+        RenderClassification(marking, builder);
         RenderCaveats(marking, builder);
-
         RenderExpires(marking, builder);
-
         RenderDownTo(marking, builder);
         RenderInformationManagementMarkers(marking, builder);
         builder.Length -= 2;
+        builder.Append(']');
         return builder.ToString();
     }
+    public static string RenderHeader(this ProtectiveMarking marking)
+    {
+        var builder = new StringBuilder("VER=2018.4, NS=gov.au, ");
+        RenderClassification(marking, builder);
+        RenderCaveats(marking, builder);
+        RenderExpires(marking, builder);
+        RenderDownTo(marking, builder);
+        RenderInformationManagementMarkers(marking, builder);
+        RenderNote(marking, builder);
+        RenderOrigin(marking, builder);
+        builder.Length -= 2;
+        return builder.ToString();
+    }
+
+    static void RenderClassification(ProtectiveMarking marking, StringBuilder builder) =>
+        builder.Append($"SEC={Render(marking.SecurityClassification)}, ");
 
     static void RenderInformationManagementMarkers(ProtectiveMarking marking, StringBuilder builder)
     {
@@ -29,6 +44,22 @@ public static class Renderer
         if (marking.DownTo != null)
         {
             builder.Append($"DOWNTO={Render(marking.DownTo.Value)}, ");
+        }
+    }
+
+    static void RenderNote(ProtectiveMarking marking, StringBuilder builder)
+    {
+        if (marking.Note != null)
+        {
+            builder.Append($"NOTE={marking.Note}, ");
+        }
+    }
+
+    static void RenderOrigin(ProtectiveMarking marking, StringBuilder builder)
+    {
+        if (marking.Origin != null)
+        {
+            builder.Append($"ORIGIN={marking.Origin}, ");
         }
     }
 

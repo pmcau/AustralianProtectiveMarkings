@@ -24,5 +24,7 @@
   DownTo: null,
   InformationManagementMarkers: [
     LegalPrivilege
-  ]
+  ],
+  Note: null,
+  Origin: null
 }
