@@ -37,11 +37,11 @@ public static class Renderer
 
         if (marking is {GenDate: not null, Event: not null})
         {
-            builder.Append($"EXPIRES={marking.GenDate} {marking.Event}, ");
+            builder.Append($"EXPIRES={marking.GenDate.Value.ToString("o")} {marking.Event}, ");
         }
         else if (marking.GenDate != null)
         {
-            builder.Append($"EXPIRES={marking.GenDate}, ");
+            builder.Append($"EXPIRES={marking.GenDate.Value.ToString("o")}, ");
         }
         else if (marking.Event != null)
         {
