@@ -4,8 +4,9 @@ public class Tests
     [Test]
     public Task Serialization()
     {
-        var marking = new ProtectiveMarking(SecurityClassification.Secret)
+        var marking = new ProtectiveMarking
         {
+            SecurityClassification = SecurityClassification.Secret,
             Event = "the event",
             Expires = new(new(2020,10,1)),
             InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},

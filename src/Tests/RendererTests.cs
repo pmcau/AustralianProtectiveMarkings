@@ -18,25 +18,32 @@ public class RendererTests
     [Test]
     public Task SubjectMin()
     {
-        var marking = new ProtectiveMarking(SecurityClassification.Secret);
+        var marking = new ProtectiveMarking
+        {
+            SecurityClassification = SecurityClassification.Secret
+        };
         return Verify(marking.RenderSubject());
     }
 
     [Test]
     public Task HeaderMin()
     {
-        var marking = new ProtectiveMarking(SecurityClassification.Secret);
+        var marking = new ProtectiveMarking
+        {
+            SecurityClassification = SecurityClassification.Secret
+        };
         return Verify(marking.RenderHeader());
     }
 
     static ProtectiveMarking BuildMarking() =>
-        new(SecurityClassification.Secret)
+        new()
         {
+            SecurityClassification = SecurityClassification.Secret,
             DownTo = SecurityClassification.Official,
             Event = "the event",
             Note = "the notes",
             Origin = "the origin",
-            Expires = new(new(2020, 10, 1)),
+            Expires = new DateTimeOffset(new(2020, 10, 1)),
             InformationManagementMarkers = new[] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]

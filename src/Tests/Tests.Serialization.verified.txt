@@ -19,8 +19,8 @@
       Algeria
     ]
   },
+  Expires: DateTimeOffset_1,
   Event: the event,
-  GenDate: DateTimeOffset_1,
   DownTo: null,
   InformationManagementMarkers: [
     LegalPrivilege
