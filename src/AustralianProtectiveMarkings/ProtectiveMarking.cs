@@ -5,6 +5,6 @@ public record struct ProtectiveMarking(SecurityClassification SecurityClassifica
 {
     public IReadOnlyCollection<InformationManagementMarker> InformationManagementMarkers { get; init; }
     public string? Event { get; init; }
-    public DateTimeOffset GenDate { get; init; }
+    public DateTimeOffset? GenDate { get; init; }
     public Caveats? Caveats { get; init; }
 }

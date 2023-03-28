@@ -13,22 +13,39 @@ public static class Renderer
             {
                 builder.Append($"CAVEAT=C:{caveat}, ");
             }
+
             foreach (var caveat in foreignGovernment)
             {
                 builder.Append($"CAVEAT=FG:{caveat}, ");
             }
+
             foreach (var caveat in caveatTypes)
             {
                 builder.Append($"CAVEAT={caveat.Render()}, ");
             }
+
             foreach (var personOrIndicator in exclusiveFor)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
             }
+
             foreach (var countryCode in countryCodes)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
             }
+        }
+
+        if (marking is {GenDate: not null, Event: not null})
+        {
+            builder.Append($"EXPIRES={marking.GenDate} {marking.Event}, ");
+        }
+        else if (marking.GenDate != null)
+        {
+            builder.Append($"EXPIRES={marking.GenDate}, ");
+        }
+        else if (marking.Event != null)
+        {
+            builder.Append($"EXPIRES={marking.Event}, ");
         }
 
         builder.Length -= 2;

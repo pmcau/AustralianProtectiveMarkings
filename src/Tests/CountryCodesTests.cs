@@ -26,7 +26,7 @@ public class CountryCodesTests
     [Test]
     public void GetLettersForCode()
     {
-        var letters = CountryCodes.GetLettersForCode(CountryCode.Aruba);
+        var letters = CountryCode.Aruba.GetLettersForCode();
         Assert.AreEqual("ABW", letters);
     }
 
@@ -42,6 +42,9 @@ public class CountryCodesTests
     }
 
     [Test]
-    public Task GetLettersForCodeMissing() =>
-        Throws(() => CountryCodes.GetLettersForCode((CountryCode) 999));
+    public Task GetLettersForCodeMissing()
+    {
+        var countryCode = (CountryCode) 999;
+        return Throws(() => countryCode.GetLettersForCode());
+    }
 }
