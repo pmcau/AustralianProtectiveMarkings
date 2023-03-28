@@ -42,7 +42,7 @@ public class RendererTests
             Expiry = new Expiry
             {
                 DownTo = SecurityClassification.Official,
-                GenDate = new DateTimeOffset(new(2020, 10, 1)),
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
             Note = "the notes",
             Origin = "the origin",
