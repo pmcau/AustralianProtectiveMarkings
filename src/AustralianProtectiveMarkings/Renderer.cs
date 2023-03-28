@@ -92,6 +92,7 @@ public static class Renderer
         }
 
         var (codewords, foreignGovernment, caveatTypes, exclusiveFor, countryCodes) = marking.Caveats.Value;
+
         foreach (var caveat in codewords)
         {
             builder.Append($"CAVEAT=C:{caveat}, ");
@@ -141,6 +142,7 @@ public static class Renderer
             CaveatType.NationalCabinet => "SH:NATIONAL-CABINET1",
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         };
+
     public static string Render(this InformationManagementMarker marker) =>
         marker switch
         {
