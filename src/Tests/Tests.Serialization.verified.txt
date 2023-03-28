@@ -10,6 +10,16 @@
     ForeignGovernment: [
       usa caveat
     ],
+    SpecialHandling: [
+      {
+        Type: Cabinet,
+        Value: null
+      },
+      {
+        Type: ExclusiveFor,
+        Value: person
+      }
+    ],
     ReleasabilityIndicator: [
       {
         Type: Agao,
@@ -21,16 +31,6 @@
           Afghanistan,
           Algeria
         ]
-      }
-    ],
-    SpecialHandling: [
-      {
-        Type: Cabinet,
-        Value: null
-      },
-      {
-        Type: ExclusiveFor,
-        Value: person
       }
     ]
   }
