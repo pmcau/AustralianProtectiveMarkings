@@ -34,6 +34,11 @@ public static class Renderer
 
     static void RenderInformationManagementMarkers(ProtectiveMarking marking, StringBuilder builder)
     {
+        if (marking.InformationManagementMarkers == null)
+        {
+            return;
+        }
+
         foreach (var marker in marking.InformationManagementMarkers)
         {
             builder.Append($"ACCESS={Render(marker)}, ");

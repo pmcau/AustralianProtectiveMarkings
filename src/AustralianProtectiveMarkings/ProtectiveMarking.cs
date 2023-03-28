@@ -7,7 +7,7 @@ public record struct ProtectiveMarking(SecurityClassification SecurityClassifica
     public string? Event { get; init; }
     public DateTimeOffset? GenDate { get; init; }
     public SecurityClassification? DownTo { get; init; }
-    public IReadOnlyCollection<InformationManagementMarker> InformationManagementMarkers { get; init; }
+    public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
     public string? Note { get; init; }
     public string? Origin { get; init; }
 }

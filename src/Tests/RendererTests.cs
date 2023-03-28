@@ -15,9 +15,22 @@ public class RendererTests
         return Verify(marking.RenderHeader());
     }
 
-    static ProtectiveMarking BuildMarking()
+    [Test]
+    public Task SubjectMin()
     {
-        var marking = new ProtectiveMarking(SecurityClassification.Secret)
+        var marking = new ProtectiveMarking(SecurityClassification.Secret);
+        return Verify(marking.RenderSubject());
+    }
+
+    [Test]
+    public Task HeaderMin()
+    {
+        var marking = new ProtectiveMarking(SecurityClassification.Secret);
+        return Verify(marking.RenderHeader());
+    }
+
+    static ProtectiveMarking BuildMarking() =>
+        new(SecurityClassification.Secret)
         {
             DownTo = SecurityClassification.Official,
             Event = "the event",
@@ -49,6 +62,4 @@ public class RendererTests
                     CountryCode.Algeria
                 })
         };
-        return marking;
-    }
 }
