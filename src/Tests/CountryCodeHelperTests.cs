@@ -5,7 +5,7 @@ public class CountryCodeHelperTests
     public void GetCodeForLetters()
     {
         var code = CountryCodeHelper.GetCodeForLetters("ABW");
-        Assert.AreEqual(CountryCodes.Aruba, code);
+        Assert.AreEqual(CountryCode.Aruba, code);
     }
 
     [Test]
@@ -13,7 +13,7 @@ public class CountryCodeHelperTests
     {
         var found = CountryCodeHelper.TryGetCodeForLetters("ABW", out var code);
         Assert.IsTrue(found);
-        Assert.AreEqual(CountryCodes.Aruba, code);
+        Assert.AreEqual(CountryCode.Aruba, code);
         found = CountryCodeHelper.TryGetCodeForLetters("AAA", out code);
         Assert.IsFalse(found);
         Assert.IsNull(code);
@@ -26,22 +26,22 @@ public class CountryCodeHelperTests
     [Test]
     public void GetLettersForCode()
     {
-        var letters = CountryCodeHelper.GetLettersForCode(CountryCodes.Aruba);
+        var letters = CountryCodeHelper.GetLettersForCode(CountryCode.Aruba);
         Assert.AreEqual("ABW", letters);
     }
 
     [Test]
     public void TryGetLettersForCode()
     {
-        var found = CountryCodeHelper.TryGetLettersForCode(CountryCodes.Aruba, out var letters);
+        var found = CountryCodeHelper.TryGetLettersForCode(CountryCode.Aruba, out var letters);
         Assert.IsTrue(found);
         Assert.AreEqual("ABW", letters);
-        found = CountryCodeHelper.TryGetLettersForCode((CountryCodes) 999, out letters);
+        found = CountryCodeHelper.TryGetLettersForCode((CountryCode) 999, out letters);
         Assert.IsFalse(found);
         Assert.IsNull(letters);
     }
 
     [Test]
     public Task GetLettersForCodeMissing() =>
-        Throws(() => CountryCodeHelper.GetLettersForCode((CountryCodes) 999));
+        Throws(() => CountryCodeHelper.GetLettersForCode((CountryCode) 999));
 }

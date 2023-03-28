@@ -2,7 +2,7 @@
 
 public record struct ReleasabilityIndicatorCaveat(
     ReleasabilityIndicatorCaveatType Type,
-    CountryCodes? CountryCodes = null)
+    IReadOnlyCollection<CountryCode>? CountryCodes = null)
 {
     public static ReleasabilityIndicatorCaveat Agao() =>
         new(ReleasabilityIndicatorCaveatType.Agao);
@@ -10,6 +10,12 @@ public record struct ReleasabilityIndicatorCaveat(
     public static ReleasabilityIndicatorCaveat Austeo() =>
         new(ReleasabilityIndicatorCaveatType.Austeo);
 
-    public static ReleasabilityIndicatorCaveat Rel(CountryCodes countryCodes) =>
+    public static ReleasabilityIndicatorCaveat Rel(IReadOnlyCollection<CountryCode> countryCodes) =>
+        new(ReleasabilityIndicatorCaveatType.Rel, countryCodes);
+
+    public static ReleasabilityIndicatorCaveat Rel(CountryCode countryCode) =>
+        new(ReleasabilityIndicatorCaveatType.Rel, new[] {countryCode});
+
+    public static ReleasabilityIndicatorCaveat Rel(params CountryCode[] countryCodes) =>
         new(ReleasabilityIndicatorCaveatType.Rel, countryCodes);
 }

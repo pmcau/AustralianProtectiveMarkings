@@ -1,162 +1,161 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-[Flags]
-public enum CountryCodes
+public enum CountryCode
 {
     /// <summary>
     /// Aruba - ABW
     /// </summary>
-    Aruba = 1 << 0,
+    Aruba,
 
     /// <summary>
     /// Afghanistan - AFG
     /// </summary>
-    Afghanistan = 1 << 1,
+    Afghanistan,
 
     /// <summary>
     /// Angola - AGO
     /// </summary>
-    Angola = 1 << 2,
+    Angola,
 
     /// <summary>
     /// Anguilla - AIA
     /// </summary>
-    Anguilla = 1 << 3,
+    Anguilla,
 
     /// <summary>
     /// Åland Islands - ALA
     /// </summary>
-    ÅlandIslands = 1 << 4,
+    ÅlandIslands,
 
     /// <summary>
     /// Albania - ALB
     /// </summary>
-    Albania = 1 << 5,
+    Albania,
 
     /// <summary>
     /// Andorra - AND
     /// </summary>
-    Andorra = 1 << 6,
+    Andorra,
 
     /// <summary>
     /// United Arab Emirates - ARE
     /// </summary>
-    UnitedArabEmirates = 1 << 7,
+    UnitedArabEmirates,
 
     /// <summary>
     /// Argentina - ARG
     /// </summary>
-    Argentina = 1 << 8,
+    Argentina,
 
     /// <summary>
     /// Armenia - ARM
     /// </summary>
-    Armenia = 1 << 9,
+    Armenia,
 
     /// <summary>
     /// American Samoa - ASM
     /// </summary>
-    AmericanSamoa = 1 << 10,
+    AmericanSamoa,
 
     /// <summary>
     /// Antarctica - ATA
     /// </summary>
-    Antarctica = 1 << 11,
+    Antarctica,
 
     /// <summary>
     /// French Southern Territories - ATF
     /// </summary>
-    FrenchSouthernTerritories = 1 << 12,
+    FrenchSouthernTerritories,
 
     /// <summary>
     /// Antigua and Barbuda - ATG
     /// </summary>
-    AntiguaAndBarbuda = 1 << 13,
+    AntiguaAndBarbuda,
 
     /// <summary>
     /// Australia - AUS
     /// </summary>
-    Australia = 1 << 14,
+    Australia,
 
     /// <summary>
     /// Austria - AUT
     /// </summary>
-    Austria = 1 << 15,
+    Austria,
 
     /// <summary>
     /// Azerbaijan - AZE
     /// </summary>
-    Azerbaijan = 1 << 16,
+    Azerbaijan,
 
     /// <summary>
     /// Burundi - BDI
     /// </summary>
-    Burundi = 1 << 17,
+    Burundi,
 
     /// <summary>
     /// Belgium - BEL
     /// </summary>
-    Belgium = 1 << 18,
+    Belgium,
 
     /// <summary>
     /// Benin - BEN
     /// </summary>
-    Benin = 1 << 19,
+    Benin,
 
     /// <summary>
     /// Caribbean Netherlands - BES
     /// </summary>
-    CaribbeanNetherlands = 1 << 20,
+    CaribbeanNetherlands,
 
     /// <summary>
     /// Burkina Faso - BFA
     /// </summary>
-    BurkinaFaso = 1 << 21,
+    BurkinaFaso,
 
     /// <summary>
     /// Bangladesh - BGD
     /// </summary>
-    Bangladesh = 1 << 22,
+    Bangladesh,
 
     /// <summary>
     /// Bulgaria - BGR
     /// </summary>
-    Bulgaria = 1 << 23,
+    Bulgaria,
 
     /// <summary>
     /// Bahrain - BHR
     /// </summary>
-    Bahrain = 1 << 24,
+    Bahrain,
 
     /// <summary>
     /// Bahamas - BHS
     /// </summary>
-    Bahamas = 1 << 25,
+    Bahamas,
 
     /// <summary>
     /// Bosnia and Herzegovina - BIH
     /// </summary>
-    BosniaAndHerzegovina = 1 << 26,
+    BosniaAndHerzegovina,
 
     /// <summary>
     /// Saint Barthélemy - BLM
     /// </summary>
-    SaintBarthélemy = 1 << 27,
+    SaintBarthélemy,
 
     /// <summary>
     /// Belarus - BLR
     /// </summary>
-    Belarus = 1 << 28,
+    Belarus,
 
     /// <summary>
     /// Belize - BLZ
     /// </summary>
-    Belize = 1 << 29,
+    Belize,
 
     /// <summary>
     /// Bermuda - BMU
     /// </summary>
-    Bermuda = 1 << 30,
+    Bermuda,
 
     /// <summary>
     /// Bolivia - BOL

@@ -1,6 +1,6 @@
 ﻿{
   Type: ArgumentException,
-  Message: Could not find country code letters for 'Aruba, Afghanistan, Angola, Albania, Andorra, UnitedArabEmirates, Argentina, Armenia',
+  Message: Could not find country code letters for '999',
   ParamName: null,
   Data: null,
   InnerException: null,

@@ -18,7 +18,7 @@ public class Tests
                 ReleasabilityIndicator: new[]
                 {
                     ReleasabilityIndicatorCaveat.Agao(),
-                    ReleasabilityIndicatorCaveat.Rel(CountryCodes.Afghanistan & CountryCodes.Algeria),
+                    ReleasabilityIndicatorCaveat.Rel(CountryCode.Afghanistan, CountryCode.Algeria),
                 },
                 SpecialHandling: new[]
                 {
