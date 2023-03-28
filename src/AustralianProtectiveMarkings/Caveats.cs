@@ -1,6 +1,6 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-public record struct Caveats(
+public readonly record struct Caveats(
     IReadOnlyCollection<string> Codeword,
     IReadOnlyCollection<string> ForeignGovernment,
     IReadOnlyCollection<CaveatType> CaveatTypes,
