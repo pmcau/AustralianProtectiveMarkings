@@ -7,4 +7,5 @@ public record struct ProtectiveMarking(SecurityClassification SecurityClassifica
     public string? Event { get; init; }
     public DateTimeOffset? GenDate { get; init; }
     public Caveats? Caveats { get; init; }
+    public SecurityClassification? DownTo { get; init; }
 }

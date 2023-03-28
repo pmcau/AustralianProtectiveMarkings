@@ -6,6 +6,7 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking(SecurityClassification.Secret)
         {
+            DownTo = SecurityClassification.Official,
             Event = "the event",
             GenDate = new(new(2020, 10, 1)),
             InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},

@@ -6,35 +6,34 @@ public static class Renderer
     {
         var builder = new StringBuilder();
         builder.Append($"SEC={Render(marking.SecurityClassification)}, ");
-        if (marking.Caveats != null)
+        RenderCaveats(marking, builder);
+
+        RenderExpires(marking, builder);
+
+        RenderDownTo(marking, builder);
+        RenderInformationManagementMarkers(marking, builder);
+        builder.Length -= 2;
+        return builder.ToString();
+    }
+
+    static void RenderInformationManagementMarkers(ProtectiveMarking marking, StringBuilder builder)
+    {
+        foreach (var marker in marking.InformationManagementMarkers)
         {
-            var (codewords, foreignGovernment, caveatTypes, exclusiveFor, countryCodes) = marking.Caveats.Value;
-            foreach (var caveat in codewords)
-            {
-                builder.Append($"CAVEAT=C:{caveat}, ");
-            }
-
-            foreach (var caveat in foreignGovernment)
-            {
-                builder.Append($"CAVEAT=FG:{caveat}, ");
-            }
-
-            foreach (var caveat in caveatTypes)
-            {
-                builder.Append($"CAVEAT={caveat.Render()}, ");
-            }
-
-            foreach (var personOrIndicator in exclusiveFor)
-            {
-                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
-            }
-
-            foreach (var countryCode in countryCodes)
-            {
-                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
-            }
+            builder.Append($"ACCESS={Render(marker)}, ");
         }
+    }
 
+    static void RenderDownTo(ProtectiveMarking marking, StringBuilder builder)
+    {
+        if (marking.DownTo != null)
+        {
+            builder.Append($"DOWNTO={Render(marking.DownTo.Value)}, ");
+        }
+    }
+
+    static void RenderExpires(ProtectiveMarking marking, StringBuilder builder)
+    {
         if (marking is {GenDate: not null, Event: not null})
         {
             builder.Append($"EXPIRES={marking.GenDate.Value.ToString("o")} {marking.Event}, ");
@@ -47,9 +46,40 @@ public static class Renderer
         {
             builder.Append($"EXPIRES={marking.Event}, ");
         }
+    }
 
-        builder.Length -= 2;
-        return builder.ToString();
+    static void RenderCaveats(ProtectiveMarking marking, StringBuilder builder)
+    {
+        if (marking.Caveats == null)
+        {
+            return;
+        }
+
+        var (codewords, foreignGovernment, caveatTypes, exclusiveFor, countryCodes) = marking.Caveats.Value;
+        foreach (var caveat in codewords)
+        {
+            builder.Append($"CAVEAT=C:{caveat}, ");
+        }
+
+        foreach (var caveat in foreignGovernment)
+        {
+            builder.Append($"CAVEAT=FG:{caveat}, ");
+        }
+
+        foreach (var caveat in caveatTypes)
+        {
+            builder.Append($"CAVEAT={caveat.Render()}, ");
+        }
+
+        foreach (var personOrIndicator in exclusiveFor)
+        {
+            builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
+        }
+
+        foreach (var countryCode in countryCodes)
+        {
+            builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
+        }
     }
 
     public static string Render(this SecurityClassification classification) =>
@@ -74,5 +104,13 @@ public static class Renderer
             CaveatType.Cabinet => "SH:CABINET",
             CaveatType.NationalCabinet => "SH:NATIONAL-CABINET1",
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
+    public static string Render(this InformationManagementMarker marker) =>
+        marker switch
+        {
+            InformationManagementMarker.PersonalPrivacy => "Personal-Privacy",
+            InformationManagementMarker.LegalPrivilege => "Legal-Privilege",
+            InformationManagementMarker.LegislativeSecrecy => "Legislative-Secrecy",
+            _ => throw new ArgumentOutOfRangeException(nameof(marker), marker, null)
         };
 }
