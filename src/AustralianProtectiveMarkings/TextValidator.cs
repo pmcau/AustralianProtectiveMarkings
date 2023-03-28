@@ -1,5 +1,18 @@
 ﻿static class TextValidator
 {
+    public static void Validate(IReadOnlyCollection<string>? values)
+    {
+        if (values == null)
+        {
+            return;
+        }
+
+        foreach (var value in values)
+        {
+            Validate(value);
+        }
+    }
+
     public static void Validate(string value)
     {
         if (value.Length == 0)

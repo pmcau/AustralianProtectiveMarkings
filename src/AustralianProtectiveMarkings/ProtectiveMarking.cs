@@ -5,11 +5,43 @@ namespace AustralianProtectiveMarkings;
 public readonly record struct ProtectiveMarking
 {
     readonly Expiry? expiry;
+    readonly IReadOnlyCollection<string>? exclusiveForCaveats;
+    readonly IReadOnlyCollection<string>? foreignGovernmentCaveats;
+    readonly IReadOnlyCollection<string>? codewordCaveats;
     public required SecurityClassification SecurityClassification { get; init; }
-    public IReadOnlyCollection<string>? CodewordCaveats { get; init; }
-    public IReadOnlyCollection<string>? ForeignGovernmentCaveats { get; init; }
+
+    public IReadOnlyCollection<string>? CodewordCaveats
+    {
+        get => codewordCaveats;
+        init
+        {
+            TextValidator.Validate(value);
+            codewordCaveats = value;
+        }
+    }
+
+    public IReadOnlyCollection<string>? ForeignGovernmentCaveats
+    {
+        get => foreignGovernmentCaveats;
+        init
+        {
+            TextValidator.Validate(value);
+            foreignGovernmentCaveats = value;
+        }
+    }
+
     public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
-    public IReadOnlyCollection<string>? ExclusiveForCaveats { get; init; }
+
+    public IReadOnlyCollection<string>? ExclusiveForCaveats
+    {
+        get => exclusiveForCaveats;
+        init
+        {
+            TextValidator.Validate(value);
+            exclusiveForCaveats = value;
+        }
+    }
+
     public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
 
     public Expiry? Expiry
