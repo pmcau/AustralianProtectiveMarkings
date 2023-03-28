@@ -1,47 +1,47 @@
 ﻿[TestFixture]
-public class CountryCodeHelperTests
+public class CountryCodesTests
 {
     [Test]
     public void GetCodeForLetters()
     {
-        var code = CountryCodeHelper.GetCodeForLetters("ABW");
+        var code = CountryCodes.GetCodeForLetters("ABW");
         Assert.AreEqual(CountryCode.Aruba, code);
     }
 
     [Test]
     public void TryGetCodeForLetters()
     {
-        var found = CountryCodeHelper.TryGetCodeForLetters("ABW", out var code);
+        var found = CountryCodes.TryGetCodeForLetters("ABW", out var code);
         Assert.IsTrue(found);
         Assert.AreEqual(CountryCode.Aruba, code);
-        found = CountryCodeHelper.TryGetCodeForLetters("AAA", out code);
+        found = CountryCodes.TryGetCodeForLetters("AAA", out code);
         Assert.IsFalse(found);
         Assert.IsNull(code);
     }
 
     [Test]
     public Task GetCodeForLettersMissing() =>
-        Throws(() => CountryCodeHelper.GetCodeForLetters("AAAA"));
+        Throws(() => CountryCodes.GetCodeForLetters("AAAA"));
 
     [Test]
     public void GetLettersForCode()
     {
-        var letters = CountryCodeHelper.GetLettersForCode(CountryCode.Aruba);
+        var letters = CountryCodes.GetLettersForCode(CountryCode.Aruba);
         Assert.AreEqual("ABW", letters);
     }
 
     [Test]
     public void TryGetLettersForCode()
     {
-        var found = CountryCodeHelper.TryGetLettersForCode(CountryCode.Aruba, out var letters);
+        var found = CountryCodes.TryGetLettersForCode(CountryCode.Aruba, out var letters);
         Assert.IsTrue(found);
         Assert.AreEqual("ABW", letters);
-        found = CountryCodeHelper.TryGetLettersForCode((CountryCode) 999, out letters);
+        found = CountryCodes.TryGetLettersForCode((CountryCode) 999, out letters);
         Assert.IsFalse(found);
         Assert.IsNull(letters);
     }
 
     [Test]
     public Task GetLettersForCodeMissing() =>
-        Throws(() => CountryCodeHelper.GetLettersForCode((CountryCode) 999));
+        Throws(() => CountryCodes.GetLettersForCode((CountryCode) 999));
 }

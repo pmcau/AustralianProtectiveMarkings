@@ -1,8 +1,10 @@
 ﻿{
   SecurityClassification: Secret,
-  InformationManagementMarkers: PersonalPrivacy,
-  Event: null,
-  GenDate: Date_MinValue,
+  InformationManagementMarkers: [
+    LegalPrivilege
+  ],
+  Event: the event,
+  GenDate: DateTimeOffset_1,
   Caveats: {
     Codeword: [
       codeword1
@@ -10,28 +12,16 @@
     ForeignGovernment: [
       usa caveat
     ],
-    SpecialHandling: [
-      {
-        Type: Cabinet,
-        Value: null
-      },
-      {
-        Type: ExclusiveFor,
-        Value: person
-      }
+    CaveatTypes: [
+      Agao,
+      Cabinet
     ],
-    ReleasabilityIndicator: [
-      {
-        Type: Agao,
-        CountryCodes: null
-      },
-      {
-        Type: Rel,
-        CountryCodes: [
-          Afghanistan,
-          Algeria
-        ]
-      }
+    ExclusiveFor: [
+      person
+    ],
+    CountryCodes: [
+      Afghanistan,
+      Algeria
     ]
   }
 }

@@ -3,5 +3,6 @@
 public record struct Caveats(
     IReadOnlyCollection<string> Codeword,
     IReadOnlyCollection<string> ForeignGovernment,
-    IReadOnlyCollection<SpecialHandlingCaveat> SpecialHandling,
-    IReadOnlyCollection<ReleasabilityIndicatorCaveat> ReleasabilityIndicator);
+    IReadOnlyCollection<CaveatType> CaveatTypes,
+    IReadOnlyCollection<string> ExclusiveFor,
+    IReadOnlyCollection<CountryCode> CountryCodes);

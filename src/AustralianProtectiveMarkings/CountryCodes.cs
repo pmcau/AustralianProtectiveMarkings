@@ -1,8 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿namespace AustralianProtectiveMarkings;
 
-namespace AustralianProtectiveMarkings;
-
-public class CountryCodeHelper
+public class CountryCodes
 {
     public static bool TryGetLettersForCode(
         CountryCode code,

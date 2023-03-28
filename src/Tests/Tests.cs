@@ -6,6 +6,9 @@ public class Tests
     {
         var marking = new ProtectiveMarking(SecurityClassification.Secret)
         {
+            Event = "the event",
+            GenDate = new(new(2020,10,1)),
+            InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]
                 {
@@ -15,15 +18,19 @@ public class Tests
                 {
                     "usa caveat"
                 },
-                ReleasabilityIndicator: new[]
+                CaveatTypes: new[]
                 {
-                    ReleasabilityIndicatorCaveat.Agao(),
-                    ReleasabilityIndicatorCaveat.Rel(CountryCode.Afghanistan, CountryCode.Algeria),
+                    CaveatType.Agao,
+                    CaveatType.Cabinet,
                 },
-                SpecialHandling: new[]
+                ExclusiveFor: new[]
                 {
-                    SpecialHandlingCaveat.Cabinet(),
-                    SpecialHandlingCaveat.ExclusiveFor("person"),
+                    "person"
+                },
+                CountryCodes: new[]
+                {
+                    CountryCode.Afghanistan,
+                    CountryCode.Algeria
                 })
         };
         var serialized1 = JsonConvert.SerializeObject(marking);

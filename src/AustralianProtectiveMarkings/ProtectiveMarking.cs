@@ -3,10 +3,7 @@ namespace AustralianProtectiveMarkings;
 
 public record struct ProtectiveMarking(SecurityClassification SecurityClassification)
 {
-    public InformationManagementMarker InformationManagementMarkers { get; init; }
-    /// <summary>
-    /// Permitted characters are limited to those defined for <text> and has maximum length of 128 characters.
-    /// </summary>
+    public IReadOnlyCollection<InformationManagementMarker> InformationManagementMarkers { get; init; }
     public string? Event { get; init; }
     public DateTimeOffset GenDate { get; init; }
     public Caveats? Caveats { get; init; }

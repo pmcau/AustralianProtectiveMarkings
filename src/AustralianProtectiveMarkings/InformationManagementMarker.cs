@@ -7,10 +7,9 @@
 /// 'Rights' property provides an optional set of terms ensuring common understanding, consistency and interoperability
 /// across systems and government entities.
 /// </summary>
-[Flags]
 public enum InformationManagementMarker
 {
-    PersonalPrivacy = 0,
-    LegalPrivilege = 1,
-    LegislativeSecrecy = 2
+    PersonalPrivacy,
+    LegalPrivilege,
+    LegislativeSecrecy
 }
