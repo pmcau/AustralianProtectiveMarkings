@@ -36,7 +36,7 @@ public class RendererTests
             Event = "the event",
             Note = "the notes",
             Origin = "the origin",
-            GenDate = new(new(2020, 10, 1)),
+            Expires = new(new(2020, 10, 1)),
             InformationManagementMarkers = new[] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]

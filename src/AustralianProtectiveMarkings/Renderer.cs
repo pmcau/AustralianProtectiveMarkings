@@ -71,13 +71,13 @@ public static class Renderer
 
     static void RenderExpires(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking is {GenDate: not null, Event: not null})
+        if (marking is {Expires: not null, Event: not null})
         {
-            builder.Append($"EXPIRES={marking.GenDate.Value.ToString("o")} {marking.Event}, ");
+            builder.Append($"EXPIRES={marking.Expires.Value.ToString("o")} {marking.Event}, ");
         }
-        else if (marking.GenDate != null)
+        else if (marking.Expires != null)
         {
-            builder.Append($"EXPIRES={marking.GenDate.Value.ToString("o")}, ");
+            builder.Append($"EXPIRES={marking.Expires.Value.ToString("o")}, ");
         }
         else if (marking.Event != null)
         {
