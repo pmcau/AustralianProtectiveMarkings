@@ -1,7 +1,33 @@
-﻿namespace AustralianProtectiveMarkings;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace AustralianProtectiveMarkings;
 
 public class CountryCodeHelper
 {
+    public static bool TryGetCodeForLetters(
+        string letters,
+        [NotNullWhen(true)]out CountryCodes? codes)
+    {
+        if(lettersToCode.TryGetValue(letters, out var value))
+        {
+            codes = value;
+            return true;
+        }
+
+        codes = null;
+        return false;
+    }
+
+    public static CountryCodes GetCodeForLetters(string letters)
+    {
+        if(TryGetCodeForLetters(letters, out var value))
+        {
+            return value.Value;
+        }
+
+        throw new ArgumentException($"Could not find CountryCode for '{letters}'");
+    }
+
     static Dictionary<string, CountryCodes> lettersToCode = new()
     {
         {

@@ -1,5 +1,3 @@
-using AustralianProtectiveMarkings;
-
 [TestFixture]
 public class Tests
 {
