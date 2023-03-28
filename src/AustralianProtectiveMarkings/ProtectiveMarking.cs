@@ -5,16 +5,8 @@ public record struct ProtectiveMarking
 {
     public required SecurityClassification SecurityClassification { get; init; }
     public Caveats? Caveats { get; init; }
-    public DateTimeOffset? Expires { get; init; }
-    public string? Event { get; init; }
-    public SecurityClassification? DownTo { get; init; }
+    public Expiry? Expiry { get; init; }
     public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
     public string? Note { get; init; }
     public string? Origin { get; init; }
 }
-
-// public record struct Expiry(SecurityClassification DownTo)
-// {
-//     public DateTimeOffset? Expires { get; init; }
-//     public string? Event { get; init; }
-// }

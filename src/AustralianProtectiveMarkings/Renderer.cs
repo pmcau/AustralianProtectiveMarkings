@@ -7,8 +7,7 @@ public static class Renderer
         var builder = new StringBuilder("[");
         RenderClassification(marking, builder);
         RenderCaveats(marking, builder);
-        RenderExpires(marking, builder);
-        RenderDownTo(marking, builder);
+        RenderExpiry(marking, builder);
         RenderInformationManagementMarkers(marking, builder);
         builder.Length -= 2;
         builder.Append(']');
@@ -20,8 +19,7 @@ public static class Renderer
         var builder = new StringBuilder("VER=2018.4, NS=gov.au, ");
         RenderClassification(marking, builder);
         RenderCaveats(marking, builder);
-        RenderExpires(marking, builder);
-        RenderDownTo(marking, builder);
+        RenderExpiry(marking, builder);
         RenderInformationManagementMarkers(marking, builder);
         RenderNote(marking, builder);
         RenderOrigin(marking, builder);
@@ -45,12 +43,29 @@ public static class Renderer
         }
     }
 
-    static void RenderDownTo(ProtectiveMarking marking, StringBuilder builder)
+    static void RenderExpiry(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking.DownTo != null)
+        if (marking.Expiry == null)
         {
-            builder.Append($"DOWNTO={Render(marking.DownTo.Value)}, ");
+            return;
         }
+
+        var expiry = marking.Expiry.Value;
+        if (expiry is {GenDate: null, Event: null})
+        {
+            throw new("Either Expires or Event must exist");
+        }
+
+        if (expiry.GenDate != null)
+        {
+            builder.Append($"EXPIRES={expiry.GenDate.Value.Render()}, ");
+        }
+        else if (expiry.Event != null)
+        {
+            builder.Append($"EXPIRES={expiry.Event}, ");
+        }
+
+        builder.Append($"DOWNTO={Render(expiry.DownTo)}, ");
     }
 
     static void RenderNote(ProtectiveMarking marking, StringBuilder builder)
@@ -66,22 +81,6 @@ public static class Renderer
         if (marking.Origin != null)
         {
             builder.Append($"ORIGIN={marking.Origin}, ");
-        }
-    }
-
-    static void RenderExpires(ProtectiveMarking marking, StringBuilder builder)
-    {
-        if (marking is {Expires: not null, Event: not null})
-        {
-            builder.Append($"EXPIRES={marking.Expires.Value.ToString("o")} {marking.Event}, ");
-        }
-        else if (marking.Expires != null)
-        {
-            builder.Append($"EXPIRES={marking.Expires.Value.ToString("o")}, ");
-        }
-        else if (marking.Event != null)
-        {
-            builder.Append($"EXPIRES={marking.Event}, ");
         }
     }
 

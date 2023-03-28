@@ -19,9 +19,11 @@
       Algeria
     ]
   },
-  Expires: DateTimeOffset_1,
-  Event: the event,
-  DownTo: null,
+  Expiry: {
+    DownTo: Official,
+    GenDate: DateTimeOffset_1,
+    Event: null
+  },
   InformationManagementMarkers: [
     LegalPrivilege
   ],

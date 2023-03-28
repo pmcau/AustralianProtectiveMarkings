@@ -7,8 +7,11 @@ public class Tests
         var marking = new ProtectiveMarking
         {
             SecurityClassification = SecurityClassification.Secret,
-            Event = "the event",
-            Expires = new(new(2020,10,1)),
+            Expiry = new Expiry
+            {
+                DownTo = SecurityClassification.Official,
+                GenDate = new DateTimeOffset(new(2020, 10, 1)),
+            },
             InformationManagementMarkers = new [] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]

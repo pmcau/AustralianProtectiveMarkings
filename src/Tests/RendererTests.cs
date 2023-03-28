@@ -39,11 +39,13 @@ public class RendererTests
         new()
         {
             SecurityClassification = SecurityClassification.Secret,
-            DownTo = SecurityClassification.Official,
-            Event = "the event",
+            Expiry = new Expiry
+            {
+                DownTo = SecurityClassification.Official,
+                GenDate = new DateTimeOffset(new(2020, 10, 1)),
+            },
             Note = "the notes",
             Origin = "the origin",
-            Expires = new DateTimeOffset(new(2020, 10, 1)),
             InformationManagementMarkers = new[] {InformationManagementMarker.LegalPrivilege},
             Caveats = new Caveats(
                 Codeword: new[]
