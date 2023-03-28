@@ -56,13 +56,13 @@ public static class Renderer
             throw new("Either Expires or Event must exist");
         }
 
-        if (expiry.GenDate != null)
-        {
-            builder.Append($"EXPIRES={expiry.GenDate.Value.Render()}, ");
-        }
-        else if (expiry.Event != null)
+        if (expiry.GenDate == null)
         {
             builder.Append($"EXPIRES={expiry.Event}, ");
+        }
+        else
+        {
+            builder.Append($"EXPIRES={expiry.GenDate.Value.Render()}, ");
         }
 
         builder.Append($"DOWNTO={Render(expiry.DownTo)}, ");
