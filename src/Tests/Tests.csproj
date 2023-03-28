@@ -12,4 +12,10 @@
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="RenderTests.Serialization.verified.txt">
+      <ParentFile>Tests</ParentFile>
+      <DependentUpon>RenderTests.cs</DependentUpon>
+    </None>
+  </ItemGroup>
 </Project>
