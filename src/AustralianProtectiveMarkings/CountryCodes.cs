@@ -4,9 +4,9 @@ public static class CountryCodes
 {
     public static bool TryGetLettersForCode(
         CountryCode code,
-        [NotNullWhen(true)]out string? letters)
+        [NotNullWhen(true)] out string? letters)
     {
-        if(codeToLetters.TryGetValue(code, out var value))
+        if (codeToLetters.TryGetValue(code, out var value))
         {
             letters = value;
             return true;
@@ -18,7 +18,7 @@ public static class CountryCodes
 
     public static string GetLettersForCode(this CountryCode code)
     {
-        if(TryGetLettersForCode(code, out var value))
+        if (TryGetLettersForCode(code, out var value))
         {
             return value;
         }
@@ -28,9 +28,9 @@ public static class CountryCodes
 
     public static bool TryGetCodeForLetters(
         string letters,
-        [NotNullWhen(true)]out CountryCode? codes)
+        [NotNullWhen(true)] out CountryCode? codes)
     {
-        if(lettersToCode.TryGetValue(letters, out var value))
+        if (lettersToCode.TryGetValue(letters, out var value))
         {
             codes = value;
             return true;
@@ -42,7 +42,7 @@ public static class CountryCodes
 
     public static CountryCode GetCodeForLetters(string letters)
     {
-        if(TryGetCodeForLetters(letters, out var value))
+        if (TryGetCodeForLetters(letters, out var value))
         {
             return value.Value;
         }
