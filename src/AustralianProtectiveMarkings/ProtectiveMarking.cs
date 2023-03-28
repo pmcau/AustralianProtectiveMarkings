@@ -4,12 +4,9 @@ namespace AustralianProtectiveMarkings;
 
 public readonly record struct ProtectiveMarking
 {
-    readonly Expiry? expiry;
-    readonly IReadOnlyCollection<string>? exclusiveForCaveats;
-    readonly IReadOnlyCollection<string>? foreignGovernmentCaveats;
-    readonly IReadOnlyCollection<string>? codewordCaveats;
     public required SecurityClassification SecurityClassification { get; init; }
 
+    readonly IReadOnlyCollection<string>? codewordCaveats;
     public IReadOnlyCollection<string>? CodewordCaveats
     {
         get => codewordCaveats;
@@ -20,6 +17,7 @@ public readonly record struct ProtectiveMarking
         }
     }
 
+    readonly IReadOnlyCollection<string>? foreignGovernmentCaveats;
     public IReadOnlyCollection<string>? ForeignGovernmentCaveats
     {
         get => foreignGovernmentCaveats;
@@ -32,6 +30,7 @@ public readonly record struct ProtectiveMarking
 
     public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
 
+    readonly IReadOnlyCollection<string>? exclusiveForCaveats;
     public IReadOnlyCollection<string>? ExclusiveForCaveats
     {
         get => exclusiveForCaveats;
@@ -44,6 +43,7 @@ public readonly record struct ProtectiveMarking
 
     public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
 
+    readonly Expiry? expiry;
     public Expiry? Expiry
     {
         readonly get => expiry;
@@ -77,6 +77,37 @@ public readonly record struct ProtectiveMarking
     }
 
     public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
-    public string? Note { get; init; }
-    public string? Origin { get; init; }
+
+    readonly string? note;
+
+    public string? Note
+    {
+        get => note;
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            TextValidator.Validate(value);
+            note = value;
+        }
+    }
+
+    readonly string? origin;
+    public string? Origin
+    {
+        get => origin;
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            TextValidator.Validate(value);
+            origin = value;
+        }
+    }
 }
