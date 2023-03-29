@@ -1,8 +1,4 @@
 ﻿{
   Type: ArgumentException,
-  Message: Could not find CountryCode for 'AAAA',
-  ParamName: null,
-  Data: null,
-  InnerException: null,
-  HelpLink: null
+  Message: Could not find CountryCode for 'AAAA'
 }

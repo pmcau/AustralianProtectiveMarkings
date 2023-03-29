@@ -19,12 +19,9 @@
   ],
   Expiry: {
     DownTo: Official,
-    GenDate: DateTimeOffset_1,
-    Event: null
+    GenDate: DateTimeOffset_1
   },
   InformationManagementMarkers: [
     LegalPrivilege
-  ],
-  Note: null,
-  Origin: null
+  ]
 }
