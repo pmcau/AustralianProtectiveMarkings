@@ -11,9 +11,25 @@ public static class Parser
     }
 
     record Pair(string Key, string Value);
+
+    static List<string> order = new()
+    {
+        "VER",
+        "NS",
+        "SEC",
+        "CAVEAT",
+        "EXPIRES",
+        "DOWNTO",
+        "ACCESS",
+        "NOTE",
+        "ORIGIN"
+    };
+
     public static ProtectiveMarking Parse(string input)
     {
         var pairs = ParseKeyValues(input).ToList();
+        var keys = pairs.Select(_=>_.Key).ToList();
+        ValidateOrder(input, keys);
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
 
@@ -23,6 +39,18 @@ public static class Parser
         {
             SecurityClassification = security
         };
+    }
+
+    static void ValidateOrder(string input, List<string> keys)
+    {
+        var ordered = keys.OrderBy(_ => order.IndexOf(_)).ToList();
+        if (!ordered.SequenceEqual(keys))
+        {
+            throw new($@"Incorrect order.
+Order must be: {string.Join(", ", order)}.
+Order is: {string.Join(", ", keys)}.
+Input: {input}");
+        }
     }
 
     static SecurityClassification ReadSecurity(string input, List<Pair> pairs)
@@ -64,22 +92,15 @@ public static class Parser
             {
                 throw new($"namespace 'NS' must be 'gov.au'. Input: {input}");
             }
-            if (pairs.IndexOf(value) != 1)
-            {
-                throw new($"namespace 'NS' must be second. Input: {input}");
-            }
         }
     }
 
     static void ValidateVersion(string input, List<Pair> pairs)
     {
         var versions = pairs.Where(_ => _.Key == "VER").ToList();
-        switch (versions.Count)
+        if (versions.Count > 1)
         {
-            case > 1:
-                throw new($"Only one version 'VER' allowed. Input: {input}");
-            case 1 when pairs.IndexOf(versions[0]) != 0:
-                throw new($"Version 'VER' must be first. Input: {input}");
+            throw new($"Only one version 'VER' allowed. Input: {input}");
         }
     }
 

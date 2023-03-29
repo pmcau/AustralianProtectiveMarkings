@@ -4,5 +4,16 @@
   },
   SEC=TOP-SECRET: {
     SecurityClassification: TopSecret
+  },
+  VER=2018.4: {
+    Type: Exception,
+    Message: A single security 'SEC' must be defined. Input: VER=2018.4
+  },
+  VER=2018.4, NS=gov.au: {
+    Type: Exception,
+    Message: A single security 'SEC' must be defined. Input: VER=2018.4, NS=gov.au
+  },
+  VER=2018.4, NS=gov.au, SEC=TOP-SECRET: {
+    SecurityClassification: TopSecret
   }
 }
