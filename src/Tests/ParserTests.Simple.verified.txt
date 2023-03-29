@@ -117,6 +117,18 @@
        person2
     ]
   },
+  SEC=TOP-SECRET, NOTE=the comment: {
+    SecurityClassification: TopSecret,
+    Comment: the comment
+  },
+  SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment: {
+    Type: Exception,
+    Message: Only one NOTE is allowed. Input: SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment
+  },
+  SEC=TOP-SECRET, NOTE=the comment, NOTE=the comment: {
+    Type: Exception,
+    Message: Only one NOTE is allowed. Input: SEC=TOP-SECRET, NOTE=the comment, NOTE=the comment
+  },
   SEC=TOP-SECRET, ORIGIN=a@b.com: {
     SecurityClassification: TopSecret,
     AuthorEmail: a@b.com

@@ -36,6 +36,9 @@ public class ParserTests
             "SEC=TOP-SECRET, ORIGIN=a@b.com",
             "SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com",
             "SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=c@b.com",
+            "SEC=TOP-SECRET, NOTE=the comment",
+            "SEC=TOP-SECRET, NOTE=the comment, NOTE=the comment",
+            "SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment",
         };
 
         var dictionary = new Dictionary<string, object>();
