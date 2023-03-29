@@ -1,9 +1,55 @@
 ﻿{
+  SEC= TOP-SECRET: {
+    Type: Exception,
+    Message: Leading whitespace in value ' TOP-SECRET'. Input: SEC= TOP-SECRET
+  },
   SEC=OFFICIAL:Sensitive: {
     SecurityClassification: OfficialSensitive
   },
   SEC=TOP-SECRET: {
     SecurityClassification: TopSecret
+  },
+  SEC=TOP-SECRET, CAVEAT=C:codeword1: {
+    SecurityClassification: TopSecret,
+    CodewordCaveats: [
+      codeword1
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2: {
+    SecurityClassification: TopSecret,
+    CodewordCaveats: [
+      codeword1,
+      codeword2
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
+    SecurityClassification: TopSecret,
+    ForeignGovernmentCaveats: [
+      usa caveat
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
+    SecurityClassification: TopSecret,
+    CaveatTypes: [
+      Agao
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
+    Type: Exception,
+    Message: Only one caveat of type 'RI:AGAO' allowed. Input: SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO
+  },
+  SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
+    SecurityClassification: TopSecret,
+    CaveatTypes: [
+      Agao,
+      Cabinet
+    ]
+  },
+  SEC=TOP-SECRET,CAVEAT=C:codeword1: {
+    SecurityClassification: TopSecret,
+    CodewordCaveats: [
+      codeword1
+    ]
   },
   VER=2018.4: {
     Type: Exception,

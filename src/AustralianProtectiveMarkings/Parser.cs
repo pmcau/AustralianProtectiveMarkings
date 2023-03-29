@@ -33,11 +33,12 @@ public static class Parser
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
 
-        var security = ReadSecurity(input, pairs);
-
         return new()
         {
-            SecurityClassification = security
+            SecurityClassification = ReadSecurity(input, pairs),
+            CodewordCaveats = ReadCodewords(input, pairs),
+            ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
+            CaveatTypes = ReadCaveatTypes(input, pairs)
         };
     }
 
@@ -63,6 +64,72 @@ Input: {input}");
 
         var pair = security[0].Value;
         return ParseClassification(pair);
+    }
+    static IReadOnlyCollection<string>? ReadCodewords(string input, List<Pair> pairs)
+    {
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+
+        var codewordCaveats = caveats.Where(_ => _.Value.StartsWith("C:")).ToList();
+        if (codewordCaveats.Count == 0)
+        {
+            return null;
+        }
+
+        return codewordCaveats.Select(_ => _.Value.Substring(2)).ToList();
+    }
+    static IReadOnlyCollection<CaveatType>? ReadCaveatTypes(string input, List<Pair> pairs)
+    {
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+
+        var caveatTypes = new List<CaveatType>();
+        foreach (CaveatType caveatType in Enum.GetValues(typeof(CaveatType)))
+        {
+            var caveatTpeString = caveatType.Render();
+            var codewordCaveats = caveats.Where(_ => _.Value==caveatTpeString).ToList();
+            if (codewordCaveats.Count == 0)
+            {
+                continue;
+            }
+            if (codewordCaveats.Count > 1)
+            {
+                throw new($"Only one caveat of type '{caveatTpeString}' allowed. Input: {input}");
+            }
+            caveatTypes.Add(caveatType);
+        }
+
+        return caveatTypes;
+    }
+    static IReadOnlyCollection<string>? ReadForeignGovernmentCaveats(string input, List<Pair> pairs)
+    {
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+
+        var codewordCaveats = caveats.Where(_ => _.Value.StartsWith("FG:")).ToList();
+        if (codewordCaveats.Count == 0)
+        {
+            return null;
+        }
+
+        return codewordCaveats.Select(_ => _.Value.Substring(3)).ToList();
+    }
+
+    static bool TryReadCaveats(List<Pair> pairs, out List<Pair> caveats)
+    {
+        caveats = pairs.Where(_ => _.Key == "CAVEAT").ToList();
+        if (caveats.Count == 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     static SecurityClassification ParseClassification(string value) =>
@@ -116,7 +183,7 @@ Input: {input}");
             switch (state)
             {
                 case State.EatWhitespace:
-                    if (ch == ' ')
+                    if (ch is ' ' or '\n' or '\r')
                     {
                         continue;
                     }
