@@ -117,6 +117,18 @@
        person2
     ]
   },
+  SEC=TOP-SECRET, ORIGIN=a@b.com: {
+    SecurityClassification: TopSecret,
+    Origin: a@b.com
+  },
+  SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com: {
+    Type: Exception,
+    Message: Only one ORIGIN is allowed. Input: SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com
+  },
+  SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=c@b.com: {
+    Type: Exception,
+    Message: Only one ORIGIN is allowed. Input: SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=c@b.com
+  },
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
     CodewordCaveats: [

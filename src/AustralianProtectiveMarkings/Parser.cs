@@ -42,6 +42,7 @@ public static class Parser
             ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
             CountryCodeCaveats = ReadCountryCaveats(input, pairs),
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
+            Origin = ReadAuthorEmail(input, pairs)
         };
     }
 
@@ -67,6 +68,22 @@ Input: {input}");
 
         var pair = security[0].Value;
         return ParseClassification(pair);
+    }
+
+    static string? ReadAuthorEmail(string input, List<Pair> pairs)
+    {
+        var origins = pairs.Where(_ => _.Key == "ORIGIN").ToList();
+        if (origins.Count ==  0)
+        {
+            return null;
+        }
+
+        if (origins.Count > 1)
+        {
+            throw new($"Only one ORIGIN is allowed. Input: {input}");
+        }
+        ThrowForDuplicates(input, origins, "ORIGIN");
+        return origins[0].Value;
     }
 
     static List<InformationManagementMarker>? ReadInformationManagementMarkers(string input, List<Pair> pairs)

@@ -33,6 +33,9 @@ public class ParserTests
             "SEC=TOP-SECRET, ACCESS=unknown",
             "SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege",
             "SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legislative-Secrecy",
+            "SEC=TOP-SECRET, ORIGIN=a@b.com",
+            "SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com",
+            "SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=c@b.com",
         };
 
         var dictionary = new Dictionary<string, object>();
