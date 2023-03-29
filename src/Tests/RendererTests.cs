@@ -44,8 +44,8 @@ public class RendererTests
                 DownTo = SecurityClassification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
-            Note = "the notes",
-            Origin = "the origin",
+            Comment = "the comments",
+            AuthorEmail = "a@b.com",
             InformationManagementMarkers = new[]
             {
                 InformationManagementMarker.LegalPrivilege

@@ -22,7 +22,7 @@ public static class Renderer
         RenderExpiry(marking, builder);
         RenderInformationManagementMarkers(marking, builder);
         RenderNote(marking, builder);
-        RenderOrigin(marking, builder);
+        RenderAuthorEmail(marking, builder);
         builder.Length -= 2;
         return builder.ToString();
     }
@@ -70,17 +70,17 @@ public static class Renderer
 
     static void RenderNote(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking.Note != null)
+        if (marking.Comment != null)
         {
-            builder.Append($"NOTE={marking.Note}, ");
+            builder.Append($"NOTE={marking.Comment}, ");
         }
     }
 
-    static void RenderOrigin(ProtectiveMarking marking, StringBuilder builder)
+    static void RenderAuthorEmail(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking.Origin != null)
+        if (marking.AuthorEmail != null)
         {
-            builder.Append($"ORIGIN={marking.Origin}, ");
+            builder.Append($"ORIGIN={marking.AuthorEmail}, ");
         }
     }
 

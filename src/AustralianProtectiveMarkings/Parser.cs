@@ -42,7 +42,7 @@ public static class Parser
             ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
             CountryCodeCaveats = ReadCountryCaveats(input, pairs),
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
-            Origin = ReadAuthorEmail(input, pairs)
+            AuthorEmail = ReadAuthorEmail(input, pairs)
         };
     }
 

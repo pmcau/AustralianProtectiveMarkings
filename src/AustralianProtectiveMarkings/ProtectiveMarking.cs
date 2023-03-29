@@ -77,11 +77,14 @@ public readonly record struct ProtectiveMarking
 
     public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
 
-    readonly string? note;
+    readonly string? comment;
 
-    public string? Note
+    /// <summary>
+    /// Maps to NOTE.
+    /// </summary>
+    public string? Comment
     {
-        get => note;
+        get => comment;
         init
         {
             if (value == null)
@@ -90,14 +93,17 @@ public readonly record struct ProtectiveMarking
             }
 
             TextValidator.Validate(value);
-            note = value;
+            comment = value;
         }
     }
 
-    readonly string? origin;
-    public string? Origin
+    readonly string? authorEmail;
+    /// <summary>
+    /// Maps to ORIGIN.
+    /// </summary>
+    public string? AuthorEmail
     {
-        get => origin;
+        get => authorEmail;
         init
         {
             if (value == null)
@@ -106,7 +112,7 @@ public readonly record struct ProtectiveMarking
             }
 
             TextValidator.Validate(value);
-            origin = value;
+            authorEmail = value;
         }
     }
 }

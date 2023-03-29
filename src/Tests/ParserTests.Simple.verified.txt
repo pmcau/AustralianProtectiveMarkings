@@ -119,7 +119,7 @@
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com: {
     SecurityClassification: TopSecret,
-    Origin: a@b.com
+    AuthorEmail: a@b.com
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com: {
     Type: Exception,
