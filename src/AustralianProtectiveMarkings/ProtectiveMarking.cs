@@ -3,6 +3,11 @@ namespace AustralianProtectiveMarkings;
 
 public readonly record struct ProtectiveMarking
 {
+    /// <summary>
+    /// Corresponds to the PSPF policy: Sensitive and classified information’s classifications.
+    /// https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information
+    /// </summary>
+    /// <remarks>Maps to SEC</remarks>
     public required SecurityClassification SecurityClassification { get; init; }
 
     readonly IReadOnlyCollection<string>? codewordCaveats;
@@ -45,7 +50,7 @@ public readonly record struct ProtectiveMarking
     readonly Expiry? expiry;
     public Expiry? Expiry
     {
-        readonly get => expiry;
+        get => expiry;
         init
         {
             if (value == null)
@@ -75,13 +80,23 @@ public readonly record struct ProtectiveMarking
         }
     }
 
+    /// <summary>
+    /// Is based on the Recordkeeping Metadata Standard's 'Rights' property.
+    /// https://www.naa.gov.au/information-management/standards/australian-government-recordkeeping-metadata-standard
+    /// While categorising information content by non-security sensitives is not mandated as a security requirement, the
+    /// 'Rights' property provides an optional set of terms ensuring common understanding, consistency and interoperability
+    /// across systems and government entities.
+    /// </summary>
+    /// <remarks>Maps to ACCESS</remarks>
     public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
 
     readonly string? comment;
-
     /// <summary>
-    /// Maps to NOTE.
+    /// Is a free-text field where the sender can specify some free-form information to include additional security
+    /// classification information; the permitted characters are limited to those defined for <text> and has maximum
+    /// length of 128 characters.
     /// </summary>
+    /// <remarks>Maps to NOTE</remarks>
     public string? Comment
     {
         get => comment;
@@ -99,8 +114,10 @@ public readonly record struct ProtectiveMarking
 
     readonly string? authorEmail;
     /// <summary>
-    /// Maps to ORIGIN.
+    /// Captures the author’s email address so that the person who originally classified the email message is always
+    /// known. This is not necessarily the same as that in the RFC5322 From field.
     /// </summary>
+    /// <remarks>Maps to ORIGIN</remarks>
     public string? AuthorEmail
     {
         get => authorEmail;
