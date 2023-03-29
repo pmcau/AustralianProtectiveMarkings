@@ -1,0 +1,12 @@
+﻿{
+  SecurityClassification: TopSecret,
+  CodewordCaveats: null,
+  ForeignGovernmentCaveats: null,
+  CaveatTypes: null,
+  ExclusiveForCaveats: null,
+  CountryCodeCaveats: null,
+  Expiry: null,
+  InformationManagementMarkers: null,
+  Note: null,
+  Origin: null
+}
