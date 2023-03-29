@@ -13,12 +13,16 @@ public class ParserTests
             "SEC= TOP-SECRET",
             "SEC=OFFICIAL:Sensitive",
             "SEC=TOP-SECRET, CAVEAT=C:codeword1",
+            "SEC=TOP-SECRET, CAVEAT=C:code word",
             "SEC=TOP-SECRET,CAVEAT=C:codeword1",
             "SEC=TOP-SECRET, CAVEAT=FG:usa caveat",
             "SEC=TOP-SECRET, CAVEAT=RI:AGAO",
             "SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO",
             "SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET",
             "SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2",
+            "SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1",
+            "SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person",
+            "SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2",
         };
 
         var dictionary = new Dictionary<string, object>();

@@ -28,7 +28,7 @@ public static class Parser
     public static ProtectiveMarking Parse(string input)
     {
         var pairs = ParseKeyValues(input).ToList();
-        var keys = pairs.Select(_=>_.Key).ToList();
+        var keys = pairs.Select(_ => _.Key).ToList();
         ValidateOrder(input, keys);
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
@@ -38,7 +38,9 @@ public static class Parser
             SecurityClassification = ReadSecurity(input, pairs),
             CodewordCaveats = ReadCodewords(input, pairs),
             ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
-            CaveatTypes = ReadCaveatTypes(input, pairs)
+            CaveatTypes = ReadCaveatTypes(input, pairs),
+            ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
+            
         };
     }
 
@@ -65,6 +67,7 @@ Input: {input}");
         var pair = security[0].Value;
         return ParseClassification(pair);
     }
+
     static IReadOnlyCollection<string>? ReadCodewords(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
@@ -72,14 +75,16 @@ Input: {input}");
             return null;
         }
 
-        var codewordCaveats = caveats.Where(_ => _.Value.StartsWith("C:")).ToList();
+        var codewordCaveats = caveats.Select(_=>_.Value).Where(_ => _.StartsWith("C:")).ToList();
         if (codewordCaveats.Count == 0)
         {
             return null;
         }
 
-        return codewordCaveats.Select(_ => _.Value.Substring(2)).ToList();
+        ThrowForDuplicates(input, codewordCaveats, "CAVEAT=C");
+        return codewordCaveats.Select(_ => _.Substring(2)).ToList();
     }
+
     static IReadOnlyCollection<CaveatType>? ReadCaveatTypes(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
@@ -91,20 +96,23 @@ Input: {input}");
         foreach (CaveatType caveatType in Enum.GetValues(typeof(CaveatType)))
         {
             var caveatTpeString = caveatType.Render();
-            var codewordCaveats = caveats.Where(_ => _.Value==caveatTpeString).ToList();
+            var codewordCaveats = caveats.Where(_ => _.Value == caveatTpeString).ToList();
             if (codewordCaveats.Count == 0)
             {
                 continue;
             }
+
             if (codewordCaveats.Count > 1)
             {
                 throw new($"Only one caveat of type '{caveatTpeString}' allowed. Input: {input}");
             }
+
             caveatTypes.Add(caveatType);
         }
 
         return caveatTypes;
     }
+
     static IReadOnlyCollection<string>? ReadForeignGovernmentCaveats(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
@@ -112,13 +120,41 @@ Input: {input}");
             return null;
         }
 
-        var codewordCaveats = caveats.Where(_ => _.Value.StartsWith("FG:")).ToList();
-        if (codewordCaveats.Count == 0)
+        var prefix = "FG:";
+        var fgCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        if (fgCaveats.Count == 0)
         {
             return null;
         }
 
-        return codewordCaveats.Select(_ => _.Value.Substring(3)).ToList();
+        ThrowForDuplicates(input, fgCaveats, prefix);
+        return fgCaveats.Select(_ => _.Substring(3)).ToList();
+    }
+
+    static IReadOnlyCollection<string>? ReadExclusiveForCaveats(string input, List<Pair> pairs)
+    {
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+
+        var prefix = "SH:EXCLUSIVE-FOR";
+        var exclusiveForCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        if (exclusiveForCaveats.Count == 0)
+        {
+            return null;
+        }
+
+        ThrowForDuplicates(input, exclusiveForCaveats, prefix);
+        return exclusiveForCaveats.Select(_ => _.Substring(prefix.Length)).ToList();
+    }
+
+    static void ThrowForDuplicates(string input, List<string> items, string name)
+    {
+        if (items.Count != items.Distinct().Count())
+        {
+            throw new($"Duplicates not allowed in '{name}'. Input: {input}");
+        }
     }
 
     static bool TryReadCaveats(List<Pair> pairs, out List<Pair> caveats)
@@ -141,7 +177,7 @@ Input: {input}");
             "UNOFFICIAL" => SecurityClassification.Unofficial,
             "OFFICIAL" => SecurityClassification.Official,
             "OFFICIAL:Sensitive" => SecurityClassification.OfficialSensitive,
-            _ => throw new ($"Unknown classification: {value}")
+            _ => throw new($"Unknown classification: {value}")
         };
 
     static void ValidateNamespace(string input, List<Pair> pairs)
@@ -157,7 +193,7 @@ Input: {input}");
             var value = namespaces[0];
             if (value.Value != "gov.au")
             {
-                throw new($"namespace 'NS' must be 'gov.au'. Input: {input}");
+                throw new($"Namespace 'NS' must be 'gov.au'. Input: {input}");
             }
         }
     }
@@ -203,13 +239,14 @@ Input: {input}");
                     keyBuilder.Append(ch);
                     continue;
                 case State.Value:
-                    var isLast = index == input.Length-1;
+                    var isLast = index == input.Length - 1;
                     if (ch == ',' || isLast)
                     {
                         if (isLast)
                         {
                             valueBuilder.Append(ch);
                         }
+
                         var value = valueBuilder.ToString();
                         var key = keyBuilder.ToString();
                         ValidateValueWhiteSpace(input, value);
@@ -257,6 +294,7 @@ Input: {input}");
         {
             throw new($"Trailing whitespace in value '{value}'. Input: {input}");
         }
+
         if (value.StartsWith(' '))
         {
             throw new($"Leading whitespace in value '{value}'. Input: {input}");

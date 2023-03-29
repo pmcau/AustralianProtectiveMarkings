@@ -9,11 +9,21 @@
   SEC=TOP-SECRET: {
     SecurityClassification: TopSecret
   },
+  SEC=TOP-SECRET, CAVEAT=C:code word: {
+    SecurityClassification: TopSecret,
+    CodewordCaveats: [
+      code word
+    ]
+  },
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
     CodewordCaveats: [
       codeword1
     ]
+  },
+  SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
+    Type: Exception,
+    Message: Duplicates not allowed in 'CAVEAT=C'. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2: {
     SecurityClassification: TopSecret,
@@ -43,6 +53,19 @@
     CaveatTypes: [
       Agao,
       Cabinet
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
+    SecurityClassification: TopSecret,
+    ExclusiveForCaveats: [
+       person
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
+    SecurityClassification: TopSecret,
+    ExclusiveForCaveats: [
+       person1,
+       person2
     ]
   },
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
