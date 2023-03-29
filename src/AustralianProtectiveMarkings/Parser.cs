@@ -40,7 +40,8 @@ public static class Parser
             ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
             CaveatTypes = ReadCaveatTypes(input, pairs),
             ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
-            
+            CountryCodeCaveats = ReadCountryCaveats(input, pairs),
+            InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
         };
     }
 
@@ -68,7 +69,30 @@ Input: {input}");
         return ParseClassification(pair);
     }
 
-    static IReadOnlyCollection<string>? ReadCodewords(string input, List<Pair> pairs)
+    static List<InformationManagementMarker>? ReadInformationManagementMarkers(string input, List<Pair> pairs)
+    {
+        var access = pairs.Where(_ => _.Key == "ACCESS").ToList();
+        if (access.Count ==  0)
+        {
+            return null;
+        }
+
+        var markers = access.Select(_=>ParseInformationManagementMarker(_.Value)).ToList();
+
+        ThrowForDuplicates(input, markers, "ACCESS");
+        return markers;
+    }
+
+    static InformationManagementMarker ParseInformationManagementMarker(string value) =>
+        value switch
+        {
+            "Personal-Privacy" => InformationManagementMarker.PersonalPrivacy,
+            "Legal-Privilege" => InformationManagementMarker.LegalPrivilege,
+            "Legislative-Secrecy" => InformationManagementMarker.LegislativeSecrecy,
+            _ => throw new($"Unknown ACCESS: {value}")
+        };
+
+    static List<string>? ReadCodewords(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -85,7 +109,7 @@ Input: {input}");
         return codewordCaveats.Select(_ => _.Substring(2)).ToList();
     }
 
-    static IReadOnlyCollection<CaveatType>? ReadCaveatTypes(string input, List<Pair> pairs)
+    static List<CaveatType>? ReadCaveatTypes(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -113,7 +137,7 @@ Input: {input}");
         return caveatTypes;
     }
 
-    static IReadOnlyCollection<string>? ReadForeignGovernmentCaveats(string input, List<Pair> pairs)
+    static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -131,7 +155,30 @@ Input: {input}");
         return fgCaveats.Select(_ => _.Substring(3)).ToList();
     }
 
-    static IReadOnlyCollection<string>? ReadExclusiveForCaveats(string input, List<Pair> pairs)
+    static List<CountryCode>? ReadCountryCaveats(string input, List<Pair> pairs)
+    {
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+
+        var prefix = "REL:";
+        var countryCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        if (countryCaveats.Count == 0)
+        {
+            return null;
+        }
+
+        ThrowForDuplicates(input, countryCaveats, prefix);
+        var countryCodes = countryCaveats
+            .SelectMany(_ => _.Substring(4).Split('/'))
+            .Select(CountryCodes.GetCodeForLetters)
+            .ToList();
+        ThrowForDuplicates(input, countryCodes, prefix);
+        return countryCodes;
+    }
+
+    static List<string>? ReadExclusiveForCaveats(string input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -149,7 +196,7 @@ Input: {input}");
         return exclusiveForCaveats.Select(_ => _.Substring(prefix.Length)).ToList();
     }
 
-    static void ThrowForDuplicates(string input, List<string> items, string name)
+    static void ThrowForDuplicates<T>(string input, List<T> items, string name)
     {
         if (items.Count != items.Distinct().Count())
         {
@@ -209,7 +256,7 @@ Input: {input}");
 
     static IEnumerable<Pair> ParseKeyValues(string input)
     {
-        State state = State.Key;
+        var state = State.Key;
 
         var keyBuilder = new StringBuilder();
         var valueBuilder = new StringBuilder();

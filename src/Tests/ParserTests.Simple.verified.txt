@@ -9,6 +9,27 @@
   SEC=TOP-SECRET: {
     SecurityClassification: TopSecret
   },
+  SEC=TOP-SECRET, ACCESS=Legal-Privilege: {
+    SecurityClassification: TopSecret,
+    InformationManagementMarkers: [
+      LegalPrivilege
+    ]
+  },
+  SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege: {
+    Type: Exception,
+    Message: Duplicates not allowed in 'ACCESS'. Input: SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege
+  },
+  SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legislative-Secrecy: {
+    SecurityClassification: TopSecret,
+    InformationManagementMarkers: [
+      LegalPrivilege,
+      LegislativeSecrecy
+    ]
+  },
+  SEC=TOP-SECRET, ACCESS=unknown: {
+    Type: Exception,
+    Message: Unknown ACCESS: unknown
+  },
   SEC=TOP-SECRET, CAVEAT=C:code word: {
     SecurityClassification: TopSecret,
     CodewordCaveats: [
@@ -36,6 +57,34 @@
     SecurityClassification: TopSecret,
     ForeignGovernmentCaveats: [
       usa caveat
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=REL:AGO: {
+    SecurityClassification: TopSecret,
+    CountryCodeCaveats: [
+      Angola
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
+    Type: Exception,
+    Message: Duplicates not allowed in 'REL:'. Input: SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO
+  },
+  SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AIA: {
+    SecurityClassification: TopSecret,
+    CountryCodeCaveats: [
+      Angola,
+      Anguilla
+    ]
+  },
+  SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
+    Type: Exception,
+    Message: Duplicates not allowed in 'REL:'. Input: SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO
+  },
+  SEC=TOP-SECRET, CAVEAT=REL:AGO/AIA: {
+    SecurityClassification: TopSecret,
+    CountryCodeCaveats: [
+      Angola,
+      Anguilla
     ]
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
@@ -73,6 +122,10 @@
     CodewordCaveats: [
       codeword1
     ]
+  },
+  SEC=unknown: {
+    Type: Exception,
+    Message: Unknown classification: unknown
   },
   VER=2018.4: {
     Type: Exception,
