@@ -236,7 +236,7 @@ Results in:
       Agao,
       Cabinet
     ],
-    ExclusiveForCaveats: [
+    ExclusiveFors: [
        person,
        AFG,
        DZA
