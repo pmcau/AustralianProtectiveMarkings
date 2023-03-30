@@ -2,7 +2,8 @@
 
 /// <summary>
 /// Corresponds to the PSPF policy: Sensitive and classified information’s classifications.
-/// https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information
+/// 
+/// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.2
 /// </summary>
 public enum Classification
 {

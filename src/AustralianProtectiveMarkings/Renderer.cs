@@ -153,10 +153,8 @@ public static class Renderer
 
         if (caveats.CountryCodes != null)
         {
-            foreach (var countryCode in caveats.CountryCodes)
-            {
-                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
-            }
+            var joined = string.Join("/", caveats.CountryCodes.Select(_ => _.GetLettersForCode()));
+            builder.Append($"CAVEAT=RI:REL {joined}, ");
         }
     }
 
