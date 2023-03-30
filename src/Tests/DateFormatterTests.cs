@@ -2,6 +2,35 @@
 public class DateFormatterTests
 {
     [Test]
+    public Task Parse()
+    {
+        var list = new List<string>
+        {
+            "2019-07-01",
+            "2019-07-01+10",
+            "2019-07-01+10:08",
+            "2019-07-01Z",
+            "2019-07-01T12:10:01",
+            "2019-07-01T12:10:01+10",
+            "2019-07-01T12:10:01+10:08",
+            "2019-07-01T12:10:01Z",
+            "2019-07-01T12:10:01.123",
+            "2019-07-01T12:10:01.123+10",
+            "2019-07-01T12:10:01.123+10:08",
+            "2019-07-01T12:10:01.123Z",
+        };
+
+        var dictionary = new Dictionary<string, DateTimeOffset?>();
+        foreach (var item in list)
+        {
+            DateFormatter.TryParse(item, out var result);
+            dictionary.Add(item, result);
+        }
+
+        return Verify(dictionary).DontScrubDateTimes();
+    }
+
+    [Test]
     public async Task DateTimeOffsetCombinations()
     {
         var values = new Dictionary<string, string>();

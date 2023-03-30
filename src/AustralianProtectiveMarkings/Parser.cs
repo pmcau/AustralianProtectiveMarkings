@@ -44,6 +44,49 @@ public static class Parser
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
             AuthorEmail = ReadAuthorEmail(input, pairs),
             Comment = ReadComment(input, pairs),
+            Expiry = ReadExpiry(input, pairs)
+        };
+    }
+
+    static Expiry? ReadExpiry(string input, List<Pair> pairs)
+    {
+        var expiresItems = pairs.Where(_ => _.Key == "EXPIRES").ToList();
+        if (expiresItems.Count > 1)
+        {
+            throw new($"Only a single EXPIRES is allowed. Input: {input}");
+        }
+
+        var downToItems = pairs.Where(_ => _.Key == "DOWNTO").ToList();
+        if (downToItems.Count > 1)
+        {
+            throw new($"Only a single DOWNTO is allowed. Input: {input}");
+        }
+
+        if (downToItems.Count == 0 && expiresItems.Count == 0)
+        {
+            return null;
+        }
+
+        if (downToItems.Count == 0 || expiresItems.Count == 0)
+        {
+            throw new($"EXPIRES and DOWNTO cannot be deigned without the other. Input: {input}");
+        }
+
+        var downTo = ParseClassification(downToItems[0].Value);
+        var expires = expiresItems[0].Value;
+        if (DateFormatter.TryParse(expires, out var date))
+        {
+            return new Expiry
+            {
+                DownTo = downTo,
+                GenDate = date
+            };
+        }
+
+        return new Expiry
+        {
+            DownTo = downTo,
+            Event = expires
         };
     }
 
@@ -67,14 +110,14 @@ Input: {input}");
             throw new($"A single security 'SEC' must be defined. Input: {input}");
         }
 
-        var pair = security[0].Value;
-        return ParseClassification(pair);
+        var value = security[0].Value;
+        return ParseClassification(value);
     }
 
     static string? ReadAuthorEmail(string input, List<Pair> pairs)
     {
         var origins = pairs.Where(_ => _.Key == "ORIGIN").ToList();
-        if (origins.Count ==  0)
+        if (origins.Count == 0)
         {
             return null;
         }
@@ -83,6 +126,7 @@ Input: {input}");
         {
             throw new($"Only one ORIGIN is allowed. Input: {input}");
         }
+
         ThrowForDuplicates(input, origins, "ORIGIN");
         return origins[0].Value;
     }
@@ -90,7 +134,7 @@ Input: {input}");
     static string? ReadComment(string input, List<Pair> pairs)
     {
         var notes = pairs.Where(_ => _.Key == "NOTE").ToList();
-        if (notes.Count ==  0)
+        if (notes.Count == 0)
         {
             return null;
         }
@@ -99,6 +143,7 @@ Input: {input}");
         {
             throw new($"Only one NOTE is allowed. Input: {input}");
         }
+
         ThrowForDuplicates(input, notes, "NOTE");
         return notes[0].Value;
     }
@@ -106,12 +151,12 @@ Input: {input}");
     static List<InformationManagementMarker>? ReadInformationManagementMarkers(string input, List<Pair> pairs)
     {
         var access = pairs.Where(_ => _.Key == "ACCESS").ToList();
-        if (access.Count ==  0)
+        if (access.Count == 0)
         {
             return null;
         }
 
-        var markers = access.Select(_=>ParseInformationManagementMarker(_.Value)).ToList();
+        var markers = access.Select(_ => ParseInformationManagementMarker(_.Value)).ToList();
 
         ThrowForDuplicates(input, markers, "ACCESS");
         return markers;
@@ -133,7 +178,7 @@ Input: {input}");
             return null;
         }
 
-        var codewordCaveats = caveats.Select(_=>_.Value).Where(_ => _.StartsWith("C:")).ToList();
+        var codewordCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith("C:")).ToList();
         if (codewordCaveats.Count == 0)
         {
             return null;

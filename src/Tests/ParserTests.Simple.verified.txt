@@ -117,6 +117,48 @@
        person2
     ]
   },
+  SEC=TOP-SECRET, DOWNTO=SECRET: {
+    Type: Exception,
+    Message: EXPIRES and DOWNTO cannot be deigned without the other. Input: SEC=TOP-SECRET, DOWNTO=SECRET
+  },
+  SEC=TOP-SECRET, DOWNTO=SECRET, DOWNTO=SECRET: {
+    Type: Exception,
+    Message: Only a single DOWNTO is allowed. Input: SEC=TOP-SECRET, DOWNTO=SECRET, DOWNTO=SECRET
+  },
+  SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET: {
+    SecurityClassification: TopSecret,
+    Expiry: {
+      DownTo: Secret,
+      GenDate: 2020-10-01 +0
+    }
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry: {
+    Type: Exception,
+    Message: EXPIRES and DOWNTO cannot be deigned without the other. Input: SEC=TOP-SECRET, EXPIRES=expiry
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET: {
+    SecurityClassification: TopSecret,
+    Expiry: {
+      DownTo: Secret,
+      Event: expiry
+    }
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL: {
+    Type: Exception,
+    Message: Only a single DOWNTO is allowed. Input: SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1: {
+    Type: Exception,
+    Message: Only a single EXPIRES is allowed. Input: SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1, DOWNTO=SECRET: {
+    Type: Exception,
+    Message: Only a single EXPIRES is allowed. Input: SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1, DOWNTO=SECRET
+  },
+  SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry2: {
+    Type: Exception,
+    Message: Only a single EXPIRES is allowed. Input: SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry2
+  },
   SEC=TOP-SECRET, NOTE=the comment: {
     SecurityClassification: TopSecret,
     Comment: the comment

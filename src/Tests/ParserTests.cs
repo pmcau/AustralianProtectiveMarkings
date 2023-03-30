@@ -39,6 +39,15 @@ public class ParserTests
             "SEC=TOP-SECRET, NOTE=the comment",
             "SEC=TOP-SECRET, NOTE=the comment, NOTE=the comment",
             "SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment",
+            "SEC=TOP-SECRET, EXPIRES=expiry",
+            "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry2",
+            "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1",
+            "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1, DOWNTO=SECRET",
+            "SEC=TOP-SECRET, DOWNTO=SECRET",
+            "SEC=TOP-SECRET, DOWNTO=SECRET, DOWNTO=SECRET",
+            "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL",
+            "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET",
+            "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET",
         };
 
         var dictionary = new Dictionary<string, object>();
@@ -55,6 +64,6 @@ public class ParserTests
             }
         }
 
-        return Verify(dictionary);
+        return Verify(dictionary).DontScrubDateTimes();
     }
 }
