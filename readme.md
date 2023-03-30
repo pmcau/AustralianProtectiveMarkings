@@ -315,4 +315,4 @@ var protectiveMarking = Parser.Parse("""
 
 ## Icon
 
-Icon designed by [Iconathon](https://thenounproject.com/Iconathon1) from [The Noun Project](https://thenounproject.com).
+Icon [Protect](https://thenounproject.com/icon/protect-1173962/) from [The Noun Project](https://thenounproject.com).
