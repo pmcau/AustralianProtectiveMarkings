@@ -85,6 +85,26 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
         }
     }
 
+    public string ExclusiveForCaveat
+    {
+        init
+        {
+            GuardDuplicateExclusiveForCaveats();
+            ExclusiveForCaveats = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateExclusiveForCaveats()
+    {
+        if (ExclusiveForCaveats != null)
+        {
+            throw new($"Use only {nameof(ExclusiveForCaveat)} or {nameof(ExclusiveForCaveats)}. Not both.");
+        }
+    }
+
     public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
 
     readonly Expiry? expiry;

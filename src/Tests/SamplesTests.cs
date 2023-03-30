@@ -43,10 +43,7 @@ public class Samples
                 CaveatType.Agao,
                 CaveatType.Cabinet,
             },
-            ExclusiveForCaveats = new[]
-            {
-                "person"
-            },
+            ExclusiveForCaveat = "person",
             CountryCodeCaveats = new[]
             {
                 CountryCode.Afghanistan,
@@ -101,10 +98,7 @@ public class Samples
                 CaveatType.Agao,
                 CaveatType.Cabinet,
             },
-            ExclusiveForCaveats = new[]
-            {
-                "person"
-            },
+            ExclusiveForCaveat = "person",
             CountryCodeCaveats = new[]
             {
                 CountryCode.Afghanistan,
