@@ -347,6 +347,7 @@ Input: {input}");
 
     internal static IEnumerable<Pair> ParseKeyValues(string input)
     {
+        input = input.Trim();
         var state = State.Key;
 
         var keyBuilder = new StringBuilder();

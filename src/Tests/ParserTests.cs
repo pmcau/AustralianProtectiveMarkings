@@ -76,6 +76,7 @@ public class ParserTests
         var list = new List<string>
         {
             "Key=Value",
+            " Key=Value ",
             @"Key=The\=Value",
             @"Key=The\:Value",
             @"Key=The\,Value",

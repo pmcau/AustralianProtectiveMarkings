@@ -130,11 +130,23 @@ public class Samples
         return Verify(result);
     }
     [Test]
+    public Task ParseMinimumOmit()
+    {
+        #region ParseMinimumOmit
+
+        var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+
+        #endregion
+
+        return Verify(protectiveMarking);
+    }
+
+    [Test]
     public Task ParseMinimum()
     {
         #region ParseMinimum
 
-        var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -147,6 +159,33 @@ public class Samples
         #region ParseFull
 
         var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+
+        #endregion
+
+        return Verify(protectiveMarking);
+    }
+    [Test]
+    public Task ParseFullNewlines()
+    {
+        #region ParseFullNewlines
+
+        var protectiveMarking = Parser.Parse("""
+            VER=2018.4,
+            NS=gov.au,
+            SEC=TOP-SECRET,
+            CAVEAT=C:CodeWord,
+            CAVEAT=FG:USA caveat,
+            CAVEAT=RI:AGAO,
+            CAVEAT=SH:CABINET,
+            CAVEAT=SH:EXCLUSIVE-FOR person,
+            CAVEAT=SH:EXCLUSIVE-FOR AFG,
+            CAVEAT=SH:EXCLUSIVE-FOR DZA,
+            EXPIRES=2020-10-01,
+            DOWNTO=OFFICIAL,
+            ACCESS=Legal-Privilege,
+            NOTE=the comments,
+            ORIGIN=a@b.com
+            """);
 
         #endregion
 

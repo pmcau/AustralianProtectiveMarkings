@@ -207,9 +207,9 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 <!-- snippet: ParseMinimum -->
 <a id='snippet-parseminimum'></a>
 ```cs
-var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L135-L139' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L147-L151' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -225,6 +225,19 @@ Results in:
 <!-- endSnippet -->
 
 
+### Omit Version and Namespace
+
+The version and namespace is hard coded in the spec. Both can be omitted when parsing.
+
+<!-- snippet: ParseMinimumOmit -->
+<a id='snippet-parseminimumomit'></a>
+```cs
+var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+```
+<sup><a href='/src/Tests/SamplesTests.cs#L135-L139' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
 ### Full content
 
 <!-- snippet: ParseFull -->
@@ -232,7 +245,7 @@ Results in:
 ```cs
 var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L147-L151' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L159-L163' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -270,6 +283,36 @@ Results in:
 ```
 <sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+
+#### Newlines
+
+For readability, newlines are allowed to delineate key value pairs:
+
+<!-- snippet: ParseFullNewlines -->
+<a id='snippet-parsefullnewlines'></a>
+```cs
+var protectiveMarking = Parser.Parse("""
+    VER=2018.4,
+    NS=gov.au,
+    SEC=TOP-SECRET,
+    CAVEAT=C:CodeWord,
+    CAVEAT=FG:USA caveat,
+    CAVEAT=RI:AGAO,
+    CAVEAT=SH:CABINET,
+    CAVEAT=SH:EXCLUSIVE-FOR person,
+    CAVEAT=SH:EXCLUSIVE-FOR AFG,
+    CAVEAT=SH:EXCLUSIVE-FOR DZA,
+    EXPIRES=2020-10-01,
+    DOWNTO=OFFICIAL,
+    ACCESS=Legal-Privilege,
+    NOTE=the comments,
+    ORIGIN=a@b.com
+    """);
+```
+<sup><a href='/src/Tests/SamplesTests.cs#L170-L190' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
 
 ## Icon
 
