@@ -103,10 +103,12 @@ public static partial class Parser
         var ordered = keys.OrderBy(_ => order.IndexOf(_)).ToList();
         if (!ordered.SequenceEqual(keys))
         {
-            throw new($@"Incorrect order.
-Order must be: {string.Join(", ", order)}.
-Order is: {string.Join(", ", keys)}.
-Input: {input}");
+            throw new($"""
+                Incorrect order.
+                Order must be: {string.Join(", ", order)}.
+                Order is: {string.Join(", ", keys)}.
+                Input: {input}
+                """);
         }
     }
 
