@@ -72,27 +72,16 @@ var marking = new ProtectiveMarking
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
-    InformationManagementMarkers = new[]
-    {
-        InformationManagementMarker.LegalPrivilege
-    },
+    InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
     CodewordCaveat = "CodeWord",
     ForeignGovernmentCaveat = "USA caveat",
-    CaveatTypes = new[]
-    {
-        CaveatType.Agao,
-        CaveatType.Cabinet,
-    },
+    CaveatType = CaveatType.Cabinet,
     ExclusiveForCaveat = "person",
-    CountryCodeCaveats = new[]
-    {
-        CountryCode.Afghanistan,
-        CountryCode.Algeria
-    }
+    CountryCodeCaveat = CountryCode.Afghanistan
 };
 var result = marking.RenderSubject();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L23-L55' title='Snippet source file'>snippet source</a> | <a href='#snippet-rendersubjectfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L23-L44' title='Snippet source file'>snippet source</a> | <a href='#snippet-rendersubjectfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -100,7 +89,7 @@ Results in:
 <!-- snippet: Samples.RenderSubjectFull.verified.txt -->
 <a id='snippet-Samples.RenderSubjectFull.verified.txt'></a>
 ```txt
-[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
+[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
 ```
 <sup><a href='/src/Tests/Samples.RenderSubjectFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderSubjectFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -120,7 +109,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderHeader();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L62-L70' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L51-L59' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -149,27 +138,16 @@ var marking = new ProtectiveMarking
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
-    InformationManagementMarkers = new[]
-    {
-        InformationManagementMarker.LegalPrivilege
-    },
+    InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
     CodewordCaveat = "CodeWord",
     ForeignGovernmentCaveat = "USA caveat",
-    CaveatTypes = new[]
-    {
-        CaveatType.Agao,
-        CaveatType.Cabinet,
-    },
+    CaveatType = CaveatType.Agao,
     ExclusiveForCaveat = "person",
-    CountryCodeCaveats = new[]
-    {
-        CountryCode.Afghanistan,
-        CountryCode.Algeria
-    }
+    CountryCodeCaveat = CountryCode.Afghanistan
 };
 var result = marking.RenderHeader();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L78-L110' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L67-L88' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -177,7 +155,7 @@ Results in:
 <!-- snippet: Samples.RenderHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderHeaderFull.verified.txt'></a>
 ```txt
-VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
+VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -193,7 +171,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 ```cs
 var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L129-L133' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L108-L112' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -218,7 +196,7 @@ The version and namespace is hard coded in the spec. Both can be omitted when pa
 ```cs
 var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L117-L121' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L96-L100' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -229,7 +207,7 @@ var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
 ```cs
 var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L141-L145' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L120-L124' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -294,7 +272,7 @@ var protectiveMarking = Parser.Parse("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L152-L172' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L131-L151' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

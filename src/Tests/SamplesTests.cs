@@ -32,23 +32,12 @@ public class Samples
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarkers = new[]
-            {
-                InformationManagementMarker.LegalPrivilege
-            },
+            InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
             CodewordCaveat = "CodeWord",
             ForeignGovernmentCaveat = "USA caveat",
-            CaveatTypes = new[]
-            {
-                CaveatType.Agao,
-                CaveatType.Cabinet,
-            },
+            CaveatType = CaveatType.Cabinet,
             ExclusiveForCaveat = "person",
-            CountryCodeCaveats = new[]
-            {
-                CountryCode.Afghanistan,
-                CountryCode.Algeria
-            }
+            CountryCodeCaveat = CountryCode.Afghanistan
         };
         var result = marking.RenderSubject();
 
@@ -87,23 +76,12 @@ public class Samples
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarkers = new[]
-            {
-                InformationManagementMarker.LegalPrivilege
-            },
+            InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
             CodewordCaveat = "CodeWord",
             ForeignGovernmentCaveat = "USA caveat",
-            CaveatTypes = new[]
-            {
-                CaveatType.Agao,
-                CaveatType.Cabinet,
-            },
+            CaveatType = CaveatType.Agao,
             ExclusiveForCaveat = "person",
-            CountryCodeCaveats = new[]
-            {
-                CountryCode.Afghanistan,
-                CountryCode.Algeria
-            }
+            CountryCodeCaveat = CountryCode.Afghanistan
         };
         var result = marking.RenderHeader();
 
@@ -111,6 +89,7 @@ public class Samples
 
         return Verify(result);
     }
+
     [Test]
     public Task ParseMinimumOmit()
     {
@@ -173,10 +152,9 @@ public class Samples
 
         return Verify(protectiveMarking);
     }
-    
-    
+
     [Test]
-    public void DefineMultiple()
+    public Task DefineMultiple()
     {
         #region DefineMultiple
 
@@ -218,5 +196,6 @@ public class Samples
             }
         };
         #endregion
+        return Verify(marking);
     }
 }

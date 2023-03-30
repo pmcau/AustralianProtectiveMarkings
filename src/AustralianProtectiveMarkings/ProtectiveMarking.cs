@@ -74,6 +74,29 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
 
     public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
 
+
+    public CaveatType CaveatType
+    {
+        init
+        {
+            GuardDuplicateCaveatTypes();
+            CaveatTypes = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateCaveatTypes()
+    {
+        if (CaveatTypes != null)
+        {
+            throw new($"Use only {nameof(CaveatType)} or {nameof(CaveatTypes)}. Not both.");
+        }
+    }
+
+
+
     readonly IReadOnlyCollection<string>? exclusiveForCaveats;
     public IReadOnlyCollection<string>? ExclusiveForCaveats
     {
@@ -106,6 +129,26 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
     }
 
     public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
+
+    public CountryCode CountryCodeCaveat
+    {
+        init
+        {
+            GuardDuplicateCountryCodeCaveats();
+            CountryCodeCaveats = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateCountryCodeCaveats()
+    {
+        if (CountryCodeCaveats != null)
+        {
+            throw new($"Use only {nameof(CountryCodeCaveat)} or {nameof(CountryCodeCaveats)}. Not both.");
+        }
+    }
 
     readonly Expiry? expiry;
     public Expiry? Expiry
@@ -149,6 +192,26 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
     /// </summary>
     /// <remarks>Maps to ACCESS</remarks>
     public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
+
+    public InformationManagementMarker InformationManagementMarker
+    {
+        init
+        {
+            GuardDuplicateInformationManagementMarkers();
+            InformationManagementMarkers = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateInformationManagementMarkers()
+    {
+        if (InformationManagementMarkers != null)
+        {
+            throw new($"Use only {nameof(InformationManagementMarker)} or {nameof(InformationManagementMarkers)}. Not both.");
+        }
+    }
 
     readonly string? comment;
     /// <summary>
