@@ -64,8 +64,8 @@ public class RendererTests
             },
             CountryCodes = new[]
             {
-                CountryCode.Afghanistan,
-                CountryCode.Algeria
+                Country.Afghanistan,
+                Country.Algeria
             }}
         };
 }

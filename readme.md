@@ -79,7 +79,7 @@ var marking = new ProtectiveMarking
         ForeignGovernment = "USA caveat",
         Cabinet = true,
         ExclusiveFor = "person",
-        CountryCode = CountryCode.Afghanistan
+        Country = Country.Afghanistan
     }
 };
 var result = marking.RenderSubject();
@@ -148,7 +148,7 @@ var marking = new ProtectiveMarking
         ForeignGovernment = "USA caveat",
         Agao = true,
         ExclusiveFor = "person",
-        CountryCode = CountryCode.Afghanistan
+        Country = Country.Afghanistan
     }
 };
 var result = marking.RenderHeader();
@@ -238,12 +238,12 @@ Results in:
        AFG,
        DZA
     ],
-    IsAgao: true,
-    IsAusteo: false,
-    IsDelicateSource: false,
-    IsOrcon: false,
-    IsCabinet: true,
-    IsNationalCabinet: false
+    Agao: true,
+    Austeo: false,
+    DelicateSource: false,
+    Orcon: false,
+    Cabinet: true,
+    NationalCabinet: false
   },
   Expiry: {
     DownTo: Official,

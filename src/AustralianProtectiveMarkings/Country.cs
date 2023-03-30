@@ -1,6 +1,6 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-public enum CountryCode
+public enum Country
 {
     /// <summary>
     /// Aruba - ABW

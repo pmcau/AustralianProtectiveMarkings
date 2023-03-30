@@ -3,7 +3,7 @@
 public static class CountryCodes
 {
     public static bool TryGetLettersForCode(
-        CountryCode code,
+        Country code,
         [NotNullWhen(true)] out string? letters)
     {
         if (codeToLetters.TryGetValue(code, out var value))
@@ -16,7 +16,7 @@ public static class CountryCodes
         return false;
     }
 
-    public static string GetLettersForCode(this CountryCode code)
+    public static string GetLettersForCode(this Country code)
     {
         if (TryGetLettersForCode(code, out var value))
         {
@@ -28,7 +28,7 @@ public static class CountryCodes
 
     public static bool TryGetCodeForLetters(
         string letters,
-        [NotNullWhen(true)] out CountryCode? codes)
+        [NotNullWhen(true)] out Country? codes)
     {
         if (lettersToCode.TryGetValue(letters, out var value))
         {
@@ -40,7 +40,7 @@ public static class CountryCodes
         return false;
     }
 
-    public static CountryCode GetCodeForLetters(string letters)
+    public static Country GetCodeForLetters(string letters)
     {
         if (TryGetCodeForLetters(letters, out var value))
         {
@@ -50,1506 +50,1506 @@ public static class CountryCodes
         throw new ArgumentException($"Could not find CountryCode for '{letters}'");
     }
 
-    static Dictionary<string, CountryCode> lettersToCode = new()
+    static Dictionary<string, Country> lettersToCode = new()
     {
         {
-            "ABW", CountryCode.Aruba
+            "ABW", Country.Aruba
         },
         {
-            "AFG", CountryCode.Afghanistan
+            "AFG", Country.Afghanistan
         },
         {
-            "AGO", CountryCode.Angola
+            "AGO", Country.Angola
         },
         {
-            "AIA", CountryCode.Anguilla
+            "AIA", Country.Anguilla
         },
         {
-            "ALA", CountryCode.ÅlandIslands
+            "ALA", Country.ÅlandIslands
         },
         {
-            "ALB", CountryCode.Albania
+            "ALB", Country.Albania
         },
         {
-            "AND", CountryCode.Andorra
+            "AND", Country.Andorra
         },
         {
-            "ARE", CountryCode.UnitedArabEmirates
+            "ARE", Country.UnitedArabEmirates
         },
         {
-            "ARG", CountryCode.Argentina
+            "ARG", Country.Argentina
         },
         {
-            "ARM", CountryCode.Armenia
+            "ARM", Country.Armenia
         },
         {
-            "ASM", CountryCode.AmericanSamoa
+            "ASM", Country.AmericanSamoa
         },
         {
-            "ATA", CountryCode.Antarctica
+            "ATA", Country.Antarctica
         },
         {
-            "ATF", CountryCode.FrenchSouthernTerritories
+            "ATF", Country.FrenchSouthernTerritories
         },
         {
-            "ATG", CountryCode.AntiguaAndBarbuda
+            "ATG", Country.AntiguaAndBarbuda
         },
         {
-            "AUS", CountryCode.Australia
+            "AUS", Country.Australia
         },
         {
-            "AUT", CountryCode.Austria
+            "AUT", Country.Austria
         },
         {
-            "AZE", CountryCode.Azerbaijan
+            "AZE", Country.Azerbaijan
         },
         {
-            "BDI", CountryCode.Burundi
+            "BDI", Country.Burundi
         },
         {
-            "BEL", CountryCode.Belgium
+            "BEL", Country.Belgium
         },
         {
-            "BEN", CountryCode.Benin
+            "BEN", Country.Benin
         },
         {
-            "BES", CountryCode.CaribbeanNetherlands
+            "BES", Country.CaribbeanNetherlands
         },
         {
-            "BFA", CountryCode.BurkinaFaso
+            "BFA", Country.BurkinaFaso
         },
         {
-            "BGD", CountryCode.Bangladesh
+            "BGD", Country.Bangladesh
         },
         {
-            "BGR", CountryCode.Bulgaria
+            "BGR", Country.Bulgaria
         },
         {
-            "BHR", CountryCode.Bahrain
+            "BHR", Country.Bahrain
         },
         {
-            "BHS", CountryCode.Bahamas
+            "BHS", Country.Bahamas
         },
         {
-            "BIH", CountryCode.BosniaAndHerzegovina
+            "BIH", Country.BosniaAndHerzegovina
         },
         {
-            "BLM", CountryCode.SaintBarthélemy
+            "BLM", Country.SaintBarthélemy
         },
         {
-            "BLR", CountryCode.Belarus
+            "BLR", Country.Belarus
         },
         {
-            "BLZ", CountryCode.Belize
+            "BLZ", Country.Belize
         },
         {
-            "BMU", CountryCode.Bermuda
+            "BMU", Country.Bermuda
         },
         {
-            "BOL", CountryCode.Bolivia
+            "BOL", Country.Bolivia
         },
         {
-            "BRA", CountryCode.Brazil
+            "BRA", Country.Brazil
         },
         {
-            "BRB", CountryCode.Barbados
+            "BRB", Country.Barbados
         },
         {
-            "BRN", CountryCode.Brunei
+            "BRN", Country.Brunei
         },
         {
-            "BTN", CountryCode.Bhutan
+            "BTN", Country.Bhutan
         },
         {
-            "BVT", CountryCode.BouvetIsland
+            "BVT", Country.BouvetIsland
         },
         {
-            "BWA", CountryCode.Botswana
+            "BWA", Country.Botswana
         },
         {
-            "CAF", CountryCode.CentralAfricanRepublic
+            "CAF", Country.CentralAfricanRepublic
         },
         {
-            "CAN", CountryCode.Canada
+            "CAN", Country.Canada
         },
         {
-            "CCK", CountryCode.CocosKeelingIslands
+            "CCK", Country.CocosKeelingIslands
         },
         {
-            "CHE", CountryCode.Switzerland
+            "CHE", Country.Switzerland
         },
         {
-            "CHL", CountryCode.Chile
+            "CHL", Country.Chile
         },
         {
-            "CHN", CountryCode.China
+            "CHN", Country.China
         },
         {
-            "CIV", CountryCode.IvoryCoast
+            "CIV", Country.IvoryCoast
         },
         {
-            "CMR", CountryCode.Cameroon
+            "CMR", Country.Cameroon
         },
         {
-            "COD", CountryCode.DemocraticRepublicOfTheCongo
+            "COD", Country.DemocraticRepublicOfTheCongo
         },
         {
-            "COG", CountryCode.RepublicOfTheCongo
+            "COG", Country.RepublicOfTheCongo
         },
         {
-            "COK", CountryCode.CookIslands
+            "COK", Country.CookIslands
         },
         {
-            "COL", CountryCode.Colombia
+            "COL", Country.Colombia
         },
         {
-            "COM", CountryCode.Comoros
+            "COM", Country.Comoros
         },
         {
-            "CPV", CountryCode.CaboVerde
+            "CPV", Country.CaboVerde
         },
         {
-            "CRI", CountryCode.CostaRica
+            "CRI", Country.CostaRica
         },
         {
-            "CUB", CountryCode.Cuba
+            "CUB", Country.Cuba
         },
         {
-            "CUW", CountryCode.Curaçao
+            "CUW", Country.Curaçao
         },
         {
-            "CXR", CountryCode.ChristmasIsland
+            "CXR", Country.ChristmasIsland
         },
         {
-            "CYM", CountryCode.CaymanIslands
+            "CYM", Country.CaymanIslands
         },
         {
-            "CYP", CountryCode.Cyprus
+            "CYP", Country.Cyprus
         },
         {
-            "CZE", CountryCode.Czechia
+            "CZE", Country.Czechia
         },
         {
-            "DEU", CountryCode.Germany
+            "DEU", Country.Germany
         },
         {
-            "DJI", CountryCode.Djibouti
+            "DJI", Country.Djibouti
         },
         {
-            "DMA", CountryCode.Dominica
+            "DMA", Country.Dominica
         },
         {
-            "DNK", CountryCode.Denmark
+            "DNK", Country.Denmark
         },
         {
-            "DOM", CountryCode.DominicanRepublic
+            "DOM", Country.DominicanRepublic
         },
         {
-            "DZA", CountryCode.Algeria
+            "DZA", Country.Algeria
         },
         {
-            "ECU", CountryCode.Ecuador
+            "ECU", Country.Ecuador
         },
         {
-            "EGY", CountryCode.Egypt
+            "EGY", Country.Egypt
         },
         {
-            "ERI", CountryCode.Eritrea
+            "ERI", Country.Eritrea
         },
         {
-            "ESH", CountryCode.WesternSahara
+            "ESH", Country.WesternSahara
         },
         {
-            "ESP", CountryCode.Spain
+            "ESP", Country.Spain
         },
         {
-            "EST", CountryCode.Estonia
+            "EST", Country.Estonia
         },
         {
-            "ETH", CountryCode.Ethiopia
+            "ETH", Country.Ethiopia
         },
         {
-            "FIN", CountryCode.Finland
+            "FIN", Country.Finland
         },
         {
-            "FJI", CountryCode.Fiji
+            "FJI", Country.Fiji
         },
         {
-            "FLK", CountryCode.FalklandIslands
+            "FLK", Country.FalklandIslands
         },
         {
-            "FRA", CountryCode.France
+            "FRA", Country.France
         },
         {
-            "FRO", CountryCode.FaroeIslands
+            "FRO", Country.FaroeIslands
         },
         {
-            "FSM", CountryCode.Micronesia
+            "FSM", Country.Micronesia
         },
         {
-            "GAB", CountryCode.Gabon
+            "GAB", Country.Gabon
         },
         {
-            "GBR", CountryCode.UnitedKingdom
+            "GBR", Country.UnitedKingdom
         },
         {
-            "GEO", CountryCode.Georgia
+            "GEO", Country.Georgia
         },
         {
-            "GGY", CountryCode.Guernsey
+            "GGY", Country.Guernsey
         },
         {
-            "GHA", CountryCode.Ghana
+            "GHA", Country.Ghana
         },
         {
-            "GIB", CountryCode.Gibraltar
+            "GIB", Country.Gibraltar
         },
         {
-            "GIN", CountryCode.Guinea
+            "GIN", Country.Guinea
         },
         {
-            "GLP", CountryCode.Guadeloupe
+            "GLP", Country.Guadeloupe
         },
         {
-            "GMB", CountryCode.Gambia
+            "GMB", Country.Gambia
         },
         {
-            "GNB", CountryCode.GuineaBissau
+            "GNB", Country.GuineaBissau
         },
         {
-            "GNQ", CountryCode.EquatorialGuinea
+            "GNQ", Country.EquatorialGuinea
         },
         {
-            "GRC", CountryCode.Greece
+            "GRC", Country.Greece
         },
         {
-            "GRD", CountryCode.Grenada
+            "GRD", Country.Grenada
         },
         {
-            "GRL", CountryCode.Greenland
+            "GRL", Country.Greenland
         },
         {
-            "GTM", CountryCode.Guatemala
+            "GTM", Country.Guatemala
         },
         {
-            "GUF", CountryCode.FrenchGuiana
+            "GUF", Country.FrenchGuiana
         },
         {
-            "GUM", CountryCode.Guam
+            "GUM", Country.Guam
         },
         {
-            "GUY", CountryCode.Guyana
+            "GUY", Country.Guyana
         },
         {
-            "HKG", CountryCode.HongKong
+            "HKG", Country.HongKong
         },
         {
-            "HMD", CountryCode.HeardIslandAndMcDonaldIslands
+            "HMD", Country.HeardIslandAndMcDonaldIslands
         },
         {
-            "HND", CountryCode.Honduras
+            "HND", Country.Honduras
         },
         {
-            "HRV", CountryCode.Croatia
+            "HRV", Country.Croatia
         },
         {
-            "HTI", CountryCode.Haiti
+            "HTI", Country.Haiti
         },
         {
-            "HUN", CountryCode.Hungary
+            "HUN", Country.Hungary
         },
         {
-            "IDN", CountryCode.Indonesia
+            "IDN", Country.Indonesia
         },
         {
-            "IMN", CountryCode.IsleOfMan
+            "IMN", Country.IsleOfMan
         },
         {
-            "IND", CountryCode.India
+            "IND", Country.India
         },
         {
-            "IOT", CountryCode.BritishIndianOceanTerritory
+            "IOT", Country.BritishIndianOceanTerritory
         },
         {
-            "IRL", CountryCode.Ireland
+            "IRL", Country.Ireland
         },
         {
-            "IRN", CountryCode.Iran
+            "IRN", Country.Iran
         },
         {
-            "IRQ", CountryCode.Iraq
+            "IRQ", Country.Iraq
         },
         {
-            "ISL", CountryCode.Iceland
+            "ISL", Country.Iceland
         },
         {
-            "ISR", CountryCode.Israel
+            "ISR", Country.Israel
         },
         {
-            "ITA", CountryCode.Italy
+            "ITA", Country.Italy
         },
         {
-            "JAM", CountryCode.Jamaica
+            "JAM", Country.Jamaica
         },
         {
-            "JEY", CountryCode.Jersey
+            "JEY", Country.Jersey
         },
         {
-            "JOR", CountryCode.Jordan
+            "JOR", Country.Jordan
         },
         {
-            "JPN", CountryCode.Japan
+            "JPN", Country.Japan
         },
         {
-            "KAZ", CountryCode.Kazakhstan
+            "KAZ", Country.Kazakhstan
         },
         {
-            "KEN", CountryCode.Kenya
+            "KEN", Country.Kenya
         },
         {
-            "KGZ", CountryCode.Kyrgyzstan
+            "KGZ", Country.Kyrgyzstan
         },
         {
-            "KHM", CountryCode.Cambodia
+            "KHM", Country.Cambodia
         },
         {
-            "KIR", CountryCode.Kiribati
+            "KIR", Country.Kiribati
         },
         {
-            "KNA", CountryCode.SaintKittsAndNevis
+            "KNA", Country.SaintKittsAndNevis
         },
         {
-            "KOR", CountryCode.SouthKorea
+            "KOR", Country.SouthKorea
         },
         {
-            "KWT", CountryCode.Kuwait
+            "KWT", Country.Kuwait
         },
         {
-            "LAO", CountryCode.Laos
+            "LAO", Country.Laos
         },
         {
-            "LBN", CountryCode.Lebanon
+            "LBN", Country.Lebanon
         },
         {
-            "LBR", CountryCode.Liberia
+            "LBR", Country.Liberia
         },
         {
-            "LBY", CountryCode.Libya
+            "LBY", Country.Libya
         },
         {
-            "LCA", CountryCode.SaintLucia
+            "LCA", Country.SaintLucia
         },
         {
-            "LIE", CountryCode.Liechtenstein
+            "LIE", Country.Liechtenstein
         },
         {
-            "LKA", CountryCode.SriLanka
+            "LKA", Country.SriLanka
         },
         {
-            "LSO", CountryCode.Lesotho
+            "LSO", Country.Lesotho
         },
         {
-            "LTU", CountryCode.Lithuania
+            "LTU", Country.Lithuania
         },
         {
-            "LUX", CountryCode.Luxembourg
+            "LUX", Country.Luxembourg
         },
         {
-            "LVA", CountryCode.Latvia
+            "LVA", Country.Latvia
         },
         {
-            "MAC", CountryCode.Macao
+            "MAC", Country.Macao
         },
         {
-            "MAF", CountryCode.CollectivityOfSaintMartin
+            "MAF", Country.CollectivityOfSaintMartin
         },
         {
-            "MAR", CountryCode.Morocco
+            "MAR", Country.Morocco
         },
         {
-            "MCO", CountryCode.Monaco
+            "MCO", Country.Monaco
         },
         {
-            "MDA", CountryCode.Moldova
+            "MDA", Country.Moldova
         },
         {
-            "MDG", CountryCode.Madagascar
+            "MDG", Country.Madagascar
         },
         {
-            "MDV", CountryCode.Maldives
+            "MDV", Country.Maldives
         },
         {
-            "MEX", CountryCode.Mexico
+            "MEX", Country.Mexico
         },
         {
-            "MHL", CountryCode.MarshallIslands
+            "MHL", Country.MarshallIslands
         },
         {
-            "MKD", CountryCode.NorthMacedonia
+            "MKD", Country.NorthMacedonia
         },
         {
-            "MLI", CountryCode.Mali
+            "MLI", Country.Mali
         },
         {
-            "MLT", CountryCode.Malta
+            "MLT", Country.Malta
         },
         {
-            "MMR", CountryCode.Myanmar
+            "MMR", Country.Myanmar
         },
         {
-            "MNE", CountryCode.Montenegro
+            "MNE", Country.Montenegro
         },
         {
-            "MNG", CountryCode.Mongolia
+            "MNG", Country.Mongolia
         },
         {
-            "MNP", CountryCode.NorthernMarianaIslands
+            "MNP", Country.NorthernMarianaIslands
         },
         {
-            "MOZ", CountryCode.Mozambique
+            "MOZ", Country.Mozambique
         },
         {
-            "MRT", CountryCode.Mauritania
+            "MRT", Country.Mauritania
         },
         {
-            "MSR", CountryCode.Montserrat
+            "MSR", Country.Montserrat
         },
         {
-            "MTQ", CountryCode.Martinique
+            "MTQ", Country.Martinique
         },
         {
-            "MUS", CountryCode.Mauritius
+            "MUS", Country.Mauritius
         },
         {
-            "MWI", CountryCode.Malawi
+            "MWI", Country.Malawi
         },
         {
-            "MYS", CountryCode.Malaysia
+            "MYS", Country.Malaysia
         },
         {
-            "MYT", CountryCode.Mayotte
+            "MYT", Country.Mayotte
         },
         {
-            "NAM", CountryCode.Namibia
+            "NAM", Country.Namibia
         },
         {
-            "NCL", CountryCode.NewCaledonia
+            "NCL", Country.NewCaledonia
         },
         {
-            "NER", CountryCode.Niger
+            "NER", Country.Niger
         },
         {
-            "NFK", CountryCode.NorfolkIsland
+            "NFK", Country.NorfolkIsland
         },
         {
-            "NGA", CountryCode.Nigeria
+            "NGA", Country.Nigeria
         },
         {
-            "NIC", CountryCode.Nicaragua
+            "NIC", Country.Nicaragua
         },
         {
-            "NIU", CountryCode.Niue
+            "NIU", Country.Niue
         },
         {
-            "NLD", CountryCode.Netherlands
+            "NLD", Country.Netherlands
         },
         {
-            "NOR", CountryCode.Norway
+            "NOR", Country.Norway
         },
         {
-            "NPL", CountryCode.Nepal
+            "NPL", Country.Nepal
         },
         {
-            "NRU", CountryCode.Nauru
+            "NRU", Country.Nauru
         },
         {
-            "NZL", CountryCode.NewZealand
+            "NZL", Country.NewZealand
         },
         {
-            "OMN", CountryCode.Oman
+            "OMN", Country.Oman
         },
         {
-            "PAK", CountryCode.Pakistan
+            "PAK", Country.Pakistan
         },
         {
-            "PAN", CountryCode.Panama
+            "PAN", Country.Panama
         },
         {
-            "PCN", CountryCode.Pitcairn
+            "PCN", Country.Pitcairn
         },
         {
-            "PER", CountryCode.Peru
+            "PER", Country.Peru
         },
         {
-            "PHL", CountryCode.Philippines
+            "PHL", Country.Philippines
         },
         {
-            "PLW", CountryCode.Palau
+            "PLW", Country.Palau
         },
         {
-            "PNG", CountryCode.PapuaNewGuinea
+            "PNG", Country.PapuaNewGuinea
         },
         {
-            "POL", CountryCode.Poland
+            "POL", Country.Poland
         },
         {
-            "PRI", CountryCode.PuertoRico
+            "PRI", Country.PuertoRico
         },
         {
-            "PRK", CountryCode.NorthKorea
+            "PRK", Country.NorthKorea
         },
         {
-            "PRT", CountryCode.Portugal
+            "PRT", Country.Portugal
         },
         {
-            "PRY", CountryCode.Paraguay
+            "PRY", Country.Paraguay
         },
         {
-            "PSE", CountryCode.Palestine
+            "PSE", Country.Palestine
         },
         {
-            "PYF", CountryCode.FrenchPolynesia
+            "PYF", Country.FrenchPolynesia
         },
         {
-            "QAT", CountryCode.Qatar
+            "QAT", Country.Qatar
         },
         {
-            "REU", CountryCode.Réunion
+            "REU", Country.Réunion
         },
         {
-            "ROU", CountryCode.Romania
+            "ROU", Country.Romania
         },
         {
-            "RUS", CountryCode.Russia
+            "RUS", Country.Russia
         },
         {
-            "RWA", CountryCode.Rwanda
+            "RWA", Country.Rwanda
         },
         {
-            "SAU", CountryCode.SaudiArabia
+            "SAU", Country.SaudiArabia
         },
         {
-            "SDN", CountryCode.Sudan
+            "SDN", Country.Sudan
         },
         {
-            "SEN", CountryCode.Senegal
+            "SEN", Country.Senegal
         },
         {
-            "SGP", CountryCode.Singapore
+            "SGP", Country.Singapore
         },
         {
-            "SGS", CountryCode.SouthGeorgiaAndTheSouthSandwichIslands
+            "SGS", Country.SouthGeorgiaAndTheSouthSandwichIslands
         },
         {
-            "SHN", CountryCode.SaintHelenaAscensionAndTristandaCunha
+            "SHN", Country.SaintHelenaAscensionAndTristandaCunha
         },
         {
-            "SJM", CountryCode.SvalbardAndJanMayen
+            "SJM", Country.SvalbardAndJanMayen
         },
         {
-            "SLB", CountryCode.SolomonIslands
+            "SLB", Country.SolomonIslands
         },
         {
-            "SLE", CountryCode.SierraLeone
+            "SLE", Country.SierraLeone
         },
         {
-            "SLV", CountryCode.ElSalvador
+            "SLV", Country.ElSalvador
         },
         {
-            "SMR", CountryCode.SanMarino
+            "SMR", Country.SanMarino
         },
         {
-            "SOM", CountryCode.Somalia
+            "SOM", Country.Somalia
         },
         {
-            "SPM", CountryCode.SaintPierreAndMiquelon
+            "SPM", Country.SaintPierreAndMiquelon
         },
         {
-            "SRB", CountryCode.Serbia
+            "SRB", Country.Serbia
         },
         {
-            "SSD", CountryCode.SouthSudan
+            "SSD", Country.SouthSudan
         },
         {
-            "STP", CountryCode.SãoToméAndPríncipe
+            "STP", Country.SãoToméAndPríncipe
         },
         {
-            "SUR", CountryCode.Suriname
+            "SUR", Country.Suriname
         },
         {
-            "SVK", CountryCode.Slovakia
+            "SVK", Country.Slovakia
         },
         {
-            "SVN", CountryCode.Slovenia
+            "SVN", Country.Slovenia
         },
         {
-            "SWE", CountryCode.Sweden
+            "SWE", Country.Sweden
         },
         {
-            "SWZ", CountryCode.Eswatini
+            "SWZ", Country.Eswatini
         },
         {
-            "SXM", CountryCode.SintMaarten
+            "SXM", Country.SintMaarten
         },
         {
-            "SYC", CountryCode.Seychelles
+            "SYC", Country.Seychelles
         },
         {
-            "SYR", CountryCode.Syria
+            "SYR", Country.Syria
         },
         {
-            "TCA", CountryCode.TurksAndCaicosIslands
+            "TCA", Country.TurksAndCaicosIslands
         },
         {
-            "TCD", CountryCode.Chad
+            "TCD", Country.Chad
         },
         {
-            "TGO", CountryCode.Togo
+            "TGO", Country.Togo
         },
         {
-            "THA", CountryCode.Thailand
+            "THA", Country.Thailand
         },
         {
-            "TJK", CountryCode.Tajikistan
+            "TJK", Country.Tajikistan
         },
         {
-            "TKL", CountryCode.Tokelau
+            "TKL", Country.Tokelau
         },
         {
-            "TKM", CountryCode.Turkmenistan
+            "TKM", Country.Turkmenistan
         },
         {
-            "TLS", CountryCode.TimorLeste
+            "TLS", Country.TimorLeste
         },
         {
-            "TON", CountryCode.Tonga
+            "TON", Country.Tonga
         },
         {
-            "TTO", CountryCode.TrinidadAndTobago
+            "TTO", Country.TrinidadAndTobago
         },
         {
-            "TUN", CountryCode.Tunisia
+            "TUN", Country.Tunisia
         },
         {
-            "TUR", CountryCode.Turkey
+            "TUR", Country.Turkey
         },
         {
-            "TUV", CountryCode.Tuvalu
+            "TUV", Country.Tuvalu
         },
         {
-            "TWN", CountryCode.Taiwan
+            "TWN", Country.Taiwan
         },
         {
-            "TZA", CountryCode.Tanzania
+            "TZA", Country.Tanzania
         },
         {
-            "UGA", CountryCode.Uganda
+            "UGA", Country.Uganda
         },
         {
-            "UKR", CountryCode.Ukraine
+            "UKR", Country.Ukraine
         },
         {
-            "UMI", CountryCode.UnitedStatesMinorOutlyingIslands
+            "UMI", Country.UnitedStatesMinorOutlyingIslands
         },
         {
-            "URY", CountryCode.Uruguay
+            "URY", Country.Uruguay
         },
         {
-            "USA", CountryCode.UnitedStatesOfAmerica
+            "USA", Country.UnitedStatesOfAmerica
         },
         {
-            "UZB", CountryCode.Uzbekistan
+            "UZB", Country.Uzbekistan
         },
         {
-            "VAT", CountryCode.VaticanCity
+            "VAT", Country.VaticanCity
         },
         {
-            "VCT", CountryCode.SaintVincentAndTheGrenadines
+            "VCT", Country.SaintVincentAndTheGrenadines
         },
         {
-            "VEN", CountryCode.Venezuela
+            "VEN", Country.Venezuela
         },
         {
-            "VGB", CountryCode.BritishVirginIslands
+            "VGB", Country.BritishVirginIslands
         },
         {
-            "VIR", CountryCode.UnitedStatesVirginIslands
+            "VIR", Country.UnitedStatesVirginIslands
         },
         {
-            "VNM", CountryCode.VietNam
+            "VNM", Country.VietNam
         },
         {
-            "VUT", CountryCode.Vanuatu
+            "VUT", Country.Vanuatu
         },
         {
-            "WLF", CountryCode.WallisAndFutuna
+            "WLF", Country.WallisAndFutuna
         },
         {
-            "WSM", CountryCode.Samoa
+            "WSM", Country.Samoa
         },
         {
-            "YEM", CountryCode.Yemen
+            "YEM", Country.Yemen
         },
         {
-            "ZAF", CountryCode.SouthAfrica
+            "ZAF", Country.SouthAfrica
         },
         {
-            "ZMB", CountryCode.Zambia
+            "ZMB", Country.Zambia
         },
         {
-            "ZWE", CountryCode.Zimbabwe
+            "ZWE", Country.Zimbabwe
         },
 
     };
 
-    static Dictionary<CountryCode, string> codeToLetters = new()
+    static Dictionary<Country, string> codeToLetters = new()
     {
         {
-            CountryCode.Aruba, "ABW"
+            Country.Aruba, "ABW"
         },
         {
-            CountryCode.Afghanistan, "AFG"
+            Country.Afghanistan, "AFG"
         },
         {
-            CountryCode.Angola, "AGO"
+            Country.Angola, "AGO"
         },
         {
-            CountryCode.Anguilla, "AIA"
+            Country.Anguilla, "AIA"
         },
         {
-            CountryCode.ÅlandIslands, "ALA"
+            Country.ÅlandIslands, "ALA"
         },
         {
-            CountryCode.Albania, "ALB"
+            Country.Albania, "ALB"
         },
         {
-            CountryCode.Andorra, "AND"
+            Country.Andorra, "AND"
         },
         {
-            CountryCode.UnitedArabEmirates, "ARE"
+            Country.UnitedArabEmirates, "ARE"
         },
         {
-            CountryCode.Argentina, "ARG"
+            Country.Argentina, "ARG"
         },
         {
-            CountryCode.Armenia, "ARM"
+            Country.Armenia, "ARM"
         },
         {
-            CountryCode.AmericanSamoa, "ASM"
+            Country.AmericanSamoa, "ASM"
         },
         {
-            CountryCode.Antarctica, "ATA"
+            Country.Antarctica, "ATA"
         },
         {
-            CountryCode.FrenchSouthernTerritories, "ATF"
+            Country.FrenchSouthernTerritories, "ATF"
         },
         {
-            CountryCode.AntiguaAndBarbuda, "ATG"
+            Country.AntiguaAndBarbuda, "ATG"
         },
         {
-            CountryCode.Australia, "AUS"
+            Country.Australia, "AUS"
         },
         {
-            CountryCode.Austria, "AUT"
+            Country.Austria, "AUT"
         },
         {
-            CountryCode.Azerbaijan, "AZE"
+            Country.Azerbaijan, "AZE"
         },
         {
-            CountryCode.Burundi, "BDI"
+            Country.Burundi, "BDI"
         },
         {
-            CountryCode.Belgium, "BEL"
+            Country.Belgium, "BEL"
         },
         {
-            CountryCode.Benin, "BEN"
+            Country.Benin, "BEN"
         },
         {
-            CountryCode.CaribbeanNetherlands, "BES"
+            Country.CaribbeanNetherlands, "BES"
         },
         {
-            CountryCode.BurkinaFaso, "BFA"
+            Country.BurkinaFaso, "BFA"
         },
         {
-            CountryCode.Bangladesh, "BGD"
+            Country.Bangladesh, "BGD"
         },
         {
-            CountryCode.Bulgaria, "BGR"
+            Country.Bulgaria, "BGR"
         },
         {
-            CountryCode.Bahrain, "BHR"
+            Country.Bahrain, "BHR"
         },
         {
-            CountryCode.Bahamas, "BHS"
+            Country.Bahamas, "BHS"
         },
         {
-            CountryCode.BosniaAndHerzegovina, "BIH"
+            Country.BosniaAndHerzegovina, "BIH"
         },
         {
-            CountryCode.SaintBarthélemy, "BLM"
+            Country.SaintBarthélemy, "BLM"
         },
         {
-            CountryCode.Belarus, "BLR"
+            Country.Belarus, "BLR"
         },
         {
-            CountryCode.Belize, "BLZ"
+            Country.Belize, "BLZ"
         },
         {
-            CountryCode.Bermuda, "BMU"
+            Country.Bermuda, "BMU"
         },
         {
-            CountryCode.Bolivia, "BOL"
+            Country.Bolivia, "BOL"
         },
         {
-            CountryCode.Brazil, "BRA"
+            Country.Brazil, "BRA"
         },
         {
-            CountryCode.Barbados, "BRB"
+            Country.Barbados, "BRB"
         },
         {
-            CountryCode.Brunei, "BRN"
+            Country.Brunei, "BRN"
         },
         {
-            CountryCode.Bhutan, "BTN"
+            Country.Bhutan, "BTN"
         },
         {
-            CountryCode.BouvetIsland, "BVT"
+            Country.BouvetIsland, "BVT"
         },
         {
-            CountryCode.Botswana, "BWA"
+            Country.Botswana, "BWA"
         },
         {
-            CountryCode.CentralAfricanRepublic, "CAF"
+            Country.CentralAfricanRepublic, "CAF"
         },
         {
-            CountryCode.Canada, "CAN"
+            Country.Canada, "CAN"
         },
         {
-            CountryCode.CocosKeelingIslands, "CCK"
+            Country.CocosKeelingIslands, "CCK"
         },
         {
-            CountryCode.Switzerland, "CHE"
+            Country.Switzerland, "CHE"
         },
         {
-            CountryCode.Chile, "CHL"
+            Country.Chile, "CHL"
         },
         {
-            CountryCode.China, "CHN"
+            Country.China, "CHN"
         },
         {
-            CountryCode.IvoryCoast, "CIV"
+            Country.IvoryCoast, "CIV"
         },
         {
-            CountryCode.Cameroon, "CMR"
+            Country.Cameroon, "CMR"
         },
         {
-            CountryCode.DemocraticRepublicOfTheCongo, "COD"
+            Country.DemocraticRepublicOfTheCongo, "COD"
         },
         {
-            CountryCode.RepublicOfTheCongo, "COG"
+            Country.RepublicOfTheCongo, "COG"
         },
         {
-            CountryCode.CookIslands, "COK"
+            Country.CookIslands, "COK"
         },
         {
-            CountryCode.Colombia, "COL"
+            Country.Colombia, "COL"
         },
         {
-            CountryCode.Comoros, "COM"
+            Country.Comoros, "COM"
         },
         {
-            CountryCode.CaboVerde, "CPV"
+            Country.CaboVerde, "CPV"
         },
         {
-            CountryCode.CostaRica, "CRI"
+            Country.CostaRica, "CRI"
         },
         {
-            CountryCode.Cuba, "CUB"
+            Country.Cuba, "CUB"
         },
         {
-            CountryCode.Curaçao, "CUW"
+            Country.Curaçao, "CUW"
         },
         {
-            CountryCode.ChristmasIsland, "CXR"
+            Country.ChristmasIsland, "CXR"
         },
         {
-            CountryCode.CaymanIslands, "CYM"
+            Country.CaymanIslands, "CYM"
         },
         {
-            CountryCode.Cyprus, "CYP"
+            Country.Cyprus, "CYP"
         },
         {
-            CountryCode.Czechia, "CZE"
+            Country.Czechia, "CZE"
         },
         {
-            CountryCode.Germany, "DEU"
+            Country.Germany, "DEU"
         },
         {
-            CountryCode.Djibouti, "DJI"
+            Country.Djibouti, "DJI"
         },
         {
-            CountryCode.Dominica, "DMA"
+            Country.Dominica, "DMA"
         },
         {
-            CountryCode.Denmark, "DNK"
+            Country.Denmark, "DNK"
         },
         {
-            CountryCode.DominicanRepublic, "DOM"
+            Country.DominicanRepublic, "DOM"
         },
         {
-            CountryCode.Algeria, "DZA"
+            Country.Algeria, "DZA"
         },
         {
-            CountryCode.Ecuador, "ECU"
+            Country.Ecuador, "ECU"
         },
         {
-            CountryCode.Egypt, "EGY"
+            Country.Egypt, "EGY"
         },
         {
-            CountryCode.Eritrea, "ERI"
+            Country.Eritrea, "ERI"
         },
         {
-            CountryCode.WesternSahara, "ESH"
+            Country.WesternSahara, "ESH"
         },
         {
-            CountryCode.Spain, "ESP"
+            Country.Spain, "ESP"
         },
         {
-            CountryCode.Estonia, "EST"
+            Country.Estonia, "EST"
         },
         {
-            CountryCode.Ethiopia, "ETH"
+            Country.Ethiopia, "ETH"
         },
         {
-            CountryCode.Finland, "FIN"
+            Country.Finland, "FIN"
         },
         {
-            CountryCode.Fiji, "FJI"
+            Country.Fiji, "FJI"
         },
         {
-            CountryCode.FalklandIslands, "FLK"
+            Country.FalklandIslands, "FLK"
         },
         {
-            CountryCode.France, "FRA"
+            Country.France, "FRA"
         },
         {
-            CountryCode.FaroeIslands, "FRO"
+            Country.FaroeIslands, "FRO"
         },
         {
-            CountryCode.Micronesia, "FSM"
+            Country.Micronesia, "FSM"
         },
         {
-            CountryCode.Gabon, "GAB"
+            Country.Gabon, "GAB"
         },
         {
-            CountryCode.UnitedKingdom, "GBR"
+            Country.UnitedKingdom, "GBR"
         },
         {
-            CountryCode.Georgia, "GEO"
+            Country.Georgia, "GEO"
         },
         {
-            CountryCode.Guernsey, "GGY"
+            Country.Guernsey, "GGY"
         },
         {
-            CountryCode.Ghana, "GHA"
+            Country.Ghana, "GHA"
         },
         {
-            CountryCode.Gibraltar, "GIB"
+            Country.Gibraltar, "GIB"
         },
         {
-            CountryCode.Guinea, "GIN"
+            Country.Guinea, "GIN"
         },
         {
-            CountryCode.Guadeloupe, "GLP"
+            Country.Guadeloupe, "GLP"
         },
         {
-            CountryCode.Gambia, "GMB"
+            Country.Gambia, "GMB"
         },
         {
-            CountryCode.GuineaBissau, "GNB"
+            Country.GuineaBissau, "GNB"
         },
         {
-            CountryCode.EquatorialGuinea, "GNQ"
+            Country.EquatorialGuinea, "GNQ"
         },
         {
-            CountryCode.Greece, "GRC"
+            Country.Greece, "GRC"
         },
         {
-            CountryCode.Grenada, "GRD"
+            Country.Grenada, "GRD"
         },
         {
-            CountryCode.Greenland, "GRL"
+            Country.Greenland, "GRL"
         },
         {
-            CountryCode.Guatemala, "GTM"
+            Country.Guatemala, "GTM"
         },
         {
-            CountryCode.FrenchGuiana, "GUF"
+            Country.FrenchGuiana, "GUF"
         },
         {
-            CountryCode.Guam, "GUM"
+            Country.Guam, "GUM"
         },
         {
-            CountryCode.Guyana, "GUY"
+            Country.Guyana, "GUY"
         },
         {
-            CountryCode.HongKong, "HKG"
+            Country.HongKong, "HKG"
         },
         {
-            CountryCode.HeardIslandAndMcDonaldIslands, "HMD"
+            Country.HeardIslandAndMcDonaldIslands, "HMD"
         },
         {
-            CountryCode.Honduras, "HND"
+            Country.Honduras, "HND"
         },
         {
-            CountryCode.Croatia, "HRV"
+            Country.Croatia, "HRV"
         },
         {
-            CountryCode.Haiti, "HTI"
+            Country.Haiti, "HTI"
         },
         {
-            CountryCode.Hungary, "HUN"
+            Country.Hungary, "HUN"
         },
         {
-            CountryCode.Indonesia, "IDN"
+            Country.Indonesia, "IDN"
         },
         {
-            CountryCode.IsleOfMan, "IMN"
+            Country.IsleOfMan, "IMN"
         },
         {
-            CountryCode.India, "IND"
+            Country.India, "IND"
         },
         {
-            CountryCode.BritishIndianOceanTerritory, "IOT"
+            Country.BritishIndianOceanTerritory, "IOT"
         },
         {
-            CountryCode.Ireland, "IRL"
+            Country.Ireland, "IRL"
         },
         {
-            CountryCode.Iran, "IRN"
+            Country.Iran, "IRN"
         },
         {
-            CountryCode.Iraq, "IRQ"
+            Country.Iraq, "IRQ"
         },
         {
-            CountryCode.Iceland, "ISL"
+            Country.Iceland, "ISL"
         },
         {
-            CountryCode.Israel, "ISR"
+            Country.Israel, "ISR"
         },
         {
-            CountryCode.Italy, "ITA"
+            Country.Italy, "ITA"
         },
         {
-            CountryCode.Jamaica, "JAM"
+            Country.Jamaica, "JAM"
         },
         {
-            CountryCode.Jersey, "JEY"
+            Country.Jersey, "JEY"
         },
         {
-            CountryCode.Jordan, "JOR"
+            Country.Jordan, "JOR"
         },
         {
-            CountryCode.Japan, "JPN"
+            Country.Japan, "JPN"
         },
         {
-            CountryCode.Kazakhstan, "KAZ"
+            Country.Kazakhstan, "KAZ"
         },
         {
-            CountryCode.Kenya, "KEN"
+            Country.Kenya, "KEN"
         },
         {
-            CountryCode.Kyrgyzstan, "KGZ"
+            Country.Kyrgyzstan, "KGZ"
         },
         {
-            CountryCode.Cambodia, "KHM"
+            Country.Cambodia, "KHM"
         },
         {
-            CountryCode.Kiribati, "KIR"
+            Country.Kiribati, "KIR"
         },
         {
-            CountryCode.SaintKittsAndNevis, "KNA"
+            Country.SaintKittsAndNevis, "KNA"
         },
         {
-            CountryCode.SouthKorea, "KOR"
+            Country.SouthKorea, "KOR"
         },
         {
-            CountryCode.Kuwait, "KWT"
+            Country.Kuwait, "KWT"
         },
         {
-            CountryCode.Laos, "LAO"
+            Country.Laos, "LAO"
         },
         {
-            CountryCode.Lebanon, "LBN"
+            Country.Lebanon, "LBN"
         },
         {
-            CountryCode.Liberia, "LBR"
+            Country.Liberia, "LBR"
         },
         {
-            CountryCode.Libya, "LBY"
+            Country.Libya, "LBY"
         },
         {
-            CountryCode.SaintLucia, "LCA"
+            Country.SaintLucia, "LCA"
         },
         {
-            CountryCode.Liechtenstein, "LIE"
+            Country.Liechtenstein, "LIE"
         },
         {
-            CountryCode.SriLanka, "LKA"
+            Country.SriLanka, "LKA"
         },
         {
-            CountryCode.Lesotho, "LSO"
+            Country.Lesotho, "LSO"
         },
         {
-            CountryCode.Lithuania, "LTU"
+            Country.Lithuania, "LTU"
         },
         {
-            CountryCode.Luxembourg, "LUX"
+            Country.Luxembourg, "LUX"
         },
         {
-            CountryCode.Latvia, "LVA"
+            Country.Latvia, "LVA"
         },
         {
-            CountryCode.Macao, "MAC"
+            Country.Macao, "MAC"
         },
         {
-            CountryCode.CollectivityOfSaintMartin, "MAF"
+            Country.CollectivityOfSaintMartin, "MAF"
         },
         {
-            CountryCode.Morocco, "MAR"
+            Country.Morocco, "MAR"
         },
         {
-            CountryCode.Monaco, "MCO"
+            Country.Monaco, "MCO"
         },
         {
-            CountryCode.Moldova, "MDA"
+            Country.Moldova, "MDA"
         },
         {
-            CountryCode.Madagascar, "MDG"
+            Country.Madagascar, "MDG"
         },
         {
-            CountryCode.Maldives, "MDV"
+            Country.Maldives, "MDV"
         },
         {
-            CountryCode.Mexico, "MEX"
+            Country.Mexico, "MEX"
         },
         {
-            CountryCode.MarshallIslands, "MHL"
+            Country.MarshallIslands, "MHL"
         },
         {
-            CountryCode.NorthMacedonia, "MKD"
+            Country.NorthMacedonia, "MKD"
         },
         {
-            CountryCode.Mali, "MLI"
+            Country.Mali, "MLI"
         },
         {
-            CountryCode.Malta, "MLT"
+            Country.Malta, "MLT"
         },
         {
-            CountryCode.Myanmar, "MMR"
+            Country.Myanmar, "MMR"
         },
         {
-            CountryCode.Montenegro, "MNE"
+            Country.Montenegro, "MNE"
         },
         {
-            CountryCode.Mongolia, "MNG"
+            Country.Mongolia, "MNG"
         },
         {
-            CountryCode.NorthernMarianaIslands, "MNP"
+            Country.NorthernMarianaIslands, "MNP"
         },
         {
-            CountryCode.Mozambique, "MOZ"
+            Country.Mozambique, "MOZ"
         },
         {
-            CountryCode.Mauritania, "MRT"
+            Country.Mauritania, "MRT"
         },
         {
-            CountryCode.Montserrat, "MSR"
+            Country.Montserrat, "MSR"
         },
         {
-            CountryCode.Martinique, "MTQ"
+            Country.Martinique, "MTQ"
         },
         {
-            CountryCode.Mauritius, "MUS"
+            Country.Mauritius, "MUS"
         },
         {
-            CountryCode.Malawi, "MWI"
+            Country.Malawi, "MWI"
         },
         {
-            CountryCode.Malaysia, "MYS"
+            Country.Malaysia, "MYS"
         },
         {
-            CountryCode.Mayotte, "MYT"
+            Country.Mayotte, "MYT"
         },
         {
-            CountryCode.Namibia, "NAM"
+            Country.Namibia, "NAM"
         },
         {
-            CountryCode.NewCaledonia, "NCL"
+            Country.NewCaledonia, "NCL"
         },
         {
-            CountryCode.Niger, "NER"
+            Country.Niger, "NER"
         },
         {
-            CountryCode.NorfolkIsland, "NFK"
+            Country.NorfolkIsland, "NFK"
         },
         {
-            CountryCode.Nigeria, "NGA"
+            Country.Nigeria, "NGA"
         },
         {
-            CountryCode.Nicaragua, "NIC"
+            Country.Nicaragua, "NIC"
         },
         {
-            CountryCode.Niue, "NIU"
+            Country.Niue, "NIU"
         },
         {
-            CountryCode.Netherlands, "NLD"
+            Country.Netherlands, "NLD"
         },
         {
-            CountryCode.Norway, "NOR"
+            Country.Norway, "NOR"
         },
         {
-            CountryCode.Nepal, "NPL"
+            Country.Nepal, "NPL"
         },
         {
-            CountryCode.Nauru, "NRU"
+            Country.Nauru, "NRU"
         },
         {
-            CountryCode.NewZealand, "NZL"
+            Country.NewZealand, "NZL"
         },
         {
-            CountryCode.Oman, "OMN"
+            Country.Oman, "OMN"
         },
         {
-            CountryCode.Pakistan, "PAK"
+            Country.Pakistan, "PAK"
         },
         {
-            CountryCode.Panama, "PAN"
+            Country.Panama, "PAN"
         },
         {
-            CountryCode.Pitcairn, "PCN"
+            Country.Pitcairn, "PCN"
         },
         {
-            CountryCode.Peru, "PER"
+            Country.Peru, "PER"
         },
         {
-            CountryCode.Philippines, "PHL"
+            Country.Philippines, "PHL"
         },
         {
-            CountryCode.Palau, "PLW"
+            Country.Palau, "PLW"
         },
         {
-            CountryCode.PapuaNewGuinea, "PNG"
+            Country.PapuaNewGuinea, "PNG"
         },
         {
-            CountryCode.Poland, "POL"
+            Country.Poland, "POL"
         },
         {
-            CountryCode.PuertoRico, "PRI"
+            Country.PuertoRico, "PRI"
         },
         {
-            CountryCode.NorthKorea, "PRK"
+            Country.NorthKorea, "PRK"
         },
         {
-            CountryCode.Portugal, "PRT"
+            Country.Portugal, "PRT"
         },
         {
-            CountryCode.Paraguay, "PRY"
+            Country.Paraguay, "PRY"
         },
         {
-            CountryCode.Palestine, "PSE"
+            Country.Palestine, "PSE"
         },
         {
-            CountryCode.FrenchPolynesia, "PYF"
+            Country.FrenchPolynesia, "PYF"
         },
         {
-            CountryCode.Qatar, "QAT"
+            Country.Qatar, "QAT"
         },
         {
-            CountryCode.Réunion, "REU"
+            Country.Réunion, "REU"
         },
         {
-            CountryCode.Romania, "ROU"
+            Country.Romania, "ROU"
         },
         {
-            CountryCode.Russia, "RUS"
+            Country.Russia, "RUS"
         },
         {
-            CountryCode.Rwanda, "RWA"
+            Country.Rwanda, "RWA"
         },
         {
-            CountryCode.SaudiArabia, "SAU"
+            Country.SaudiArabia, "SAU"
         },
         {
-            CountryCode.Sudan, "SDN"
+            Country.Sudan, "SDN"
         },
         {
-            CountryCode.Senegal, "SEN"
+            Country.Senegal, "SEN"
         },
         {
-            CountryCode.Singapore, "SGP"
+            Country.Singapore, "SGP"
         },
         {
-            CountryCode.SouthGeorgiaAndTheSouthSandwichIslands, "SGS"
+            Country.SouthGeorgiaAndTheSouthSandwichIslands, "SGS"
         },
         {
-            CountryCode.SaintHelenaAscensionAndTristandaCunha, "SHN"
+            Country.SaintHelenaAscensionAndTristandaCunha, "SHN"
         },
         {
-            CountryCode.SvalbardAndJanMayen, "SJM"
+            Country.SvalbardAndJanMayen, "SJM"
         },
         {
-            CountryCode.SolomonIslands, "SLB"
+            Country.SolomonIslands, "SLB"
         },
         {
-            CountryCode.SierraLeone, "SLE"
+            Country.SierraLeone, "SLE"
         },
         {
-            CountryCode.ElSalvador, "SLV"
+            Country.ElSalvador, "SLV"
         },
         {
-            CountryCode.SanMarino, "SMR"
+            Country.SanMarino, "SMR"
         },
         {
-            CountryCode.Somalia, "SOM"
+            Country.Somalia, "SOM"
         },
         {
-            CountryCode.SaintPierreAndMiquelon, "SPM"
+            Country.SaintPierreAndMiquelon, "SPM"
         },
         {
-            CountryCode.Serbia, "SRB"
+            Country.Serbia, "SRB"
         },
         {
-            CountryCode.SouthSudan, "SSD"
+            Country.SouthSudan, "SSD"
         },
         {
-            CountryCode.SãoToméAndPríncipe, "STP"
+            Country.SãoToméAndPríncipe, "STP"
         },
         {
-            CountryCode.Suriname, "SUR"
+            Country.Suriname, "SUR"
         },
         {
-            CountryCode.Slovakia, "SVK"
+            Country.Slovakia, "SVK"
         },
         {
-            CountryCode.Slovenia, "SVN"
+            Country.Slovenia, "SVN"
         },
         {
-            CountryCode.Sweden, "SWE"
+            Country.Sweden, "SWE"
         },
         {
-            CountryCode.Eswatini, "SWZ"
+            Country.Eswatini, "SWZ"
         },
         {
-            CountryCode.SintMaarten, "SXM"
+            Country.SintMaarten, "SXM"
         },
         {
-            CountryCode.Seychelles, "SYC"
+            Country.Seychelles, "SYC"
         },
         {
-            CountryCode.Syria, "SYR"
+            Country.Syria, "SYR"
         },
         {
-            CountryCode.TurksAndCaicosIslands, "TCA"
+            Country.TurksAndCaicosIslands, "TCA"
         },
         {
-            CountryCode.Chad, "TCD"
+            Country.Chad, "TCD"
         },
         {
-            CountryCode.Togo, "TGO"
+            Country.Togo, "TGO"
         },
         {
-            CountryCode.Thailand, "THA"
+            Country.Thailand, "THA"
         },
         {
-            CountryCode.Tajikistan, "TJK"
+            Country.Tajikistan, "TJK"
         },
         {
-            CountryCode.Tokelau, "TKL"
+            Country.Tokelau, "TKL"
         },
         {
-            CountryCode.Turkmenistan, "TKM"
+            Country.Turkmenistan, "TKM"
         },
         {
-            CountryCode.TimorLeste, "TLS"
+            Country.TimorLeste, "TLS"
         },
         {
-            CountryCode.Tonga, "TON"
+            Country.Tonga, "TON"
         },
         {
-            CountryCode.TrinidadAndTobago, "TTO"
+            Country.TrinidadAndTobago, "TTO"
         },
         {
-            CountryCode.Tunisia, "TUN"
+            Country.Tunisia, "TUN"
         },
         {
-            CountryCode.Turkey, "TUR"
+            Country.Turkey, "TUR"
         },
         {
-            CountryCode.Tuvalu, "TUV"
+            Country.Tuvalu, "TUV"
         },
         {
-            CountryCode.Taiwan, "TWN"
+            Country.Taiwan, "TWN"
         },
         {
-            CountryCode.Tanzania, "TZA"
+            Country.Tanzania, "TZA"
         },
         {
-            CountryCode.Uganda, "UGA"
+            Country.Uganda, "UGA"
         },
         {
-            CountryCode.Ukraine, "UKR"
+            Country.Ukraine, "UKR"
         },
         {
-            CountryCode.UnitedStatesMinorOutlyingIslands, "UMI"
+            Country.UnitedStatesMinorOutlyingIslands, "UMI"
         },
         {
-            CountryCode.Uruguay, "URY"
+            Country.Uruguay, "URY"
         },
         {
-            CountryCode.UnitedStatesOfAmerica, "USA"
+            Country.UnitedStatesOfAmerica, "USA"
         },
         {
-            CountryCode.Uzbekistan, "UZB"
+            Country.Uzbekistan, "UZB"
         },
         {
-            CountryCode.VaticanCity, "VAT"
+            Country.VaticanCity, "VAT"
         },
         {
-            CountryCode.SaintVincentAndTheGrenadines, "VCT"
+            Country.SaintVincentAndTheGrenadines, "VCT"
         },
         {
-            CountryCode.Venezuela, "VEN"
+            Country.Venezuela, "VEN"
         },
         {
-            CountryCode.BritishVirginIslands, "VGB"
+            Country.BritishVirginIslands, "VGB"
         },
         {
-            CountryCode.UnitedStatesVirginIslands, "VIR"
+            Country.UnitedStatesVirginIslands, "VIR"
         },
         {
-            CountryCode.VietNam, "VNM"
+            Country.VietNam, "VNM"
         },
         {
-            CountryCode.Vanuatu, "VUT"
+            Country.Vanuatu, "VUT"
         },
         {
-            CountryCode.WallisAndFutuna, "WLF"
+            Country.WallisAndFutuna, "WLF"
         },
         {
-            CountryCode.Samoa, "WSM"
+            Country.Samoa, "WSM"
         },
         {
-            CountryCode.Yemen, "YEM"
+            Country.Yemen, "YEM"
         },
         {
-            CountryCode.SouthAfrica, "ZAF"
+            Country.SouthAfrica, "ZAF"
         },
         {
-            CountryCode.Zambia, "ZMB"
+            Country.Zambia, "ZMB"
         },
         {
-            CountryCode.Zimbabwe, "ZWE"
+            Country.Zimbabwe, "ZWE"
         },
     };
 }

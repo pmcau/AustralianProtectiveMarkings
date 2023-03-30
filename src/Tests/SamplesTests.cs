@@ -39,7 +39,7 @@ public class Samples
                 ForeignGovernment = "USA caveat",
                 Cabinet = true,
                 ExclusiveFor = "person",
-                CountryCode = CountryCode.Afghanistan
+                Country = Country.Afghanistan
             }
         };
         var result = marking.RenderSubject();
@@ -87,7 +87,7 @@ public class Samples
                 ForeignGovernment = "USA caveat",
                 Agao = true,
                 ExclusiveFor = "person",
-                CountryCode = CountryCode.Afghanistan
+                Country = Country.Afghanistan
             }
         };
         var result = marking.RenderHeader();
@@ -195,8 +195,8 @@ public class Samples
                 },
                 CountryCodes = new[]
                 {
-                    CountryCode.Afghanistan,
-                    CountryCode.Algeria
+                    Country.Afghanistan,
+                    Country.Algeria
                 }
             }
         };

@@ -60,7 +60,7 @@ public static partial class Parser
         return fgCaveats.Select(_ => _.Substring(3)).ToList();
     }
 
-    static List<CountryCode>? ReadCountryCaveats(string input, List<Pair> caveats)
+    static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
     {
         var prefix = "REL:";
         var countryCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();

@@ -30,8 +30,8 @@ public class Tests
                 },
                 CountryCodes = new[]
                 {
-                    CountryCode.Afghanistan,
-                    CountryCode.Algeria
+                    Country.Afghanistan,
+                    Country.Algeria
                 }}
         };
         var serialized1 = JsonConvert.SerializeObject(marking);

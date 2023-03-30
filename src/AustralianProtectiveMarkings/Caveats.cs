@@ -102,9 +102,9 @@ public readonly record struct Caveats
         }
     }
 
-    public IReadOnlyCollection<CountryCode>? CountryCodes { get; init; }
+    public IReadOnlyCollection<Country>? CountryCodes { get; init; }
 
-    public CountryCode CountryCode
+    public Country Country
     {
         init
         {
@@ -120,7 +120,7 @@ public readonly record struct Caveats
     {
         if (CountryCodes != null)
         {
-            throw new($"Use only {nameof(CountryCode)} or {nameof(CountryCodes)}. Not both.");
+            throw new($"Use only {nameof(Country)} or {nameof(CountryCodes)}. Not both.");
         }
     }
 
