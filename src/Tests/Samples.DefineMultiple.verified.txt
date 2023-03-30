@@ -4,7 +4,7 @@
     Codewords: [
       CodeWord
     ],
-    ForeignGovernmentCaveats: [
+    ForeignGovernments: [
       USA caveat
     ],
     CaveatTypes: [
@@ -14,7 +14,7 @@
     ExclusiveFors: [
       person
     ],
-    CountryCodeCaveats: [
+    CountryCodes: [
       Afghanistan,
       Algeria
     ]

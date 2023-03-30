@@ -100,9 +100,9 @@ public static class Renderer
             }
         }
 
-        if (caveats.ForeignGovernmentCaveats != null)
+        if (caveats.ForeignGovernments != null)
         {
-            foreach (var caveat in caveats.ForeignGovernmentCaveats)
+            foreach (var caveat in caveats.ForeignGovernments)
             {
                 builder.Append($"CAVEAT=FG:{caveat}, ");
             }
@@ -124,9 +124,9 @@ public static class Renderer
             }
         }
 
-        if (caveats.CountryCodeCaveats != null)
+        if (caveats.CountryCodes != null)
         {
-            foreach (var countryCode in caveats.CountryCodeCaveats)
+            foreach (var countryCode in caveats.CountryCodes)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
             }

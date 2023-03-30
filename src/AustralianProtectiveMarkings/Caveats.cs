@@ -24,7 +24,7 @@ public readonly record struct Caveats
     {
         init
         {
-            GuardDuplicateCodewords();
+            GuardDuplicateCodewordUse();
             Codewords = new[]
             {
                 value
@@ -32,7 +32,7 @@ public readonly record struct Caveats
         }
     }
 
-    void GuardDuplicateCodewords()
+    void GuardDuplicateCodewordUse()
     {
         if (Codewords != null)
         {
@@ -40,39 +40,38 @@ public readonly record struct Caveats
         }
     }
 
-    readonly IReadOnlyCollection<string>? foreignGovernmentCaveats;
-    public IReadOnlyCollection<string>? ForeignGovernmentCaveats
+    readonly IReadOnlyCollection<string>? foreignGovernments;
+    public IReadOnlyCollection<string>? ForeignGovernments
     {
-        get => foreignGovernmentCaveats;
+        get => foreignGovernments;
         init
         {
             TextValidator.Validate(value);
-            foreignGovernmentCaveats = value;
+            foreignGovernments = value;
         }
     }
 
-    public string ForeignGovernmentCaveat
+    public string ForeignGovernment
     {
         init
         {
-            GuardDuplicateForeignGovernmentCaveats();
-            ForeignGovernmentCaveats = new[]
+            GuardDuplicateForeignGovernmentUse();
+            ForeignGovernments = new[]
             {
                 value
             };
         }
     }
 
-    void GuardDuplicateForeignGovernmentCaveats()
+    void GuardDuplicateForeignGovernmentUse()
     {
-        if (ForeignGovernmentCaveats != null)
+        if (ForeignGovernments != null)
         {
-            throw new($"Use only {nameof(ForeignGovernmentCaveat)} or {nameof(ForeignGovernmentCaveats)}. Not both.");
+            throw new($"Use only {nameof(ForeignGovernment)} or {nameof(ForeignGovernments)}. Not both.");
         }
     }
 
     public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
-
 
     public CaveatType CaveatType
     {
@@ -109,7 +108,7 @@ public readonly record struct Caveats
     {
         init
         {
-            GuardDuplicateExclusiveFor();
+            GuardDuplicateExclusiveForUse();
             ExclusiveFors = new[]
             {
                 value
@@ -117,7 +116,7 @@ public readonly record struct Caveats
         }
     }
 
-    void GuardDuplicateExclusiveFor()
+    void GuardDuplicateExclusiveForUse()
     {
         if (ExclusiveFors != null)
         {
@@ -125,25 +124,25 @@ public readonly record struct Caveats
         }
     }
 
-    public IReadOnlyCollection<CountryCode>? CountryCodeCaveats { get; init; }
+    public IReadOnlyCollection<CountryCode>? CountryCodes { get; init; }
 
-    public CountryCode CountryCodeCaveat
+    public CountryCode CountryCode
     {
         init
         {
-            GuardDuplicateCountryCodeCaveats();
-            CountryCodeCaveats = new[]
+            GuardDuplicateCountryCodeUse();
+            CountryCodes = new[]
             {
                 value
             };
         }
     }
 
-    void GuardDuplicateCountryCodeCaveats()
+    void GuardDuplicateCountryCodeUse()
     {
-        if (CountryCodeCaveats != null)
+        if (CountryCodes != null)
         {
-            throw new($"Use only {nameof(CountryCodeCaveat)} or {nameof(CountryCodeCaveats)}. Not both.");
+            throw new($"Use only {nameof(CountryCode)} or {nameof(CountryCodes)}. Not both.");
         }
     }
 }

@@ -40,10 +40,10 @@ public static class Parser
             Caveats = new Caveats
             {
                 Codewords = ReadCodewords(input, pairs),
-                ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
+                ForeignGovernments = ReadForeignGovernmentCaveats(input, pairs),
                 CaveatTypes = ReadCaveatTypes(input, pairs),
                 ExclusiveFors = ReadExclusiveForCaveats(input, pairs),
-                CountryCodeCaveats = ReadCountryCaveats(input, pairs),
+                CountryCodes = ReadCountryCaveats(input, pairs),
             },
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
             AuthorEmail = ReadAuthorEmail(input, pairs),

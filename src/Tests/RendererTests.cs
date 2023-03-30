@@ -55,7 +55,7 @@ public class RendererTests
             {
                 "codeword1"
             },
-            ForeignGovernmentCaveats = new[]
+            ForeignGovernments = new[]
             {
                 "usa caveat"
             },
@@ -68,7 +68,7 @@ public class RendererTests
             {
                 "person"
             },
-            CountryCodeCaveats = new[]
+            CountryCodes = new[]
             {
                 CountryCode.Afghanistan,
                 CountryCode.Algeria

@@ -70,7 +70,7 @@
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
     SecurityClassification: TopSecret,
     Caveats: {
-      ForeignGovernmentCaveats: [
+      ForeignGovernments: [
         usa caveat
       ]
     }
@@ -78,7 +78,7 @@
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CountryCodeCaveats: [
+      CountryCodes: [
         Angola
       ]
     }
@@ -90,7 +90,7 @@
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AIA: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CountryCodeCaveats: [
+      CountryCodes: [
         Angola,
         Anguilla
       ]
@@ -103,7 +103,7 @@
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AIA: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CountryCodeCaveats: [
+      CountryCodes: [
         Angola,
         Anguilla
       ]

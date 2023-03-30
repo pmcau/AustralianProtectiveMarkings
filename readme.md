@@ -76,10 +76,10 @@ var marking = new ProtectiveMarking
     Caveats = new Caveats
     {
         Codeword = "CodeWord",
-        ForeignGovernmentCaveat = "USA caveat",
+        ForeignGovernment = "USA caveat",
         CaveatType = CaveatType.Cabinet,
         ExclusiveFor = "person",
-        CountryCodeCaveat = CountryCode.Afghanistan
+        CountryCode = CountryCode.Afghanistan
     }
 };
 var result = marking.RenderSubject();
@@ -146,10 +146,10 @@ var marking = new ProtectiveMarking
     Caveats = new Caveats
     {
         Codeword = "CodeWord",
-        ForeignGovernmentCaveat = "USA caveat",
+        ForeignGovernment = "USA caveat",
         CaveatType = CaveatType.Agao,
         ExclusiveFor = "person",
-        CountryCodeCaveat = CountryCode.Afghanistan
+        CountryCode = CountryCode.Afghanistan
     }
 };
 var result = marking.RenderHeader();
@@ -236,7 +236,7 @@ Results in:
       Agao,
       Cabinet
     ],
-    ExclusiveForCaveats: [
+    ExclusiveFors: [
        person,
        AFG,
        DZA

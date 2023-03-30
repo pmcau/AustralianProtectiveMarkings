@@ -36,10 +36,10 @@ public class Samples
             Caveats = new Caveats
             {
                 Codeword = "CodeWord",
-                ForeignGovernmentCaveat = "USA caveat",
+                ForeignGovernment = "USA caveat",
                 CaveatType = CaveatType.Cabinet,
                 ExclusiveFor = "person",
-                CountryCodeCaveat = CountryCode.Afghanistan
+                CountryCode = CountryCode.Afghanistan
             }
         };
         var result = marking.RenderSubject();
@@ -85,10 +85,10 @@ public class Samples
             Caveats = new Caveats
             {
                 Codeword = "CodeWord",
-                ForeignGovernmentCaveat = "USA caveat",
+                ForeignGovernment = "USA caveat",
                 CaveatType = CaveatType.Agao,
                 ExclusiveFor = "person",
-                CountryCodeCaveat = CountryCode.Afghanistan
+                CountryCode = CountryCode.Afghanistan
             }
         };
         var result = marking.RenderHeader();
@@ -187,7 +187,7 @@ public class Samples
                 {
                     "CodeWord"
                 },
-                ForeignGovernmentCaveats = new[]
+                ForeignGovernments = new[]
                 {
                     "USA caveat"
                 },
@@ -200,7 +200,7 @@ public class Samples
                 {
                     "person"
                 },
-                CountryCodeCaveats = new[]
+                CountryCodes = new[]
                 {
                     CountryCode.Afghanistan,
                     CountryCode.Algeria
