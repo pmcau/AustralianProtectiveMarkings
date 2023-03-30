@@ -2,37 +2,37 @@
 public class RendererTests
 {
     [Test]
-    public Task Subject()
+    public Task RenderEmailSubject()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderSubject());
+        return Verify(marking.RenderEmailSubjectSuffix());
     }
 
     [Test]
-    public Task Header()
+    public Task RenderEmailHeader()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderHeader());
+        return Verify(marking.RenderEmailHeader());
     }
 
     [Test]
-    public Task SubjectMin()
+    public Task RenderEmailSubjectMin()
     {
         var marking = new ProtectiveMarking
         {
             Classification = Classification.Secret
         };
-        return Verify(marking.RenderSubject());
+        return Verify(marking.RenderEmailSubjectSuffix());
     }
 
     [Test]
-    public Task HeaderMin()
+    public Task RenderEmailHeaderMin()
     {
         var marking = new ProtectiveMarking
         {
             Classification = Classification.Secret
         };
-        return Verify(marking.RenderHeader());
+        return Verify(marking.RenderEmailHeader());
     }
 
     static ProtectiveMarking BuildMarking() =>

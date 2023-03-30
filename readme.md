@@ -29,38 +29,38 @@ All string members follow the convention of:
  * Escape character is `\`. Where `:`, `\`, and  `,` can be escaped. A `\` not followed by a one of those is treated as a single '\'.
 
 
-## RenderSubject
+## RenderEmailSubjectSuffix
 
 
 ### Minimum content
 
-<!-- snippet: RenderSubjectMinimum -->
-<a id='snippet-rendersubjectminimum'></a>
+<!-- snippet: RenderEmailSubjectSuffixMinimum -->
+<a id='snippet-renderemailsubjectsuffixminimum'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
 };
-var result = marking.RenderSubject();
+var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L7-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-rendersubjectminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L7-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.RenderSubjectMinimum.verified.txt -->
-<a id='snippet-Samples.RenderSubjectMinimum.verified.txt'></a>
+<!-- snippet: Samples.RenderEmailSubjectSuffixMinimum.verified.txt -->
+<a id='snippet-Samples.RenderEmailSubjectSuffixMinimum.verified.txt'></a>
 ```txt
 [SEC=TOP-SECRET]
 ```
-<sup><a href='/src/Tests/Samples.RenderSubjectMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderSubjectMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ### Full content
 
-<!-- snippet: RenderSubjectFull -->
-<a id='snippet-rendersubjectfull'></a>
+<!-- snippet: RenderEmailSubjectSuffixFull -->
+<a id='snippet-renderemailsubjectsuffixfull'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -82,19 +82,19 @@ var marking = new ProtectiveMarking
         Country = Country.Afghanistan
     }
 };
-var result = marking.RenderSubject();
+var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L23-L47' title='Snippet source file'>snippet source</a> | <a href='#snippet-rendersubjectfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L23-L47' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.RenderSubjectFull.verified.txt -->
-<a id='snippet-Samples.RenderSubjectFull.verified.txt'></a>
+<!-- snippet: Samples.RenderEmailSubjectSuffixFull.verified.txt -->
+<a id='snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt'></a>
 ```txt
 [SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
 ```
-<sup><a href='/src/Tests/Samples.RenderSubjectFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderSubjectFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -103,33 +103,33 @@ Results in:
 
 ### Minimum content
 
-<!-- snippet: RenderHeaderMinimum -->
-<a id='snippet-renderheaderminimum'></a>
+<!-- snippet: RenderEmailHeaderMinimum -->
+<a id='snippet-renderemailheaderminimum'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
 };
-var result = marking.RenderHeader();
+var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L55-L63' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L55-L63' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.RenderHeaderMinimum.verified.txt -->
-<a id='snippet-Samples.RenderHeaderMinimum.verified.txt'></a>
+<!-- snippet: Samples.RenderEmailHeaderMinimum.verified.txt -->
+<a id='snippet-Samples.RenderEmailHeaderMinimum.verified.txt'></a>
 ```txt
 VER=2018.4, NS=gov.au, SEC=TOP-SECRET
 ```
-<sup><a href='/src/Tests/Samples.RenderHeaderMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderHeaderMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.RenderEmailHeaderMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ### Full content
 
-<!-- snippet: RenderHeaderFull -->
-<a id='snippet-renderheaderfull'></a>
+<!-- snippet: RenderEmailHeaderFull -->
+<a id='snippet-renderemailheaderfull'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -151,19 +151,19 @@ var marking = new ProtectiveMarking
         Country = Country.Afghanistan
     }
 };
-var result = marking.RenderHeader();
+var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L71-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L71-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.RenderHeaderFull.verified.txt -->
-<a id='snippet-Samples.RenderHeaderFull.verified.txt'></a>
+<!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
+<a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
 VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
-<sup><a href='/src/Tests/Samples.RenderHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -172,18 +172,18 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 
 ### Minimum content
 
-<!-- snippet: ParseMinimum -->
-<a id='snippet-parseminimum'></a>
+<!-- snippet: ParseEmailHeaderMinimumOmit -->
+<a id='snippet-parseemailheaderminimumomit'></a>
 ```cs
-var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
+var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L115-L119' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.ParseMinimum.verified.txt -->
-<a id='snippet-Samples.ParseMinimum.verified.txt'></a>
+<!-- snippet: Samples.ParseEmailHeaderMinimumOmit.verified.txt -->
+<a id='snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt'></a>
 ```txt
 {
   Classification: OfficialSensitive,
@@ -192,7 +192,7 @@ Results in:
   LegislativeSecrecy: false
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -200,29 +200,29 @@ Results in:
 
 The version and namespace is hard coded in the spec. Both can be omitted when parsing.
 
-<!-- snippet: ParseMinimumOmit -->
-<a id='snippet-parseminimumomit'></a>
+<!-- snippet: ParseEmailHeaderMinimumOmit -->
+<a id='snippet-parseemailheaderminimumomit'></a>
 ```cs
-var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ### Full content
 
-<!-- snippet: ParseFull -->
-<a id='snippet-parsefull'></a>
+<!-- snippet: ParseEmailHeaderFull -->
+<a id='snippet-parseemailheaderfull'></a>
 ```cs
-var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L127-L131' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L127-L131' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
 
-<!-- snippet: Samples.ParseFull.verified.txt -->
-<a id='snippet-Samples.ParseFull.verified.txt'></a>
+<!-- snippet: Samples.ParseEmailHeaderFull.verified.txt -->
+<a id='snippet-Samples.ParseEmailHeaderFull.verified.txt'></a>
 ```txt
 {
   Classification: TopSecret,
@@ -256,7 +256,7 @@ Results in:
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -264,10 +264,10 @@ Results in:
 
 For readability, newlines are allowed to delineate key value pairs:
 
-<!-- snippet: ParseFullNewlines -->
-<a id='snippet-parsefullnewlines'></a>
+<!-- snippet: ParseEmailHeaderFullNewlines -->
+<a id='snippet-parseemailheaderfullnewlines'></a>
 ```cs
-var protectiveMarking = Parser.Parse("""
+var protectiveMarking = Parser.ParseEmailHeader("""
     VER=2018.4,
     NS=gov.au,
     SEC=TOP-SECRET,
@@ -285,7 +285,7 @@ var protectiveMarking = Parser.Parse("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L139-L159' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L139-L159' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

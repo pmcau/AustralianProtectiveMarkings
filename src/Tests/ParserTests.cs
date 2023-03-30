@@ -58,7 +58,7 @@ public class ParserTests
         {
             try
             {
-                var protectiveMarking = Parser.Parse(item);
+                var protectiveMarking = Parser.ParseEmailHeader(item);
                 dictionary.Add(item, protectiveMarking);
             }
             catch (Exception exception)

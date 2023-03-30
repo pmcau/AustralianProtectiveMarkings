@@ -28,7 +28,7 @@ public static partial class Parser
     static bool AnyValue(this List<Pair> list, string value) =>
         list.Any(_ => _.Value == value);
 
-    public static ProtectiveMarking Parse(string input)
+    public static ProtectiveMarking ParseEmailHeader(string input)
     {
         var pairs = ParseKeyValues(input).ToList();
         var keys = pairs.Select(_ => _.Key).ToList();

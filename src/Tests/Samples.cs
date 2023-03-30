@@ -2,15 +2,15 @@
 public class Samples
 {
     [Test]
-    public Task RenderSubjectMinimum()
+    public Task RenderEmailSubjectSuffixMinimum()
     {
-        #region RenderSubjectMinimum
+        #region RenderEmailSubjectSuffixMinimum
 
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
         };
-        var result = marking.RenderSubject();
+        var result = marking.RenderEmailSubjectSuffix();
 
         #endregion
 
@@ -18,9 +18,9 @@ public class Samples
     }
 
     [Test]
-    public Task RenderSubjectFull()
+    public Task RenderEmailSubjectSuffixFull()
     {
-        #region RenderSubjectFull
+        #region RenderEmailSubjectSuffixFull
 
         var marking = new ProtectiveMarking
         {
@@ -42,7 +42,7 @@ public class Samples
                 Country = Country.Afghanistan
             }
         };
-        var result = marking.RenderSubject();
+        var result = marking.RenderEmailSubjectSuffix();
 
         #endregion
 
@@ -50,15 +50,15 @@ public class Samples
     }
 
     [Test]
-    public Task RenderHeaderMinimum()
+    public Task RenderEmailHeaderMinimum()
     {
-        #region RenderHeaderMinimum
+        #region RenderEmailHeaderMinimum
 
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
         };
-        var result = marking.RenderHeader();
+        var result = marking.RenderEmailHeader();
 
         #endregion
 
@@ -66,9 +66,9 @@ public class Samples
     }
 
     [Test]
-    public Task RenderHeaderFull()
+    public Task RenderEmailHeaderFull()
     {
-        #region RenderHeaderFull
+        #region RenderEmailHeaderFull
 
         var marking = new ProtectiveMarking
         {
@@ -90,7 +90,7 @@ public class Samples
                 Country = Country.Afghanistan
             }
         };
-        var result = marking.RenderHeader();
+        var result = marking.RenderEmailHeader();
 
         #endregion
 
@@ -98,11 +98,11 @@ public class Samples
     }
 
     [Test]
-    public Task ParseMinimumOmit()
+    public Task ParseEmailHeaderMinimumOmit()
     {
-        #region ParseMinimumOmit
+        #region ParseEmailHeaderMinimumOmit
 
-        var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -110,11 +110,11 @@ public class Samples
     }
 
     [Test]
-    public Task ParseMinimum()
+    public Task ParseEmailHeaderMinimum()
     {
-        #region ParseMinimum
+        #region ParseEmailHeaderMinimum
 
-        var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -122,11 +122,11 @@ public class Samples
     }
 
     [Test]
-    public Task ParseFull()
+    public Task ParseEmailHeaderFull()
     {
-        #region ParseFull
+        #region ParseEmailHeaderFull
 
-        var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+        var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 
         #endregion
 
@@ -134,11 +134,11 @@ public class Samples
     }
 
     [Test]
-    public Task ParseFullNewlines()
+    public Task ParseEmailHeaderFullNewlines()
     {
-        #region ParseFullNewlines
+        #region ParseEmailHeaderFullNewlines
 
-        var protectiveMarking = Parser.Parse("""
+        var protectiveMarking = Parser.ParseEmailHeader("""
             VER=2018.4,
             NS=gov.au,
             SEC=TOP-SECRET,
