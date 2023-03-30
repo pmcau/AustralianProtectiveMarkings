@@ -229,7 +229,7 @@ Results in:
     Codewords: [
       CodeWord
     ],
-    ForeignGovernmentCaveats: [
+    ForeignGovernments: [
       USA caveat
     ],
     CaveatTypes: [

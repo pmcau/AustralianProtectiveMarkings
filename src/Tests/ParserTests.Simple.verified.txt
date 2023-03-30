@@ -4,20 +4,17 @@
     Message: Leading whitespace in value ' TOP-SECRET'. Input: SEC= TOP-SECRET
   },
   SEC=OFFICIAL:Sensitive: {
-    SecurityClassification: OfficialSensitive,
-    Caveats: {}
+    SecurityClassification: OfficialSensitive
   },
   SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
     Type: Exception,
     Message: Expiry DownTo `TopSecret` must be less than the SecurityClassification of the ProtectiveMarking `Secret`.
   },
   SEC=TOP-SECRET: {
-    SecurityClassification: TopSecret,
-    Caveats: {}
+    SecurityClassification: TopSecret
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     InformationManagementMarkers: [
       LegalPrivilege
     ]
@@ -28,7 +25,6 @@
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legislative-Secrecy: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     InformationManagementMarkers: [
       LegalPrivilege,
       LegislativeSecrecy
@@ -157,7 +153,6 @@
   },
   SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     Expiry: {
       DownTo: Secret,
       GenDate: 2020-10-01 +0
@@ -173,7 +168,6 @@
   },
   SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     Expiry: {
       DownTo: Secret,
       Event: expiry
@@ -197,7 +191,6 @@
   },
   SEC=TOP-SECRET, NOTE=the comment: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     Comment: the comment
   },
   SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment: {
@@ -210,7 +203,6 @@
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com: {
     SecurityClassification: TopSecret,
-    Caveats: {},
     AuthorEmail: a@b.com
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com: {
@@ -246,7 +238,6 @@
     Message: A single security 'SEC' must be defined. Input: VER=2018.4, NS=gov.au
   },
   VER=2018.4, NS=gov.au, SEC=TOP-SECRET: {
-    SecurityClassification: TopSecret,
-    Caveats: {}
+    SecurityClassification: TopSecret
   }
 }

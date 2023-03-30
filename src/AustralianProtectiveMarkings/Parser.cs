@@ -37,18 +37,37 @@ public static class Parser
         return new()
         {
             SecurityClassification = ReadSecurity(input, pairs),
-            Caveats = new Caveats
-            {
-                Codewords = ReadCodewords(input, pairs),
-                ForeignGovernments = ReadForeignGovernmentCaveats(input, pairs),
-                CaveatTypes = ReadCaveatTypes(input, pairs),
-                ExclusiveFors = ReadExclusiveForCaveats(input, pairs),
-                CountryCodes = ReadCountryCaveats(input, pairs),
-            },
+            Caveats = ReadCaveats(input, pairs),
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
             AuthorEmail = ReadAuthorEmail(input, pairs),
             Comment = ReadComment(input, pairs),
             Expiry = ReadExpiry(input, pairs)
+        };
+    }
+
+    static Caveats? ReadCaveats(string input, List<Pair> pairs)
+    {
+        var codewords = ReadCodewords(input, pairs);
+        var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs);
+        var caveatTypes = ReadCaveatTypes(input, pairs);
+        var exclusiveFors = ReadExclusiveForCaveats(input, pairs);
+        var countryCodes = ReadCountryCaveats(input, pairs);
+        if (codewords == null &&
+            foreignGovernmentCaveats == null &&
+            caveatTypes == null &&
+            exclusiveFors == null &&
+            countryCodes == null)
+        {
+            return null;
+        }
+
+        return new()
+        {
+            Codewords = codewords,
+            ForeignGovernments = foreignGovernmentCaveats,
+            CaveatTypes = caveatTypes,
+            ExclusiveFors = exclusiveFors,
+            CountryCodes = countryCodes,
         };
     }
 
