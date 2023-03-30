@@ -108,12 +108,29 @@ public static class Renderer
             }
         }
 
-        if (caveats.CaveatTypes != null)
+        if (caveats.IsAgao)
         {
-            foreach (var caveat in caveats.CaveatTypes)
-            {
-                builder.Append($"CAVEAT={caveat.Render()}, ");
-            }
+            builder.Append("CAVEAT=RI:AGAO, ");
+        }
+        if (caveats.IsAusteo)
+        {
+            builder.Append("CAVEAT=RI:AUSTEO, ");
+        }
+        if (caveats.IsDelicateSource)
+        {
+            builder.Append("CAVEAT=RI:SH:DELICATE SOURCE, ");
+        }
+        if (caveats.IsOrcon)
+        {
+            builder.Append("CAVEAT=SH:ORCON, ");
+        }
+        if (caveats.IsCabinet)
+        {
+            builder.Append("CAVEAT=SH:CABINET, ");
+        }
+        if (caveats.IsNationalCabinet)
+        {
+            builder.Append("CAVEAT=SH:NATIONAL-CABINET, ");
         }
 
         if (caveats.ExclusiveFors != null)
@@ -143,18 +160,6 @@ public static class Renderer
             SecurityClassification.Official => "OFFICIAL",
             SecurityClassification.OfficialSensitive => "OFFICIAL:Sensitive",
             _ => throw new ArgumentOutOfRangeException(nameof(classification), classification, null)
-        };
-
-    public static string Render(this CaveatType type) =>
-        type switch
-        {
-            CaveatType.Agao => "RI:AGAO",
-            CaveatType.Austeo => "RI:AUSTEO",
-            CaveatType.DelicateSource => "SH:DELICATE SOURCE",
-            CaveatType.Orcon => "SH:ORCON",
-            CaveatType.Cabinet => "SH:CABINET",
-            CaveatType.NationalCabinet => "SH:NATIONAL-CABINET1",
-            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         };
 
     public static string Render(this InformationManagementMarker marker) =>

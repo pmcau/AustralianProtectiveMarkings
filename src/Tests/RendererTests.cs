@@ -59,11 +59,8 @@ public class RendererTests
             {
                 "usa caveat"
             },
-            CaveatTypes = new[]
-            {
-                CaveatType.Agao,
-                CaveatType.Cabinet,
-            },
+            IsAgao = true,
+            IsCabinet = true,
             ExclusiveFors = new[]
             {
                 "person"

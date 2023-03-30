@@ -25,11 +25,8 @@ public class Tests
                 {
                     "usa caveat"
                 },
-                CaveatTypes = new[]
-                {
-                    CaveatType.Agao,
-                    CaveatType.Cabinet,
-                },
+                IsAgao = true,
+                IsCabinet = true,
                 ExclusiveFors = new[]
                 {
                     "person"

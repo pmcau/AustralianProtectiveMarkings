@@ -39,7 +39,13 @@
     Caveats: {
       Codewords: [
         code word
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
@@ -47,7 +53,13 @@
     Caveats: {
       Codewords: [
         codeword1
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
@@ -60,7 +72,13 @@
       Codewords: [
         codeword1,
         codeword2
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
@@ -68,7 +86,13 @@
     Caveats: {
       ForeignGovernments: [
         usa caveat
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
@@ -76,7 +100,13 @@
     Caveats: {
       CountryCodes: [
         Angola
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
@@ -89,7 +119,13 @@
       CountryCodes: [
         Angola,
         Anguilla
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
@@ -102,28 +138,46 @@
       CountryCodes: [
         Angola,
         Anguilla
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CaveatTypes: [
-        Agao
-      ]
+      IsAgao: true,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
-    Type: Exception,
-    Message: Only one caveat of type 'RI:AGAO' allowed. Input: SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO
+    SecurityClassification: TopSecret,
+    Caveats: {
+      IsAgao: true,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
+    }
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CaveatTypes: [
-        Agao,
-        Cabinet
-      ]
+      IsAgao: true,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: true,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
@@ -131,7 +185,13 @@
     Caveats: {
       ExclusiveFors: [
          person
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
@@ -140,7 +200,13 @@
       ExclusiveFors: [
          person1,
          person2
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=TOP-SECRET, DOWNTO=SECRET: {
@@ -222,7 +288,13 @@
     Caveats: {
       Codewords: [
         codeword1
-      ]
+      ],
+      IsAgao: false,
+      IsAusteo: false,
+      IsDelicateSource: false,
+      IsOrcon: false,
+      IsCabinet: false,
+      IsNationalCabinet: false
     }
   },
   SEC=unknown: {

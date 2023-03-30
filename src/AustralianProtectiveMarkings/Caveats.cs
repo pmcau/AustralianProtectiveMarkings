@@ -71,28 +71,6 @@ public readonly record struct Caveats
         }
     }
 
-    public IReadOnlyCollection<CaveatType>? CaveatTypes { get; init; }
-
-    public CaveatType CaveatType
-    {
-        init
-        {
-            GuardDuplicateCaveatTypes();
-            CaveatTypes = new[]
-            {
-                value
-            };
-        }
-    }
-
-    void GuardDuplicateCaveatTypes()
-    {
-        if (CaveatTypes != null)
-        {
-            throw new($"Use only {nameof(CaveatType)} or {nameof(CaveatTypes)}. Not both.");
-        }
-    }
-
     readonly IReadOnlyCollection<string>? exclusiveFors;
     public IReadOnlyCollection<string>? ExclusiveFors
     {
@@ -145,4 +123,11 @@ public readonly record struct Caveats
             throw new($"Use only {nameof(CountryCode)} or {nameof(CountryCodes)}. Not both.");
         }
     }
+
+    public bool IsAgao { get; init; }
+    public bool IsAusteo { get; init; }
+    public bool IsDelicateSource { get; init; }
+    public bool IsOrcon { get; init; }
+    public bool IsCabinet { get; init; }
+    public bool IsNationalCabinet { get; init; }
 }

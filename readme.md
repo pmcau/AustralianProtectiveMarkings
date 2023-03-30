@@ -77,7 +77,7 @@ var marking = new ProtectiveMarking
     {
         Codeword = "CodeWord",
         ForeignGovernment = "USA caveat",
-        CaveatType = CaveatType.Cabinet,
+        IsCabinet = true,
         ExclusiveFor = "person",
         CountryCode = CountryCode.Afghanistan
     }
@@ -147,7 +147,7 @@ var marking = new ProtectiveMarking
     {
         Codeword = "CodeWord",
         ForeignGovernment = "USA caveat",
-        CaveatType = CaveatType.Agao,
+        IsAgao = true,
         ExclusiveFor = "person",
         CountryCode = CountryCode.Afghanistan
     }
@@ -231,15 +231,17 @@ Results in:
     ForeignGovernments: [
       USA caveat
     ],
-    CaveatTypes: [
-      Agao,
-      Cabinet
-    ],
     ExclusiveFors: [
        person,
        AFG,
        DZA
-    ]
+    ],
+    IsAgao: true,
+    IsAusteo: false,
+    IsDelicateSource: false,
+    IsOrcon: false,
+    IsCabinet: true,
+    IsNationalCabinet: false
   },
   Expiry: {
     DownTo: Official,
@@ -252,7 +254,7 @@ Results in:
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

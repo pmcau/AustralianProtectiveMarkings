@@ -37,7 +37,7 @@ public class Samples
             {
                 Codeword = "CodeWord",
                 ForeignGovernment = "USA caveat",
-                CaveatType = CaveatType.Cabinet,
+                IsCabinet = true,
                 ExclusiveFor = "person",
                 CountryCode = CountryCode.Afghanistan
             }
@@ -86,7 +86,7 @@ public class Samples
             {
                 Codeword = "CodeWord",
                 ForeignGovernment = "USA caveat",
-                CaveatType = CaveatType.Agao,
+                IsAgao = true,
                 ExclusiveFor = "person",
                 CountryCode = CountryCode.Afghanistan
             }
@@ -191,11 +191,8 @@ public class Samples
                 {
                     "USA caveat"
                 },
-                CaveatTypes = new[]
-                {
-                    CaveatType.Agao,
-                    CaveatType.Cabinet,
-                },
+                IsAgao = true,
+                IsCabinet = true,
                 ExclusiveFors = new[]
                 {
                     "person"

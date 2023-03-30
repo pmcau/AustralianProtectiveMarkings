@@ -7,17 +7,19 @@
     ForeignGovernments: [
       usa caveat
     ],
-    CaveatTypes: [
-      Agao,
-      Cabinet
-    ],
     ExclusiveFors: [
       person
     ],
     CountryCodes: [
       Afghanistan,
       Algeria
-    ]
+    ],
+    IsAgao: true,
+    IsAusteo: false,
+    IsDelicateSource: false,
+    IsOrcon: false,
+    IsCabinet: true,
+    IsNationalCabinet: false
   },
   Expiry: {
     DownTo: Official,

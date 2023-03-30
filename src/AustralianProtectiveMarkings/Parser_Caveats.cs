@@ -8,25 +8,28 @@ public static partial class Parser
         {
             return null;
         }
+
         var codewords = ReadCodewords(input, caveats);
         var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, caveats);
-        var caveatTypes = ReadCaveatTypes(input, caveats);
+        var isAgao = caveats.Any(_ => _.Value == "RI:AGAO");
+        var isAusteo = caveats.Any(_ => _.Value == "RI:AUSTEO");
+        var isDelicateSource = caveats.Any(_ => _.Value == "SH:DELICATE SOURCE");
+        var isOrcon = caveats.Any(_ => _.Value == "SH:ORCON");
+        var isCabinet = caveats.Any(_ => _.Value == "SH:CABINET");
+        var isNationalCabinet = caveats.Any(_ => _.Value == "SH:NATIONAL-CABINET");
         var exclusiveFors = ReadExclusiveForCaveats(input, caveats);
         var countryCodes = ReadCountryCaveats(input, caveats);
-        if (codewords == null &&
-            foreignGovernmentCaveats == null &&
-            caveatTypes == null &&
-            exclusiveFors == null &&
-            countryCodes == null)
-        {
-            return null;
-        }
 
         return new()
         {
+            IsAgao = isAgao,
+            IsAusteo = isAusteo,
+            IsDelicateSource = isDelicateSource,
+            IsOrcon = isOrcon,
+            IsCabinet = isCabinet,
+            IsNationalCabinet = isNationalCabinet,
             Codewords = codewords,
             ForeignGovernments = foreignGovernmentCaveats,
-            CaveatTypes = caveatTypes,
             ExclusiveFors = exclusiveFors,
             CountryCodes = countryCodes,
         };
@@ -42,29 +45,6 @@ public static partial class Parser
 
         ThrowForDuplicates(input, codewordCaveats, "CAVEAT=C");
         return codewordCaveats.Select(_ => _.Substring(2)).ToList();
-    }
-
-    static List<CaveatType>? ReadCaveatTypes(string input, List<Pair> caveats)
-    {
-        var caveatTypes = new List<CaveatType>();
-        foreach (CaveatType caveatType in Enum.GetValues(typeof(CaveatType)))
-        {
-            var caveatTpeString = caveatType.Render();
-            var codewordCaveats = caveats.Where(_ => _.Value == caveatTpeString).ToList();
-            if (codewordCaveats.Count == 0)
-            {
-                continue;
-            }
-
-            if (codewordCaveats.Count > 1)
-            {
-                throw new($"Only one caveat of type '{caveatTpeString}' allowed. Input: {input}");
-            }
-
-            caveatTypes.Add(caveatType);
-        }
-
-        return caveatTypes;
     }
 
     static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)

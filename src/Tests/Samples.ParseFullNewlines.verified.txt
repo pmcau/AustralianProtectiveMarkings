@@ -7,15 +7,17 @@
     ForeignGovernments: [
       USA caveat
     ],
-    CaveatTypes: [
-      Agao,
-      Cabinet
-    ],
     ExclusiveFors: [
        person,
        AFG,
        DZA
-    ]
+    ],
+    IsAgao: true,
+    IsAusteo: false,
+    IsDelicateSource: false,
+    IsOrcon: false,
+    IsCabinet: true,
+    IsNationalCabinet: false
   },
   Expiry: {
     DownTo: Official,
