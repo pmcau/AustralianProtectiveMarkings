@@ -48,6 +48,8 @@ public class ParserTests
             "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL",
             "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET",
             "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET",
+            "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
+            "SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
         };
 
         var dictionary = new Dictionary<string, object>();

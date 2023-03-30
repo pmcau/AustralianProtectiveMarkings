@@ -6,6 +6,10 @@
   SEC=OFFICIAL:Sensitive: {
     SecurityClassification: OfficialSensitive
   },
+  SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
+    Type: Exception,
+    Message: Expiry DownTo `TopSecret` must be less than the SecurityClassification of the ProtectiveMarking `Secret`.
+  },
   SEC=TOP-SECRET: {
     SecurityClassification: TopSecret
   },
@@ -131,6 +135,10 @@
       DownTo: Secret,
       GenDate: 2020-10-01 +0
     }
+  },
+  SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
+    Type: Exception,
+    Message: Expiry DownTo `TopSecret` must be less than the SecurityClassification of the ProtectiveMarking `TopSecret`.
   },
   SEC=TOP-SECRET, EXPIRES=expiry: {
     Type: Exception,

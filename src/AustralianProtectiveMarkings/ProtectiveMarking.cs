@@ -1,15 +1,15 @@
 ﻿//https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf
 namespace AustralianProtectiveMarkings;
 
-public readonly record struct ProtectiveMarking
+/// <summary>
+/// 
+/// </summary>
+/// <param name="SecurityClassification">
+/// Corresponds to the PSPF policy: Sensitive and classified information’s classifications.
+/// https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information
+/// </param>
+public readonly record struct ProtectiveMarking(SecurityClassification SecurityClassification)
 {
-    /// <summary>
-    /// Corresponds to the PSPF policy: Sensitive and classified information’s classifications.
-    /// https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information
-    /// </summary>
-    /// <remarks>Maps to SEC</remarks>
-    public required SecurityClassification SecurityClassification { get; init; }
-
     readonly IReadOnlyCollection<string>? codewordCaveats;
     public IReadOnlyCollection<string>? CodewordCaveats
     {
@@ -60,7 +60,7 @@ public readonly record struct ProtectiveMarking
 
             if (value.Value.DownTo >= SecurityClassification)
             {
-                throw new($"Expiry DownTo {value.Value.DownTo} must be less than the SecurityClassification or the ProtectiveMarking {SecurityClassification}.");
+                throw new($"Expiry DownTo `{value.Value.DownTo}` must be less than the SecurityClassification of the ProtectiveMarking `{SecurityClassification}`.");
             }
 
             var @event = value.Value.Event;
