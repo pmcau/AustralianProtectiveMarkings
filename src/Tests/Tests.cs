@@ -16,6 +16,7 @@ public class Tests
             {
                 InformationManagementMarker.LegalPrivilege
             },
+            Caveats = new Caveats{
                 CodewordCaveats = new[]
                 {
                     "codeword1"
@@ -37,7 +38,7 @@ public class Tests
                 {
                     CountryCode.Afghanistan,
                     CountryCode.Algeria
-                }
+                }}
         };
         var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);

@@ -33,11 +33,14 @@ public class Samples
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
-            CodewordCaveat = "CodeWord",
-            ForeignGovernmentCaveat = "USA caveat",
-            CaveatType = CaveatType.Cabinet,
-            ExclusiveForCaveat = "person",
-            CountryCodeCaveat = CountryCode.Afghanistan
+            Caveats = new Caveats
+            {
+                CodewordCaveat = "CodeWord",
+                ForeignGovernmentCaveat = "USA caveat",
+                CaveatType = CaveatType.Cabinet,
+                ExclusiveForCaveat = "person",
+                CountryCodeCaveat = CountryCode.Afghanistan
+            }
         };
         var result = marking.RenderSubject();
 
@@ -45,6 +48,7 @@ public class Samples
 
         return Verify(result);
     }
+
     [Test]
     public Task RenderHeaderMinimum()
     {
@@ -77,11 +81,15 @@ public class Samples
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
-            CodewordCaveat = "CodeWord",
-            ForeignGovernmentCaveat = "USA caveat",
-            CaveatType = CaveatType.Agao,
-            ExclusiveForCaveat = "person",
-            CountryCodeCaveat = CountryCode.Afghanistan
+
+            Caveats = new Caveats
+            {
+                CodewordCaveat = "CodeWord",
+                ForeignGovernmentCaveat = "USA caveat",
+                CaveatType = CaveatType.Agao,
+                ExclusiveForCaveat = "person",
+                CountryCodeCaveat = CountryCode.Afghanistan
+            }
         };
         var result = marking.RenderHeader();
 
@@ -125,6 +133,7 @@ public class Samples
 
         return Verify(protectiveMarking);
     }
+
     [Test]
     public Task ParseFullNewlines()
     {
@@ -172,30 +181,35 @@ public class Samples
             {
                 InformationManagementMarker.LegalPrivilege
             },
-            CodewordCaveats = new[]
+            Caveats = new Caveats
             {
-                "CodeWord"
-            },
-            ForeignGovernmentCaveats = new[]
-            {
-                "USA caveat"
-            },
-            CaveatTypes = new[]
-            {
-                CaveatType.Agao,
-                CaveatType.Cabinet,
-            },
-            ExclusiveForCaveats = new[]
-            {
-                "person"
-            },
-            CountryCodeCaveats = new[]
-            {
-                CountryCode.Afghanistan,
-                CountryCode.Algeria
+                CodewordCaveats = new[]
+                {
+                    "CodeWord"
+                },
+                ForeignGovernmentCaveats = new[]
+                {
+                    "USA caveat"
+                },
+                CaveatTypes = new[]
+                {
+                    CaveatType.Agao,
+                    CaveatType.Cabinet,
+                },
+                ExclusiveForCaveats = new[]
+                {
+                    "person"
+                },
+                CountryCodeCaveats = new[]
+                {
+                    CountryCode.Afghanistan,
+                    CountryCode.Algeria
+                }
             }
         };
+
         #endregion
+
         return Verify(marking);
     }
 }

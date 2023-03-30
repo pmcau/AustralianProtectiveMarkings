@@ -1,20 +1,22 @@
 ﻿{
   SecurityClassification: TopSecret,
-  CodewordCaveats: [
-    CodeWord
-  ],
-  ForeignGovernmentCaveats: [
-    USA caveat
-  ],
-  CaveatTypes: [
-    Agao,
-    Cabinet
-  ],
-  ExclusiveForCaveats: [
-     person,
-     AFG,
-     DZA
-  ],
+  Caveats: {
+    CodewordCaveats: [
+      CodeWord
+    ],
+    ForeignGovernmentCaveats: [
+      USA caveat
+    ],
+    CaveatTypes: [
+      Agao,
+      Cabinet
+    ],
+    ExclusiveForCaveats: [
+       person,
+       AFG,
+       DZA
+    ]
+  },
   Expiry: {
     DownTo: Official,
     GenDate: DateTimeOffset_1

@@ -1,22 +1,24 @@
 ﻿{
   SecurityClassification: TopSecret,
-  CodewordCaveats: [
-    CodeWord
-  ],
-  ForeignGovernmentCaveats: [
-    USA caveat
-  ],
-  CaveatTypes: [
-    Agao,
-    Cabinet
-  ],
-  ExclusiveForCaveats: [
-    person
-  ],
-  CountryCodeCaveats: [
-    Afghanistan,
-    Algeria
-  ],
+  Caveats: {
+    CodewordCaveats: [
+      CodeWord
+    ],
+    ForeignGovernmentCaveats: [
+      USA caveat
+    ],
+    CaveatTypes: [
+      Agao,
+      Cabinet
+    ],
+    ExclusiveForCaveats: [
+      person
+    ],
+    CountryCodeCaveats: [
+      Afghanistan,
+      Algeria
+    ]
+  },
   Expiry: {
     DownTo: Official,
     GenDate: DateTimeOffset_1

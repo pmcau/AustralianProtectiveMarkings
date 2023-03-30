@@ -50,6 +50,7 @@ public class RendererTests
             {
                 InformationManagementMarker.LegalPrivilege
             },
+            Caveats = new Caveats{
             CodewordCaveats = new[]
             {
                 "codeword1"
@@ -71,6 +72,6 @@ public class RendererTests
             {
                 CountryCode.Afghanistan,
                 CountryCode.Algeria
-            }
+            }}
         };
 }

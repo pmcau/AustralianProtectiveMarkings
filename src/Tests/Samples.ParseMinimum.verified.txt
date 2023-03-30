@@ -1,3 +1,4 @@
 ﻿{
-  SecurityClassification: OfficialSensitive
+  SecurityClassification: OfficialSensitive,
+  Caveats: {}
 }
