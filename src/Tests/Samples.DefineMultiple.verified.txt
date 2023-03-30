@@ -1,5 +1,5 @@
 ﻿{
-  SecurityClassification: TopSecret,
+  Classification: TopSecret,
   Caveats: {
     Codewords: [
       CodeWord

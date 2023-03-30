@@ -39,7 +39,7 @@ All string members follow the convention of:
 ```cs
 var marking = new ProtectiveMarking
 {
-    SecurityClassification = SecurityClassification.TopSecret,
+    Classification = Classification.TopSecret,
 };
 var result = marking.RenderSubject();
 ```
@@ -64,10 +64,10 @@ Results in:
 ```cs
 var marking = new ProtectiveMarking
 {
-    SecurityClassification = SecurityClassification.TopSecret,
+    Classification = Classification.TopSecret,
     Expiry = new Expiry
     {
-        DownTo = SecurityClassification.Official,
+        DownTo = Classification.Official,
         GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
     },
     Comment = "the comments",
@@ -108,7 +108,7 @@ Results in:
 ```cs
 var marking = new ProtectiveMarking
 {
-    SecurityClassification = SecurityClassification.TopSecret,
+    Classification = Classification.TopSecret,
 };
 var result = marking.RenderHeader();
 ```
@@ -133,10 +133,10 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET
 ```cs
 var marking = new ProtectiveMarking
 {
-    SecurityClassification = SecurityClassification.TopSecret,
+    Classification = Classification.TopSecret,
     Expiry = new Expiry
     {
-        DownTo = SecurityClassification.Official,
+        DownTo = Classification.Official,
         GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
     },
     Comment = "the comments",
@@ -186,7 +186,7 @@ Results in:
 <a id='snippet-Samples.ParseMinimum.verified.txt'></a>
 ```txt
 {
-  SecurityClassification: OfficialSensitive,
+  Classification: OfficialSensitive,
   PersonalPrivacy: false,
   LegalPrivilege: false,
   LegislativeSecrecy: false
@@ -225,7 +225,7 @@ Results in:
 <a id='snippet-Samples.ParseFull.verified.txt'></a>
 ```txt
 {
-  SecurityClassification: TopSecret,
+  Classification: TopSecret,
   Caveats: {
     Codewords: [
       CodeWord

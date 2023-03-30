@@ -4,7 +4,7 @@ public record struct Expiry
 {
     readonly string? @event;
     readonly DateTimeOffset? genDate;
-    public required SecurityClassification DownTo { get; init; }
+    public required Classification DownTo { get; init; }
 
     public DateTimeOffset? GenDate
     {

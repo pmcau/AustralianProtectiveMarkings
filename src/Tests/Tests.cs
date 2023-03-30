@@ -6,10 +6,10 @@ public class Tests
     {
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.Secret,
+            Classification = Classification.Secret,
             Expiry = new Expiry
             {
-                DownTo = SecurityClassification.Official,
+                DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(new(2020, 10, 1)),
             },
             LegalPrivilege = true,

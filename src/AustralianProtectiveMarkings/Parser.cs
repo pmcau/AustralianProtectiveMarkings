@@ -41,7 +41,7 @@ public static partial class Parser
 
         return new()
         {
-            SecurityClassification = ReadSecurity(input, pairs),
+            Classification = ReadClassification(input, pairs),
             Caveats = ReadCaveats(input, pairs),
             PersonalPrivacy = access.AnyValue("Personal-Privacy"),
             LegalPrivilege = access.AnyValue("Legal-Privilege"),
@@ -119,7 +119,7 @@ public static partial class Parser
         }
     }
 
-    static SecurityClassification ReadSecurity(string input, List<Pair> pairs)
+    static Classification ReadClassification(string input, List<Pair> pairs)
     {
         var security = pairs.Where(_ => _.Key == "SEC").ToList();
         if (security.Count != 1)
@@ -173,15 +173,15 @@ public static partial class Parser
         }
     }
 
-    static SecurityClassification ParseClassification(string value) =>
+    static Classification ParseClassification(string value) =>
         value switch
         {
-            "TOP-SECRET" => SecurityClassification.TopSecret,
-            "SECRET" => SecurityClassification.Secret,
-            "PROTECTED" => SecurityClassification.Protected,
-            "UNOFFICIAL" => SecurityClassification.Unofficial,
-            "OFFICIAL" => SecurityClassification.Official,
-            "OFFICIAL:Sensitive" => SecurityClassification.OfficialSensitive,
+            "TOP-SECRET" => Classification.TopSecret,
+            "SECRET" => Classification.Secret,
+            "PROTECTED" => Classification.Protected,
+            "UNOFFICIAL" => Classification.Unofficial,
+            "OFFICIAL" => Classification.Official,
+            "OFFICIAL:Sensitive" => Classification.OfficialSensitive,
             _ => throw new($"Unknown classification: {value}")
         };
 

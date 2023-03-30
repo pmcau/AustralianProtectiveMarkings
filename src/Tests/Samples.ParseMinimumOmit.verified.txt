@@ -1,5 +1,5 @@
 ﻿{
-  SecurityClassification: OfficialSensitive,
+  Classification: OfficialSensitive,
   PersonalPrivacy: false,
   LegalPrivilege: false,
   LegislativeSecrecy: false

@@ -1,5 +1,5 @@
 ﻿{
-  SecurityClassification: Secret,
+  Classification: Secret,
   Caveats: {
     Codewords: [
       codeword1

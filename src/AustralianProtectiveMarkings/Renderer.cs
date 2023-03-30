@@ -28,7 +28,7 @@ public static class Renderer
     }
 
     static void RenderClassification(ProtectiveMarking marking, StringBuilder builder) =>
-        builder.Append($"SEC={Render(marking.SecurityClassification)}, ");
+        builder.Append($"SEC={Render(marking.Classification)}, ");
 
     static void RenderInformationManagementMarkers(ProtectiveMarking marking, StringBuilder builder)
     {
@@ -153,15 +153,15 @@ public static class Renderer
         }
     }
 
-    public static string Render(this SecurityClassification classification) =>
+    public static string Render(this Classification classification) =>
         classification switch
         {
-            SecurityClassification.Protected => "PROTECTED",
-            SecurityClassification.Secret => "SECRET",
-            SecurityClassification.TopSecret => "TOP-SECRET",
-            SecurityClassification.Unofficial => "UNOFFICIAL",
-            SecurityClassification.Official => "OFFICIAL",
-            SecurityClassification.OfficialSensitive => "OFFICIAL:Sensitive",
+            Classification.Protected => "PROTECTED",
+            Classification.Secret => "SECRET",
+            Classification.TopSecret => "TOP-SECRET",
+            Classification.Unofficial => "UNOFFICIAL",
+            Classification.Official => "OFFICIAL",
+            Classification.OfficialSensitive => "OFFICIAL:Sensitive",
             _ => throw new ArgumentOutOfRangeException(nameof(classification), classification, null)
         };
 }

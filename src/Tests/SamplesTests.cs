@@ -8,7 +8,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
         };
         var result = marking.RenderSubject();
 
@@ -24,10 +24,10 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
             Expiry = new Expiry
             {
-                DownTo = SecurityClassification.Official,
+                DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
             Comment = "the comments",
@@ -56,7 +56,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
         };
         var result = marking.RenderHeader();
 
@@ -72,10 +72,10 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
             Expiry = new Expiry
             {
-                DownTo = SecurityClassification.Official,
+                DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
             Comment = "the comments",
@@ -168,10 +168,10 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
             Expiry = new Expiry
             {
-                DownTo = SecurityClassification.Official,
+                DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
             Comment = "the comments",

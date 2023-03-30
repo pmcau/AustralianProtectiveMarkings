@@ -20,7 +20,7 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.Secret
+            Classification = Classification.Secret
         };
         return Verify(marking.RenderSubject());
     }
@@ -30,7 +30,7 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking
         {
-            SecurityClassification = SecurityClassification.Secret
+            Classification = Classification.Secret
         };
         return Verify(marking.RenderHeader());
     }
@@ -38,10 +38,10 @@ public class RendererTests
     static ProtectiveMarking BuildMarking() =>
         new()
         {
-            SecurityClassification = SecurityClassification.TopSecret,
+            Classification = Classification.TopSecret,
             Expiry = new Expiry
             {
-                DownTo = SecurityClassification.Official,
+                DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
             },
             Comment = "the comments",
