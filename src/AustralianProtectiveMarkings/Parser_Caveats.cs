@@ -53,7 +53,10 @@ public static partial class Parser
     static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)
     {
         var prefix = "FG:";
-        var fgCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        var fgCaveats = caveats
+            .Select(_ => _.Value)
+            .Where(_ => _.StartsWith(prefix))
+            .ToList();
         if (fgCaveats.Count == 0)
         {
             return null;
@@ -66,7 +69,10 @@ public static partial class Parser
     static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
     {
         var prefix = "REL:";
-        var countryCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        var countryCaveats = caveats
+            .Select(_ => _.Value)
+            .Where(_ => _.StartsWith(prefix))
+            .ToList();
         if (countryCaveats.Count == 0)
         {
             return null;
@@ -84,7 +90,10 @@ public static partial class Parser
     static List<string>? ReadExclusiveForCaveats(string input, List<Pair> caveats)
     {
         var prefix = "SH:EXCLUSIVE-FOR";
-        var exclusiveForCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
+        var exclusiveForCaveats = caveats
+            .Select(_ => _.Value)
+            .Where(_ => _.StartsWith(prefix))
+            .ToList();
         if (exclusiveForCaveats.Count == 0)
         {
             return null;
