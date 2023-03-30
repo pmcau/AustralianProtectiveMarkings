@@ -17,7 +17,7 @@ https://nuget.org/packages/AustralianProtectiveMarkings/
 
 The model for handling a protective marking is `AustralianProtectiveMarkings.ProtectiveMarking`.
 
-The `ProtectiveMarking` class structure is desisg to be serialization friendly. So it can be used as part of data contracts.
+The `ProtectiveMarking` class structure is designed to be serialization friendly. So it can be used as part of data contracts.
 
 All string members follow the convention of:
 
