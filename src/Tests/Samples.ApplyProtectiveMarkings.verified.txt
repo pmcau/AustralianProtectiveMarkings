@@ -1,0 +1,24 @@
+﻿{
+  From: {
+    DisplayName: ,
+    User: from,
+    Host: mail.com,
+    Address: from@mail.com
+  },
+  To: [
+    {
+      DisplayName: ,
+      User: to,
+      Host: mail.com,
+      Address: to@mail.com
+    }
+  ],
+  Subject: The subject[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
+  Headers: {
+    X-Protective-Marking: VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege, NOTE=the comments
+  },
+  Body: The body,
+  BodyEncoding: us-ascii,
+  BodyTransferEncoding: Unknown,
+  IsBodyHtml: false
+}

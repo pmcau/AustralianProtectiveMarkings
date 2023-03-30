@@ -31,6 +31,17 @@ All string members follow the convention of:
 
 ## RenderEmailSubjectSuffix
 
+Converts a protected marking to text that should be appended to an email subject line.
+
+See "Subject Field Marking" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf)
+
+> In this syntax, the protective marking is placed in the subject field of the message (RFC5322 ‘Subject’). As per
+> RFC5322, an Internet email message can have at most one subject field. Allowing for no more than one email protective
+> marking in the subject line minimises confusion and potential conflict.
+> 
+> A Subject Field Marking is less sophisticated than an Internet Message Header Extension as it is possible to
+> manipulate an email’s subject during message generation or transport. However, it is easy to apply as a human
+> user can construct (and interpret) the protective marking without the need for additional tools.
 
 ### Minimum content
 
@@ -43,7 +54,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/Samples.cs#L7-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L9-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -84,7 +95,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/Samples.cs#L23-L47' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L25-L49' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -92,13 +103,26 @@ Results in:
 <!-- snippet: Samples.RenderEmailSubjectSuffixFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt'></a>
 ```txt
-[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
+[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ## RenderHeader
+
+Converts a protected marking to text that should be added as the value opf the `X-Protective-Marking` email header.
+
+See "Internet Message Header Extension" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf)
+
+> In this syntax, the protective marking is carried as a custom Internet Message Header Extension
+> ‘X-Protective-Marking’. Allowing for no more than one ‘X-Protective-Marking’ field minimises confusion and potential
+> conflict.
+> 
+> Using an Internet Message Header Extension is more sophisticated than a Subject Field Marking. It is designed for
+> construction and parsing by email agents (clients, gateways and servers) as they have accessto internet message
+> headers. In this way a richer syntax can be used and email agents can perform more complex handling based on
+> the protective marking
 
 
 ### Minimum content
@@ -112,7 +136,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/Samples.cs#L55-L63' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L57-L65' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -153,7 +177,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/Samples.cs#L71-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L73-L97' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -161,7 +185,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
-VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
+VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -177,7 +201,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 ```cs
 var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/Samples.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -205,7 +229,7 @@ The version and namespace is hard coded in the spec. Both can be omitted when pa
 ```cs
 var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/Samples.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -216,7 +240,7 @@ var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```cs
 var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/Samples.cs#L127-L131' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L160-L164' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -285,7 +309,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L139-L159' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L172-L192' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

@@ -1,3 +1,5 @@
+using System.Net.Mail;
+
 [TestFixture]
 public class Samples
 {
@@ -119,6 +121,37 @@ public class Samples
         #endregion
 
         return Verify(protectiveMarking);
+    }
+
+    [Test]
+    public Task ApplyProtectiveMarkings()
+    {
+        #region ApplyProtectiveMarkings
+
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.TopSecret,
+            Comment = "the comments",
+            LegalPrivilege = true,
+            Caveats = new Caveats
+            {
+                Codeword = "CodeWord",
+                Cabinet = true,
+                ExclusiveFor = "person",
+                Country = Country.Afghanistan
+            }
+        };
+
+        var mail = new MailMessage(
+            from: "from@mail.com",
+            to: "to@mail.com",
+            subject: "The subject",
+            body: "The body");
+        mail.ApplyProtectiveMarkings(marking);
+
+        #endregion
+
+        return Verify(mail);
     }
 
     [Test]

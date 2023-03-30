@@ -1,4 +1,6 @@
-﻿namespace AustralianProtectiveMarkings;
+﻿using System.Net.Mail;
+
+namespace AustralianProtectiveMarkings;
 
 public static class Renderer
 {
@@ -169,4 +171,10 @@ public static class Renderer
             Classification.OfficialSensitive => "OFFICIAL:Sensitive",
             _ => throw new ArgumentOutOfRangeException(nameof(classification), classification, null)
         };
+
+    public static void ApplyProtectiveMarkings(this MailMessage mail, ProtectiveMarking marking)
+    {
+        mail.Subject += marking.RenderEmailSubjectSuffix();
+        mail.Headers["X-Protective-Marking"] = marking.RenderEmailHeader();
+    }
 }

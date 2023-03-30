@@ -47,25 +47,27 @@ public class RendererTests
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             LegalPrivilege = true,
-            Caveats = new Caveats{
-            Codewords = new[]
+            Caveats = new Caveats
             {
-                "codeword1"
-            },
-            ForeignGovernments = new[]
-            {
-                "usa caveat"
-            },
-            Agao = true,
-            Cabinet = true,
-            ExclusiveFors = new[]
-            {
-                "person"
-            },
-            CountryCodes = new[]
-            {
-                Country.Afghanistan,
-                Country.Algeria
-            }}
+                Codewords = new[]
+                {
+                    "codeword1"
+                },
+                ForeignGovernments = new[]
+                {
+                    "usa caveat"
+                },
+                Agao = true,
+                Cabinet = true,
+                ExclusiveFors = new[]
+                {
+                    "person"
+                },
+                CountryCodes = new[]
+                {
+                    Country.Afghanistan,
+                    Country.Algeria
+                }
+            }
         };
 }
