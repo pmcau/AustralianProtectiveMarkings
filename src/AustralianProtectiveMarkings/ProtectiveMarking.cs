@@ -46,35 +46,9 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
         }
     }
 
-    /// <summary>
-    /// Is based on the Recordkeeping Metadata Standard's 'Rights' property.
-    /// https://www.naa.gov.au/information-management/standards/australian-government-recordkeeping-metadata-standard
-    /// While categorising information content by non-security sensitives is not mandated as a security requirement, the
-    /// 'Rights' property provides an optional set of terms ensuring common understanding, consistency and interoperability
-    /// across systems and government entities.
-    /// </summary>
-    /// <remarks>Maps to ACCESS</remarks>
-    public IReadOnlyCollection<InformationManagementMarker>? InformationManagementMarkers { get; init; }
-
-    public InformationManagementMarker InformationManagementMarker
-    {
-        init
-        {
-            GuardDuplicateInformationManagementMarkers();
-            InformationManagementMarkers = new[]
-            {
-                value
-            };
-        }
-    }
-
-    void GuardDuplicateInformationManagementMarkers()
-    {
-        if (InformationManagementMarkers != null)
-        {
-            throw new($"Use only {nameof(InformationManagementMarker)} or {nameof(InformationManagementMarkers)}. Not both.");
-        }
-    }
+    public bool PersonalPrivacy { get; init; }
+    public bool LegalPrivilege { get; init; }
+    public bool LegislativeSecrecy { get; init; }
 
     readonly string? comment;
 

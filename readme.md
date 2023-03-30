@@ -72,7 +72,7 @@ var marking = new ProtectiveMarking
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
-    InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
+    LegalPrivilege = true,
     Caveats = new Caveats
     {
         Codeword = "CodeWord",
@@ -141,8 +141,7 @@ var marking = new ProtectiveMarking
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
-    InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
-
+    LegalPrivilege = true,
     Caveats = new Caveats
     {
         Codeword = "CodeWord",
@@ -154,7 +153,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderHeader();
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L71-L96' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L71-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -178,7 +177,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 ```cs
 var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L116-L120' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L115-L119' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -203,7 +202,7 @@ The version and namespace is hard coded in the spec. Both can be omitted when pa
 ```cs
 var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L104-L108' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L103-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -214,7 +213,7 @@ var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
 ```cs
 var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L128-L132' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L127-L131' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -283,7 +282,7 @@ var protectiveMarking = Parser.Parse("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/SamplesTests.cs#L140-L160' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/SamplesTests.cs#L139-L159' title='Snippet source file'>snippet source</a> | <a href='#snippet-parsefullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

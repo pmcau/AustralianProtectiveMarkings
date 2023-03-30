@@ -32,7 +32,7 @@ public class Samples
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
+            LegalPrivilege = true,
             Caveats = new Caveats
             {
                 Codeword = "CodeWord",
@@ -80,8 +80,7 @@ public class Samples
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
-
+            LegalPrivilege = true,
             Caveats = new Caveats
             {
                 Codeword = "CodeWord",
@@ -177,10 +176,7 @@ public class Samples
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarkers = new[]
-            {
-                InformationManagementMarker.LegalPrivilege
-            },
+            LegalPrivilege = true,
             Caveats = new Caveats
             {
                 Codewords = new[]

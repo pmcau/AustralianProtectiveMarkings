@@ -46,10 +46,7 @@ public class RendererTests
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
-            InformationManagementMarkers = new[]
-            {
-                InformationManagementMarker.LegalPrivilege
-            },
+            LegalPrivilege = true,
             Caveats = new Caveats{
             Codewords = new[]
             {

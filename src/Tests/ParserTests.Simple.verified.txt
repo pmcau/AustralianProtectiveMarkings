@@ -4,35 +4,44 @@
     Message: Leading whitespace in value ' TOP-SECRET'. Input: SEC= TOP-SECRET
   },
   SEC=OFFICIAL:Sensitive: {
-    SecurityClassification: OfficialSensitive
+    SecurityClassification: OfficialSensitive,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
     Type: Exception,
     Message: Expiry DownTo `TopSecret` must be less than the SecurityClassification of the ProtectiveMarking `Secret`.
   },
   SEC=TOP-SECRET: {
-    SecurityClassification: TopSecret
+    SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege: {
     SecurityClassification: TopSecret,
-    InformationManagementMarkers: [
-      LegalPrivilege
-    ]
+    PersonalPrivacy: false,
+    LegalPrivilege: true,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege: {
-    Type: Exception,
-    Message: Duplicates not allowed in 'ACCESS'. Input: SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege
+    SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: true,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legislative-Secrecy: {
     SecurityClassification: TopSecret,
-    InformationManagementMarkers: [
-      LegalPrivilege,
-      LegislativeSecrecy
-    ]
+    PersonalPrivacy: false,
+    LegalPrivilege: true,
+    LegislativeSecrecy: true
   },
   SEC=TOP-SECRET, ACCESS=unknown: {
-    Type: Exception,
-    Message: Unknown ACCESS: unknown
+    SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=C:code word: {
     SecurityClassification: TopSecret,
@@ -46,7 +55,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
@@ -60,7 +72,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
     Type: Exception,
@@ -79,7 +94,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
     SecurityClassification: TopSecret,
@@ -93,7 +111,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
     SecurityClassification: TopSecret,
@@ -107,7 +128,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
     Type: Exception,
@@ -126,7 +150,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
     Type: Exception,
@@ -145,7 +172,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     SecurityClassification: TopSecret,
@@ -156,7 +186,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
     SecurityClassification: TopSecret,
@@ -167,7 +200,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     SecurityClassification: TopSecret,
@@ -178,7 +214,10 @@
       IsOrcon: false,
       IsCabinet: true,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     SecurityClassification: TopSecret,
@@ -192,7 +231,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
     SecurityClassification: TopSecret,
@@ -207,7 +249,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, DOWNTO=SECRET: {
     Type: Exception,
@@ -222,7 +267,10 @@
     Expiry: {
       DownTo: Secret,
       GenDate: 2020-10-01 +0
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
     Type: Exception,
@@ -237,7 +285,10 @@
     Expiry: {
       DownTo: Secret,
       Event: expiry
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL: {
     Type: Exception,
@@ -257,6 +308,9 @@
   },
   SEC=TOP-SECRET, NOTE=the comment: {
     SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false,
     Comment: the comment
   },
   SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment: {
@@ -269,6 +323,9 @@
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com: {
     SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false,
     AuthorEmail: a@b.com
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com: {
@@ -295,7 +352,10 @@
       IsOrcon: false,
       IsCabinet: false,
       IsNationalCabinet: false
-    }
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=unknown: {
     Type: Exception,
@@ -310,6 +370,9 @@
     Message: A single security 'SEC' must be defined. Input: VER=2018.4, NS=gov.au
   },
   VER=2018.4, NS=gov.au, SEC=TOP-SECRET: {
-    SecurityClassification: TopSecret
+    SecurityClassification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   }
 }

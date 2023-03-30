@@ -23,9 +23,9 @@
     DownTo: Official,
     GenDate: DateTimeOffset_1
   },
-  InformationManagementMarkers: [
-    LegalPrivilege
-  ],
+  PersonalPrivacy: false,
+  LegalPrivilege: true,
+  LegislativeSecrecy: false,
   Comment: the comments,
   AuthorEmail: a@b.com
 }

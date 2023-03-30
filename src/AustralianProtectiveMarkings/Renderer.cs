@@ -32,14 +32,17 @@ public static class Renderer
 
     static void RenderInformationManagementMarkers(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking.InformationManagementMarkers == null)
+        if (marking.PersonalPrivacy)
         {
-            return;
+            builder.Append("ACCESS=Personal-Privacy, ");
         }
-
-        foreach (var marker in marking.InformationManagementMarkers)
+        if (marking.LegalPrivilege)
         {
-            builder.Append($"ACCESS={Render(marker)}, ");
+            builder.Append("ACCESS=Legal-Privilege, ");
+        }
+        if (marking.LegislativeSecrecy)
+        {
+            builder.Append("ACCESS=Legislative-Secrecy, ");
         }
     }
 
@@ -160,14 +163,5 @@ public static class Renderer
             SecurityClassification.Official => "OFFICIAL",
             SecurityClassification.OfficialSensitive => "OFFICIAL:Sensitive",
             _ => throw new ArgumentOutOfRangeException(nameof(classification), classification, null)
-        };
-
-    public static string Render(this InformationManagementMarker marker) =>
-        marker switch
-        {
-            InformationManagementMarker.PersonalPrivacy => "Personal-Privacy",
-            InformationManagementMarker.LegalPrivilege => "Legal-Privilege",
-            InformationManagementMarker.LegislativeSecrecy => "Legislative-Secrecy",
-            _ => throw new ArgumentOutOfRangeException(nameof(marker), marker, null)
         };
 }

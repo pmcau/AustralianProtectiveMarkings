@@ -12,10 +12,7 @@ public class Tests
                 DownTo = SecurityClassification.Official,
                 GenDate = new DateTimeOffset(new(2020, 10, 1)),
             },
-            InformationManagementMarkers = new[]
-            {
-                InformationManagementMarker.LegalPrivilege
-            },
+            LegalPrivilege = true,
             Caveats = new Caveats{
                 Codewords = new[]
                 {

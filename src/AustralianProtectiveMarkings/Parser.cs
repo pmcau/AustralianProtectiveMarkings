@@ -34,11 +34,15 @@ public static partial class Parser
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
 
+        var access = pairs.Where(_ => _.Key == "ACCESS").ToList();
+
         return new()
         {
             SecurityClassification = ReadSecurity(input, pairs),
             Caveats = ReadCaveats(input, pairs),
-            InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
+            PersonalPrivacy = access.Any(_ => _.Value == "Personal-Privacy"),
+            LegalPrivilege = access.Any(_ => _.Value == "Legal-Privilege"),
+            LegislativeSecrecy = access.Any(_ => _.Value == "Legislative-Secrecy"),
             AuthorEmail = ReadAuthorEmail(input, pairs),
             Comment = ReadComment(input, pairs),
             Expiry = ReadExpiry(input, pairs)
@@ -157,29 +161,6 @@ public static partial class Parser
         ThrowForDuplicates(input, notes, "NOTE");
         return notes[0].Value;
     }
-
-    static List<InformationManagementMarker>? ReadInformationManagementMarkers(string input, List<Pair> pairs)
-    {
-        var access = pairs.Where(_ => _.Key == "ACCESS").ToList();
-        if (access.Count == 0)
-        {
-            return null;
-        }
-
-        var markers = access.Select(_ => ParseInformationManagementMarker(_.Value)).ToList();
-
-        ThrowForDuplicates(input, markers, "ACCESS");
-        return markers;
-    }
-
-    static InformationManagementMarker ParseInformationManagementMarker(string value) =>
-        value switch
-        {
-            "Personal-Privacy" => InformationManagementMarker.PersonalPrivacy,
-            "Legal-Privilege" => InformationManagementMarker.LegalPrivilege,
-            "Legislative-Secrecy" => InformationManagementMarker.LegislativeSecrecy,
-            _ => throw new($"Unknown ACCESS: {value}")
-        };
 
     static void ThrowForDuplicates<T>(string input, List<T> items, string name)
     {
