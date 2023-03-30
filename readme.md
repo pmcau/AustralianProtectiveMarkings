@@ -75,7 +75,7 @@ var marking = new ProtectiveMarking
     InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
     Caveats = new Caveats
     {
-        CodewordCaveat = "CodeWord",
+        Codeword = "CodeWord",
         ForeignGovernmentCaveat = "USA caveat",
         CaveatType = CaveatType.Cabinet,
         ExclusiveForCaveat = "person",
@@ -145,7 +145,7 @@ var marking = new ProtectiveMarking
 
     Caveats = new Caveats
     {
-        CodewordCaveat = "CodeWord",
+        Codeword = "CodeWord",
         ForeignGovernmentCaveat = "USA caveat",
         CaveatType = CaveatType.Agao,
         ExclusiveForCaveat = "person",
@@ -187,10 +187,11 @@ Results in:
 <a id='snippet-Samples.ParseMinimum.verified.txt'></a>
 ```txt
 {
-  SecurityClassification: OfficialSensitive
+  SecurityClassification: OfficialSensitive,
+  Caveats: {}
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L3' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L4' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -224,21 +225,23 @@ Results in:
 ```txt
 {
   SecurityClassification: TopSecret,
-  CodewordCaveats: [
-    CodeWord
-  ],
-  ForeignGovernmentCaveats: [
-    USA caveat
-  ],
-  CaveatTypes: [
-    Agao,
-    Cabinet
-  ],
-  ExclusiveForCaveats: [
-     person,
-     AFG,
-     DZA
-  ],
+  Caveats: {
+    CodewordCaveats: [
+      CodeWord
+    ],
+    ForeignGovernmentCaveats: [
+      USA caveat
+    ],
+    CaveatTypes: [
+      Agao,
+      Cabinet
+    ],
+    ExclusiveForCaveats: [
+       person,
+       AFG,
+       DZA
+    ]
+  },
   Expiry: {
     DownTo: Official,
     GenDate: DateTimeOffset_1
@@ -250,7 +253,7 @@ Results in:
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseFull.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

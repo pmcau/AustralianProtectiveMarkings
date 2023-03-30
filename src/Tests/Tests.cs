@@ -17,7 +17,7 @@ public class Tests
                 InformationManagementMarker.LegalPrivilege
             },
             Caveats = new Caveats{
-                CodewordCaveats = new[]
+                Codewords = new[]
                 {
                     "codeword1"
                 },

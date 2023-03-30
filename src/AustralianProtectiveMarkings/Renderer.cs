@@ -92,9 +92,9 @@ public static class Renderer
         }
 
         var caveats = marking.Caveats.Value;
-        if (caveats.CodewordCaveats != null)
+        if (caveats.Codewords != null)
         {
-            foreach (var caveat in caveats.CodewordCaveats)
+            foreach (var caveat in caveats.Codewords)
             {
                 builder.Append($"CAVEAT=C:{caveat}, ");
             }

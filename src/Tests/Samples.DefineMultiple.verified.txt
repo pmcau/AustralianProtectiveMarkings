@@ -1,7 +1,7 @@
 ﻿{
   SecurityClassification: TopSecret,
   Caveats: {
-    CodewordCaveats: [
+    Codewords: [
       CodeWord
     ],
     ForeignGovernmentCaveats: [

@@ -35,7 +35,7 @@ public class Samples
             InformationManagementMarker = InformationManagementMarker.LegalPrivilege,
             Caveats = new Caveats
             {
-                CodewordCaveat = "CodeWord",
+                Codeword = "CodeWord",
                 ForeignGovernmentCaveat = "USA caveat",
                 CaveatType = CaveatType.Cabinet,
                 ExclusiveForCaveat = "person",
@@ -84,7 +84,7 @@ public class Samples
 
             Caveats = new Caveats
             {
-                CodewordCaveat = "CodeWord",
+                Codeword = "CodeWord",
                 ForeignGovernmentCaveat = "USA caveat",
                 CaveatType = CaveatType.Agao,
                 ExclusiveForCaveat = "person",
@@ -183,7 +183,7 @@ public class Samples
             },
             Caveats = new Caveats
             {
-                CodewordCaveats = new[]
+                Codewords = new[]
                 {
                     "CodeWord"
                 },

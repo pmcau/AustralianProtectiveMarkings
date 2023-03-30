@@ -9,23 +9,23 @@
 /// </param>
 public readonly record struct Caveats
 {
-    readonly IReadOnlyCollection<string>? codewordCaveats;
-    public IReadOnlyCollection<string>? CodewordCaveats
+    readonly IReadOnlyCollection<string>? codewords;
+    public IReadOnlyCollection<string>? Codewords
     {
-        get => codewordCaveats;
+        get => codewords;
         init
         {
             TextValidator.Validate(value);
-            codewordCaveats = value;
+            codewords = value;
         }
     }
 
-    public string CodewordCaveat
+    public string Codeword
     {
         init
         {
             GuardDuplicateCodewords();
-            CodewordCaveats = new[]
+            Codewords = new[]
             {
                 value
             };
@@ -34,9 +34,9 @@ public readonly record struct Caveats
 
     void GuardDuplicateCodewords()
     {
-        if (CodewordCaveats != null)
+        if (Codewords != null)
         {
-            throw new($"Use only {nameof(CodewordCaveat)} or {nameof(CodewordCaveats)}. Not both.");
+            throw new($"Use only {nameof(Codeword)} or {nameof(Codewords)}. Not both.");
         }
     }
 

@@ -39,7 +39,7 @@ public static class Parser
             SecurityClassification = ReadSecurity(input, pairs),
             Caveats = new Caveats
             {
-                CodewordCaveats = ReadCodewords(input, pairs),
+                Codewords = ReadCodewords(input, pairs),
                 ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
                 CaveatTypes = ReadCaveatTypes(input, pairs),
                 ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),

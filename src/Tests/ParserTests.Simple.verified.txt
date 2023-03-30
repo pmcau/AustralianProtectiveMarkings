@@ -41,7 +41,7 @@
   SEC=TOP-SECRET, CAVEAT=C:code word: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CodewordCaveats: [
+      Codewords: [
         code word
       ]
     }
@@ -49,7 +49,7 @@
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CodewordCaveats: [
+      Codewords: [
         codeword1
       ]
     }
@@ -61,7 +61,7 @@
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CodewordCaveats: [
+      Codewords: [
         codeword1,
         codeword2
       ]
@@ -228,7 +228,7 @@
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
     Caveats: {
-      CodewordCaveats: [
+      Codewords: [
         codeword1
       ]
     }
