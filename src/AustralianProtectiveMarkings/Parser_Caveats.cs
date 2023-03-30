@@ -37,14 +37,17 @@ public static partial class Parser
 
     static List<string>? ReadCodewords(string input, List<Pair> caveats)
     {
-        var codewordCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith("C:")).ToList();
+        var codewordCaveats = caveats
+            .Select(_ => _.Value)
+            .Where(_ => _.StartsWith("C:"))
+            .ToList();
         if (codewordCaveats.Count == 0)
         {
             return null;
         }
 
         ThrowForDuplicates(input, codewordCaveats, "CAVEAT=C");
-        return codewordCaveats.Select(_ => _.Substring(2)).ToList();
+        return codewordCaveats.Select(_ => _[2..]).ToList();
     }
 
     static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)
@@ -57,7 +60,7 @@ public static partial class Parser
         }
 
         ThrowForDuplicates(input, fgCaveats, prefix);
-        return fgCaveats.Select(_ => _.Substring(3)).ToList();
+        return fgCaveats.Select(_ => _[3..]).ToList();
     }
 
     static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
@@ -71,7 +74,7 @@ public static partial class Parser
 
         ThrowForDuplicates(input, countryCaveats, prefix);
         var countryCodes = countryCaveats
-            .SelectMany(_ => _.Substring(4).Split('/'))
+            .SelectMany(_ => _[4..].Split('/'))
             .Select(CountryCodes.GetCodeForLetters)
             .ToList();
         ThrowForDuplicates(input, countryCodes, prefix);
@@ -88,7 +91,7 @@ public static partial class Parser
         }
 
         ThrowForDuplicates(input, exclusiveForCaveats, prefix);
-        return exclusiveForCaveats.Select(_ => _.Substring(prefix.Length)).ToList();
+        return exclusiveForCaveats.Select(_ => _[prefix.Length..]).ToList();
     }
 
     static bool TryReadCaveats(List<Pair> pairs, out List<Pair> caveats)
