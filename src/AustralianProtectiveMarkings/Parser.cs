@@ -29,6 +29,7 @@ public static class Parser
     {
         var pairs = ParseKeyValues(input).ToList();
         var keys = pairs.Select(_ => _.Key).ToList();
+        CheckForUnknownKeys(input, keys);
         ValidateOrder(input, keys);
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
@@ -46,6 +47,17 @@ public static class Parser
             Comment = ReadComment(input, pairs),
             Expiry = ReadExpiry(input, pairs)
         };
+    }
+
+    static void CheckForUnknownKeys(string input, List<string> keys)
+    {
+        foreach (var key in keys)
+        {
+            if (!order.Contains(key))
+            {
+                throw new($"Unknown key '{key}'. Input: {input}");
+            }
+        }
     }
 
     static Expiry? ReadExpiry(string input, List<Pair> pairs)

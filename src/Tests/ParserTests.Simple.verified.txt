@@ -191,6 +191,10 @@
     Type: Exception,
     Message: Only one ORIGIN is allowed. Input: SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=c@b.com
   },
+  SEC=TOP-SECRET, Unknown=expiry: {
+    Type: Exception,
+    Message: Unknown key 'Unknown'. Input: SEC=TOP-SECRET, Unknown=expiry
+  },
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
     SecurityClassification: TopSecret,
     CodewordCaveats: [

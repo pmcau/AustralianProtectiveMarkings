@@ -40,6 +40,7 @@ public class ParserTests
             "SEC=TOP-SECRET, NOTE=the comment, NOTE=the comment",
             "SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment",
             "SEC=TOP-SECRET, EXPIRES=expiry",
+            "SEC=TOP-SECRET, Unknown=expiry",
             "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry2",
             "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1",
             "SEC=TOP-SECRET, EXPIRES=expiry1, EXPIRES=expiry1, DOWNTO=SECRET",
