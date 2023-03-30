@@ -13,6 +13,7 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
     public Caveats? Caveats { get; init; }
 
     readonly Expiry? expiry;
+
     public Expiry? Expiry
     {
         get => expiry;
@@ -76,6 +77,7 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
     }
 
     readonly string? comment;
+
     /// <summary>
     /// Is a free-text field where the sender can specify some free-form information to include additional security
     /// classification information; the permitted characters are limited to those defined for `text` and has maximum

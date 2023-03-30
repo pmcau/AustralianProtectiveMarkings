@@ -86,41 +86,47 @@ public static class Renderer
 
     static void RenderCaveats(ProtectiveMarking marking, StringBuilder builder)
     {
-        if (marking.Caveats?.CodewordCaveats != null)
+        if (marking.Caveats == null)
         {
-            foreach (var caveat in marking.Caveats?.CodewordCaveats!)
+            return;
+        }
+
+        var caveats = marking.Caveats.Value;
+        if (caveats.CodewordCaveats != null)
+        {
+            foreach (var caveat in caveats.CodewordCaveats)
             {
                 builder.Append($"CAVEAT=C:{caveat}, ");
             }
         }
 
-        if (marking.Caveats?.ForeignGovernmentCaveats != null)
+        if (caveats.ForeignGovernmentCaveats != null)
         {
-            foreach (var caveat in marking.Caveats?.ForeignGovernmentCaveats!)
+            foreach (var caveat in caveats.ForeignGovernmentCaveats)
             {
                 builder.Append($"CAVEAT=FG:{caveat}, ");
             }
         }
 
-        if (marking.Caveats?.CaveatTypes != null)
+        if (caveats.CaveatTypes != null)
         {
-            foreach (var caveat in marking.Caveats?.CaveatTypes!)
+            foreach (var caveat in caveats.CaveatTypes)
             {
                 builder.Append($"CAVEAT={caveat.Render()}, ");
             }
         }
 
-        if (marking.Caveats?.ExclusiveForCaveats != null)
+        if (caveats.ExclusiveForCaveats != null)
         {
-            foreach (var personOrIndicator in marking.Caveats?.ExclusiveForCaveats!)
+            foreach (var personOrIndicator in caveats.ExclusiveForCaveats)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
             }
         }
 
-        if (marking.Caveats?.CountryCodeCaveats != null)
+        if (caveats.CountryCodeCaveats != null)
         {
-            foreach (var countryCode in marking.Caveats?.CountryCodeCaveats!)
+            foreach (var countryCode in caveats.CountryCodeCaveats)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {countryCode.GetLettersForCode()}, ");
             }

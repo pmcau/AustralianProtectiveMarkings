@@ -37,12 +37,14 @@ public static class Parser
         return new()
         {
             SecurityClassification = ReadSecurity(input, pairs),
-            Caveats = new Caveats{
-            CodewordCaveats = ReadCodewords(input, pairs),
-            ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
-            CaveatTypes = ReadCaveatTypes(input, pairs),
-            ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
-            CountryCodeCaveats = ReadCountryCaveats(input, pairs),},
+            Caveats = new Caveats
+            {
+                CodewordCaveats = ReadCodewords(input, pairs),
+                ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
+                CaveatTypes = ReadCaveatTypes(input, pairs),
+                ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
+                CountryCodeCaveats = ReadCountryCaveats(input, pairs),
+            },
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
             AuthorEmail = ReadAuthorEmail(input, pairs),
             Comment = ReadComment(input, pairs),
