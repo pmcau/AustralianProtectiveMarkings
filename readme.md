@@ -238,12 +238,12 @@ Results in:
        AFG,
        DZA
     ],
-    IsAgao: true,
-    IsAusteo: false,
-    IsDelicateSource: false,
-    IsOrcon: false,
-    IsCabinet: true,
-    IsNationalCabinet: false
+    Agao: true,
+    Austeo: false,
+    DelicateSource: false,
+    Orcon: false,
+    Cabinet: true,
+    NationalCabinet: false
   },
   Expiry: {
     DownTo: Official,
