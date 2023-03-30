@@ -25,6 +25,9 @@ public static partial class Parser
         "ORIGIN"
     };
 
+    static bool AnyValue(this List<Pair> list, string value) =>
+        list.Any(_ => _.Value == value);
+
     public static ProtectiveMarking Parse(string input)
     {
         var pairs = ParseKeyValues(input).ToList();
@@ -40,9 +43,9 @@ public static partial class Parser
         {
             SecurityClassification = ReadSecurity(input, pairs),
             Caveats = ReadCaveats(input, pairs),
-            PersonalPrivacy = access.Any(_ => _.Value == "Personal-Privacy"),
-            LegalPrivilege = access.Any(_ => _.Value == "Legal-Privilege"),
-            LegislativeSecrecy = access.Any(_ => _.Value == "Legislative-Secrecy"),
+            PersonalPrivacy = access.AnyValue("Personal-Privacy"),
+            LegalPrivilege = access.AnyValue("Legal-Privilege"),
+            LegislativeSecrecy = access.AnyValue("Legislative-Secrecy"),
             AuthorEmail = ReadAuthorEmail(input, pairs),
             Comment = ReadComment(input, pairs),
             Expiry = ReadExpiry(input, pairs)
