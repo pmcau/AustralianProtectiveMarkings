@@ -36,10 +36,12 @@ public static class Renderer
         {
             builder.Append("ACCESS=Personal-Privacy, ");
         }
+
         if (marking.LegalPrivilege)
         {
             builder.Append("ACCESS=Legal-Privilege, ");
         }
+
         if (marking.LegislativeSecrecy)
         {
             builder.Append("ACCESS=Legislative-Secrecy, ");
@@ -115,22 +117,27 @@ public static class Renderer
         {
             builder.Append("CAVEAT=RI:AGAO, ");
         }
+
         if (caveats.Austeo)
         {
             builder.Append("CAVEAT=RI:AUSTEO, ");
         }
+
         if (caveats.DelicateSource)
         {
             builder.Append("CAVEAT=RI:SH:DELICATE SOURCE, ");
         }
+
         if (caveats.Orcon)
         {
             builder.Append("CAVEAT=SH:ORCON, ");
         }
+
         if (caveats.Cabinet)
         {
             builder.Append("CAVEAT=SH:CABINET, ");
         }
+
         if (caveats.NationalCabinet)
         {
             builder.Append("CAVEAT=SH:NATIONAL-CABINET, ");
