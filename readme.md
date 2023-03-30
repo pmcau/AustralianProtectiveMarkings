@@ -24,13 +24,10 @@ All string members follow the convention of:
  * Escape character is `\`. Where `:`, `\`, and  `,` can be escaped. A `\` not followed by a one of those is treated as a single '\'.
 
 
-## Render
+## RenderSubject
 
 
-### Subject
-
-
-#### Minimum content
+### Minimum content
 
 <!-- snippet: RenderSubjectMinimum -->
 <a id='snippet-rendersubjectminimum'></a>
@@ -55,7 +52,7 @@ Results in:
 <!-- endSnippet -->
 
 
-#### Full content
+### Full content
 
 <!-- snippet: RenderSubjectFull -->
 <a id='snippet-rendersubjectfull'></a>
@@ -113,10 +110,10 @@ Results in:
 <!-- endSnippet -->
 
 
-### Header
+## RenderHeader
 
 
-#### Minimum content
+### Minimum content
 
 <!-- snippet: RenderHeaderMinimum -->
 <a id='snippet-renderheaderminimum'></a>
@@ -141,7 +138,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET
 <!-- endSnippet -->
 
 
-#### Full content
+### Full content
 
 <!-- snippet: RenderHeaderFull -->
 <a id='snippet-renderheaderfull'></a>
@@ -199,7 +196,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 <!-- endSnippet -->
 
 
-## Parse Header
+## Parse
 
 
 ### Minimum content
