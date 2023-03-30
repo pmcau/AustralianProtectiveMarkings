@@ -47,11 +47,15 @@ public static class Parser
 
     static Caveats? ReadCaveats(string input, List<Pair> pairs)
     {
-        var codewords = ReadCodewords(input, pairs);
-        var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs);
-        var caveatTypes = ReadCaveatTypes(input, pairs);
-        var exclusiveFors = ReadExclusiveForCaveats(input, pairs);
-        var countryCodes = ReadCountryCaveats(input, pairs);
+        if (TryReadCaveats(pairs, out var caveats))
+        {
+            return null;
+        }
+        var codewords = ReadCodewords(input, caveats);
+        var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, caveats);
+        var caveatTypes = ReadCaveatTypes(input, caveats);
+        var exclusiveFors = ReadExclusiveForCaveats(input, caveats);
+        var countryCodes = ReadCountryCaveats(input, caveats);
         if (codewords == null &&
             foreignGovernmentCaveats == null &&
             caveatTypes == null &&
@@ -205,13 +209,8 @@ Input: {input}");
             _ => throw new($"Unknown ACCESS: {value}")
         };
 
-    static List<string>? ReadCodewords(string input, List<Pair> pairs)
+    static List<string>? ReadCodewords(string input, List<Pair> caveats)
     {
-        if (TryReadCaveats(pairs, out var caveats))
-        {
-            return null;
-        }
-
         var codewordCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith("C:")).ToList();
         if (codewordCaveats.Count == 0)
         {
@@ -222,13 +221,8 @@ Input: {input}");
         return codewordCaveats.Select(_ => _.Substring(2)).ToList();
     }
 
-    static List<CaveatType>? ReadCaveatTypes(string input, List<Pair> pairs)
+    static List<CaveatType>? ReadCaveatTypes(string input, List<Pair> caveats)
     {
-        if (TryReadCaveats(pairs, out var caveats))
-        {
-            return null;
-        }
-
         var caveatTypes = new List<CaveatType>();
         foreach (CaveatType caveatType in Enum.GetValues(typeof(CaveatType)))
         {
@@ -250,13 +244,8 @@ Input: {input}");
         return caveatTypes;
     }
 
-    static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> pairs)
+    static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)
     {
-        if (TryReadCaveats(pairs, out var caveats))
-        {
-            return null;
-        }
-
         var prefix = "FG:";
         var fgCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
         if (fgCaveats.Count == 0)
@@ -268,13 +257,8 @@ Input: {input}");
         return fgCaveats.Select(_ => _.Substring(3)).ToList();
     }
 
-    static List<CountryCode>? ReadCountryCaveats(string input, List<Pair> pairs)
+    static List<CountryCode>? ReadCountryCaveats(string input, List<Pair> caveats)
     {
-        if (TryReadCaveats(pairs, out var caveats))
-        {
-            return null;
-        }
-
         var prefix = "REL:";
         var countryCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
         if (countryCaveats.Count == 0)
@@ -291,13 +275,8 @@ Input: {input}");
         return countryCodes;
     }
 
-    static List<string>? ReadExclusiveForCaveats(string input, List<Pair> pairs)
+    static List<string>? ReadExclusiveForCaveats(string input, List<Pair> caveats)
     {
-        if (TryReadCaveats(pairs, out var caveats))
-        {
-            return null;
-        }
-
         var prefix = "SH:EXCLUSIVE-FOR";
         var exclusiveForCaveats = caveats.Select(_ => _.Value).Where(_ => _.StartsWith(prefix)).ToList();
         if (exclusiveForCaveats.Count == 0)
