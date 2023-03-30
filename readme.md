@@ -187,11 +187,10 @@ Results in:
 <a id='snippet-Samples.ParseMinimum.verified.txt'></a>
 ```txt
 {
-  SecurityClassification: OfficialSensitive,
-  Caveats: {}
+  SecurityClassification: OfficialSensitive
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L4' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L3' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
