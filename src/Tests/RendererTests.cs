@@ -64,7 +64,7 @@ public class RendererTests
                 CaveatType.Agao,
                 CaveatType.Cabinet,
             },
-            ExclusiveForCaveats = new[]
+            ExclusiveFors = new[]
             {
                 "person"
             },

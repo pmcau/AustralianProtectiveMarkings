@@ -78,7 +78,7 @@ var marking = new ProtectiveMarking
         Codeword = "CodeWord",
         ForeignGovernmentCaveat = "USA caveat",
         CaveatType = CaveatType.Cabinet,
-        ExclusiveForCaveat = "person",
+        ExclusiveFor = "person",
         CountryCodeCaveat = CountryCode.Afghanistan
     }
 };
@@ -148,7 +148,7 @@ var marking = new ProtectiveMarking
         Codeword = "CodeWord",
         ForeignGovernmentCaveat = "USA caveat",
         CaveatType = CaveatType.Agao,
-        ExclusiveForCaveat = "person",
+        ExclusiveFor = "person",
         CountryCodeCaveat = CountryCode.Afghanistan
     }
 };
@@ -226,7 +226,7 @@ Results in:
 {
   SecurityClassification: TopSecret,
   Caveats: {
-    CodewordCaveats: [
+    Codewords: [
       CodeWord
     ],
     ForeignGovernmentCaveats: [

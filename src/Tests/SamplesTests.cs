@@ -38,7 +38,7 @@ public class Samples
                 Codeword = "CodeWord",
                 ForeignGovernmentCaveat = "USA caveat",
                 CaveatType = CaveatType.Cabinet,
-                ExclusiveForCaveat = "person",
+                ExclusiveFor = "person",
                 CountryCodeCaveat = CountryCode.Afghanistan
             }
         };
@@ -87,7 +87,7 @@ public class Samples
                 Codeword = "CodeWord",
                 ForeignGovernmentCaveat = "USA caveat",
                 CaveatType = CaveatType.Agao,
-                ExclusiveForCaveat = "person",
+                ExclusiveFor = "person",
                 CountryCodeCaveat = CountryCode.Afghanistan
             }
         };
@@ -196,7 +196,7 @@ public class Samples
                     CaveatType.Agao,
                     CaveatType.Cabinet,
                 },
-                ExclusiveForCaveats = new[]
+                ExclusiveFors = new[]
                 {
                     "person"
                 },

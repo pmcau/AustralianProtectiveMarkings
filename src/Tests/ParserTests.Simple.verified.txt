@@ -133,7 +133,7 @@
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     SecurityClassification: TopSecret,
     Caveats: {
-      ExclusiveForCaveats: [
+      ExclusiveFors: [
          person
       ]
     }
@@ -141,7 +141,7 @@
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
     SecurityClassification: TopSecret,
     Caveats: {
-      ExclusiveForCaveats: [
+      ExclusiveFors: [
          person1,
          person2
       ]

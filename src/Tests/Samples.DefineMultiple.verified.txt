@@ -11,7 +11,7 @@
       Agao,
       Cabinet
     ],
-    ExclusiveForCaveats: [
+    ExclusiveFors: [
       person
     ],
     CountryCodeCaveats: [

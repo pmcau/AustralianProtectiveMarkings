@@ -30,7 +30,7 @@ public class Tests
                     CaveatType.Agao,
                     CaveatType.Cabinet,
                 },
-                ExclusiveForCaveats = new[]
+                ExclusiveFors = new[]
                 {
                     "person"
                 },

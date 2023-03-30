@@ -94,34 +94,34 @@ public readonly record struct Caveats
         }
     }
 
-    readonly IReadOnlyCollection<string>? exclusiveForCaveats;
-    public IReadOnlyCollection<string>? ExclusiveForCaveats
+    readonly IReadOnlyCollection<string>? exclusiveFors;
+    public IReadOnlyCollection<string>? ExclusiveFors
     {
-        get => exclusiveForCaveats;
+        get => exclusiveFors;
         init
         {
             TextValidator.Validate(value);
-            exclusiveForCaveats = value;
+            exclusiveFors = value;
         }
     }
 
-    public string ExclusiveForCaveat
+    public string ExclusiveFor
     {
         init
         {
-            GuardDuplicateExclusiveForCaveats();
-            ExclusiveForCaveats = new[]
+            GuardDuplicateExclusiveFor();
+            ExclusiveFors = new[]
             {
                 value
             };
         }
     }
 
-    void GuardDuplicateExclusiveForCaveats()
+    void GuardDuplicateExclusiveFor()
     {
-        if (ExclusiveForCaveats != null)
+        if (ExclusiveFors != null)
         {
-            throw new($"Use only {nameof(ExclusiveForCaveat)} or {nameof(ExclusiveForCaveats)}. Not both.");
+            throw new($"Use only {nameof(ExclusiveFor)} or {nameof(ExclusiveFors)}. Not both.");
         }
     }
 

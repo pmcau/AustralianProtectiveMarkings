@@ -116,9 +116,9 @@ public static class Renderer
             }
         }
 
-        if (caveats.ExclusiveForCaveats != null)
+        if (caveats.ExclusiveFors != null)
         {
-            foreach (var personOrIndicator in caveats.ExclusiveForCaveats)
+            foreach (var personOrIndicator in caveats.ExclusiveFors)
             {
                 builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
             }

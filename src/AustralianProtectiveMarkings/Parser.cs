@@ -42,7 +42,7 @@ public static class Parser
                 Codewords = ReadCodewords(input, pairs),
                 ForeignGovernmentCaveats = ReadForeignGovernmentCaveats(input, pairs),
                 CaveatTypes = ReadCaveatTypes(input, pairs),
-                ExclusiveForCaveats = ReadExclusiveForCaveats(input, pairs),
+                ExclusiveFors = ReadExclusiveForCaveats(input, pairs),
                 CountryCodeCaveats = ReadCountryCaveats(input, pairs),
             },
             InformationManagementMarkers = ReadInformationManagementMarkers(input, pairs),
