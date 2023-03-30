@@ -129,4 +129,27 @@ public class Samples
 
         return Verify(result);
     }
+    [Test]
+    public Task ParseMinimum()
+    {
+        #region ParseMinimum
+
+        var protectiveMarking = Parser.Parse("SEC=OFFICIAL:Sensitive");
+
+        #endregion
+
+        return Verify(protectiveMarking);
+    }
+
+    [Test]
+    public Task ParseFull()
+    {
+        #region ParseFull
+
+        var protectiveMarking = Parser.Parse("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+
+        #endregion
+
+        return Verify(protectiveMarking);
+    }
 }

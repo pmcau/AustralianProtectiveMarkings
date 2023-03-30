@@ -69,4 +69,44 @@ public class ParserTests
 
         return Verify(dictionary).DontScrubDateTimes();
     }
+
+    [Test]
+    public Task ParseKeyValues()
+    {
+        var list = new List<string>
+        {
+            "Key=Value",
+            @"Key=The\=Value",
+            @"Key=The\:Value",
+            @"Key=The\,Value",
+            @"Key=The\\Value",
+            "Key=Value ",
+            "Key= Value",
+            "Key1=Value",
+            """
+                Key=Value,
+                Key=Value
+                """,
+            "Key=Value,  Key=Value",
+            "Key=Value,	Key=Value",
+            "Key=Value, Key=Value2",
+            "KeyA=Value, KeyB=Value"
+        };
+
+        var dictionary = new List<object>();
+        foreach (var item in list)
+        {
+            try
+            {
+                var pair = Parser.ParseKeyValues(item).ToList();
+                dictionary.Add(new {item, pair});
+            }
+            catch (Exception exception)
+            {
+                dictionary.Add(new {item, exception});
+            }
+        }
+
+        return Verify(dictionary).DontScrubDateTimes();
+    }
 }

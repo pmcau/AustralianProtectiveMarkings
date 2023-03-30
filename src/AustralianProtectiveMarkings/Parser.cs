@@ -10,7 +10,7 @@ public static class Parser
         Escape
     }
 
-    record Pair(string Key, string Value);
+    internal record Pair(string Key, string Value);
 
     static List<string> order = new()
     {
@@ -345,7 +345,7 @@ Input: {input}");
         }
     }
 
-    static IEnumerable<Pair> ParseKeyValues(string input)
+    internal static IEnumerable<Pair> ParseKeyValues(string input)
     {
         var state = State.Key;
 
@@ -357,7 +357,7 @@ Input: {input}");
             switch (state)
             {
                 case State.EatWhitespace:
-                    if (ch is ' ' or '\n' or '\r')
+                    if (ch is ' ' or '	' or '\n' or '\r')
                     {
                         continue;
                     }

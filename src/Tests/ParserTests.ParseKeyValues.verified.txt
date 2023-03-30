@@ -1,0 +1,138 @@
+﻿[
+  {
+    item: Key=Value,
+    pair: [
+      {
+        Key: Key,
+        Value: Value
+      }
+    ]
+  },
+  {
+    item: Key=The\=Value,
+    pair: [
+      {
+        Key: Key,
+        Value: The=Value
+      }
+    ]
+  },
+  {
+    item: Key=The\:Value,
+    pair: [
+      {
+        Key: Key,
+        Value: The:Value
+      }
+    ]
+  },
+  {
+    item: Key=The\,Value,
+    pair: [
+      {
+        Key: Key,
+        Value: The,Value
+      }
+    ]
+  },
+  {
+    item: Key=The\\Value,
+    pair: [
+      {
+        Key: Key,
+        Value: The\Value
+      }
+    ]
+  },
+  {
+    item: Key=Value ,
+    exception: {
+      $type: Exception,
+      Type: Exception,
+      Message: Trailing whitespace in value 'Value '. Input: Key=Value 
+    }
+  },
+  {
+    item: Key= Value,
+    exception: {
+      $type: Exception,
+      Type: Exception,
+      Message: Leading whitespace in value ' Value'. Input: Key= Value
+    }
+  },
+  {
+    item: Key1=Value,
+    exception: {
+      $type: Exception,
+      Type: Exception,
+      Message: Invalid character '1' in key. Input: Key1=Value
+    }
+  },
+  {
+    item:
+Key=Value,
+Key=Value,
+    pair: [
+      {
+        Key: Key,
+        Value: Value
+      },
+      {
+        Key: Key,
+        Value: Value
+      }
+    ]
+  },
+  {
+    item: Key=Value,  Key=Value,
+    pair: [
+      {
+        Key: Key,
+        Value: Value
+      },
+      {
+        Key: Key,
+        Value: Value
+      }
+    ]
+  },
+  {
+    item: Key=Value,	Key=Value,
+    pair: [
+      {
+        Key: Key,
+        Value: Value
+      },
+      {
+        Key: Key,
+        Value: Value
+      }
+    ]
+  },
+  {
+    item: Key=Value, Key=Value2,
+    pair: [
+      {
+        Key: Key,
+        Value: Value
+      },
+      {
+        Key: Key,
+        Value: Value2
+      }
+    ]
+  },
+  {
+    item: KeyA=Value, KeyB=Value,
+    pair: [
+      {
+        Key: KeyA,
+        Value: Value
+      },
+      {
+        Key: KeyB,
+        Value: Value
+      }
+    ]
+  }
+]
