@@ -36,14 +36,8 @@ public class Samples
             {
                 InformationManagementMarker.LegalPrivilege
             },
-            CodewordCaveats = new[]
-            {
-                "CodeWord"
-            },
-            ForeignGovernmentCaveats = new[]
-            {
-                "USA caveat"
-            },
+            CodewordCaveat = "CodeWord",
+            ForeignGovernmentCaveat = "USA caveat",
             CaveatTypes = new[]
             {
                 CaveatType.Agao,
@@ -100,14 +94,8 @@ public class Samples
             {
                 InformationManagementMarker.LegalPrivilege
             },
-            CodewordCaveats = new[]
-            {
-                "CodeWord"
-            },
-            ForeignGovernmentCaveats = new[]
-            {
-                "USA caveat"
-            },
+            CodewordCaveat = "CodeWord",
+            ForeignGovernmentCaveat = "USA caveat",
             CaveatTypes = new[]
             {
                 CaveatType.Agao,
@@ -190,5 +178,51 @@ public class Samples
         #endregion
 
         return Verify(protectiveMarking);
+    }
+    
+    
+    [Test]
+    public void DefineMultiple()
+    {
+        #region DefineMultiple
+
+        var marking = new ProtectiveMarking
+        {
+            SecurityClassification = SecurityClassification.TopSecret,
+            Expiry = new Expiry
+            {
+                DownTo = SecurityClassification.Official,
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+            },
+            Comment = "the comments",
+            AuthorEmail = "a@b.com",
+            InformationManagementMarkers = new[]
+            {
+                InformationManagementMarker.LegalPrivilege
+            },
+            CodewordCaveats = new[]
+            {
+                "CodeWord"
+            },
+            ForeignGovernmentCaveats = new[]
+            {
+                "USA caveat"
+            },
+            CaveatTypes = new[]
+            {
+                CaveatType.Agao,
+                CaveatType.Cabinet,
+            },
+            ExclusiveForCaveats = new[]
+            {
+                "person"
+            },
+            CountryCodeCaveats = new[]
+            {
+                CountryCode.Afghanistan,
+                CountryCode.Algeria
+            }
+        };
+        #endregion
     }
 }

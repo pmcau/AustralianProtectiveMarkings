@@ -21,6 +21,26 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
         }
     }
 
+    public string CodewordCaveat
+    {
+        init
+        {
+            GuardDuplicateCodewords();
+            CodewordCaveats = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateCodewords()
+    {
+        if (CodewordCaveats != null)
+        {
+            throw new($"Use only {nameof(CodewordCaveat)} or {nameof(CodewordCaveats)}. Not both.");
+        }
+    }
+
     readonly IReadOnlyCollection<string>? foreignGovernmentCaveats;
     public IReadOnlyCollection<string>? ForeignGovernmentCaveats
     {
@@ -29,6 +49,26 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
         {
             TextValidator.Validate(value);
             foreignGovernmentCaveats = value;
+        }
+    }
+
+    public string ForeignGovernmentCaveat
+    {
+        init
+        {
+            GuardDuplicateForeignGovernmentCaveats();
+            ForeignGovernmentCaveats = new[]
+            {
+                value
+            };
+        }
+    }
+
+    void GuardDuplicateForeignGovernmentCaveats()
+    {
+        if (ForeignGovernmentCaveats != null)
+        {
+            throw new($"Use only {nameof(ForeignGovernmentCaveat)} or {nameof(ForeignGovernmentCaveats)}. Not both.");
         }
     }
 
@@ -113,6 +153,7 @@ public readonly record struct ProtectiveMarking(SecurityClassification SecurityC
     }
 
     readonly string? authorEmail;
+
     /// <summary>
     /// Captures the author’s email address so that the person who originally classified the email message is always
     /// known. This is not necessarily the same as that in the RFC5322 From field.
