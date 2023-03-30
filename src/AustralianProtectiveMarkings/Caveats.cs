@@ -124,10 +124,10 @@ public readonly record struct Caveats
         }
     }
 
-    public bool IsAgao { get; init; }
-    public bool IsAusteo { get; init; }
-    public bool IsDelicateSource { get; init; }
-    public bool IsOrcon { get; init; }
-    public bool IsCabinet { get; init; }
-    public bool IsNationalCabinet { get; init; }
+    public bool Agao { get; init; }
+    public bool Austeo { get; init; }
+    public bool DelicateSource { get; init; }
+    public bool Orcon { get; init; }
+    public bool Cabinet { get; init; }
+    public bool NationalCabinet { get; init; }
 }

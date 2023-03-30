@@ -77,7 +77,7 @@ var marking = new ProtectiveMarking
     {
         Codeword = "CodeWord",
         ForeignGovernment = "USA caveat",
-        IsCabinet = true,
+        Cabinet = true,
         ExclusiveFor = "person",
         CountryCode = CountryCode.Afghanistan
     }
@@ -146,7 +146,7 @@ var marking = new ProtectiveMarking
     {
         Codeword = "CodeWord",
         ForeignGovernment = "USA caveat",
-        IsAgao = true,
+        Agao = true,
         ExclusiveFor = "person",
         CountryCode = CountryCode.Afghanistan
     }
@@ -186,10 +186,13 @@ Results in:
 <a id='snippet-Samples.ParseMinimum.verified.txt'></a>
 ```txt
 {
-  SecurityClassification: OfficialSensitive
+  SecurityClassification: OfficialSensitive,
+  PersonalPrivacy: false,
+  LegalPrivilege: false,
+  LegislativeSecrecy: false
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L3' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseMinimum.verified.txt#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -246,9 +249,9 @@ Results in:
     DownTo: Official,
     GenDate: DateTimeOffset_1
   },
-  InformationManagementMarkers: [
-    LegalPrivilege
-  ],
+  PersonalPrivacy: false,
+  LegalPrivilege: true,
+  LegislativeSecrecy: false,
   Comment: the comments,
   AuthorEmail: a@b.com
 }

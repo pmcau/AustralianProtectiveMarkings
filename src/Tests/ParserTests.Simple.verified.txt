@@ -49,12 +49,12 @@
       Codewords: [
         code word
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -66,12 +66,12 @@
       Codewords: [
         codeword1
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -88,12 +88,12 @@
         codeword1,
         codeword2
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -105,12 +105,12 @@
       ForeignGovernments: [
         usa caveat
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -122,12 +122,12 @@
       CountryCodes: [
         Angola
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -144,12 +144,12 @@
         Angola,
         Anguilla
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -166,12 +166,12 @@
         Angola,
         Anguilla
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -180,12 +180,12 @@
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     SecurityClassification: TopSecret,
     Caveats: {
-      IsAgao: true,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: true,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -194,12 +194,12 @@
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
     SecurityClassification: TopSecret,
     Caveats: {
-      IsAgao: true,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: true,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -208,12 +208,12 @@
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     SecurityClassification: TopSecret,
     Caveats: {
-      IsAgao: true,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: true,
-      IsNationalCabinet: false
+      Agao: true,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: true,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -225,12 +225,12 @@
       ExclusiveFors: [
          person
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -243,12 +243,12 @@
          person1,
          person2
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,
@@ -346,12 +346,12 @@
       Codewords: [
         codeword1
       ],
-      IsAgao: false,
-      IsAusteo: false,
-      IsDelicateSource: false,
-      IsOrcon: false,
-      IsCabinet: false,
-      IsNationalCabinet: false
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
     },
     PersonalPrivacy: false,
     LegalPrivilege: false,

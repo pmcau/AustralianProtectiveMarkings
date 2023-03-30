@@ -111,27 +111,27 @@ public static class Renderer
             }
         }
 
-        if (caveats.IsAgao)
+        if (caveats.Agao)
         {
             builder.Append("CAVEAT=RI:AGAO, ");
         }
-        if (caveats.IsAusteo)
+        if (caveats.Austeo)
         {
             builder.Append("CAVEAT=RI:AUSTEO, ");
         }
-        if (caveats.IsDelicateSource)
+        if (caveats.DelicateSource)
         {
             builder.Append("CAVEAT=RI:SH:DELICATE SOURCE, ");
         }
-        if (caveats.IsOrcon)
+        if (caveats.Orcon)
         {
             builder.Append("CAVEAT=SH:ORCON, ");
         }
-        if (caveats.IsCabinet)
+        if (caveats.Cabinet)
         {
             builder.Append("CAVEAT=SH:CABINET, ");
         }
-        if (caveats.IsNationalCabinet)
+        if (caveats.NationalCabinet)
         {
             builder.Append("CAVEAT=SH:NATIONAL-CABINET, ");
         }

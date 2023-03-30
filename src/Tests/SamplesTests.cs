@@ -37,7 +37,7 @@ public class Samples
             {
                 Codeword = "CodeWord",
                 ForeignGovernment = "USA caveat",
-                IsCabinet = true,
+                Cabinet = true,
                 ExclusiveFor = "person",
                 CountryCode = CountryCode.Afghanistan
             }
@@ -85,7 +85,7 @@ public class Samples
             {
                 Codeword = "CodeWord",
                 ForeignGovernment = "USA caveat",
-                IsAgao = true,
+                Agao = true,
                 ExclusiveFor = "person",
                 CountryCode = CountryCode.Afghanistan
             }
@@ -187,8 +187,8 @@ public class Samples
                 {
                     "USA caveat"
                 },
-                IsAgao = true,
-                IsCabinet = true,
+                Agao = true,
+                Cabinet = true,
                 ExclusiveFors = new[]
                 {
                     "person"

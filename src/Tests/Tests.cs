@@ -22,8 +22,8 @@ public class Tests
                 {
                     "usa caveat"
                 },
-                IsAgao = true,
-                IsCabinet = true,
+                Agao = true,
+                Cabinet = true,
                 ExclusiveFors = new[]
                 {
                     "person"

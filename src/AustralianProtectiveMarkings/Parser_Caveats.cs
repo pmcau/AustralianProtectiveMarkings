@@ -22,12 +22,12 @@ public static partial class Parser
 
         return new()
         {
-            IsAgao = isAgao,
-            IsAusteo = isAusteo,
-            IsDelicateSource = isDelicateSource,
-            IsOrcon = isOrcon,
-            IsCabinet = isCabinet,
-            IsNationalCabinet = isNationalCabinet,
+            Agao = isAgao,
+            Austeo = isAusteo,
+            DelicateSource = isDelicateSource,
+            Orcon = isOrcon,
+            Cabinet = isCabinet,
+            NationalCabinet = isNationalCabinet,
             Codewords = codewords,
             ForeignGovernments = foreignGovernmentCaveats,
             ExclusiveFors = exclusiveFors,

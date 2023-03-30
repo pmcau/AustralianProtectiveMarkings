@@ -56,8 +56,8 @@ public class RendererTests
             {
                 "usa caveat"
             },
-            IsAgao = true,
-            IsCabinet = true,
+            Agao = true,
+            Cabinet = true,
             ExclusiveFors = new[]
             {
                 "person"
