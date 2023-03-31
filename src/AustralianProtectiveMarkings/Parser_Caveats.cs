@@ -10,14 +10,14 @@ public static partial class Parser
         }
 
         var codeword = ReadCodeword(input, caveats);
-        var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, caveats);
+        var foreignGovernmentCaveat = ReadForeignGovernmentCaveat(input, caveats);
         var isAgao = caveats.AnyValue("RI:AGAO");
         var isAusteo = caveats.AnyValue("RI:AUSTEO");
         var isDelicateSource = caveats.AnyValue("SH:DELICATE SOURCE");
         var isOrcon = caveats.AnyValue("SH:ORCON");
         var isCabinet = caveats.AnyValue("SH:CABINET");
         var isNationalCabinet = caveats.AnyValue("SH:NATIONAL-CABINET");
-        var exclusiveFors = ReadExclusiveForCaveats(input, caveats);
+        var exclusiveFor = ReadExclusiveForCaveat(input, caveats);
         var countryCodes = ReadCountryCaveats(input, caveats);
 
         return new()
@@ -29,8 +29,8 @@ public static partial class Parser
             Cabinet = isCabinet,
             NationalCabinet = isNationalCabinet,
             Codeword = codeword,
-            ForeignGovernments = foreignGovernmentCaveats,
-            ExclusiveFors = exclusiveFors,
+            ForeignGovernment = foreignGovernmentCaveat,
+            ExclusiveFor = exclusiveFor,
             CountryCodes = countryCodes,
         };
     }
@@ -48,14 +48,14 @@ public static partial class Parser
 
         if (codewords.Count > 1)
         {
-            throw new($"Only one codeword CAVEAT=C is allowed. Input: {input}");
+            throw new($"Only one codeword 'CAVEAT=C:' is allowed. Input: {input}");
         }
 
-        ThrowForDuplicates(input, codewords, "CAVEAT=C");
+        ThrowForDuplicates(input, codewords, "CAVEAT=C:");
         return codewords[0][2..];
     }
 
-    static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)
+    static string? ReadForeignGovernmentCaveat(string input, List<Pair> caveats)
     {
         var prefix = "FG:";
         var fgCaveats = caveats
@@ -66,9 +66,13 @@ public static partial class Parser
         {
             return null;
         }
+        if (fgCaveats.Count > 1)
+        {
+            throw new($"Only one ForeignGovernment Caveat 'CAVEAT=FG:' is allowed. Input: {input}");
+        }
 
         ThrowForDuplicates(input, fgCaveats, prefix);
-        return fgCaveats.Select(_ => _[3..]).ToList();
+        return fgCaveats[0][3..];
     }
 
     static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
@@ -92,7 +96,7 @@ public static partial class Parser
         return countryCodes;
     }
 
-    static List<string>? ReadExclusiveForCaveats(string input, List<Pair> caveats)
+    static string? ReadExclusiveForCaveat(string input, List<Pair> caveats)
     {
         var prefix = "SH:EXCLUSIVE-FOR";
         var exclusiveFors = caveats
@@ -103,9 +107,13 @@ public static partial class Parser
         {
             return null;
         }
+        if (exclusiveFors.Count > 1)
+        {
+            throw new($"Only one ExclusiveFors Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input}");
+        }
 
         ThrowForDuplicates(input, exclusiveFors, prefix);
-        return exclusiveFors.Select(_ => _[prefix.Length..]).ToList();
+        return exclusiveFors[0][prefix.Length..];
     }
 
     static bool TryReadCaveats(List<Pair> pairs, out List<Pair> caveats)

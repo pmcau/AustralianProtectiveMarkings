@@ -75,18 +75,16 @@
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
     Type: Exception,
-    Message: Only one codeword CAVEAT=C is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1
+    Message: Only one codeword 'CAVEAT=C:' is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2: {
     Type: Exception,
-    Message: Only one codeword CAVEAT=C is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2
+    Message: Only one codeword 'CAVEAT=C:' is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2
   },
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
     Classification: TopSecret,
     Caveats: {
-      ForeignGovernments: [
-        usa caveat
-      ],
+      ForeignGovernment: usa caveat,
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -204,9 +202,7 @@
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     Classification: TopSecret,
     Caveats: {
-      ExclusiveFors: [
-         person
-      ],
+      ExclusiveFor:  person,
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -219,22 +215,8 @@
     LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
-    Classification: TopSecret,
-    Caveats: {
-      ExclusiveFors: [
-         person1,
-         person2
-      ],
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Type: Exception,
+    Message: Only one ExclusiveFors Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2
   },
   SEC=TOP-SECRET, DOWNTO=SECRET: {
     Type: Exception,

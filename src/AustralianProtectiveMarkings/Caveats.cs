@@ -38,7 +38,7 @@ public readonly record struct Caveats
         }
     }
 
-    readonly IReadOnlyCollection<string>? foreignGovernments;
+    readonly string? foreignGovernment;
 
     /// <summary>
     /// Foreign government markings are applied to information created by Australian agencies from foreign source
@@ -48,40 +48,21 @@ public readonly record struct Caveats
     /// 
     /// https://www.protectivesecurity.gov.au/publications-library/policy-7-security-governance-international-sharing
     /// </summary>
-    public IReadOnlyCollection<string>? ForeignGovernments
+    public string? ForeignGovernment
     {
-        get => foreignGovernments;
+        get => foreignGovernment;
         init
         {
-            TextValidator.Validate(value);
-            foreignGovernments = value;
-        }
-    }
-
-    /// <summary>
-    /// A helper property that assigns a single item list to <see cref="ForeignGovernments"/>.
-    /// </summary>
-    public string ForeignGovernment
-    {
-        init
-        {
-            GuardDuplicateForeignGovernmentUse();
-            ForeignGovernments = new[]
+            if (value != null)
             {
-                value
-            };
+                TextValidator.Validate(value);
+            }
+
+            foreignGovernment = value;
         }
     }
 
-    void GuardDuplicateForeignGovernmentUse()
-    {
-        if (ForeignGovernments != null)
-        {
-            throw new($"Use only {nameof(ForeignGovernment)} or {nameof(ForeignGovernments)}. Not both.");
-        }
-    }
-
-    readonly IReadOnlyCollection<string>? exclusiveFors;
+    readonly string? exclusiveFor;
 
     /// <summary>
     /// Identifies information intended for access by a named recipient only.
@@ -90,36 +71,16 @@ public readonly record struct Caveats
     /// 
     /// Access to EXCLUSIVE FOR information is limited to a named person, position title or designation.
     /// </summary>
-    public IReadOnlyCollection<string>? ExclusiveFors
+    public string? ExclusiveFor
     {
-        get => exclusiveFors;
+        get => exclusiveFor;
         init
         {
-            TextValidator.Validate(value);
-            exclusiveFors = value;
-        }
-    }
-
-    /// <summary>
-    /// A helper property that assigns a single item list to <see cref="ExclusiveFors"/>.
-    /// </summary>
-    public string ExclusiveFor
-    {
-        init
-        {
-            GuardDuplicateExclusiveForUse();
-            ExclusiveFors = new[]
+            if (value != null)
             {
-                value
-            };
-        }
-    }
-
-    void GuardDuplicateExclusiveForUse()
-    {
-        if (ExclusiveFors != null)
-        {
-            throw new($"Use only {nameof(ExclusiveFor)} or {nameof(ExclusiveFors)}. Not both.");
+                TextValidator.Validate(value);
+            }
+            exclusiveFor = value;
         }
     }
 

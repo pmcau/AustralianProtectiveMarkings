@@ -2,9 +2,7 @@
   Classification: TopSecret,
   Caveats: {
     Codeword: CodeWord,
-    ForeignGovernments: [
-      USA caveat
-    ],
+    ForeignGovernment: USA caveat,
     ExclusiveFors: [
        person,
        AFG,

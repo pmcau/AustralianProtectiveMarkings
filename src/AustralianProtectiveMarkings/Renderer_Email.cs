@@ -104,12 +104,9 @@ public static partial class Renderer
             builder.Append($"CAVEAT=C:{caveats.Codeword}, ");
         }
 
-        if (caveats.ForeignGovernments != null)
+        if (caveats.ForeignGovernment != null)
         {
-            foreach (var caveat in caveats.ForeignGovernments)
-            {
-                builder.Append($"CAVEAT=FG:{caveat}, ");
-            }
+            builder.Append($"CAVEAT=FG:{caveats.ForeignGovernment}, ");
         }
 
         if (caveats.Agao)
@@ -142,12 +139,9 @@ public static partial class Renderer
             builder.Append("CAVEAT=SH:NATIONAL-CABINET, ");
         }
 
-        if (caveats.ExclusiveFors != null)
+        if (caveats.ExclusiveFor != null)
         {
-            foreach (var personOrIndicator in caveats.ExclusiveFors)
-            {
-                builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {personOrIndicator}, ");
-            }
+            builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {caveats.ExclusiveFor}, ");
         }
 
         if (caveats.CountryCodes != null)

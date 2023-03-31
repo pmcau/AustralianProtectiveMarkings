@@ -2,12 +2,8 @@
   Classification: Secret,
   Caveats: {
     Codeword: codeword1,
-    ForeignGovernments: [
-      usa caveat
-    ],
-    ExclusiveFors: [
-      person
-    ],
+    ForeignGovernment: usa caveat,
+    ExclusiveFor: person,
     CountryCodes: [
       Afghanistan,
       Algeria

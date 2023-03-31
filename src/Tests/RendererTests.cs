@@ -67,16 +67,10 @@ public class RendererTests
             Caveats = new Caveats
             {
                 Codeword = "codeword1",
-                ForeignGovernments = new[]
-                {
-                    "usa caveat"
-                },
+                ForeignGovernment = "usa caveat",
                 Agao = true,
                 Cabinet = true,
-                ExclusiveFors = new[]
-                {
-                    "person"
-                },
+                ExclusiveFor= "person",
                 CountryCodes = new[]
                 {
                     Country.Afghanistan,

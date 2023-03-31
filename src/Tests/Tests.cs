@@ -13,23 +13,19 @@ public class Tests
                 GenDate = new DateTimeOffset(new(2020, 10, 1)),
             },
             LegalPrivilege = true,
-            Caveats = new Caveats{
+            Caveats = new Caveats
+            {
                 Codeword = "codeword1",
-                ForeignGovernments = new[]
-                {
-                    "usa caveat"
-                },
+                ForeignGovernment = "usa caveat",
                 Agao = true,
                 Cabinet = true,
-                ExclusiveFors = new[]
-                {
-                    "person"
-                },
+                ExclusiveFor = "person",
                 CountryCodes = new[]
                 {
                     Country.Afghanistan,
                     Country.Algeria
-                }}
+                }
+            }
         };
         var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);

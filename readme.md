@@ -300,12 +300,8 @@ Results in:
 {
   Classification: TopSecret,
   Caveats: {
-    Codewords: [
-      CodeWord
-    ],
-    ForeignGovernments: [
-      USA caveat
-    ],
+    Codeword: CodeWord,
+    ForeignGovernment: USA caveat,
     ExclusiveFors: [
        person,
        AFG,
@@ -329,7 +325,7 @@ Results in:
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

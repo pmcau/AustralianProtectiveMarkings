@@ -210,16 +210,10 @@ public class Samples
             Caveats = new Caveats
             {
                 Codeword = "CodeWord",
-                ForeignGovernments = new[]
-                {
-                    "USA caveat"
-                },
+                ForeignGovernment = "USA caveat",
                 Agao = true,
                 Cabinet = true,
-                ExclusiveFors = new[]
-                {
-                    "person"
-                },
+                ExclusiveFor = "person",
                 CountryCodes = new[]
                 {
                     Country.Afghanistan,
