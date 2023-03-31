@@ -51,7 +51,6 @@ public static partial class Parser
             throw new($"Only one codeword 'CAVEAT=C:' is allowed. Input: {input}");
         }
 
-        ThrowForDuplicates(input, codewords, "CAVEAT=C:");
         return codewords[0][2..];
     }
 
@@ -66,18 +65,18 @@ public static partial class Parser
         {
             return null;
         }
+
         if (fgCaveats.Count > 1)
         {
             throw new($"Only one ForeignGovernment Caveat 'CAVEAT=FG:' is allowed. Input: {input}");
         }
 
-        ThrowForDuplicates(input, fgCaveats, prefix);
         return fgCaveats[0][3..];
     }
 
     static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
     {
-        var prefix = "REL:";
+        var prefix = "RI:REL";
         var countries = caveats
             .Select(_ => _.Value)
             .Where(_ => _.StartsWith(prefix))
@@ -87,9 +86,14 @@ public static partial class Parser
             return null;
         }
 
-        ThrowForDuplicates(input, countries, prefix);
-        var countryCodes = countries
-            .SelectMany(_ => _[4..].Split('/'))
+        if (countries.Count > 1)
+        {
+            throw new($"Only one Country Caveat 'CAVEAT=REL:' is allowed. Input: {input}");
+        }
+
+        var value = countries[0][7..];
+        var countryCodes = value
+            .Split('/')
             .Select(CountryCodes.GetCodeForLetters)
             .ToList();
         ThrowForDuplicates(input, countryCodes, prefix);
@@ -107,12 +111,12 @@ public static partial class Parser
         {
             return null;
         }
+
         if (exclusiveFors.Count > 1)
         {
             throw new($"Only one ExclusiveFors Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input}");
         }
 
-        ThrowForDuplicates(input, exclusiveFors, prefix);
         return exclusiveFors[0][prefix.Length..];
     }
 

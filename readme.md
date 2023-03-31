@@ -287,7 +287,7 @@ var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 <!-- snippet: ParseEmailHeaderFull -->
 <a id='snippet-parseemailheaderfull'></a>
 ```cs
-var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
 <sup><a href='/src/Tests/Samples.cs#L157-L161' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -302,10 +302,10 @@ Results in:
   Caveats: {
     Codeword: CodeWord,
     ForeignGovernment: USA caveat,
-    ExclusiveFors: [
-       person,
-       AFG,
-       DZA
+    ExclusiveFor:  person,
+    CountryCodes: [
+      Afghanistan,
+      Algeria
     ],
     Agao: true,
     Austeo: false,
@@ -345,8 +345,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     CAVEAT=RI:AGAO,
     CAVEAT=SH:CABINET,
     CAVEAT=SH:EXCLUSIVE-FOR person,
-    CAVEAT=SH:EXCLUSIVE-FOR AFG,
-    CAVEAT=SH:EXCLUSIVE-FOR DZA,
+    CAVEAT=RI:REL AFG/DZA,
     EXPIRES=2020-10-01,
     DOWNTO=OFFICIAL,
     ACCESS=Legal-Privilege,
@@ -354,7 +353,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L169-L189' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L169-L188' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

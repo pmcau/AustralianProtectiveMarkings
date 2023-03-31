@@ -99,9 +99,6 @@
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
     Classification: TopSecret,
     Caveats: {
-      CountryCodes: [
-        Angola
-      ],
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -114,16 +111,22 @@
     LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
-    Type: Exception,
-    Message: Duplicates not allowed in 'REL:'. Input: SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO
+    Classification: TopSecret,
+    Caveats: {
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AIA: {
     Classification: TopSecret,
     Caveats: {
-      CountryCodes: [
-        Angola,
-        Anguilla
-      ],
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -136,16 +139,22 @@
     LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
-    Type: Exception,
-    Message: Duplicates not allowed in 'REL:'. Input: SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO
+    Classification: TopSecret,
+    Caveats: {
+      Agao: false,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: false,
+      NationalCabinet: false
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AIA: {
     Classification: TopSecret,
     Caveats: {
-      CountryCodes: [
-        Angola,
-        Anguilla
-      ],
       Agao: false,
       Austeo: false,
       DelicateSource: false,

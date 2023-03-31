@@ -3,10 +3,10 @@
   Caveats: {
     Codeword: CodeWord,
     ForeignGovernment: USA caveat,
-    ExclusiveFors: [
-       person,
-       AFG,
-       DZA
+    ExclusiveFor:  person,
+    CountryCodes: [
+      Afghanistan,
+      Algeria
     ],
     Agao: true,
     Austeo: false,
