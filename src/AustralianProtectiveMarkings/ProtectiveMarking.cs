@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an Australian Protective Markings.
 ///
-/// Deigned to be serializer friendly.
+/// Designed to be serializer friendly.
 /// </summary>
 /// <param name="Classification">
 /// Corresponds to the PSPF policy: Sensitive and classified information’s classifications.

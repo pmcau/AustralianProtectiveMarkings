@@ -114,7 +114,7 @@ public static partial class Parser
 
         if (exclusiveFors.Count > 1)
         {
-            throw new($"Only one ExclusiveFors Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input}");
+            throw new($"Only one ExclusiveFor Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input}");
         }
 
         return exclusiveFors[0][prefix.Length..];

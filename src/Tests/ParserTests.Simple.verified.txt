@@ -225,11 +225,11 @@
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
     Type: Exception,
-    Message: Only one ExclusiveFors Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2
+    Message: Only one ExclusiveFor Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2
   },
   SEC=TOP-SECRET, DOWNTO=SECRET: {
     Type: Exception,
-    Message: EXPIRES and DOWNTO cannot be deigned without the other. Input: SEC=TOP-SECRET, DOWNTO=SECRET
+    Message: EXPIRES and DOWNTO cannot be defined without the other. Input: SEC=TOP-SECRET, DOWNTO=SECRET
   },
   SEC=TOP-SECRET, DOWNTO=SECRET, DOWNTO=SECRET: {
     Type: Exception,
@@ -251,7 +251,7 @@
   },
   SEC=TOP-SECRET, EXPIRES=expiry: {
     Type: Exception,
-    Message: EXPIRES and DOWNTO cannot be deigned without the other. Input: SEC=TOP-SECRET, EXPIRES=expiry
+    Message: EXPIRES and DOWNTO cannot be defined without the other. Input: SEC=TOP-SECRET, EXPIRES=expiry
   },
   SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET: {
     Classification: TopSecret,

@@ -81,7 +81,7 @@ public static partial class Parser
 
         if (downToItems.Count == 0 || expiresItems.Count == 0)
         {
-            throw new($"EXPIRES and DOWNTO cannot be deigned without the other. Input: {input}");
+            throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input}");
         }
 
         var downTo = ParseClassification(downToItems[0].Value);
