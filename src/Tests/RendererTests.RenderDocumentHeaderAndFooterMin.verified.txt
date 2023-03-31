@@ -1,8 +1,4 @@
 ﻿{
-  Item1:
-SECRET
-SECRET,
-  Item2:
-SECRET
-SECRET
+  footer: SECRET,
+  header: SECRET
 }

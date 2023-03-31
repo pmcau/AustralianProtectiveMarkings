@@ -19,7 +19,7 @@ public class RendererTests
     public Task RenderDocumentHeaderAndFooter()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderDocumentHeaderAndFooter());
+        return VerifyTuple(()=>marking.RenderDocumentHeaderAndFooter());
     }
 
     [Test]
@@ -47,9 +47,9 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.Secret
+            Classification = Classification.Secret,
         };
-        return Verify(marking.RenderDocumentHeaderAndFooter());
+        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
     }
 
     static ProtectiveMarking BuildMarking() =>
@@ -66,7 +66,7 @@ public class RendererTests
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "codeword1",
+                Codeword = "LOBSTER",
                 ForeignGovernment = "usa caveat",
                 Agao = true,
                 Cabinet = true,

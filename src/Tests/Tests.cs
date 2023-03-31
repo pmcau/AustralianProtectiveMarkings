@@ -15,7 +15,7 @@ public class Tests
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "codeword1",
+                Codeword = "LOBSTER",
                 ForeignGovernment = "usa caveat",
                 Agao = true,
                 Cabinet = true,

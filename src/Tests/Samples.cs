@@ -37,7 +37,7 @@ public class Samples
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "CodeWord",
+                Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
                 Cabinet = true,
                 ExclusiveFor = "person",
@@ -85,7 +85,7 @@ public class Samples
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "CodeWord",
+                Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
                 Agao = true,
                 ExclusiveFor = "person",
@@ -164,6 +164,26 @@ public class Samples
     }
 
     [Test]
+    public Task RenderDocumentHeaderAndFooter()
+    {
+        #region RenderDocumentHeaderAndFooter
+
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.Secret,
+            LegislativeSecrecy = true,
+            Caveats = new()
+            {
+                Cabinet = true,
+                Austeo = true
+            }
+        };
+        var (header, footer) = marking.RenderDocumentHeaderAndFooter();
+        #endregion
+        return Verify(new{header, footer});
+    }
+
+    [Test]
     public Task ParseEmailHeaderFullNewlines()
     {
         #region ParseEmailHeaderFullNewlines
@@ -208,7 +228,7 @@ public class Samples
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "CodeWord",
+                Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
                 Agao = true,
                 Cabinet = true,

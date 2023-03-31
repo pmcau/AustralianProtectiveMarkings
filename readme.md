@@ -87,7 +87,7 @@ var marking = new ProtectiveMarking
     LegalPrivilege = true,
     Caveats = new Caveats
     {
-        Codeword = "CodeWord",
+        Codeword = "LOBSTER",
         ForeignGovernment = "USA caveat",
         Cabinet = true,
         ExclusiveFor = "person",
@@ -104,7 +104,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailSubjectSuffixFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt'></a>
 ```txt
-[SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
+[SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -169,7 +169,7 @@ var marking = new ProtectiveMarking
     LegalPrivilege = true,
     Caveats = new Caveats
     {
-        Codeword = "CodeWord",
+        Codeword = "LOBSTER",
         ForeignGovernment = "USA caveat",
         Agao = true,
         ExclusiveFor = "person",
@@ -186,7 +186,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
-VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
+VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -238,6 +238,47 @@ Results in:
 ```
 <sup><a href='/src/Tests/Samples.ApplyProtectiveMarkings.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ApplyProtectiveMarkings.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+
+## RenderDocumentHeaderAndFooter
+
+`RenderDocumentHeaderAndFooter` generated a header and footer for a document.
+
+See: [PSPF: Sensitive and classified information - Applying text-based protective markings](https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.5.1.1)
+
+<!-- snippet: RenderDocumentHeaderAndFooter -->
+<a id='snippet-renderdocumentheaderandfooter'></a>
+```cs
+var marking = new ProtectiveMarking
+{
+    Classification = Classification.Secret,
+    LegislativeSecrecy = true,
+    Caveats = new()
+    {
+        Cabinet = true,
+        Austeo = true
+    }
+};
+var (header, footer) = marking.RenderDocumentHeaderAndFooter();
+```
+<sup><a href='/src/Tests/Samples.cs#L169-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+Results in:
+
+Header:
+
+```
+SECRET//AUSTEO//CABINET
+Legislative-Secrecy
+```
+
+Footer:
+
+```
+Legislative-Secrecy
+SECRET//AUSTEO//CABINET
+```
 
 
 ## Parse
@@ -353,7 +394,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L169-L188' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L189-L208' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

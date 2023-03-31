@@ -1,7 +1,7 @@
 ﻿{
   Classification: Secret,
   Caveats: {
-    Codeword: codeword1,
+    Codeword: LOBSTER,
     ForeignGovernment: usa caveat,
     ExclusiveFor: person,
     CountryCodes: [

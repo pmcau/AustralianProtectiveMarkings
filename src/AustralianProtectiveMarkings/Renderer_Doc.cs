@@ -4,14 +4,13 @@ public static partial class Renderer
 {
     public static (string header, string footer) RenderDocumentHeaderAndFooter(this ProtectiveMarking marking)
     {
-        var classification = Render(marking.Classification);
+        var secondary = RenderDocPrimary(marking);
+        var primary = RenderDocCaveats(marking);
+        if (secondary == null)
+        {
+            return (primary, primary);
+        }
 
-        var primaryBuilder = new StringBuilder(classification);
-        var secondaryBuilder = new StringBuilder(classification);
-        RenderDocCaveats(marking, primaryBuilder);
-
-        var primary = primaryBuilder.ToString();
-        var secondary = secondaryBuilder.ToString();
         return (
             $"""
                 {primary}
@@ -23,23 +22,53 @@ public static partial class Renderer
                 """);
     }
 
-    static void RenderDocCaveats(ProtectiveMarking marking, StringBuilder builder)
+    static string? RenderDocPrimary(ProtectiveMarking marking)
     {
+        var builder = new StringBuilder();
+
+        if (marking.PersonalPrivacy)
+        {
+            builder.Append("Personal-Privacy//");
+        }
+
+        if (marking.LegalPrivilege)
+        {
+            builder.Append("Legal-Privilege//");
+        }
+
+        if (marking.LegislativeSecrecy)
+        {
+            builder.Append("Legislative-Secrecy//");
+        }
+
+        if (builder.Length == 0)
+        {
+            return null;
+        }
+
+        builder.Length -= 2;
+        return builder.ToString();
+    }
+
+    static string RenderDocCaveats(ProtectiveMarking marking)
+    {
+        var classification = Render(marking.Classification);
+        var builder = new StringBuilder(classification);
         if (!marking.Caveats.HasValue)
         {
-            return;
+            return builder.ToString();
         }
 
         var caveats = marking.Caveats.Value;
 
         if (caveats.Codeword != null)
         {
-            builder.Append($"//CAVEAT=C:{caveats.Codeword}, ");
+            builder.Append($"//C {caveats.Codeword}");
         }
 
         if (caveats.ForeignGovernment != null)
         {
-            builder.Append($"CAVEAT=FG:{caveats.ForeignGovernment}, ");
+            builder.Append($"//FG {caveats.ForeignGovernment}");
         }
 
         if (caveats.Agao)
@@ -74,7 +103,7 @@ public static partial class Renderer
 
         if (caveats.ExclusiveFor != null)
         {
-            builder.Append($"//EXCLUSIVE-FOR {caveats.ExclusiveFor}, ");
+            builder.Append($"//EXCLUSIVE-FOR {caveats.ExclusiveFor}");
         }
 
         if (caveats.CountryCodes != null)
@@ -82,5 +111,6 @@ public static partial class Renderer
             var joined = string.Join("/", caveats.CountryCodes.Select(_ => _.GetLettersForCode()));
             builder.Append($"//REL {joined}");
         }
+        return builder.ToString();
     }
 }
