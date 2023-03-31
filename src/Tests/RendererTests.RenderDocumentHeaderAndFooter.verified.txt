@@ -1,0 +1,8 @@
+﻿{
+  Item1:
+TOP-SECRET//CAVEAT=C:codeword1, CAVEAT=FG:usa caveat, //AGAO//CABINET//EXCLUSIVE-FOR person, //REL AFG/DZA
+TOP-SECRET,
+  Item2:
+TOP-SECRET
+TOP-SECRET//CAVEAT=C:codeword1, CAVEAT=FG:usa caveat, //AGAO//CABINET//EXCLUSIVE-FOR person, //REL AFG/DZA
+}

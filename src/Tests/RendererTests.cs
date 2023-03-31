@@ -16,6 +16,13 @@ public class RendererTests
     }
 
     [Test]
+    public Task RenderDocumentHeaderAndFooter()
+    {
+        var marking = BuildMarking();
+        return Verify(marking.RenderDocumentHeaderAndFooter());
+    }
+
+    [Test]
     public Task RenderEmailSubjectMin()
     {
         var marking = new ProtectiveMarking
@@ -33,6 +40,16 @@ public class RendererTests
             Classification = Classification.Secret
         };
         return Verify(marking.RenderEmailHeader());
+    }
+
+    [Test]
+    public Task RenderDocumentHeaderAndFooterMin()
+    {
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.Secret
+        };
+        return Verify(marking.RenderDocumentHeaderAndFooter());
     }
 
     static ProtectiveMarking BuildMarking() =>
