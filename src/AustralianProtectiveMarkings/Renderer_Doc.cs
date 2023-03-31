@@ -32,12 +32,9 @@ public static partial class Renderer
 
         var caveats = marking.Caveats.Value;
 
-        if (caveats.Codewords != null)
+        if (caveats.Codeword != null)
         {
-            foreach (var caveat in caveats.Codewords)
-            {
-                builder.Append($"//CAVEAT=C:{caveat}, ");
-            }
+            builder.Append($"//CAVEAT=C:{caveats.Codeword}, ");
         }
 
         if (caveats.ForeignGovernments != null)

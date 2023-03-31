@@ -46,9 +46,7 @@
   SEC=TOP-SECRET, CAVEAT=C:code word: {
     Classification: TopSecret,
     Caveats: {
-      Codewords: [
-        code word
-      ],
+      Codeword: code word,
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -63,9 +61,7 @@
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
     Classification: TopSecret,
     Caveats: {
-      Codewords: [
-        codeword1
-      ],
+      Codeword: codeword1,
       Agao: false,
       Austeo: false,
       DelicateSource: false,
@@ -79,25 +75,11 @@
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
     Type: Exception,
-    Message: Duplicates not allowed in 'CAVEAT=C'. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1
+    Message: Only one codeword CAVEAT=C is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2: {
-    Classification: TopSecret,
-    Caveats: {
-      Codewords: [
-        codeword1,
-        codeword2
-      ],
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Type: Exception,
+    Message: Only one codeword CAVEAT=C is allowed. Input: SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword2
   },
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
     Classification: TopSecret,
@@ -343,9 +325,7 @@
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
     Classification: TopSecret,
     Caveats: {
-      Codewords: [
-        codeword1
-      ],
+      Codeword: codeword1,
       Agao: false,
       Austeo: false,
       DelicateSource: false,

@@ -66,10 +66,7 @@ public class RendererTests
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codewords = new[]
-                {
-                    "codeword1"
-                },
+                Codeword = "codeword1",
                 ForeignGovernments = new[]
                 {
                     "usa caveat"

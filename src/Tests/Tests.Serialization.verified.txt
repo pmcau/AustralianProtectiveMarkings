@@ -1,9 +1,7 @@
 ﻿{
   Classification: Secret,
   Caveats: {
-    Codewords: [
-      codeword1
-    ],
+    Codeword: codeword1,
     ForeignGovernments: [
       usa caveat
     ],

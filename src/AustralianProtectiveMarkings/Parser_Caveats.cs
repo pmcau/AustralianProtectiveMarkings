@@ -9,7 +9,7 @@ public static partial class Parser
             return null;
         }
 
-        var codewords = ReadCodewords(input, caveats);
+        var codeword = ReadCodeword(input, caveats);
         var foreignGovernmentCaveats = ReadForeignGovernmentCaveats(input, caveats);
         var isAgao = caveats.AnyValue("RI:AGAO");
         var isAusteo = caveats.AnyValue("RI:AUSTEO");
@@ -28,14 +28,14 @@ public static partial class Parser
             Orcon = isOrcon,
             Cabinet = isCabinet,
             NationalCabinet = isNationalCabinet,
-            Codewords = codewords,
+            Codeword = codeword,
             ForeignGovernments = foreignGovernmentCaveats,
             ExclusiveFors = exclusiveFors,
             CountryCodes = countryCodes,
         };
     }
 
-    static List<string>? ReadCodewords(string input, List<Pair> caveats)
+    static string? ReadCodeword(string input, List<Pair> caveats)
     {
         var codewords = caveats
             .Select(_ => _.Value)
@@ -46,8 +46,13 @@ public static partial class Parser
             return null;
         }
 
+        if (codewords.Count > 1)
+        {
+            throw new($"Only one codeword CAVEAT=C is allowed. Input: {input}");
+        }
+
         ThrowForDuplicates(input, codewords, "CAVEAT=C");
-        return codewords.Select(_ => _[2..]).ToList();
+        return codewords[0][2..];
     }
 
     static List<string>? ReadForeignGovernmentCaveats(string input, List<Pair> caveats)

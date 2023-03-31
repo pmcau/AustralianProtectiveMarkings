@@ -209,10 +209,7 @@ public class Samples
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codewords = new[]
-                {
-                    "CodeWord"
-                },
+                Codeword = "CodeWord",
                 ForeignGovernments = new[]
                 {
                     "USA caveat"

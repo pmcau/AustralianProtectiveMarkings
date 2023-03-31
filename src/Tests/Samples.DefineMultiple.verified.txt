@@ -1,9 +1,7 @@
 ﻿{
   Classification: TopSecret,
   Caveats: {
-    Codewords: [
-      CodeWord
-    ],
+    Codeword: CodeWord,
     ForeignGovernments: [
       USA caveat
     ],

@@ -8,7 +8,7 @@
 /// </summary>
 public readonly record struct Caveats
 {
-    readonly IReadOnlyCollection<string>? codewords;
+    readonly string? codeword;
 
     /// <summary>
     /// Sensitive compartmented information.
@@ -24,37 +24,17 @@ public readonly record struct Caveats
     /// information and any special rules that may apply. The codeword is chosen so that its ordinary meaning is
     /// unrelated to the subject of the information.
     /// </summary>
-    public IReadOnlyCollection<string>? Codewords
+    public string? Codeword
     {
-        get => codewords;
+        get => codeword;
         init
         {
-            TextValidator.Validate(value);
-            codewords = value;
-        }
-    }
-
-
-    /// <summary>
-    /// A helper property that assigns a single item list to <see cref="Codewords"/>.
-    /// </summary>
-    public string Codeword
-    {
-        init
-        {
-            GuardDuplicateCodewordUse();
-            Codewords = new[]
+            if (value != null)
             {
-                value
-            };
-        }
-    }
+                TextValidator.Validate(value);
+            }
 
-    void GuardDuplicateCodewordUse()
-    {
-        if (Codewords != null)
-        {
-            throw new($"Use only {nameof(Codeword)} or {nameof(Codewords)}. Not both.");
+            codeword = value;
         }
     }
 
