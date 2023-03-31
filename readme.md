@@ -281,7 +281,11 @@ SECRET//AUSTEO//CABINET
 ```
 
 
-## Parse
+## ParseEmailHeader
+
+Parses a `X-Protective-Marking` email header.
+
+Also useful for when a protective marking needs to be store in a configuration file. In which case ParseEmailHeader can be used to load that text into a `ProtectiveMarking` which can be applied to documents or emails.
 
 
 ### Minimum content
