@@ -26,7 +26,7 @@ All string members follow the convention of:
 
  * Max 128 characters
  * Characters allowed: 32-43 / 45-91 / 93-126
- * Escape character is `\`. Where `:`, `\`, and  `,` can be escaped. A `\` not followed by a one of those is treated as a single '\'.
+ * Escape character is `\`. Where `:`, `\`, and  `,` can be escaped. A `\` not followed by a one of those is treated as a single `\`.
 
 
 ## RenderEmailSubjectSuffix
@@ -110,7 +110,7 @@ Results in:
 <!-- endSnippet -->
 
 
-## RenderHeader
+## RenderEmailHeader
 
 Converts a protected marking to text that should be added as the value opf the `X-Protective-Marking` email header.
 
