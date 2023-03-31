@@ -174,7 +174,7 @@ public static class Renderer
 
     public static void ApplyProtectiveMarkings(this MailMessage mail, ProtectiveMarking marking)
     {
-        mail.Subject += marking.RenderEmailSubjectSuffix();
+        mail.Subject = $"{mail.Subject} {marking.RenderEmailSubjectSuffix()}";
         mail.Headers["X-Protective-Marking"] = marking.RenderEmailHeader();
     }
 }

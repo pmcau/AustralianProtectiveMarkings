@@ -43,6 +43,7 @@ See "Subject Field Marking" in  [PSPF: Sensitive and classified information - An
 > manipulate an email’s subject during message generation or transport. However, it is easy to apply as a human
 > user can construct (and interpret) the protective marking without the need for additional tools.
 
+
 ### Minimum content
 
 <!-- snippet: RenderEmailSubjectSuffixMinimum -->
@@ -191,6 +192,54 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, 
 <!-- endSnippet -->
 
 
+## ApplyProtectiveMarkings
+
+Extension method to apply protective markings to a [MailMessage ](https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.mailmessage)
+
+<!-- snippet: ApplyProtectiveMarkings -->
+<a id='snippet-applyprotectivemarkings'></a>
+```cs
+var marking = new ProtectiveMarking
+{
+    Classification = Classification.TopSecret,
+    LegalPrivilege = true,
+    Caveats = new Caveats
+    {
+        Cabinet = true,
+        Country = Country.Afghanistan
+    }
+};
+
+var mail = new MailMessage(
+    from: "from@mail.com",
+    to: "to@mail.com",
+    subject: "The subject",
+    body: "The body");
+mail.ApplyProtectiveMarkings(marking);
+```
+<sup><a href='/src/Tests/Samples.cs#L129-L149' title='Snippet source file'>snippet source</a> | <a href='#snippet-applyprotectivemarkings' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+Results in:
+
+<!-- snippet: Samples.ApplyProtectiveMarkings.verified.txt -->
+<a id='snippet-Samples.ApplyProtectiveMarkings.verified.txt'></a>
+```txt
+{
+  From: from@mail.com,
+  To: to@mail.com,
+  Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
+  Headers: {
+    X-Protective-Marking: VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+  },
+  IsBodyHtml: false,
+  Body: The body
+}
+```
+<sup><a href='/src/Tests/Samples.ApplyProtectiveMarkings.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ApplyProtectiveMarkings.verified.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
 ## Parse
 
 
@@ -240,7 +289,7 @@ var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 ```cs
 var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=SH:EXCLUSIVE-FOR AFG, CAVEAT=SH:EXCLUSIVE-FOR DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/Samples.cs#L160-L164' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L157-L161' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -309,7 +358,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L172-L192' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L169-L189' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

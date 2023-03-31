@@ -131,13 +131,10 @@ public class Samples
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
-            Comment = "the comments",
             LegalPrivilege = true,
             Caveats = new Caveats
             {
-                Codeword = "CodeWord",
                 Cabinet = true,
-                ExclusiveFor = "person",
                 Country = Country.Afghanistan
             }
         };
