@@ -17,15 +17,16 @@ static class DateFormatter
     public static string Render(this DateTimeOffset value)
     {
         var builder = new StringBuilder(10);
-        if (value.TimeOfDay == TimeSpan.Zero)
+        var timeOfDay = value.TimeOfDay;
+        if (timeOfDay == TimeSpan.Zero)
         {
             builder.Append(value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         }
-        else if (value is {Second: 0, Millisecond: 0})
+        else if (timeOfDay is {Seconds: 0, Ticks: 0})
         {
             builder.Append(value.ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture));
         }
-        else if (value.Millisecond == 0)
+        else if (timeOfDay.Ticks == 0)
         {
             builder.Append(value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
         }

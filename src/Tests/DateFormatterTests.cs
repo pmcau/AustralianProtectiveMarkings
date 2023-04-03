@@ -77,7 +77,7 @@ public class DateFormatterTests
             values.Add(name.ToString(), value.Render());
         }
 
-        await Verify(values);
+        await Verify(values).DontScrubDateTimes();
     }
 
     static bool[] bools =

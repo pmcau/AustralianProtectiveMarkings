@@ -52,6 +52,22 @@ public class RendererTests
         return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
     }
 
+    [Test]
+    public Task RenderEmailHeaderGenDateWithTicks()
+    {
+        var date = new DateTime(2020, 10, 1, 0, 0, 0, DateTimeKind.Utc).AddTicks(1);
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.Secret,
+            Expiry = new Expiry
+            {
+                DownTo = Classification.Official,
+                GenDate = new DateTimeOffset(date, TimeSpan.Zero),
+            },
+        };
+        return Verify(marking.RenderEmailHeader());
+    }
+
     static ProtectiveMarking BuildMarking() =>
         new()
         {
