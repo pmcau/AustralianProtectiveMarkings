@@ -2,3 +2,6 @@
 *.snk binary
 *.json -text
 *.pdf binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
