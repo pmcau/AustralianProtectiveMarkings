@@ -13,6 +13,8 @@
     <PackageReference Include="Verify.MailMessage" Version="1.0.1" />
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
-    <EmbeddedResource Include="doc.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="docs\noProps.docx" />
   </ItemGroup>
 </Project>
