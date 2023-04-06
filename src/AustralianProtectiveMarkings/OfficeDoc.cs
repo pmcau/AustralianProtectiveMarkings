@@ -27,8 +27,8 @@ public static class OfficeDoc
         {
             using var entryStream = zipEntry.Open();
             using var reader = new StreamReader(entryStream);
-            var xDocument = new XDocument(reader.ReadToEnd());
-            AddHeader(xDocument, header);
+            var document = new XDocument(reader.ReadToEnd());
+            AddHeader(document, header);
         }
     }
 
