@@ -22,17 +22,12 @@ public class OfficeDocTests
                     <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
                               pid="2"
                               name="X-Protective-Marking">
-                        <vt:lpwstr>oldvalue</vt:lpwstr>
+                        <vt:lpwstr>oldValue</vt:lpwstr>
                     </property>
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.AddHeader(
-            document,
-            new()
-            {
-                Classification = Classification.Secret
-            });
+        OfficeDoc.AddHeader(document, "newValue");
         return Verify(document);
     }
 }

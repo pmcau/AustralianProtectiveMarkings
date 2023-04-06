@@ -28,12 +28,11 @@ public static class OfficeDoc
         }
 
         var xDocument = new XDocument(new StreamReader(zipArchiveEntry.Open()).ReadToEnd());
-        AddHeader(xDocument, marking);
+        AddHeader(xDocument, header);
     }
 
-    internal static void AddHeader(XDocument xDocument, ProtectiveMarking marking)
+    internal static void AddHeader(XDocument xDocument, string marking)
     {
-        var header = marking.RenderEmailHeader();
         var property = xDocument
             .Descendants()
             .SingleOrDefault(_ => _.Name.LocalName == "property" &&
@@ -45,7 +44,7 @@ public static class OfficeDoc
                     <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
                               pid="2"
                               name="X-Protective-Marking">
-                        <vt:lpwstr>{{header}}</vt:lpwstr>
+                        <vt:lpwstr>{{marking}}</vt:lpwstr>
                     </property>
                     """));
         }
@@ -54,7 +53,7 @@ public static class OfficeDoc
             var xElement = property
                 .Elements()
                 .Single(_ => _.Name.LocalName == "lpwstr");
-            xElement.Value = header;
+            xElement.Value = marking;
         }
     }
 }
