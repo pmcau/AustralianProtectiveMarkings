@@ -37,9 +37,8 @@ public static class OfficeDoc
         {
             return;
         }
-
         document.Root!.Add(
-            new XElement("Override",
+            new XElement(document.Root.GetDefaultNamespace()+"Override",
                 new XAttribute("PartName", "/docProps/custom.xml"),
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }

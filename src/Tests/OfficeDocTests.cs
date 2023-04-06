@@ -14,8 +14,8 @@ public class OfficeDocTests
             });
         memoryStream.Position = 0;
         File.Delete(@"C:\Code\doc.docx");
-        using var fileStream = File.OpenWrite(@"C:\Code\doc.docx");
-        memoryStream.CopyTo(fileStream);
+        await using var fileStream = File.OpenWrite(@"C:\Code\doc.docx");
+        await memoryStream.CopyToAsync(fileStream);
     }
 
     [Test]
