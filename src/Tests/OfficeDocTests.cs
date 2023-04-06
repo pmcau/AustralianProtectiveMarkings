@@ -1,7 +1,4 @@
-﻿using System.Xml;
-using System.Xml.Linq;
-
-[TestFixture]
+﻿[TestFixture]
 public class OfficeDocTests
 {
     [Test]

@@ -1,6 +1,3 @@
-using System.IO.Compression;
-using System.Xml.Linq;
-
 namespace AustralianProtectiveMarkings;
 
 public static class OfficeDoc
