@@ -4,13 +4,22 @@ using System.Xml.Linq;
 [TestFixture]
 public class OfficeDocTests
 {
-    // [Test]
-    // public async Task Parse()
-    // {
-    //     var memoryStream = new MemoryStream();
-    //     await Resourcer.Resource.AsStream("doc.docx").CopyToAsync(memoryStream);
-    //     await OfficeDoc.PatchWord(memoryStream);
-    // }
+    [Test]
+    public async Task Parse()
+    {
+        var memoryStream = new MemoryStream();
+        await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(memoryStream);
+        OfficeDoc.PatchWord(
+            memoryStream,
+            new()
+            {
+                Classification = Classification.Protected
+            });
+        memoryStream.Position = 0;
+        File.Delete(@"C:\Code\doc.docx");
+        using var fileStream = File.OpenWrite(@"C:\Code\doc.docx");
+        memoryStream.CopyTo(fileStream);
+    }
 
     [Test]
     public Task UpdateHeader()
@@ -28,6 +37,20 @@ public class OfficeDocTests
                 """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDoc.AddHeader(document, "newValue");
+        return Verify(document);
+    }
+
+    [Test]
+    public Task AddHeader()
+    {
+        var xml = """
+                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+                            xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                </Properties>
+                """;
+        var document = XDocument.Load(new StringReader(xml));
+        OfficeDoc.AddHeader(document, "value");
         return Verify(document);
     }
 }

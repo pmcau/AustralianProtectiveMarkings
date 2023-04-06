@@ -10,12 +10,13 @@ public static class OfficeDoc
     public static void PatchWord(Stream stream, ProtectiveMarking marking)
     {
         var header = marking.RenderEmailHeader();
-        using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: false);
-        var zipArchiveEntry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
-        if (zipArchiveEntry == null)
+        using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
+        var zipEntry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
+        if (zipEntry == null)
         {
-            zipArchiveEntry = zip.CreateEntry(customPropsFileName);
-            using var writer = new StreamWriter(zipArchiveEntry.Open());
+            zipEntry = zip.CreateEntry(customPropsFileName);
+            using var entryStream = zipEntry.Open();
+            using var writer = new StreamWriter(entryStream);
             writer.Write($$"""
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
@@ -24,36 +25,40 @@ public static class OfficeDoc
                             </property>
                         </Properties>
                         """);
-            return;
         }
-
-        var xDocument = new XDocument(new StreamReader(zipArchiveEntry.Open()).ReadToEnd());
-        AddHeader(xDocument, header);
+        else
+        {
+            using var entryStream = zipEntry.Open();
+            using var reader = new StreamReader(entryStream);
+            var xDocument = new XDocument(reader.ReadToEnd());
+            AddHeader(xDocument, header);
+        }
     }
 
-    internal static void AddHeader(XDocument xDocument, string marking)
+    static XNamespace vtNamespace = "vt";
+
+    internal static void AddHeader(XDocument document, string marking)
     {
-        var property = xDocument
+        var property = document
             .Descendants()
             .SingleOrDefault(_ => _.Name.LocalName == "property" &&
                                   _.Attribute("name")?.Value == "X-Protective-Marking");
         if (property == null)
         {
-            xDocument.Root!.Add(
-                XElement.Parse($$"""
+            var element = XElement.Parse("""
                     <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
                               pid="2"
-                              name="X-Protective-Marking">
-                        <vt:lpwstr>{{marking}}</vt:lpwstr>
-                    </property>
-                    """));
+                              name="X-Protective-Marking" />
+                    """);
+            element.Add(new XElement(vtNamespace + "lpwstr", marking));
+            document.Root!.Add(element);
         }
         else
         {
-            var xElement = property
+            var element = property
                 .Elements()
                 .Single(_ => _.Name.LocalName == "lpwstr");
-            xElement.Value = marking;
+            element.Value = marking;
         }
     }
 }
