@@ -8,10 +8,43 @@ public static class OfficeDoc
     {
         var header = marking.RenderEmailHeader();
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
-        HandleCustomProps(zip, header);
+        EnsureCustomPropertyEntry(zip, header);
+        EnsureCustomXmlInContentTypes(zip);
     }
 
-    static void HandleCustomProps(ZipArchive zip, string header)
+    static void EnsureCustomXmlInContentTypes(ZipArchive zip)
+    {
+        var entry = zip.Entries.Single(_ => _.FullName == "[Content_Types].xml");
+
+        using var stream = entry.Open();
+
+        using var streamReader = new StreamReader(stream);
+        var document = XDocument.Load(streamReader);
+        EnsureCustomXmlInContentTypes(document);
+        stream.SetLength(0);
+        using var writer = new StreamWriter(stream);
+        writer.Write(document.ToString());
+    }
+
+    internal static void EnsureCustomXmlInContentTypes(XDocument document)
+    {
+        var overrideElement = document
+            .Descendants()
+            .SingleOrDefault(_ => _.Name.LocalName == "Override" &&
+                                  _.Attribute("PartName")?.Value == "/docProps/custom.xml");
+
+        if (overrideElement != null)
+        {
+            return;
+        }
+
+        document.Root!.Add(
+            new XElement("Override",
+                new XAttribute("PartName", "/docProps/custom.xml"),
+                new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
+    }
+
+    static void EnsureCustomPropertyEntry(ZipArchive zip, string header)
     {
         var entry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
         if (entry == null)
@@ -35,14 +68,17 @@ public static class OfficeDoc
         {
             using var stream = entry.Open();
             using var reader = new StreamReader(stream);
-            var document = new XDocument(reader.ReadToEnd());
-            AddHeader(document, header);
+            var document = XDocument.Load(reader);
+            SetHeader(document, header);
+            stream.SetLength(0);
+            using var writer = new StreamWriter(stream);
+            writer.Write(document.ToString());
         }
     }
 
     static XNamespace vtNamespace = "vt";
 
-    internal static void AddHeader(XDocument document, string marking)
+    internal static void SetHeader(XDocument document, string marking)
     {
         var property = document
             .Descendants()

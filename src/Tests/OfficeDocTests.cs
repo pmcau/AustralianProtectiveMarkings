@@ -2,7 +2,7 @@
 public class OfficeDocTests
 {
     [Test]
-    public async Task Parse()
+    public async Task Simple()
     {
         var memoryStream = new MemoryStream();
         await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(memoryStream);
@@ -33,7 +33,7 @@ public class OfficeDocTests
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.AddHeader(document, "newValue");
+        OfficeDoc.SetHeader(document, "newValue");
         return Verify(document);
     }
 
@@ -47,7 +47,42 @@ public class OfficeDocTests
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.AddHeader(document, "value");
+        OfficeDoc.SetHeader(document, "value");
+        return Verify(document);
+    }
+
+    [Test]
+    public Task AddCustomXml()
+    {
+        var xml = """
+                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+                    <Default Extension="rels"
+                             ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+                    <Override PartName="/word/webSettings.xml"
+                              ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml"/>
+                </Types>
+                """;
+        var document = XDocument.Load(new StringReader(xml));
+        OfficeDoc.EnsureCustomXmlInContentTypes(document);
+        return Verify(document);
+    }
+    [Test]
+    public Task AddCustomXml_existing()
+    {
+        var xml = """
+                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+                    <Default Extension="rels"
+                             ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+                    <Override PartName="/word/webSettings.xml"
+                              ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml"/>
+                    <Override PartName="/docProps/custom.xml"
+                              ContentType="application/vnd.openxmlformats-officedocument.custom-properties+xml"/>
+                </Types>
+                """;
+        var document = XDocument.Load(new StringReader(xml));
+        OfficeDoc.EnsureCustomXmlInContentTypes(document);
         return Verify(document);
     }
 }
