@@ -4,8 +4,11 @@ public static class OfficeDoc
 {
     public static Task PatchWord(Stream stream)
     {
-        var zip = ZipFile.Open(stream,ZipArchiveMode.Update);
-        return new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: false, entryNameEncoding: entryNameEncoding);
+        using (var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: false))
+        {
+            zip.Entries.Where(_=>_.Name == )
+        }
+
         return Task.CompletedTask;
     }
 }
