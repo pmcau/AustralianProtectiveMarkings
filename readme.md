@@ -406,6 +406,8 @@ var protectiveMarking = Parser.ParseEmailHeader("""
 
 Protective markings can be applied to an office document (docx, xlsx, pptx) using OfficeDocHelper.
 
+A custom property named `X-Protective-Marking` will be added.
+
 <!-- snippet: OfficeDocHelperStream -->
 <a id='snippet-officedochelperstream'></a>
 ```cs
@@ -430,7 +432,7 @@ OfficeDocHelper.Patch(filePath, marking);
 <sup><a href='/src/Tests/Samples.cs#L264-L272' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-<img src="/src/docxWithProps.png">
+<img src="/src/docxWithProps.png" width="400px">
 
 
 ## Icon
