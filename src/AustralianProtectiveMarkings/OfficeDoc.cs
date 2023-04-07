@@ -28,17 +28,19 @@ public static class OfficeDoc
 
     internal static void EnsureCustomXmlInContentTypes(XDocument document)
     {
-        var overrideElement = document
-            .Descendants()
-            .SingleOrDefault(_ => _.Name.LocalName == "Override" &&
-                                  _.Attribute("PartName")?.Value == "/docProps/custom.xml");
+        var root = document.Root!;
+        var overrideName = root.GetDefaultNamespace() + "Override";
+        var overrides = root.Elements(overrideName).ToList();
+
+        var overrideElement = overrides
+            .SingleOrDefault(_ => _.Attribute("PartName")?.Value == "/docProps/custom.xml");
 
         if (overrideElement != null)
         {
             return;
         }
         document.Root!.Add(
-            new XElement(document.Root.GetDefaultNamespace()+"Override",
+            new XElement(overrideName,
                 new XAttribute("PartName", "/docProps/custom.xml"),
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
