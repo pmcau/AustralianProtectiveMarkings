@@ -115,15 +115,14 @@ public static class OfficeDoc
 
     internal static void SetHeader(XDocument document, string marking)
     {
-        var property = document
-            .Descendants()
-            .SingleOrDefault(_ => _.Name.LocalName == "property" &&
-                                  _.Attribute("name")?.Value == "X-Protective-Marking");
+        var root = document.Root!;
+        var ns = root.GetDefaultNamespace();
+        var properties = root.Elements(ns + "property").ToList();
+        var property = properties
+            .SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
         if (property == null)
         {
-            var root = document.Root!;
-            var ns = root.GetDefaultNamespace();
-            var maxId = root.Elements(ns + "property")
+            var maxId = properties
                 .Select(_ =>
                 {
                     var id = _.Attribute("pid")!.Value;
@@ -145,7 +144,7 @@ public static class OfficeDoc
                 """);
 
             element.Add(new XElement(vtNamespace + "lpwstr", marking));
-            document.Root!.Add(element);
+            root.Add(element);
         }
         else
         {
