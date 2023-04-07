@@ -43,6 +43,25 @@ public static class OfficeDoc
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
 
+    internal static void EnsureCustomXmlInRels(XDocument document)
+    {
+        var overrideElement = document
+            .Descendants()
+            .SingleOrDefault(_ => _.Name.LocalName == "Relationship" &&
+                                  _.Attribute("Target")?.Value == "docProps/custom.xml");
+
+        if (overrideElement != null)
+        {
+            return;
+        }
+
+        document.Root!.Add(
+            new XElement(document.Root.GetDefaultNamespace()+"Relationship",
+                new XAttribute("Id", "rId4"),
+                new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"),
+                new XAttribute("Target", "docProps/custom.xml")));
+    }
+
     static void EnsureCustomPropertyEntry(ZipArchive zip, string header)
     {
         var entry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
