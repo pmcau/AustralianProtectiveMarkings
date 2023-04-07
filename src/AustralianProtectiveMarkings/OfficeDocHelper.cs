@@ -4,25 +4,25 @@ public static class OfficeDocHelper
 {
     const string customPropsFileName = @"docProps/custom.xml";
 
-    public static void Patch(string file, ProtectiveMarking marking)
+    public static async Task Patch(string file, ProtectiveMarking marking)
     {
         using var stream = File.OpenRead(file);
-        Patch(stream, marking);
+        await Patch(stream, marking);
     }
 
-    public static void Patch(Stream stream, ProtectiveMarking marking)
+    public static async Task Patch(Stream stream, ProtectiveMarking marking)
     {
         var header = marking.RenderEmailHeader();
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
-        EnsureCustomPropertyEntry(zip, header);
-        EnsureCustomXmlInContentTypes(zip);
-        EnsureCustomXmlInRels(zip);
+        await EnsureCustomPropertyEntry(zip, header);
+        await EnsureCustomXmlInContentTypes(zip);
+        await EnsureCustomXmlInRels(zip);
     }
 
-    static void EnsureCustomXmlInContentTypes(ZipArchive zip)
+    static async Task EnsureCustomXmlInContentTypes(ZipArchive zip)
     {
         var entry = zip.Entries.Single(_ => _.FullName == "[Content_Types].xml");
-        entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
+        await entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
     }
 
     internal static void EnsureCustomXmlInContentTypes(XDocument document)
@@ -46,10 +46,10 @@ public static class OfficeDocHelper
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
 
-    static void EnsureCustomXmlInRels(ZipArchive zip)
+    static async Task EnsureCustomXmlInRels(ZipArchive zip)
     {
         var entry = zip.Entries.Single(_ => _.FullName == @"_rels/.rels");
-        entry.EditXmlEntry(EnsureCustomXmlInRels);
+        await entry.EditXmlEntry(EnsureCustomXmlInRels);
     }
 
     internal static void EnsureCustomXmlInRels(XDocument document)
@@ -88,7 +88,7 @@ public static class OfficeDocHelper
                 new XAttribute("Target", "docProps/custom.xml")));
     }
 
-    static void EnsureCustomPropertyEntry(ZipArchive zip, string header)
+    static async Task EnsureCustomPropertyEntry(ZipArchive zip, string header)
     {
         var entry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
         if (entry == null)
@@ -96,7 +96,7 @@ public static class OfficeDocHelper
             entry = zip.CreateEntry(customPropsFileName);
             using var stream = entry.Open();
             using var writer = new StreamWriter(stream);
-            writer.Write($$"""
+            await writer.WriteAsync($$"""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
                             xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
@@ -110,7 +110,7 @@ public static class OfficeDocHelper
         }
         else
         {
-            entry.EditXmlEntry(_ => SetHeader(_, header));
+            await entry.EditXmlEntry(_ => SetHeader(_, header));
         }
     }
 

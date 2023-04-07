@@ -13,7 +13,7 @@ public class OfficeDocHelperTests
             await using var resourceStream = assembly.GetManifestResourceStream(resourceName)!;
             using var stream = new MemoryStream();
             await resourceStream.CopyToAsync(stream);
-            OfficeDocHelper.Patch(
+            await OfficeDocHelper.Patch(
                 stream,
                 new()
                 {

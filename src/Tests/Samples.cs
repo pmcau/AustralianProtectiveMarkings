@@ -246,7 +246,7 @@ public class Samples
         return Verify(marking);
     }
 
-    void OfficeDocHelperSample(Stream stream)
+    async Task OfficeDocHelperSample(Stream stream)
     {
         #region OfficeDocHelperStream
 
@@ -254,12 +254,12 @@ public class Samples
         {
             Classification = Classification.TopSecret,
         };
-        OfficeDocHelper.Patch(stream, marking);
+        await OfficeDocHelper.Patch(stream, marking);
 
         #endregion
     }
 
-    void OfficeDocHelperSample(string filePath)
+    async Task OfficeDocHelperSample(string filePath)
     {
         #region OfficeDocHelperFile
 
@@ -267,7 +267,7 @@ public class Samples
         {
             Classification = Classification.TopSecret,
         };
-        OfficeDocHelper.Patch(filePath, marking);
+        await OfficeDocHelper.Patch(filePath, marking);
 
         #endregion
     }

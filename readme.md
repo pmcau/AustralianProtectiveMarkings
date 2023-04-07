@@ -415,7 +415,7 @@ var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
 };
-OfficeDocHelper.Patch(stream, marking);
+await OfficeDocHelper.Patch(stream, marking);
 ```
 <sup><a href='/src/Tests/Samples.cs#L251-L259' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -427,7 +427,7 @@ var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
 };
-OfficeDocHelper.Patch(filePath, marking);
+await OfficeDocHelper.Patch(filePath, marking);
 ```
 <sup><a href='/src/Tests/Samples.cs#L264-L272' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
