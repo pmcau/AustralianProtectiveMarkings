@@ -39,7 +39,8 @@ public static class OfficeDoc
         {
             return;
         }
-        document.Root!.Add(
+
+        root.Add(
             new XElement(overrideName,
                 new XAttribute("PartName", "/docProps/custom.xml"),
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
