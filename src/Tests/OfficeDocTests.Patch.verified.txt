@@ -1,6 +1,10 @@
 ﻿{
   Tests.docs.noProps.docx:
 <op:property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="2" name="X-Protective-Marking" xmlns:op="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"><vt:lpwstr xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">VER=2018.4, NS=gov.au, SEC=PROTECTED</vt:lpwstr></op:property>,
+  Tests.docs.sample.pptx:
+<op:property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="2" name="X-Protective-Marking" xmlns:op="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"><vt:lpwstr xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">VER=2018.4, NS=gov.au, SEC=PROTECTED</vt:lpwstr></op:property>,
+  Tests.docs.sample.xlsx:
+<op:property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="2" name="X-Protective-Marking" xmlns:op="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"><vt:lpwstr xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">VER=2018.4, NS=gov.au, SEC=PROTECTED</vt:lpwstr></op:property>,
   Tests.docs.withProps.docx:
 <op:property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="2" name="X-Protective-Marking" xmlns:op="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"><vt:lpwstr xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">VER=2018.4, NS=gov.au, SEC=PROTECTED</vt:lpwstr></op:property>
 }

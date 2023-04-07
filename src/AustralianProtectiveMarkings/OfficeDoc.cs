@@ -4,7 +4,7 @@ public static class OfficeDoc
 {
     const string customPropsFileName = @"docProps/custom.xml";
 
-    public static void PatchWord(Stream stream, ProtectiveMarking marking)
+    public static void Patch(Stream stream, ProtectiveMarking marking)
     {
         var header = marking.RenderEmailHeader();
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);

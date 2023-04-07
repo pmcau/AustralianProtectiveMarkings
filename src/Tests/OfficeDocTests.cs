@@ -13,14 +13,14 @@ public class OfficeDocTests
             await using var resourceStream = assembly.GetManifestResourceStream(resourceName)!;
             using var stream = new MemoryStream();
             await resourceStream.CopyToAsync(stream);
-            OfficeDoc.PatchWord(
+            OfficeDoc.Patch(
                 stream,
                 new()
                 {
                     Classification = Classification.Protected
                 });
             var propertyOuterXml = GetProperty(stream,resourceName);
-            dictionary.Add(resourceName, "\n"+propertyOuterXml);
+            dictionary.Add(resourceName, "\n" + propertyOuterXml);
         }
         await Verify(dictionary);
     }
@@ -36,16 +36,21 @@ public class OfficeDocTests
             return property.OuterXml;
         }
 
-        throw new InvalidOperationException();
-    }
+        if (resourceName.EndsWith("pptx"))
+        {
+            using var document = PresentationDocument.Open(stream, false);
+            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            return property.OuterXml;
+        }
 
-    static string GetMarking(MemoryStream stream)
-    {
-        stream.Position = 0;
-        using var document = WordprocessingDocument.Open(stream, false);
-        var property = document.CustomFilePropertiesPart!.Properties.Single();
-        var propertyOuterXml = property.OuterXml;
-        return propertyOuterXml;
+        if (resourceName.EndsWith("xlsx"))
+        {
+            using var document = SpreadsheetDocument.Open(stream, false);
+            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            return property.OuterXml;
+        }
+
+        throw new InvalidOperationException();
     }
 
     [Test]

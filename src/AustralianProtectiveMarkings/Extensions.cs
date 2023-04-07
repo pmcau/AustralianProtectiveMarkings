@@ -1,7 +1,7 @@
 ﻿namespace AustralianProtectiveMarkings;
 
-static class Extensions{
-
+static class Extensions
+{
     public static void EditXmlEntry(this ZipArchiveEntry entry, Action<XDocument> func)
     {
         using var stream = entry.Open();
