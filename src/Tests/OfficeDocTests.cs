@@ -4,31 +4,39 @@
 public class OfficeDocTests
 {
     [Test]
-    public async Task PatchWord_noProps()
+    public async Task Patch()
     {
-        var stream = new MemoryStream();
-        await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(stream);
-        OfficeDoc.PatchWord(
-            stream,
-            new()
-            {
-                Classification = Classification.Protected
-            });
-        await VerifyXml(GetMarking(stream));
+        var assembly = GetType().Assembly;
+        var dictionary = new Dictionary<string, string>();
+        foreach (var resourceName in assembly.GetManifestResourceNames())
+        {
+            await using var resourceStream = assembly.GetManifestResourceStream(resourceName)!;
+            using var stream = new MemoryStream();
+            await resourceStream.CopyToAsync(stream);
+            OfficeDoc.PatchWord(
+                stream,
+                new()
+                {
+                    Classification = Classification.Protected
+                });
+            var propertyOuterXml = GetProperty(stream,resourceName);
+            dictionary.Add(resourceName, "\n"+propertyOuterXml);
+        }
+        await Verify(dictionary);
     }
 
-    [Test]
-    public async Task PatchWord_withProps()
+    static string GetProperty(MemoryStream stream, string resourceName)
     {
-        var stream = new MemoryStream();
-        await Resourcer.Resource.AsStream("docs/withProps.docx").CopyToAsync(stream);
-        OfficeDoc.PatchWord(
-            stream,
-            new()
-            {
-                Classification = Classification.Protected
-            });
-        await VerifyXml(GetMarking(stream));
+        stream.Position = 0;
+
+        if (resourceName.EndsWith("docx"))
+        {
+            using var document = WordprocessingDocument.Open(stream, false);
+            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            return property.OuterXml;
+        }
+
+        throw new InvalidOperationException();
     }
 
     static string GetMarking(MemoryStream stream)
