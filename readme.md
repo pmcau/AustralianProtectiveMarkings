@@ -402,6 +402,37 @@ var protectiveMarking = Parser.ParseEmailHeader("""
 <!-- endSnippet -->
 
 
+## OfficeDocHelper
+
+Protective markings can be applied to an office document (docx, xlsx, pptx) using OfficeDocHelper.
+
+<!-- snippet: OfficeDocHelperStream -->
+<a id='snippet-officedochelperstream'></a>
+```cs
+var marking = new ProtectiveMarking
+{
+    Classification = Classification.TopSecret,
+};
+OfficeDocHelper.Patch(stream, marking);
+```
+<sup><a href='/src/Tests/Samples.cs#L251-L259' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+<!-- snippet: OfficeDocHelperFile -->
+<a id='snippet-officedochelperfile'></a>
+```cs
+var marking = new ProtectiveMarking
+{
+    Classification = Classification.TopSecret,
+};
+OfficeDocHelper.Patch(filePath, marking);
+```
+<sup><a href='/src/Tests/Samples.cs#L264-L272' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+<img src="/src/docxWithProps.png">
+
+
 ## Icon
 
 Icon [Protect](https://thenounproject.com/icon/protect-1173962/) from [The Noun Project](https://thenounproject.com).

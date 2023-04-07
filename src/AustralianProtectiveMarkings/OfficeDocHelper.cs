@@ -4,6 +4,12 @@ public static class OfficeDocHelper
 {
     const string customPropsFileName = @"docProps/custom.xml";
 
+    public static void Patch(string file, ProtectiveMarking marking)
+    {
+        using var stream = File.OpenRead(file);
+        Patch(stream, marking);
+    }
+
     public static void Patch(Stream stream, ProtectiveMarking marking)
     {
         var header = marking.RenderEmailHeader();

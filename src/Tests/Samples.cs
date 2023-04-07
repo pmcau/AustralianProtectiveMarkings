@@ -245,4 +245,30 @@ public class Samples
 
         return Verify(marking);
     }
+
+    void OfficeDocHelperSample(Stream stream)
+    {
+        #region OfficeDocHelperStream
+
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.TopSecret,
+        };
+        OfficeDocHelper.Patch(stream, marking);
+
+        #endregion
+    }
+
+    void OfficeDocHelperSample(string filePath)
+    {
+        #region OfficeDocHelperFile
+
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.TopSecret,
+        };
+        OfficeDocHelper.Patch(filePath, marking);
+
+        #endregion
+    }
 }
