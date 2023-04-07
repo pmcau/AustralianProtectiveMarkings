@@ -45,19 +45,18 @@ public static class OfficeDoc
 
     internal static void EnsureCustomXmlInRels(XDocument document)
     {
-        var overrideElement = document
-            .Descendants()
-            .SingleOrDefault(_ => _.Name.LocalName == "Relationship" &&
-                                  _.Attribute("Target")?.Value == "docProps/custom.xml");
+        var root = document.Root!;
+        var relationshipName = root.GetDefaultNamespace() + "Relationship";
+        var relationships = root.Elements(relationshipName).ToList();
+        var overrideElement = relationships
+            .SingleOrDefault(_ => _.Attribute("Target")?.Value == "docProps/custom.xml");
 
         if (overrideElement != null)
         {
             return;
         }
 
-        var root = document.Root!;
-        var ns = root.GetDefaultNamespace();
-        var maxId = root.Elements(ns + "Relationship")
+        var maxId = relationships
             .Select(_ =>
             {
                 var id = _.Attribute("Id")!.Value;
@@ -73,7 +72,7 @@ public static class OfficeDoc
 
         var newid = maxId + 1;
         root.Add(
-            new XElement(ns+"Relationship",
+            new XElement(relationshipName,
                 new XAttribute("Id", $"rId{newid}"),
                 new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"),
                 new XAttribute("Target", "docProps/custom.xml")));
@@ -116,10 +115,9 @@ public static class OfficeDoc
     internal static void SetHeader(XDocument document, string marking)
     {
         var root = document.Root!;
-        var ns = root.GetDefaultNamespace();
-        var properties = root.Elements(ns + "property").ToList();
-        var property = properties
-            .SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
+        var propertyName = root.GetDefaultNamespace() + "property";
+        var properties = root.Elements(propertyName).ToList();
+        var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
         if (property == null)
         {
             var maxId = properties
