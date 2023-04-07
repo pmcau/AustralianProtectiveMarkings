@@ -1,5 +1,5 @@
 ﻿<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-  <property fmtid="Guid_1" pid="2" name="X-Protective-Marking">
+  <property fmtid="Guid_1" pid="1" name="X-Protective-Marking">
     <vt:lpwstr>newValue</vt:lpwstr>
   </property>
 </Properties>

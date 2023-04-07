@@ -19,35 +19,7 @@ public class OfficeDocTests
     }
 
     [Test]
-    public Task UpdateHeader()
-    {
-        var xml = """
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
-                            xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-                    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
-                              pid="2"
-                              name="X-Protective-Marking">
-                        <vt:lpwstr>oldValue</vt:lpwstr>
-                    </property>
-                </Properties>
-                """;
-        var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.SetHeader(document, "newValue");
-        return Verify(document);
-    }
-
-    // <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    // <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-    // <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="2" name="aaaa">
-    // <vt:lpwstr>aaa</vt:lpwstr>
-    // </property>
-    // <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="3" name="bbbb">
-    // <vt:lpwstr>bbbb</vt:lpwstr>
-    // </property>
-    // </Properties>
-    [Test]
-    public Task AddHeader()
+    public Task SetHeader()
     {
         var xml = """
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -61,7 +33,26 @@ public class OfficeDocTests
     }
 
     [Test]
-    public Task AddCustomXml()
+    public Task SetHeader_existing()
+    {
+        var xml = """
+                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+                            xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+                              pid="1"
+                              name="X-Protective-Marking">
+                        <vt:lpwstr>oldValue</vt:lpwstr>
+                    </property>
+                </Properties>
+                """;
+        var document = XDocument.Load(new StringReader(xml));
+        OfficeDoc.SetHeader(document, "newValue");
+        return Verify(document);
+    }
+
+    [Test]
+    public Task EnsureCustomXmlInContentTypes()
     {
         var xml = """
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -78,7 +69,7 @@ public class OfficeDocTests
     }
 
     [Test]
-    public Task AddCustomXml_existing()
+    public Task EnsureCustomXmlInContentTypes_existing()
     {
         var xml = """
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -97,7 +88,7 @@ public class OfficeDocTests
     }
 
     [Test]
-    public Task AddCustomRelsXml()
+    public Task EnsureCustomXmlInRels()
     {
         var xml = """
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -113,7 +104,7 @@ public class OfficeDocTests
     }
 
     [Test]
-    public Task AddCustomRelsXml_existing()
+    public Task EnsureCustomXmlInRels_existing()
     {
         var xml = """
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
