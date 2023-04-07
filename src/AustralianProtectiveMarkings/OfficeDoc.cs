@@ -55,9 +55,26 @@ public static class OfficeDoc
             return;
         }
 
-        document.Root!.Add(
-            new XElement(document.Root.GetDefaultNamespace()+"Relationship",
-                new XAttribute("Id", "rId4"),
+        var root = document.Root!;
+        var ns = root.GetDefaultNamespace();
+        var maxId = root.Elements(ns + "Relationship")
+            .Select(_ =>
+            {
+                var id = _.Attribute("Id")!.Value;
+                return int.Parse(id[3..]);
+            })
+            .OrderBy(_ => _)
+            .LastOrDefault();
+
+        if (maxId is 0)
+        {
+            maxId = 1;
+        }
+
+        var newid = maxId + 1;
+        root.Add(
+            new XElement(ns+"Relationship",
+                new XAttribute("Id", $"rId{newid}"),
                 new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"),
                 new XAttribute("Target", "docProps/custom.xml")));
     }
