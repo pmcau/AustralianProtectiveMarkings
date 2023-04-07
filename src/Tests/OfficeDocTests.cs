@@ -4,7 +4,7 @@
 public class OfficeDocTests
 {
     [Test]
-    public async Task Simple()
+    public async Task PatchWord_noProps()
     {
         var stream = new MemoryStream();
         await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(stream);
@@ -14,13 +14,30 @@ public class OfficeDocTests
             {
                 Classification = Classification.Protected
             });
+        await VerifyXml(GetMarking(stream));
+    }
+
+    [Test]
+    public async Task PatchWord_withProps()
+    {
+        var stream = new MemoryStream();
+        await Resourcer.Resource.AsStream("docs/withProps.docx").CopyToAsync(stream);
+        OfficeDoc.PatchWord(
+            stream,
+            new()
+            {
+                Classification = Classification.Protected
+            });
+        await VerifyXml(GetMarking(stream));
+    }
+
+    static string GetMarking(MemoryStream stream)
+    {
         stream.Position = 0;
         using var document = WordprocessingDocument.Open(stream, false);
         var property = document.CustomFilePropertiesPart!.Properties.Single();
-        await VerifyXml(property.OuterXml);
-        // File.Delete(@"C:\Code\wordhacking\doc.docx");
-        // await using var fileStream = File.OpenWrite(@"C:\Code\wordhacking\doc.docx");
-        // await memoryStream.CopyToAsync(fileStream);
+        var propertyOuterXml = property.OuterXml;
+        return propertyOuterXml;
     }
 
     [Test]
