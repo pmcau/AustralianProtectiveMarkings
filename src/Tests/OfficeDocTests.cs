@@ -25,6 +25,11 @@ public class OfficeDocTests
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
                             xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+                              pid="1"
+                              name="otherKey">
+                        <vt:lpwstr>value</vt:lpwstr>
+                    </property>
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));

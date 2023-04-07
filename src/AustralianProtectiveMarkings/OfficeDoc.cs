@@ -121,11 +121,29 @@ public static class OfficeDoc
                                   _.Attribute("name")?.Value == "X-Protective-Marking");
         if (property == null)
         {
-            var element = XElement.Parse("""
+            var root = document.Root!;
+            var ns = root.GetDefaultNamespace();
+            var maxId = root.Elements(ns + "property")
+                .Select(_ =>
+                {
+                    var id = _.Attribute("pid")!.Value;
+                    return int.Parse(id);
+                })
+                .OrderBy(_ => _)
+                .LastOrDefault();
+
+            if (maxId is 0)
+            {
+                maxId = 1;
+            }
+
+            var newid = maxId + 1;
+            var element = XElement.Parse($$"""
                 <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
-                          pid="2"
+                          pid="{{newid}}"
                           name="X-Protective-Marking" />
                 """);
+
             element.Add(new XElement(vtNamespace + "lpwstr", marking));
             document.Root!.Add(element);
         }
