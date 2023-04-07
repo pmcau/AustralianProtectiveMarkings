@@ -1,21 +1,26 @@
-﻿[TestFixture]
+﻿using DocumentFormat.OpenXml.Packaging;
+
+[TestFixture]
 public class OfficeDocTests
 {
     [Test]
     public async Task Simple()
     {
-        var memoryStream = new MemoryStream();
-        await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(memoryStream);
+        var stream = new MemoryStream();
+        await Resourcer.Resource.AsStream("docs/noProps.docx").CopyToAsync(stream);
         OfficeDoc.PatchWord(
-            memoryStream,
+            stream,
             new()
             {
                 Classification = Classification.Protected
             });
-        memoryStream.Position = 0;
-        File.Delete(@"C:\Code\wordhacking\doc.docx");
-        await using var fileStream = File.OpenWrite(@"C:\Code\wordhacking\doc.docx");
-        await memoryStream.CopyToAsync(fileStream);
+        stream.Position = 0;
+        using var document = WordprocessingDocument.Open(stream, false);
+        var property = document.CustomFilePropertiesPart!.Properties.Single();
+        await VerifyXml(property.OuterXml);
+        // File.Delete(@"C:\Code\wordhacking\doc.docx");
+        // await using var fileStream = File.OpenWrite(@"C:\Code\wordhacking\doc.docx");
+        // await memoryStream.CopyToAsync(fileStream);
     }
 
     [Test]
