@@ -1,0 +1,8 @@
+﻿<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+  <property fmtid="Guid_1" pid="1" name="otherKey">
+    <vt:lpwstr>value</vt:lpwstr>
+  </property>
+  <property fmtid="Guid_1" pid="2" name="X-Protective-Marking">
+    <lpwstr xmlns="vt">value</lpwstr>
+  </property>
+</Properties>
