@@ -19,10 +19,10 @@ public static class OfficeDocHelper
         await EnsureCustomXmlInRels(zip);
     }
 
-    static async Task EnsureCustomXmlInContentTypes(ZipArchive zip)
+    static Task EnsureCustomXmlInContentTypes(ZipArchive zip)
     {
-        var entry = zip.Entries.Single(_ => _.FullName == "[Content_Types].xml");
-        await entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
+        var entry = zip.GetEntry("[Content_Types].xml")!;
+        return entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
     }
 
     internal static void EnsureCustomXmlInContentTypes(XDocument document)
@@ -46,10 +46,10 @@ public static class OfficeDocHelper
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
 
-    static async Task EnsureCustomXmlInRels(ZipArchive zip)
+    static Task EnsureCustomXmlInRels(ZipArchive zip)
     {
-        var entry = zip.Entries.Single(_ => _.FullName == @"_rels/.rels");
-        await entry.EditXmlEntry(EnsureCustomXmlInRels);
+        var entry = zip.GetEntry(@"_rels/.rels")!;
+        return entry.EditXmlEntry(EnsureCustomXmlInRels);
     }
 
     internal static void EnsureCustomXmlInRels(XDocument document)
@@ -90,7 +90,7 @@ public static class OfficeDocHelper
 
     static async Task EnsureCustomPropertyEntry(ZipArchive zip, string header)
     {
-        var entry = zip.Entries.SingleOrDefault(_ => _.FullName == customPropsFileName);
+        var entry = zip.GetEntry(customPropsFileName);
         if (entry == null)
         {
             entry = zip.CreateEntry(customPropsFileName);
