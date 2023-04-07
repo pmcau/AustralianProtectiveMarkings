@@ -18,8 +18,8 @@ public static class OfficeDoc
 
         using var stream = entry.Open();
 
-        using var streamReader = new StreamReader(stream);
-        var document = XDocument.Load(streamReader);
+        using var reader = new StreamReader(stream);
+        var document = XDocument.Load(reader);
         EnsureCustomXmlInContentTypes(document);
         stream.SetLength(0);
         using var writer = new StreamWriter(stream);
@@ -47,6 +47,19 @@ public static class OfficeDoc
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
 
+    static void EnsureCustomXmlInRels(ZipArchive zip)
+    {
+        var entry = zip.Entries.Single(_ => _.FullName == @"_rels\.rels");
+
+        using var stream = entry.Open();
+
+        using var reader = new StreamReader(stream);
+        var document = XDocument.Load(reader);
+        EnsureCustomXmlInRels(document);
+        stream.SetLength(0);
+        using var writer = new StreamWriter(stream);
+        writer.Write(document.ToString());
+    }
     internal static void EnsureCustomXmlInRels(XDocument document)
     {
         var root = document.Root!;
