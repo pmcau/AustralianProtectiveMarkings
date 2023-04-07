@@ -2,7 +2,7 @@
 
 namespace AustralianProtectiveMarkings;
 
-public static class MailMessageExtensions
+public static class MailMessageHelper
 {
     public static void ApplyProtectiveMarkings(this MailMessage mail, ProtectiveMarking marking)
     {

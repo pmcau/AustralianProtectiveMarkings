@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 
 [TestFixture]
-public class OfficeDocTests
+public class OfficeDocHelperTests
 {
     [Test]
     public async Task Patch()
@@ -13,7 +13,7 @@ public class OfficeDocTests
             await using var resourceStream = assembly.GetManifestResourceStream(resourceName)!;
             using var stream = new MemoryStream();
             await resourceStream.CopyToAsync(stream);
-            OfficeDoc.Patch(
+            OfficeDocHelper.Patch(
                 stream,
                 new()
                 {
@@ -68,7 +68,7 @@ public class OfficeDocTests
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.SetHeader(document, "value");
+        OfficeDocHelper.SetHeader(document, "value");
         return Verify(document);
     }
 
@@ -87,7 +87,7 @@ public class OfficeDocTests
                 </Properties>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.SetHeader(document, "newValue");
+        OfficeDocHelper.SetHeader(document, "newValue");
         return Verify(document);
     }
 
@@ -104,7 +104,7 @@ public class OfficeDocTests
                 </Types>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.EnsureCustomXmlInContentTypes(document);
+        OfficeDocHelper.EnsureCustomXmlInContentTypes(document);
         return Verify(document);
     }
 
@@ -123,7 +123,7 @@ public class OfficeDocTests
                 </Types>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.EnsureCustomXmlInContentTypes(document);
+        OfficeDocHelper.EnsureCustomXmlInContentTypes(document);
         return Verify(document);
     }
 
@@ -139,7 +139,7 @@ public class OfficeDocTests
                 </Relationships>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.EnsureCustomXmlInRels(document);
+        OfficeDocHelper.EnsureCustomXmlInRels(document);
         return Verify(document);
     }
 
@@ -158,7 +158,7 @@ public class OfficeDocTests
                 </Relationships>
                 """;
         var document = XDocument.Load(new StringReader(xml));
-        OfficeDoc.EnsureCustomXmlInRels(document);
+        OfficeDocHelper.EnsureCustomXmlInRels(document);
         return Verify(document);
     }
 }

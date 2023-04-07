@@ -1,7 +1,7 @@
 ﻿using System.Net.Mail;
 
 [TestFixture]
-public class MailMessageExtensionTests
+public class MailMessageHelperTests
 {
     [Test]
     public Task ApplyProtectiveMarkings()

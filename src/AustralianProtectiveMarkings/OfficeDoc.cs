@@ -1,6 +1,6 @@
 namespace AustralianProtectiveMarkings;
 
-public static class OfficeDoc
+public static class OfficeDocHelper
 {
     const string customPropsFileName = @"docProps/custom.xml";
 
