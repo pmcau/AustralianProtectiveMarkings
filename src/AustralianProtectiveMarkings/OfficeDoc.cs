@@ -10,20 +10,13 @@ public static class OfficeDoc
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
         EnsureCustomPropertyEntry(zip, header);
         EnsureCustomXmlInContentTypes(zip);
+        EnsureCustomXmlInRels(zip);
     }
 
     static void EnsureCustomXmlInContentTypes(ZipArchive zip)
     {
         var entry = zip.Entries.Single(_ => _.FullName == "[Content_Types].xml");
-
-        using var stream = entry.Open();
-
-        using var reader = new StreamReader(stream);
-        var document = XDocument.Load(reader);
-        EnsureCustomXmlInContentTypes(document);
-        stream.SetLength(0);
-        using var writer = new StreamWriter(stream);
-        writer.Write(document.ToString());
+        entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
     }
 
     internal static void EnsureCustomXmlInContentTypes(XDocument document)
@@ -49,17 +42,10 @@ public static class OfficeDoc
 
     static void EnsureCustomXmlInRels(ZipArchive zip)
     {
-        var entry = zip.Entries.Single(_ => _.FullName == @"_rels\.rels");
-
-        using var stream = entry.Open();
-
-        using var reader = new StreamReader(stream);
-        var document = XDocument.Load(reader);
-        EnsureCustomXmlInRels(document);
-        stream.SetLength(0);
-        using var writer = new StreamWriter(stream);
-        writer.Write(document.ToString());
+        var entry = zip.Entries.Single(_ => _.FullName == @"_rels/.rels");
+        entry.EditXmlEntry(EnsureCustomXmlInRels);
     }
+
     internal static void EnsureCustomXmlInRels(XDocument document)
     {
         var root = document.Root!;
@@ -118,13 +104,7 @@ public static class OfficeDoc
         }
         else
         {
-            using var stream = entry.Open();
-            using var reader = new StreamReader(stream);
-            var document = XDocument.Load(reader);
-            SetHeader(document, header);
-            stream.SetLength(0);
-            using var writer = new StreamWriter(stream);
-            writer.Write(document.ToString());
+            entry.EditXmlEntry(_ => SetHeader(_, header));
         }
     }
 
