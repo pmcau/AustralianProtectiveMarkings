@@ -41,7 +41,8 @@ public static class OfficeDoc
         }
 
         root.Add(
-            new XElement(overrideName,
+            new XElement(
+                overrideName,
                 new XAttribute("PartName", "/docProps/custom.xml"),
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
@@ -75,7 +76,8 @@ public static class OfficeDoc
 
         var newid = maxId + 1;
         root.Add(
-            new XElement(relationshipName,
+            new XElement(
+                relationshipName,
                 new XAttribute("Id", $"rId{newid}"),
                 new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"),
                 new XAttribute("Target", "docProps/custom.xml")));
@@ -138,14 +140,14 @@ public static class OfficeDoc
             }
 
             var newid = maxId + 1;
-            var element = XElement.Parse($$"""
-                <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
-                          pid="{{newid}}"
-                          name="X-Protective-Marking" />
-                """);
 
-            element.Add(new XElement(vtNamespace + "lpwstr", marking));
-            root.Add(element);
+            root.Add(
+                new XElement(
+                    propertyName,
+                    new XAttribute("fmtid", "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"),
+                    new XAttribute("pid", newid),
+                    new XAttribute("name", "X-Protective-Marking"),
+                    new XElement(vtNamespace + "lpwstr", marking)));
         }
         else
         {
