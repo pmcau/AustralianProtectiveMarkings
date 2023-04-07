@@ -1,6 +1,4 @@
-﻿using System.Net.Mail;
-
-namespace AustralianProtectiveMarkings;
+﻿namespace AustralianProtectiveMarkings;
 
 public static partial class Renderer
 {
@@ -151,9 +149,4 @@ public static partial class Renderer
         }
     }
 
-    public static void ApplyProtectiveMarkings(this MailMessage mail, ProtectiveMarking marking)
-    {
-        mail.Subject = $"{mail.Subject} {marking.RenderEmailSubjectSuffix()}";
-        mail.Headers["X-Protective-Marking"] = marking.RenderEmailHeader();
-    }
 }
