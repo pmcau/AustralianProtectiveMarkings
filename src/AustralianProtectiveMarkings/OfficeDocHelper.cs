@@ -4,6 +4,46 @@ public static class OfficeDocHelper
 {
     const string customPropsFileName = @"docProps/custom.xml";
 
+    public static bool TryReadProtectiveMarkings(
+        string file,
+        [NotNullWhen(true)] out ProtectiveMarking? marking)
+    {
+        using var stream = File.OpenRead(file);
+        return TryReadProtectiveMarkings(stream, out marking);
+    }
+
+    public static bool TryReadProtectiveMarkings(
+        Stream stream,
+        [NotNullWhen(true)] out ProtectiveMarking? marking)
+    {
+        using var zip = new ZipArchive(stream, ZipArchiveMode.Read, leaveOpen: false);
+
+        var entry = zip.GetEntry(customPropsFileName);
+        if (entry != null)
+        {
+            using var docStream = entry.Open();
+            using var reader = new StreamReader(docStream);
+            var document = XDocument.Load(reader);
+            var root = document.Root!;
+            var propertyName = root.GetDefaultNamespace() + "property";
+            var properties = root.Elements(propertyName).ToList();
+            var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
+
+            if (property != null)
+            {
+                var element = property
+                    .Elements()
+                    .Single(_ => _.Name.LocalName == "lpwstr");
+                marking = Parser.ParseProtectiveMarking(element.Value);
+                return true;
+            }
+        }
+
+
+        marking = null;
+        return false;
+    }
+
     public static async Task Patch(string file, ProtectiveMarking marking)
     {
         using var stream = File.OpenRead(file);

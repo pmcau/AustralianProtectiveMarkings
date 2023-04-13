@@ -50,7 +50,7 @@ public class ParserTests
             "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET",
             "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET",
             "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
-            "SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
+            "SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET"
         };
 
         var dictionary = new Dictionary<string, object>();
@@ -58,7 +58,7 @@ public class ParserTests
         {
             try
             {
-                var protectiveMarking = Parser.ParseEmailHeader(item);
+                var protectiveMarking = Parser.ParseProtectiveMarking(item);
                 dictionary.Add(item, protectiveMarking);
             }
             catch (Exception exception)
@@ -100,11 +100,19 @@ public class ParserTests
             try
             {
                 var pair = Parser.ParseKeyValues(item).ToList();
-                dictionary.Add(new {item, pair});
+                dictionary.Add(new
+                {
+                    item,
+                    pair
+                });
             }
             catch (Exception exception)
             {
-                dictionary.Add(new {item, exception});
+                dictionary.Add(new
+                {
+                    item,
+                    exception
+                });
             }
         }
 

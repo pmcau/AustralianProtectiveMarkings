@@ -1,0 +1,52 @@
+﻿{
+  protectiveMarking: {
+    Classification: TopSecret,
+    Caveats: {
+      Codeword: LOBSTER,
+      ForeignGovernment: usa caveat,
+      ExclusiveFor: person,
+      CountryCodes: [
+        Afghanistan,
+        Algeria
+      ],
+      Agao: true,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: true,
+      NationalCabinet: false
+    },
+    Expiry: {
+      DownTo: Protected,
+      GenDate: DateTimeOffset_1
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: true,
+    LegislativeSecrecy: false
+  },
+  outProtectiveMarking: {
+    Classification: TopSecret,
+    Caveats: {
+      Codeword: LOBSTER,
+      ForeignGovernment: usa caveat,
+      ExclusiveFor:  person,
+      CountryCodes: [
+        Afghanistan,
+        Algeria
+      ],
+      Agao: true,
+      Austeo: false,
+      DelicateSource: false,
+      Orcon: false,
+      Cabinet: true,
+      NationalCabinet: false
+    },
+    Expiry: {
+      DownTo: Protected,
+      GenDate: DateTimeOffset_1
+    },
+    PersonalPrivacy: false,
+    LegalPrivilege: true,
+    LegislativeSecrecy: false
+  }
+}
