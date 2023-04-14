@@ -76,7 +76,6 @@ public class OfficeDocHelperTests
         });
     }
 
-
     [Test]
     public async Task TryReadProtectiveMarkings_Existing_File_Stream()
     {
