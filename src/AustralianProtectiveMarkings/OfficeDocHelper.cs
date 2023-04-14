@@ -16,32 +16,33 @@ public static class OfficeDocHelper
         Stream stream,
         [NotNullWhen(true)] out ProtectiveMarking? marking)
     {
+        marking = null;
         using var zip = new ZipArchive(stream, ZipArchiveMode.Read, leaveOpen: false);
 
         var entry = zip.GetEntry(customPropsFileName);
-        if (entry != null)
+        if (entry == null)
         {
-            using var docStream = entry.Open();
-            using var reader = new StreamReader(docStream);
-            var document = XDocument.Load(reader);
-            var root = document.Root!;
-            var propertyName = root.GetDefaultNamespace() + "property";
-            var properties = root.Elements(propertyName).ToList();
-            var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
-
-            if (property != null)
-            {
-                var element = property
-                    .Elements()
-                    .Single(_ => _.Name.LocalName == "lpwstr");
-                marking = Parser.ParseProtectiveMarking(element.Value);
-                return true;
-            }
+            return false;
         }
 
+        using var docStream = entry.Open();
+        using var reader = new StreamReader(docStream);
+        var document = XDocument.Load(reader);
+        var root = document.Root!;
+        var propertyName = root.GetDefaultNamespace() + "property";
+        var properties = root.Elements(propertyName).ToList();
+        var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
 
-        marking = null;
-        return false;
+        if (property == null)
+        {
+            return false;
+        }
+
+        var element = property
+            .Elements()
+            .Single(_ => _.Name.LocalName == "lpwstr");
+        marking = Parser.ParseProtectiveMarking(element.Value);
+        return true;
     }
 
     public static async Task Patch(string file, ProtectiveMarking marking)
