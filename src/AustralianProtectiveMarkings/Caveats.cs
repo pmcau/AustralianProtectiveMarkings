@@ -143,14 +143,14 @@ public readonly record struct Caveats
     public bool Austeo { get; init; }
 
     /// <summary>
-    ///  Maps to: CAVEAT=SH:DELICATE SOURCE
+    /// Maps to: CAVEAT=SH:DELICATE SOURCE
     /// </summary>
     public bool DelicateSource { get; init; }
 
     /// <summary>
-    ///  Originator controlled.
+    /// Originator controlled.
     /// 
-    ///  Maps to: CAVEAT=SH:ORCON
+    /// Maps to: CAVEAT=SH:ORCON
     /// </summary>
     public bool Orcon { get; init; }
 
@@ -173,8 +173,7 @@ public readonly record struct Caveats
     /// The NATIONAL CABINET caveat identifies any information that which has been specifically prepared for National
     /// Cabinet or its subcommittees.
     /// 
-    ///  Maps to: CAVEAT=SH:NATIONAL-CABINET
-    /// 
+    /// Maps to: CAVEAT=SH:NATIONAL-CABINET
     /// </summary>
     public bool NationalCabinet { get; init; }
 }
