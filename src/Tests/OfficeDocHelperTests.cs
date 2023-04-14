@@ -19,7 +19,7 @@ public class OfficeDocHelperTests
                 {
                     Classification = Classification.Protected
                 });
-            var propertyOuterXml = GetProperty(stream,resourceName);
+            var propertyOuterXml = GetProperty(stream, resourceName);
             dictionary.Add(resourceName, "\n" + propertyOuterXml);
         }
         await Verify(dictionary);
