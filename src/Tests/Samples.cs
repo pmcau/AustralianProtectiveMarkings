@@ -10,7 +10,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
         var result = marking.RenderEmailSubjectSuffix();
 
@@ -30,7 +30,7 @@ public class Samples
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
@@ -58,7 +58,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
         var result = marking.RenderEmailHeader();
 
@@ -78,7 +78,7 @@ public class Samples
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
@@ -104,7 +104,7 @@ public class Samples
     {
         #region ParseEmailHeaderMinimumOmit
 
-        var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -116,7 +116,7 @@ public class Samples
     {
         #region ParseEmailHeaderMinimum
 
-        var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -156,7 +156,7 @@ public class Samples
     {
         #region ParseEmailHeaderFull
 
-        var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 
         #endregion
 
@@ -179,8 +179,14 @@ public class Samples
             }
         };
         var (header, footer) = marking.RenderDocumentHeaderAndFooter();
+
         #endregion
-        return Verify(new{header, footer});
+
+        return Verify(new
+        {
+            header,
+            footer
+        });
     }
 
     [Test]
@@ -188,7 +194,7 @@ public class Samples
     {
         #region ParseEmailHeaderFullNewlines
 
-        var protectiveMarking = Parser.ParseEmailHeader("""
+        var protectiveMarking = Parser.ParseProtectiveMarking("""
             VER=2018.4,
             NS=gov.au,
             SEC=TOP-SECRET,
@@ -221,7 +227,7 @@ public class Samples
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",
@@ -252,7 +258,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
         await OfficeDocHelper.Patch(stream, marking);
 
@@ -265,7 +271,7 @@ public class Samples
 
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
         await OfficeDocHelper.Patch(filePath, marking);
 

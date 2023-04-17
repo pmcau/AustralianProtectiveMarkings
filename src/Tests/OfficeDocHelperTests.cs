@@ -1,18 +1,18 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Packaging;
 
 [TestFixture]
 public class OfficeDocHelperTests
 {
+    static Assembly assembly = typeof(OfficeDocHelperTests).Assembly;
+
     [Test]
     public async Task Patch()
     {
-        var assembly = GetType().Assembly;
         var dictionary = new Dictionary<string, string>();
         foreach (var resourceName in assembly.GetManifestResourceNames())
         {
-            await using var resourceStream = assembly.GetManifestResourceStream(resourceName)!;
-            using var stream = new MemoryStream();
-            await resourceStream.CopyToAsync(stream);
+            using var stream = await GetResource(resourceName);
+
             await OfficeDocHelper.Patch(
                 stream,
                 new()
@@ -22,7 +22,73 @@ public class OfficeDocHelperTests
             var propertyOuterXml = GetProperty(stream, resourceName);
             dictionary.Add(resourceName, "\n" + propertyOuterXml);
         }
+
         await Verify(dictionary);
+    }
+
+    [Test]
+    public async Task TryReadProtectiveMarkings()
+    {
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.TopSecret,
+            Expiry = new Expiry
+            {
+                DownTo = Classification.Protected,
+                GenDate = new DateTimeOffset(new(2020, 10, 1))
+            },
+            LegalPrivilege = true,
+            Caveats = new Caveats
+            {
+                Codeword = "LOBSTER",
+                ForeignGovernment = "usa caveat",
+                Agao = true,
+                Cabinet = true,
+                ExclusiveFor = "person",
+                CountryCodes = new[]
+                {
+                    Country.Afghanistan,
+                    Country.Algeria
+                }
+            }
+        };
+
+        using var stream = await GetResource("Tests.docs.noProps.docx");
+
+        await OfficeDocHelper.Patch(
+            stream,
+            marking);
+
+        OfficeDocHelper.TryReadProtectiveMarkings(
+            stream,
+            out var outMarking);
+
+        await Verify(new
+        {
+            marking,
+            outMarking
+        });
+    }
+
+    [Test]
+    public async Task TryReadProtectiveMarkings_Existing_File_Stream()
+    {
+        using var stream = await GetResource("Tests.docs.correctProps.docx");
+
+        OfficeDocHelper.TryReadProtectiveMarkings(
+            stream,
+            out var marking);
+
+        await Verify(marking);
+    }
+
+    static async Task<MemoryStream> GetResource(string name)
+    {
+        await using var resource = assembly.GetManifestResourceStream(name)!;
+        var stream = new MemoryStream();
+        stream.Seek(0, SeekOrigin.Begin);
+        await resource.CopyToAsync(stream);
+        return stream;
     }
 
     static string GetProperty(MemoryStream stream, string resourceName)

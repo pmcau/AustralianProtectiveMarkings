@@ -51,7 +51,7 @@ See "Subject Field Marking" in  [PSPF: Sensitive and classified information - An
 ```cs
 var marking = new ProtectiveMarking
 {
-    Classification = Classification.TopSecret,
+    Classification = Classification.TopSecret
 };
 var result = marking.RenderEmailSubjectSuffix();
 ```
@@ -80,7 +80,7 @@ var marking = new ProtectiveMarking
     Expiry = new Expiry
     {
         DownTo = Classification.Official,
-        GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+        GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
@@ -133,7 +133,7 @@ See "Internet Message Header Extension" in  [PSPF: Sensitive and classified info
 ```cs
 var marking = new ProtectiveMarking
 {
-    Classification = Classification.TopSecret,
+    Classification = Classification.TopSecret
 };
 var result = marking.RenderEmailHeader();
 ```
@@ -162,7 +162,7 @@ var marking = new ProtectiveMarking
     Expiry = new Expiry
     {
         DownTo = Classification.Official,
-        GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+        GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
     },
     Comment = "the comments",
     AuthorEmail = "a@b.com",
@@ -261,7 +261,7 @@ var marking = new ProtectiveMarking
 };
 var (header, footer) = marking.RenderDocumentHeaderAndFooter();
 ```
-<sup><a href='/src/Tests/Samples.cs#L169-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L169-L183' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -293,7 +293,7 @@ Also useful for when a protective marking needs to be store in a configuration f
 <!-- snippet: ParseEmailHeaderMinimumOmit -->
 <a id='snippet-parseemailheaderminimumomit'></a>
 ```cs
-var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
+var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 ```
 <sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -321,7 +321,7 @@ The version and namespace is hard coded in the spec. Both can be omitted when pa
 <!-- snippet: ParseEmailHeaderMinimumOmit -->
 <a id='snippet-parseemailheaderminimumomit'></a>
 ```cs
-var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
+var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 ```
 <sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -332,7 +332,7 @@ var protectiveMarking = Parser.ParseEmailHeader("SEC=OFFICIAL:Sensitive");
 <!-- snippet: ParseEmailHeaderFull -->
 <a id='snippet-parseemailheaderfull'></a>
 ```cs
-var protectiveMarking = Parser.ParseEmailHeader("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
 <sup><a href='/src/Tests/Samples.cs#L157-L161' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -381,7 +381,7 @@ For readability, newlines are allowed to delineate key value pairs:
 <!-- snippet: ParseEmailHeaderFullNewlines -->
 <a id='snippet-parseemailheaderfullnewlines'></a>
 ```cs
-var protectiveMarking = Parser.ParseEmailHeader("""
+var protectiveMarking = Parser.ParseProtectiveMarking("""
     VER=2018.4,
     NS=gov.au,
     SEC=TOP-SECRET,
@@ -398,7 +398,7 @@ var protectiveMarking = Parser.ParseEmailHeader("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L189-L208' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L195-L214' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -413,11 +413,11 @@ A custom property named `X-Protective-Marking` will be added.
 ```cs
 var marking = new ProtectiveMarking
 {
-    Classification = Classification.TopSecret,
+    Classification = Classification.TopSecret
 };
 await OfficeDocHelper.Patch(stream, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L251-L259' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L257-L265' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: OfficeDocHelperFile -->
@@ -425,11 +425,11 @@ await OfficeDocHelper.Patch(stream, marking);
 ```cs
 var marking = new ProtectiveMarking
 {
-    Classification = Classification.TopSecret,
+    Classification = Classification.TopSecret
 };
 await OfficeDocHelper.Patch(filePath, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L264-L272' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L270-L278' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <img src="/src/docxWithProps.png" width="400px">
