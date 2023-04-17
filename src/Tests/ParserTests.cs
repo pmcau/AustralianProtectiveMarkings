@@ -116,6 +116,6 @@ public class ParserTests
             }
         }
 
-        return Verify(dictionary).DontScrubDateTimes();
+        return Verify(dictionary);
     }
 }
