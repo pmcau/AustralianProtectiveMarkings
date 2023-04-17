@@ -10,7 +10,7 @@ public static partial class Parser
         Escape
     }
 
-    internal record Pair(string Key, string Value);
+    internal readonly record struct Pair(string Key, string Value);
 
     static List<string> order = new()
     {
