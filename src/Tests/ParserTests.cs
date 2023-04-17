@@ -75,23 +75,22 @@ public class ParserTests
     {
         var list = new List<string>
         {
-            "Key=Value",
-            " Key=Value ",
-            @"Key=The\=Value",
-            @"Key=The\:Value",
-            @"Key=The\,Value",
-            @"Key=The\\Value",
-            "Key=Value ",
-            "Key= Value",
-            "Key1=Value",
+            "VER=Value",
+            " VER=Value ",
+            @"VER=The\=Value",
+            @"VER=The\:Value",
+            @"VER=The\,Value",
+            @"VER=The\\Value",
+            "VER=Value ",
+            "VER= Value",
             """
-                Key=Value,
-                Key=Value
+                VER=Value,
+                NS=Value
                 """,
-            "Key=Value,  Key=Value",
-            "Key=Value,	Key=Value",
-            "Key=Value, Key=Value2",
-            "KeyA=Value, KeyB=Value"
+            "VER=Value,  NS=Value",
+            "VER=Value,	NS=Value",
+            "VER=Value, NS=Value2",
+            "VER=Value, NS=Value"
         };
 
         var dictionary = new List<object>();

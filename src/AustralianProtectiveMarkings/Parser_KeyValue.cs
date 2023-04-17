@@ -46,6 +46,9 @@ public static partial class Parser
                         var value = valueBuilder.ToString();
                         var key = keyBuilder.ToString();
                         ValidateValueWhiteSpace(input, value);
+
+                        CheckForUnknownKeys(input, key);
+
                         yield return new(key, value);
                         valueBuilder.Clear();
                         keyBuilder.Clear();
@@ -82,6 +85,14 @@ public static partial class Parser
         }
 
         throw new($"Incorrect ending state. Input: {input}");
+    }
+
+    static void CheckForUnknownKeys(string input, string key)
+    {
+        if (!order.Contains(key))
+        {
+            throw new($"Unknown key '{key}'. Input: {input}");
+        }
     }
 
     static void ValidateValueChar(string input, char ch)

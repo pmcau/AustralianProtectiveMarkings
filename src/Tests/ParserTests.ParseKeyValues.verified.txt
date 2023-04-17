@@ -1,146 +1,138 @@
 ﻿[
   {
-    item: Key=Value,
+    item: VER=Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       }
     ]
   },
   {
-    item:  Key=Value ,
+    item:  VER=Value ,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       }
     ]
   },
   {
-    item: Key=The\=Value,
+    item: VER=The\=Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: The=Value
       }
     ]
   },
   {
-    item: Key=The\:Value,
+    item: VER=The\:Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: The:Value
       }
     ]
   },
   {
-    item: Key=The\,Value,
+    item: VER=The\,Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: The,Value
       }
     ]
   },
   {
-    item: Key=The\\Value,
+    item: VER=The\\Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: The\Value
       }
     ]
   },
   {
-    item: Key=Value ,
+    item: VER=Value ,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       }
     ]
   },
   {
-    item: Key= Value,
+    item: VER= Value,
     exception: {
       $type: Exception,
       Type: Exception,
-      Message: Leading whitespace in value ' Value'. Input: Key= Value
-    }
-  },
-  {
-    item: Key1=Value,
-    exception: {
-      $type: Exception,
-      Type: Exception,
-      Message: Invalid character '1' in key. Input: Key1=Value
+      Message: Leading whitespace in value ' Value'. Input: VER= Value
     }
   },
   {
     item:
-Key=Value,
-Key=Value,
+VER=Value,
+NS=Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       },
       {
-        Key: Key,
+        Key: NS,
         Value: Value
       }
     ]
   },
   {
-    item: Key=Value,  Key=Value,
+    item: VER=Value,  NS=Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       },
       {
-        Key: Key,
+        Key: NS,
         Value: Value
       }
     ]
   },
   {
-    item: Key=Value,	Key=Value,
+    item: VER=Value,	NS=Value,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       },
       {
-        Key: Key,
+        Key: NS,
         Value: Value
       }
     ]
   },
   {
-    item: Key=Value, Key=Value2,
+    item: VER=Value, NS=Value2,
     pair: [
       {
-        Key: Key,
+        Key: VER,
         Value: Value
       },
       {
-        Key: Key,
+        Key: NS,
         Value: Value2
       }
     ]
   },
   {
-    item: KeyA=Value, KeyB=Value,
+    item: VER=Value, NS=Value,
     pair: [
       {
-        Key: KeyA,
+        Key: VER,
         Value: Value
       },
       {
-        Key: KeyB,
+        Key: NS,
         Value: Value
       }
     ]
