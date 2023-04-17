@@ -1,5 +1,5 @@
 ﻿{
-  protectiveMarking: {
+  marking: {
     Classification: TopSecret,
     Caveats: {
       Codeword: LOBSTER,
@@ -24,7 +24,7 @@
     LegalPrivilege: true,
     LegislativeSecrecy: false
   },
-  outProtectiveMarking: {
+  outMarking: {
     Classification: TopSecret,
     Caveats: {
       Codeword: LOBSTER,

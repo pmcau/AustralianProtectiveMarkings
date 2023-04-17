@@ -77,12 +77,9 @@ public class OfficeDocHelperTests
 
         OfficeDocHelper.TryReadProtectiveMarkings(
             stream,
-            out var outProtectiveMarking);
+            out var marking);
 
-        await Verify(new
-        {
-            outProtectiveMarking
-        });
+        await Verify(marking);
     }
 
     static async Task<MemoryStream> GetResource(string name)
