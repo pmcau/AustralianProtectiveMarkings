@@ -21,7 +21,7 @@ public static class MailMessageHelper
             return false;
         }
 
-        marking = Parser.ParseProtectiveMarking(mailHeader);
+        marking = Parser.ParseProtectiveMarking(mailHeader.AsSpan());
         return true;
     }
 }

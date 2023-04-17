@@ -28,7 +28,7 @@ public static partial class Parser
     static bool AnyValue(this List<Pair> list, string value) =>
         list.Any(_ => _.Value == value);
 
-    public static ProtectiveMarking ParseProtectiveMarking(string input)
+    public static ProtectiveMarking ParseProtectiveMarking(CharSpan input)
     {
         var pairs = ParseKeyValues(input).ToList();
         var keys = pairs.Select(_ => _.Key).ToList();
@@ -52,26 +52,26 @@ public static partial class Parser
         };
     }
 
-    static void CheckForUnknownKeys(string input, List<string> keys)
+    static void CheckForUnknownKeys(CharSpan input, List<string> keys)
     {
         foreach (var key in keys.Where(_ => !order.Contains(_)))
         {
-            throw new($"Unknown key '{key}'. Input: {input}");
+            throw new($"Unknown key '{key}'. Input: {input.ToString()}");
         }
     }
 
-    static Expiry? ReadExpiry(string input, List<Pair> pairs)
+    static Expiry? ReadExpiry(CharSpan input, List<Pair> pairs)
     {
         var expiresItems = pairs.Where(_ => _.Key == "EXPIRES").ToList();
         if (expiresItems.Count > 1)
         {
-            throw new($"Only a single EXPIRES is allowed. Input: {input}");
+            throw new($"Only a single EXPIRES is allowed. Input: {input.ToString()}");
         }
 
         var downToItems = pairs.Where(_ => _.Key == "DOWNTO").ToList();
         if (downToItems.Count > 1)
         {
-            throw new($"Only a single DOWNTO is allowed. Input: {input}");
+            throw new($"Only a single DOWNTO is allowed. Input: {input.ToString()}");
         }
 
         if (downToItems.Count == 0 && expiresItems.Count == 0)
@@ -81,7 +81,7 @@ public static partial class Parser
 
         if (downToItems.Count == 0 || expiresItems.Count == 0)
         {
-            throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input}");
+            throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input.ToString()}");
         }
 
         var downTo = ParseClassification(downToItems[0].Value);
@@ -102,7 +102,7 @@ public static partial class Parser
         };
     }
 
-    static void ValidateOrder(string input, List<string> keys)
+    static void ValidateOrder(CharSpan input, List<string> keys)
     {
         var ordered = keys.OrderBy(_ => order.IndexOf(_)).ToList();
         if (!ordered.SequenceEqual(keys))
@@ -111,24 +111,24 @@ public static partial class Parser
                 Incorrect order.
                 Order must be: {string.Join(", ", order)}.
                 Order is: {string.Join(", ", keys)}.
-                Input: {input}
+                Input: {input.ToString()}
                 """);
         }
     }
 
-    static Classification ReadClassification(string input, List<Pair> pairs)
+    static Classification ReadClassification(CharSpan input, List<Pair> pairs)
     {
         var security = pairs.Where(_ => _.Key == "SEC").ToList();
         if (security.Count != 1)
         {
-            throw new($"A single security 'SEC' must be defined. Input: {input}");
+            throw new($"A single security 'SEC' must be defined. Input: {input.ToString()}");
         }
 
         var value = security[0].Value;
         return ParseClassification(value);
     }
 
-    static string? ReadAuthorEmail(string input, List<Pair> pairs)
+    static string? ReadAuthorEmail(CharSpan input, List<Pair> pairs)
     {
         var origins = pairs.Where(_ => _.Key == "ORIGIN").ToList();
         if (origins.Count == 0)
@@ -138,14 +138,14 @@ public static partial class Parser
 
         if (origins.Count > 1)
         {
-            throw new($"Only one ORIGIN is allowed. Input: {input}");
+            throw new($"Only one ORIGIN is allowed. Input: {input.ToString()}");
         }
 
         ThrowForDuplicates(input, origins, "ORIGIN");
         return origins[0].Value;
     }
 
-    static string? ReadComment(string input, List<Pair> pairs)
+    static string? ReadComment(CharSpan input, List<Pair> pairs)
     {
         var notes = pairs.Where(_ => _.Key == "NOTE").ToList();
         if (notes.Count == 0)
@@ -155,18 +155,18 @@ public static partial class Parser
 
         if (notes.Count > 1)
         {
-            throw new($"Only one NOTE is allowed. Input: {input}");
+            throw new($"Only one NOTE is allowed. Input: {input.ToString()}");
         }
 
         ThrowForDuplicates(input, notes, "NOTE");
         return notes[0].Value;
     }
 
-    static void ThrowForDuplicates<T>(string input, List<T> items, string name)
+    static void ThrowForDuplicates<T>(CharSpan input, List<T> items, string name)
     {
         if (items.Count != items.Distinct().Count())
         {
-            throw new($"Duplicates not allowed in '{name}'. Input: {input}");
+            throw new($"Duplicates not allowed in '{name}'. Input: {input.ToString()}");
         }
     }
 
@@ -182,12 +182,12 @@ public static partial class Parser
             _ => throw new($"Unknown classification: {value}")
         };
 
-    static void ValidateNamespace(string input, List<Pair> pairs)
+    static void ValidateNamespace(CharSpan input, List<Pair> pairs)
     {
         var namespaces = pairs.Where(_ => _.Key == "NS").ToList();
         if (namespaces.Count > 1)
         {
-            throw new($"Only one namespace 'NS' allowed. Input: {input}");
+            throw new($"Only one namespace 'NS' allowed. Input: {input.ToString()}");
         }
 
         if (namespaces.Count == 1)
@@ -195,17 +195,17 @@ public static partial class Parser
             var value = namespaces[0];
             if (value.Value != "gov.au")
             {
-                throw new($"Namespace 'NS' must be 'gov.au'. Input: {input}");
+                throw new($"Namespace 'NS' must be 'gov.au'. Input: {input.ToString()}");
             }
         }
     }
 
-    static void ValidateVersion(string input, List<Pair> pairs)
+    static void ValidateVersion(CharSpan input, List<Pair> pairs)
     {
         var versions = pairs.Where(_ => _.Key == "VER").ToList();
         if (versions.Count > 1)
         {
-            throw new($"Only one version 'VER' allowed. Input: {input}");
+            throw new($"Only one version 'VER' allowed. Input: {input.ToString()}");
         }
     }
 }

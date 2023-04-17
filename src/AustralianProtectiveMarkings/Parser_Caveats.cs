@@ -2,7 +2,7 @@ namespace AustralianProtectiveMarkings;
 
 public static partial class Parser
 {
-    static Caveats? ReadCaveats(string input, List<Pair> pairs)
+    static Caveats? ReadCaveats(CharSpan input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -35,7 +35,7 @@ public static partial class Parser
         };
     }
 
-    static string? ReadCodeword(string input, List<Pair> caveats)
+    static string? ReadCodeword(CharSpan input, List<Pair> caveats)
     {
         var codewords = caveats
             .Select(_ => _.Value)
@@ -48,13 +48,13 @@ public static partial class Parser
 
         if (codewords.Count > 1)
         {
-            throw new($"Only one codeword 'CAVEAT=C:' is allowed. Input: {input}");
+            throw new($"Only one codeword 'CAVEAT=C:' is allowed. Input: {input.ToString()}");
         }
 
         return codewords[0][2..];
     }
 
-    static string? ReadForeignGovernmentCaveat(string input, List<Pair> caveats)
+    static string? ReadForeignGovernmentCaveat(CharSpan input, List<Pair> caveats)
     {
         var prefix = "FG:";
         var fgCaveats = caveats
@@ -68,13 +68,13 @@ public static partial class Parser
 
         if (fgCaveats.Count > 1)
         {
-            throw new($"Only one ForeignGovernment Caveat 'CAVEAT=FG:' is allowed. Input: {input}");
+            throw new($"Only one ForeignGovernment Caveat 'CAVEAT=FG:' is allowed. Input: {input.ToString()}");
         }
 
         return fgCaveats[0][3..];
     }
 
-    static List<Country>? ReadCountryCaveats(string input, List<Pair> caveats)
+    static List<Country>? ReadCountryCaveats(CharSpan input, List<Pair> caveats)
     {
         var prefix = "RI:REL";
         var countries = caveats
@@ -88,7 +88,7 @@ public static partial class Parser
 
         if (countries.Count > 1)
         {
-            throw new($"Only one Country Caveat 'CAVEAT=REL:' is allowed. Input: {input}");
+            throw new($"Only one Country Caveat 'CAVEAT=REL:' is allowed. Input: {input.ToString()}");
         }
 
         var value = countries[0][7..];
@@ -100,7 +100,7 @@ public static partial class Parser
         return countryCodes;
     }
 
-    static string? ReadExclusiveForCaveat(string input, List<Pair> caveats)
+    static string? ReadExclusiveForCaveat(CharSpan input, List<Pair> caveats)
     {
         var prefix = "SH:EXCLUSIVE-FOR";
         var exclusiveFors = caveats
@@ -114,7 +114,7 @@ public static partial class Parser
 
         if (exclusiveFors.Count > 1)
         {
-            throw new($"Only one ExclusiveFor Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input}");
+            throw new($"Only one ExclusiveFor Caveat 'CAVEAT=SH:EXCLUSIVE-FOR' is allowed. Input: {input.ToString()}");
         }
 
         return exclusiveFors[0][prefix.Length..];

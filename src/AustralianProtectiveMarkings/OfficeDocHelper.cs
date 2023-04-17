@@ -41,7 +41,7 @@ public static class OfficeDocHelper
         var element = property
             .Elements()
             .Single(_ => _.Name.LocalName == "lpwstr");
-        marking = Parser.ParseProtectiveMarking(element.Value);
+        marking = Parser.ParseProtectiveMarking(element.Value.AsSpan());
         return true;
     }
 
