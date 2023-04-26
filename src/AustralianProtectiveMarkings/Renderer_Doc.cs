@@ -4,8 +4,8 @@ public static partial class Renderer
 {
     public static (string header, string footer) RenderDocumentHeaderAndFooter(this ProtectiveMarking marking)
     {
-        var secondary = RenderDocPrimary(marking);
-        var primary = RenderDocCaveats(marking);
+        var secondary = RenderOther(marking);
+        var primary = RenderClassificationAndCaveats(marking);
         if (secondary == null)
         {
             return (primary, primary);
@@ -22,7 +22,7 @@ public static partial class Renderer
                 """);
     }
 
-    static string? RenderDocPrimary(ProtectiveMarking marking)
+    static string? RenderOther(ProtectiveMarking marking)
     {
         var builder = new StringBuilder();
 
@@ -50,7 +50,7 @@ public static partial class Renderer
         return builder.ToString();
     }
 
-    static string RenderDocCaveats(ProtectiveMarking marking)
+    public static string RenderClassificationAndCaveats(this ProtectiveMarking marking)
     {
         var classification = Render(marking.Classification);
         var builder = new StringBuilder(classification);

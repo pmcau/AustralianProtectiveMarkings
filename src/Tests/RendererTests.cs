@@ -16,10 +16,37 @@ public class RendererTests
     }
 
     [Test]
+    public Task RenderClassificationAndCaveats()
+    {
+        var marking = BuildMarking();
+        return Verify(marking.RenderClassificationAndCaveats());
+    }
+
+    [Test]
+    public Task RenderClassificationAndCaveatsMin()
+    {
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.Secret,
+        };
+        return Verify(marking.RenderClassificationAndCaveats());
+    }
+
+    [Test]
     public Task RenderDocumentHeaderAndFooter()
     {
         var marking = BuildMarking();
-        return VerifyTuple(()=>marking.RenderDocumentHeaderAndFooter());
+        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
+    }
+
+    [Test]
+    public Task RenderDocumentHeaderAndFooterMin()
+    {
+        var marking = new ProtectiveMarking
+        {
+            Classification = Classification.Secret,
+        };
+        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
     }
 
     [Test]
@@ -40,16 +67,6 @@ public class RendererTests
             Classification = Classification.Secret
         };
         return Verify(marking.RenderEmailHeader());
-    }
-
-    [Test]
-    public Task RenderDocumentHeaderAndFooterMin()
-    {
-        var marking = new ProtectiveMarking
-        {
-            Classification = Classification.Secret,
-        };
-        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
     }
 
     [Test]
@@ -86,7 +103,7 @@ public class RendererTests
                 ForeignGovernment = "usa caveat",
                 Agao = true,
                 Cabinet = true,
-                ExclusiveFor= "person",
+                ExclusiveFor = "person",
                 CountryCodes = new[]
                 {
                     Country.Afghanistan,
