@@ -5,7 +5,7 @@
     <Description>A dotnet representaion of the Australian Protective Security Policy Framework</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Polyfill" Version="1.20.0" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" Version="1.21.0" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" Condition="$(TargetFramework) == net48" />
