@@ -126,4 +126,20 @@ public readonly record struct ProtectiveMarking(Classification Classification)
             authorEmail = value;
         }
     }
+
+    public static ProtectiveMarking Unofficial { get; } = new(Classification.Unofficial);
+    public static ProtectiveMarking Official { get; } = new(Classification.Official);
+    public static ProtectiveMarking OfficialSensitive { get; } = new(Classification.OfficialSensitive);
+    public static ProtectiveMarking Protected { get; } = new(Classification.Protected);
+
+    public static ProtectiveMarking ProtectedCabinet { get; } = new(Classification.Protected)
+    {
+        Caveats = new Caveats
+        {
+            Cabinet = true
+        }
+    };
+
+    public static ProtectiveMarking Secret { get; } = new(Classification.Secret);
+    public static ProtectiveMarking TopSecret { get; } = new(Classification.TopSecret);
 }
