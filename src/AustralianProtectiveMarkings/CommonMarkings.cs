@@ -22,6 +22,16 @@ public static class CommonMarkings
     public static string ProtectedEmailSubjectSuffix { get; } = Protected.RenderEmailSubjectSuffix();
     public static string ProtectedClassificationAndCaveats { get; } = Protected.RenderClassificationAndCaveats();
 
+    public static ProtectiveMarking Secret { get; } = new(Classification.Secret);
+    public static string SecretEmailHeader { get; } = Secret.RenderEmailHeader();
+    public static string SecretEmailSubjectSuffix { get; } = Secret.RenderEmailSubjectSuffix();
+    public static string SecretClassificationAndCaveats { get; } = Secret.RenderClassificationAndCaveats();
+
+    public static ProtectiveMarking TopSecret { get; } = new(Classification.TopSecret);
+    public static string TopSecretEmailHeader { get; } = TopSecret.RenderEmailHeader();
+    public static string TopSecretEmailSubjectSuffix { get; } = TopSecret.RenderEmailSubjectSuffix();
+    public static string TopSecretClassificationAndCaveats { get; } = TopSecret.RenderClassificationAndCaveats();
+
     public static ProtectiveMarking ProtectedCabinet { get; } = new(Classification.Protected)
     {
         Caveats = new Caveats
