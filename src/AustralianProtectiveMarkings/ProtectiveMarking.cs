@@ -126,8 +126,4 @@ public readonly record struct ProtectiveMarking(Classification Classification)
             authorEmail = value;
         }
     }
-
-
-    public static ProtectiveMarking Secret { get; } = new(Classification.Secret);
-    public static ProtectiveMarking TopSecret { get; } = new(Classification.TopSecret);
 }
