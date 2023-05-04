@@ -50,7 +50,19 @@ public class ParserTests
             "SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET",
             "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=SECRET",
             "SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
-            "SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET"
+            "SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET",
+            "Unofficial",
+            "Official",
+            "OfficialSensitive",
+            "Protected",
+            "Secret",
+            "TopSecret",
+            "UNOFFICIAL",
+            "OFFICIAL",
+            "OFFICIALSENSITIVE",
+            "PROTECTED",
+            "SECRET",
+            "TOPSECRET"
         };
 
         var dictionary = new Dictionary<string, object>();

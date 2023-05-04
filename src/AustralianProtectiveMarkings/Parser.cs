@@ -30,6 +30,10 @@ public static partial class Parser
 
     public static ProtectiveMarking ParseProtectiveMarking(string input)
     {
+        if (Enum.TryParse<Classification>(input, true, out var classification))
+        {
+            return new(classification);
+        }
         var pairs = ParseKeyValues(input).ToList();
         var keys = pairs.Select(_ => _.Key).ToList();
         ValidateOrder(input, keys);

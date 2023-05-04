@@ -1,4 +1,40 @@
 ﻿{
+  Official: {
+    Classification: Official,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  OFFICIAL: {
+    Classification: Official,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  OfficialSensitive: {
+    Classification: OfficialSensitive,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  OFFICIALSENSITIVE: {
+    Classification: OfficialSensitive,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  Protected: {
+    Classification: Protected,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  PROTECTED: {
+    Classification: Protected,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
   SEC= TOP-SECRET: {
     Type: Exception,
     Message: Leading whitespace in value ' TOP-SECRET'. Input: SEC= TOP-SECRET
@@ -331,6 +367,40 @@
   SEC=unknown: {
     Type: Exception,
     Message: Unknown classification: unknown
+  },
+  Secret: {
+    Classification: Secret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  SECRET: {
+    Classification: Secret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  TopSecret: {
+    Classification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  TOPSECRET: {
+    Classification: TopSecret,
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  Unofficial: {
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
+  },
+  UNOFFICIAL: {
+    PersonalPrivacy: false,
+    LegalPrivilege: false,
+    LegislativeSecrecy: false
   },
   VER=2018.4: {
     Type: Exception,
