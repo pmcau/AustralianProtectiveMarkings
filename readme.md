@@ -218,7 +218,7 @@ var mail = new MailMessage(
     body: "The body");
 mail.ApplyProtectiveMarkings(marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L129-L149' title='Snippet source file'>snippet source</a> | <a href='#snippet-applyprotectivemarkings' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L150-L170' title='Snippet source file'>snippet source</a> | <a href='#snippet-applyprotectivemarkings' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -262,7 +262,7 @@ var marking = new ProtectiveMarking
 };
 var (header, footer) = marking.RenderDocumentHeaderAndFooter();
 ```
-<sup><a href='/src/Tests/Samples.cs#L169-L183' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L190-L204' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -304,9 +304,18 @@ Results in:
 <!-- snippet: Samples.ParseEmailHeaderMinimumOmit.verified.txt -->
 <a id='snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt'></a>
 ```txt
-OfficialSensitive
+{
+  Classification: OfficialSensitive,
+  Caveats: null,
+  Expiry: null,
+  PersonalPrivacy: false,
+  LegalPrivilege: false,
+  LegislativeSecrecy: false,
+  Comment: null,
+  AuthorEmail: null
+}
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -330,7 +339,7 @@ var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/Samples.cs#L157-L161' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L178-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -349,18 +358,25 @@ Results in:
       Algeria
     ],
     Agao: true,
-    Cabinet: true
+    Austeo: false,
+    DelicateSource: false,
+    Orcon: false,
+    Cabinet: true,
+    NationalCabinet: false
   },
   Expiry: {
     DownTo: Official,
-    GenDate: DateTimeOffset_1
+    GenDate: 2020-10-01T00:00:00+00:00,
+    Event: null
   },
+  PersonalPrivacy: false,
   LegalPrivilege: true,
+  LegislativeSecrecy: false,
   Comment: the comments,
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -388,7 +404,7 @@ var protectiveMarking = Parser.ParseProtectiveMarking("""
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L195-L214' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L216-L235' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -407,7 +423,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(stream, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L257-L265' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L278-L286' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: OfficeDocHelperFile -->
@@ -419,7 +435,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(filePath, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L270-L278' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L291-L299' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <img src="/src/docxWithProps.png" width="400px">
