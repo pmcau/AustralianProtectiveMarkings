@@ -13,7 +13,8 @@ Spec:
 
 ## NuGet package
 
-https://nuget.org/packages/AustralianProtectiveMarkings/
+ * https://nuget.org/packages/AustralianProtectiveMarkings/
+ * https://nuget.org/packages/Verify.AustralianProtectiveMarkings/
 
 
 ## Model
