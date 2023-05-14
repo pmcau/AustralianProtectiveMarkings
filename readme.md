@@ -303,14 +303,9 @@ Results in:
 <!-- snippet: Samples.ParseEmailHeaderMinimumOmit.verified.txt -->
 <a id='snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt'></a>
 ```txt
-{
-  Classification: OfficialSensitive,
-  PersonalPrivacy: false,
-  LegalPrivilege: false,
-  LegislativeSecrecy: false
-}
+OfficialSensitive
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -353,24 +348,18 @@ Results in:
       Algeria
     ],
     Agao: true,
-    Austeo: false,
-    DelicateSource: false,
-    Orcon: false,
-    Cabinet: true,
-    NationalCabinet: false
+    Cabinet: true
   },
   Expiry: {
     DownTo: Official,
     GenDate: DateTimeOffset_1
   },
-  PersonalPrivacy: false,
   LegalPrivilege: true,
-  LegislativeSecrecy: false,
   Comment: the comments,
   AuthorEmail: a@b.com
 }
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
