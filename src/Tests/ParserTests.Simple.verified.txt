@@ -1,113 +1,45 @@
 ﻿{
-  Official: {
-    Classification: Official,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  OFFICIAL: {
-    Classification: Official,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  OfficialSensitive: {
-    Classification: OfficialSensitive,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  OFFICIALSENSITIVE: {
-    Classification: OfficialSensitive,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  Protected: {
-    Classification: Protected,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  PROTECTED: {
-    Classification: Protected,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
+  Official: Official,
+  OFFICIAL: Official,
+  OfficialSensitive: OfficialSensitive,
+  OFFICIALSENSITIVE: OfficialSensitive,
+  Protected: Protected,
+  PROTECTED: Protected,
   SEC= TOP-SECRET: {
     Type: Exception,
     Message: Leading whitespace in value ' TOP-SECRET'. Input: SEC= TOP-SECRET
   },
-  SEC=OFFICIAL:Sensitive: {
-    Classification: OfficialSensitive,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
+  SEC=OFFICIAL:Sensitive: OfficialSensitive,
   SEC=SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
     Type: Exception,
     Message: Expiry DownTo `TopSecret` must be less than the Classification of the ProtectiveMarking `Secret`.
   },
-  SEC=TOP-SECRET: {
-    Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
+  SEC=TOP-SECRET: TopSecret,
   SEC=TOP-SECRET, ACCESS=Legal-Privilege: {
     Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: true,
-    LegislativeSecrecy: false
+    LegalPrivilege: true
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legal-Privilege: {
     Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: true,
-    LegislativeSecrecy: false
+    LegalPrivilege: true
   },
   SEC=TOP-SECRET, ACCESS=Legal-Privilege, ACCESS=Legislative-Secrecy: {
     Classification: TopSecret,
-    PersonalPrivacy: false,
     LegalPrivilege: true,
     LegislativeSecrecy: true
   },
-  SEC=TOP-SECRET, ACCESS=unknown: {
-    Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
+  SEC=TOP-SECRET, ACCESS=unknown: TopSecret,
   SEC=TOP-SECRET, CAVEAT=C:code word: {
     Classification: TopSecret,
     Caveats: {
-      Codeword: code word,
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Codeword: code word
+    }
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1: {
     Classification: TopSecret,
     Caveats: {
-      Codeword: codeword1,
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Codeword: codeword1
+    }
   },
   SEC=TOP-SECRET, CAVEAT=C:codeword1, CAVEAT=C:codeword1: {
     Type: Exception,
@@ -120,144 +52,53 @@
   SEC=TOP-SECRET, CAVEAT=FG:usa caveat: {
     Classification: TopSecret,
     Caveats: {
-      ForeignGovernment: usa caveat,
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      ForeignGovernment: usa caveat
+    }
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Caveats: {}
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Caveats: {}
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AIA: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Caveats: {}
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Caveats: {}
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AIA: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    Caveats: {}
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
     Caveats: {
-      Agao: true,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Agao: true
+    }
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
     Caveats: {
-      Agao: true,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Agao: true
+    }
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     Classification: TopSecret,
     Caveats: {
       Agao: true,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: true,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Cabinet: true
+    }
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     Classification: TopSecret,
     Caveats: {
-      ExclusiveFor:  person,
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      ExclusiveFor:  person
+    }
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person1, CAVEAT=SH:EXCLUSIVE-FOR person2: {
     Type: Exception,
@@ -276,10 +117,7 @@
     Expiry: {
       DownTo: Secret,
       GenDate: 2020-10-01 +0
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    }
   },
   SEC=TOP-SECRET, EXPIRES=2020-10-01, DOWNTO=TOP-SECRET: {
     Type: Exception,
@@ -294,10 +132,7 @@
     Expiry: {
       DownTo: Secret,
       Event: expiry
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+    }
   },
   SEC=TOP-SECRET, EXPIRES=expiry, DOWNTO=SECRET, DOWNTO=UNOFFICIAL: {
     Type: Exception,
@@ -317,9 +152,6 @@
   },
   SEC=TOP-SECRET, NOTE=the comment: {
     Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false,
     Comment: the comment
   },
   SEC=TOP-SECRET, NOTE=the comment, NOTE=other comment: {
@@ -332,9 +164,6 @@
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com: {
     Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false,
     AuthorEmail: a@b.com
   },
   SEC=TOP-SECRET, ORIGIN=a@b.com, ORIGIN=a@b.com: {
@@ -352,56 +181,19 @@
   SEC=TOP-SECRET,CAVEAT=C:codeword1: {
     Classification: TopSecret,
     Caveats: {
-      Codeword: codeword1,
-      Agao: false,
-      Austeo: false,
-      DelicateSource: false,
-      Orcon: false,
-      Cabinet: false,
-      NationalCabinet: false
-    },
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
+      Codeword: codeword1
+    }
   },
   SEC=unknown: {
     Type: Exception,
     Message: Unknown classification: unknown
   },
-  Secret: {
-    Classification: Secret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  SECRET: {
-    Classification: Secret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  TopSecret: {
-    Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  TOPSECRET: {
-    Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  Unofficial: {
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
-  UNOFFICIAL: {
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  },
+  Secret: Secret,
+  SECRET: Secret,
+  TopSecret: TopSecret,
+  TOPSECRET: TopSecret,
+  Unofficial: Unofficial,
+  UNOFFICIAL: Unofficial,
   VER=2018.4: {
     Type: Exception,
     Message: A single security 'SEC' must be defined. Input: VER=2018.4
@@ -410,10 +202,5 @@
     Type: Exception,
     Message: A single security 'SEC' must be defined. Input: VER=2018.4, NS=gov.au
   },
-  VER=2018.4, NS=gov.au, SEC=TOP-SECRET: {
-    Classification: TopSecret,
-    PersonalPrivacy: false,
-    LegalPrivilege: false,
-    LegislativeSecrecy: false
-  }
+  VER=2018.4, NS=gov.au, SEC=TOP-SECRET: TopSecret
 }

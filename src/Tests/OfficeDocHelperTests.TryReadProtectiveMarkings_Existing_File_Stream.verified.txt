@@ -9,17 +9,11 @@
       Algeria
     ],
     Agao: true,
-    Austeo: false,
-    DelicateSource: false,
-    Orcon: false,
-    Cabinet: true,
-    NationalCabinet: false
+    Cabinet: true
   },
   Expiry: {
     DownTo: Protected,
     GenDate: DateTimeOffset_1
   },
-  PersonalPrivacy: false,
-  LegalPrivilege: true,
-  LegislativeSecrecy: false
+  LegalPrivilege: true
 }

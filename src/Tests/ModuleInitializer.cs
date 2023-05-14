@@ -4,6 +4,7 @@
     public static void Setup()
     {
         VerifyMailMessage.Initialize();
+        VerifyAustralianProtectiveMarkings.Initialize();
         VerifierSettings.IgnoreStackTrace();
     }
 }

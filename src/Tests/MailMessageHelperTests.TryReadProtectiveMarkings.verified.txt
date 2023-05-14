@@ -1,6 +1,1 @@
-﻿{
-  Classification: TopSecret,
-  PersonalPrivacy: false,
-  LegalPrivilege: false,
-  LegislativeSecrecy: false
-}
+﻿TopSecret

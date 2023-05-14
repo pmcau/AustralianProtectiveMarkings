@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0;net48</TargetFrameworks>
+    <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify AustralianProtectiveMarkings.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NodaTime" Version="3.1.9" />
+    <PackageReference Include="Verify" Version="19.14.1" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
+    <PackageReference Include="Polyfill" Version="1.23.0" PrivateAssets="all" />
+    <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
+  </ItemGroup>
+</Project>

@@ -13,5 +13,6 @@
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
     <EmbeddedResource Include="docs\*.*" />
+    <ProjectReference Include="..\Verify.AustralianProtectiveMarkings\Verify.AustralianProtectiveMarkings.csproj" />
   </ItemGroup>
 </Project>
