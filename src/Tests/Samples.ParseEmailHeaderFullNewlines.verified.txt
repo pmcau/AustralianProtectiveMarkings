@@ -9,13 +9,20 @@
       Algeria
     ],
     Agao: true,
-    Cabinet: true
+    Austeo: false,
+    DelicateSource: false,
+    Orcon: false,
+    Cabinet: true,
+    NationalCabinet: false
   },
   Expiry: {
     DownTo: Official,
-    GenDate: DateTimeOffset_1
+    GenDate: 2020-10-01T00:00:00+00:00,
+    Event: null
   },
+  PersonalPrivacy: false,
   LegalPrivilege: true,
+  LegislativeSecrecy: false,
   Comment: the comments,
   AuthorEmail: a@b.com
 }

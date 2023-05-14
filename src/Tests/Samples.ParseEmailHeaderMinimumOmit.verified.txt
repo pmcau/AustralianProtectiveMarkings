@@ -1,1 +1,10 @@
-﻿OfficialSensitive
+﻿{
+  Classification: OfficialSensitive,
+  Caveats: null,
+  Expiry: null,
+  PersonalPrivacy: false,
+  LegalPrivilege: false,
+  LegislativeSecrecy: false,
+  Comment: null,
+  AuthorEmail: null
+}

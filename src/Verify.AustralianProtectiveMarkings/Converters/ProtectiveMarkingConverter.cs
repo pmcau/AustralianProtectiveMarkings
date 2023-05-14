@@ -22,16 +22,8 @@ class ProtectiveMarkingConverter :
         }
         writer.WriteStartObject();
         writer.WriteMember(value, classification, "Classification");
-        if (value.Caveats != null)
-        {
-            writer.WriteMember(value, value.Caveats, "Caveats");
-        }
-
-        if (value.Expiry != null)
-        {
-            writer.WriteMember(value, value.Expiry, "Expiry");
-        }
-
+        writer.WriteMember(value, value.Caveats, "Caveats");
+        writer.WriteMember(value, value.Expiry, "Expiry");
         if (value.PersonalPrivacy)
         {
             writer.WriteMember(value, true, "PersonalPrivacy");
@@ -45,15 +37,8 @@ class ProtectiveMarkingConverter :
             writer.WriteMember(value, true, "LegislativeSecrecy");
         }
 
-        if (value.Comment != null)
-        {
-            writer.WriteMember(value, value.Comment, "Comment");
-        }
-
-        if (value.AuthorEmail != null)
-        {
-            writer.WriteMember(value, value.AuthorEmail, "AuthorEmail");
-        }
+        writer.WriteMember(value, value.Comment, "Comment");
+        writer.WriteMember(value, value.AuthorEmail, "AuthorEmail");
 
         writer.WriteEndObject();
     }

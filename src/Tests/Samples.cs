@@ -108,7 +108,28 @@ public class Samples
 
         #endregion
 
-        return Verify(protectiveMarking);
+        return Verify(SerializeForDocs(protectiveMarking));
+    }
+
+    static string SerializeForDocs(object value)
+    {
+        var builder = new StringBuilder();
+        using (var stringWriter = new StringWriter(builder))
+        using (var jsonWriter = new JsonTextWriter(stringWriter)
+               {
+                   QuoteName = false,
+                   QuoteValue = false
+               })
+        {
+            var jsonSerializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented
+            };
+            jsonSerializer.Converters.Add(new StringEnumConverter());
+            jsonSerializer.Serialize(jsonWriter, value);
+        }
+
+        return builder.ToString();
     }
 
     [Test]
@@ -160,7 +181,7 @@ public class Samples
 
         #endregion
 
-        return Verify(protectiveMarking);
+        return Verify(SerializeForDocs(protectiveMarking));
     }
 
     [Test]
@@ -213,7 +234,7 @@ public class Samples
 
         #endregion
 
-        return Verify(protectiveMarking);
+        return Verify(SerializeForDocs(protectiveMarking));
     }
 
     [Test]
