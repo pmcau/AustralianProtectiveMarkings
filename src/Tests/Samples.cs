@@ -27,7 +27,7 @@ public class Samples
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
-            Expiry = new Expiry
+            Expiry = new()
             {
                 DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
@@ -75,7 +75,7 @@ public class Samples
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
-            Expiry = new Expiry
+            Expiry = new()
             {
                 DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
@@ -245,7 +245,7 @@ public class Samples
         var marking = new ProtectiveMarking
         {
             Classification = Classification.TopSecret,
-            Expiry = new Expiry
+            Expiry = new()
             {
                 DownTo = Classification.Official,
                 GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
