@@ -35,7 +35,7 @@ public class Samples
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             LegalPrivilege = true,
-            Caveats = new Caveats
+            Caveats = new()
             {
                 Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
@@ -83,7 +83,7 @@ public class Samples
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             LegalPrivilege = true,
-            Caveats = new Caveats
+            Caveats = new()
             {
                 Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
@@ -153,7 +153,7 @@ public class Samples
         {
             Classification = Classification.TopSecret,
             LegalPrivilege = true,
-            Caveats = new Caveats
+            Caveats = new()
             {
                 Cabinet = true,
                 Country = Country.Afghanistan
@@ -253,7 +253,7 @@ public class Samples
             Comment = "the comments",
             AuthorEmail = "a@b.com",
             LegalPrivilege = true,
-            Caveats = new Caveats
+            Caveats = new()
             {
                 Codeword = "LOBSTER",
                 ForeignGovernment = "USA caveat",
