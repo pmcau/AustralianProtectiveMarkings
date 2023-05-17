@@ -78,7 +78,7 @@ Results in:
 var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
-    Expiry = new Expiry
+    Expiry = new()
     {
         DownTo = Classification.Official,
         GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
@@ -160,7 +160,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET
 var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
-    Expiry = new Expiry
+    Expiry = new()
     {
         DownTo = Classification.Official,
         GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
