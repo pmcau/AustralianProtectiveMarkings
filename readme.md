@@ -86,7 +86,7 @@ var marking = new ProtectiveMarking
     Comment = "the comments",
     AuthorEmail = "a@b.com",
     LegalPrivilege = true,
-    Caveats = new Caveats
+    Caveats = new()
     {
         Codeword = "LOBSTER",
         ForeignGovernment = "USA caveat",
@@ -168,7 +168,7 @@ var marking = new ProtectiveMarking
     Comment = "the comments",
     AuthorEmail = "a@b.com",
     LegalPrivilege = true,
-    Caveats = new Caveats
+    Caveats = new()
     {
         Codeword = "LOBSTER",
         ForeignGovernment = "USA caveat",
@@ -204,7 +204,7 @@ var marking = new ProtectiveMarking
 {
     Classification = Classification.TopSecret,
     LegalPrivilege = true,
-    Caveats = new Caveats
+    Caveats = new()
     {
         Cabinet = true,
         Country = Country.Afghanistan
