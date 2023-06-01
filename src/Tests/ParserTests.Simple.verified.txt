@@ -72,22 +72,15 @@
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
-    Caveats: [
-      Agao
-    ]
+    Caveats: Agao
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
-    Caveats: [
-      Agao
-    ]
+    Caveats: Agao
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     Classification: TopSecret,
-    Caveats: [
-      Agao,
-      Cabinet
-    ]
+    Caveats: Agao, Cabinet
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     Classification: TopSecret,
