@@ -1,10 +1,49 @@
-﻿using AustralianProtectiveMarkings;
-
-class CaveatsConverter :
+﻿class CaveatsConverter :
     WriteOnlyJsonConverter<Caveats>
 {
     public override void Write(VerifyJsonWriter writer, Caveats value)
     {
+        if (value.Codeword == null &&
+            value.ForeignGovernment == null &&
+            value.ExclusiveFor == null &&
+            value.CountryCodes == null)
+        {
+            var list = new List<string>();
+            if (value.Agao)
+            {
+                list.Add("Agao");
+            }
+
+            if (value.Austeo)
+            {
+                list.Add("Austeo");
+            }
+
+            if (value.DelicateSource)
+            {
+                list.Add("DelicateSource");
+            }
+
+            if (value.Orcon)
+            {
+                list.Add("Orcon");
+            }
+
+            if (value.Cabinet)
+            {
+                list.Add("Cabinet");
+            }
+
+            if (value.NationalCabinet)
+            {
+                list.Add("NationalCabinet");
+            }
+
+            writer.Serialize(list);
+
+            return;
+        }
+
         writer.WriteStartObject();
         writer.WriteMember(value, value.Codeword, "Codeword");
         writer.WriteMember(value, value.ForeignGovernment, "ForeignGovernment");

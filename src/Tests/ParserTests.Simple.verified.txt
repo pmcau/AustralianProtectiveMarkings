@@ -56,43 +56,38 @@
     }
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO: {
-    Classification: TopSecret,
-    Caveats: {}
+    Classification: TopSecret
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AGO: {
-    Classification: TopSecret,
-    Caveats: {}
+    Classification: TopSecret
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO, CAVEAT=REL:AIA: {
-    Classification: TopSecret,
-    Caveats: {}
+    Classification: TopSecret
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AGO: {
-    Classification: TopSecret,
-    Caveats: {}
+    Classification: TopSecret
   },
   SEC=TOP-SECRET, CAVEAT=REL:AGO/AIA: {
-    Classification: TopSecret,
-    Caveats: {}
+    Classification: TopSecret
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: true
-    }
+    Caveats: [
+      Agao
+    ]
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=RI:AGAO: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: true
-    }
+    Caveats: [
+      Agao
+    ]
   },
   SEC=TOP-SECRET, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET: {
     Classification: TopSecret,
-    Caveats: {
-      Agao: true,
-      Cabinet: true
-    }
+    Caveats: [
+      Agao,
+      Cabinet
+    ]
   },
   SEC=TOP-SECRET, CAVEAT=SH:EXCLUSIVE-FOR person: {
     Classification: TopSecret,
