@@ -2,7 +2,7 @@ namespace AustralianProtectiveMarkings;
 
 public static class OfficeDocHelper
 {
-    const string customPropsFileName = @"docProps/custom.xml";
+    const string customPropsFileName = "docProps/custom.xml";
 
     public static bool TryReadProtectiveMarkings(
         string file,
@@ -89,7 +89,7 @@ public static class OfficeDocHelper
 
     static Task EnsureCustomXmlInRels(ZipArchive zip)
     {
-        var entry = zip.GetEntry(@"_rels/.rels")!;
+        var entry = zip.GetEntry("_rels/.rels")!;
         return entry.EditXmlEntry(EnsureCustomXmlInRels);
     }
 
