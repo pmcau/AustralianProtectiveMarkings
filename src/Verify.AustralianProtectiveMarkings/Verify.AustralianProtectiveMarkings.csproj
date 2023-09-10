@@ -7,9 +7,9 @@
   <ItemGroup>
     <PackageReference Include="NodaTime" Version="3.1.9" />
     <PackageReference Include="Verify" Version="21.0.0" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.93" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.94" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
-    <PackageReference Include="Polyfill" Version="1.27.1" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" Version="1.27.2" PrivateAssets="all" />
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
   </ItemGroup>
 </Project>
