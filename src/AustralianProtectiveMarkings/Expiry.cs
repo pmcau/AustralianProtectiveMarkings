@@ -8,7 +8,7 @@ public record struct Expiry
     readonly string? @event;
     readonly DateTimeOffset? genDate;
     /// <summary>
-    /// The classifciation that will be downgraded to when <see cref="Event"/> or <see cref="GenDate"/> occurs.
+    /// The classification that will be downgraded to when <see cref="Event"/> or <see cref="GenDate"/> occurs.
     /// </summary>
     public required Classification DownTo { get; init; }
 
@@ -39,7 +39,7 @@ public record struct Expiry
 
     /// <summary>
     /// The event that will trigger the classification expiry.
-    /// 
+    ///
     /// Maps to: the EXPIRES=genDate
     /// </summary>
     public string? Event
