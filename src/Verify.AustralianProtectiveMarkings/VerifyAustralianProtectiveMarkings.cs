@@ -15,8 +15,12 @@ public static class VerifyAustralianProtectiveMarkings
 
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         CounterContext.Init();
-        var converters = DefaultContractResolver.Converters;
-        converters.Add(new ProtectiveMarkingConverter());
-        converters.Add(new CaveatsConverter());
+        VerifierSettings
+            .AddExtraSettings(_ =>
+            {
+                var converters = _.Converters;
+                converters.Add(new ProtectiveMarkingConverter());
+                converters.Add(new CaveatsConverter());
+            });
     }
 }
