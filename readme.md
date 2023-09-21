@@ -5,6 +5,8 @@
 
 A dotnet representation of Protective Markings defined in the [Australian Protective Security Policy Framework](https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information)
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 Spec:
 
  * [PSPF: Sensitive and classified information](https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf)
