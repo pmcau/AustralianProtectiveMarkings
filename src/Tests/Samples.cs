@@ -273,6 +273,7 @@ public class Samples
         return Verify(marking);
     }
 
+    // ReSharper disable once ReplaceAsyncWithTaskReturn
     async Task OfficeDocHelperSample(Stream stream)
     {
         #region OfficeDocHelperStream
@@ -286,6 +287,7 @@ public class Samples
         #endregion
     }
 
+    // ReSharper disable once ReplaceAsyncWithTaskReturn
     async Task OfficeDocHelperSample(string filePath)
     {
         #region OfficeDocHelperFile
