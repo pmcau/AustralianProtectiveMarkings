@@ -425,7 +425,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(stream, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L278-L286' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L279-L287' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: OfficeDocHelperFile -->
@@ -437,7 +437,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(filePath, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L291-L299' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L293-L301' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <img src="/src/docxWithProps.png" width="400px">
