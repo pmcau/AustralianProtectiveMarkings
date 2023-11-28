@@ -30,7 +30,7 @@ public class Tests
         var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);
         var serialized2 = JsonConvert.SerializeObject(deserialized);
-        Assert.AreEqual(serialized1, serialized2);
+        AreEqual(serialized1, serialized2);
         return Verify(marking);
     }
 }

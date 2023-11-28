@@ -5,18 +5,18 @@ public class CountryCodesTests
     public void GetCodeForLetters()
     {
         var code = CountryCodes.GetCodeForLetters("ABW");
-        Assert.AreEqual(Country.Aruba, code);
+        AreEqual(Country.Aruba, code);
     }
 
     [Test]
     public void TryGetCodeForLetters()
     {
         var found = CountryCodes.TryGetCodeForLetters("ABW", out var code);
-        Assert.IsTrue(found);
-        Assert.AreEqual(Country.Aruba, code);
+        IsTrue(found);
+        AreEqual(Country.Aruba, code);
         found = CountryCodes.TryGetCodeForLetters("AAA", out code);
-        Assert.IsFalse(found);
-        Assert.IsNull(code);
+        IsFalse(found);
+        IsNull(code);
     }
 
     [Test]
@@ -27,18 +27,18 @@ public class CountryCodesTests
     public void GetLettersForCode()
     {
         var letters = Country.Aruba.GetLettersForCode();
-        Assert.AreEqual("ABW", letters);
+        AreEqual("ABW", letters);
     }
 
     [Test]
     public void TryGetLettersForCode()
     {
         var found = CountryCodes.TryGetLettersForCode(Country.Aruba, out var letters);
-        Assert.IsTrue(found);
-        Assert.AreEqual("ABW", letters);
+        IsTrue(found);
+        AreEqual("ABW", letters);
         found = CountryCodes.TryGetLettersForCode((Country) 999, out letters);
-        Assert.IsFalse(found);
-        Assert.IsNull(letters);
+        IsFalse(found);
+        IsNull(letters);
     }
 
     [Test]

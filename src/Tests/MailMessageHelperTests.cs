@@ -35,7 +35,7 @@ public class MailMessageHelperTests
             subject: "The subject",
             body: "The body");
         mail.ApplyProtectiveMarkings(marking);
-        Assert.IsTrue(mail.TryReadProtectiveMarkings(out var result));
+        IsTrue(mail.TryReadProtectiveMarkings(out var result));
         return Verify(result);
     }
 }

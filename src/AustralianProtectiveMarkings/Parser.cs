@@ -12,8 +12,8 @@ public static partial class Parser
 
     internal record Pair(string Key, string Value);
 
-    static List<string> order = new()
-    {
+    static List<string> order =
+    [
         "VER",
         "NS",
         "SEC",
@@ -23,7 +23,7 @@ public static partial class Parser
         "ACCESS",
         "NOTE",
         "ORIGIN"
-    };
+    ];
 
     static bool AnyValue(this List<Pair> list, string value) =>
         list.Any(_ => _.Value == value);
