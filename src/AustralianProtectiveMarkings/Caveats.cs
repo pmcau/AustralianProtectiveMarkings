@@ -99,10 +99,7 @@ public readonly record struct Caveats
         init
         {
             GuardDuplicateCountryCodeUse();
-            CountryCodes = new[]
-            {
-                value
-            };
+            CountryCodes = [value];
         }
     }
 

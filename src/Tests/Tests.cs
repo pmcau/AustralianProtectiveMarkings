@@ -20,11 +20,11 @@ public class Tests
                 Agao = true,
                 Cabinet = true,
                 ExclusiveFor = "person",
-                CountryCodes = new[]
-                {
+                CountryCodes =
+                [
                     Country.Afghanistan,
                     Country.Algeria
-                }
+                ]
             }
         };
         var serialized1 = JsonConvert.SerializeObject(marking);

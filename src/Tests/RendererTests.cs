@@ -104,11 +104,11 @@ public class RendererTests
                 Agao = true,
                 Cabinet = true,
                 ExclusiveFor = "person",
-                CountryCodes = new[]
-                {
+                CountryCodes =
+                [
                     Country.Afghanistan,
                     Country.Algeria
-                }
+                ]
             }
         };
 }
