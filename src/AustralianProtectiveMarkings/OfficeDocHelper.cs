@@ -30,8 +30,11 @@ public static class OfficeDocHelper
         var document = XDocument.Load(reader);
         var root = document.Root!;
         var propertyName = root.GetDefaultNamespace() + "property";
-        var properties = root.Elements(propertyName).ToList();
-        var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
+        var properties = root
+            .Elements(propertyName)
+            .ToList();
+        var property = properties.SingleOrDefault(_ => _.Attribute("name")
+            ?.Value == "X-Protective-Marking");
 
         if (property == null)
         {
@@ -70,10 +73,13 @@ public static class OfficeDocHelper
     {
         var root = document.Root!;
         var overrideName = root.GetDefaultNamespace() + "Override";
-        var overrides = root.Elements(overrideName).ToList();
+        var overrides = root
+            .Elements(overrideName)
+            .ToList();
 
         var overrideElement = overrides
-            .SingleOrDefault(_ => _.Attribute("PartName")?.Value == "/docProps/custom.xml");
+            .SingleOrDefault(_ => _.Attribute("PartName")
+                ?.Value == "/docProps/custom.xml");
 
         if (overrideElement != null)
         {
@@ -97,9 +103,12 @@ public static class OfficeDocHelper
     {
         var root = document.Root!;
         var relationshipName = root.GetDefaultNamespace() + "Relationship";
-        var relationships = root.Elements(relationshipName).ToList();
+        var relationships = root
+            .Elements(relationshipName)
+            .ToList();
         var overrideElement = relationships
-            .SingleOrDefault(_ => _.Attribute("Target")?.Value == "docProps/custom.xml");
+            .SingleOrDefault(_ => _.Attribute("Target")
+                ?.Value == "docProps/custom.xml");
 
         if (overrideElement != null)
         {
@@ -138,16 +147,16 @@ public static class OfficeDocHelper
             using var stream = entry.Open();
             using var writer = new StreamWriter(stream);
             await writer.WriteAsync($$"""
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
-                            xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-                    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
-                              pid="2"
-                              name="X-Protective-Marking">
-                        <vt:lpwstr>{{header}}</vt:lpwstr>
-                    </property>
-                </Properties>
-                """);
+                                      <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                                      <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+                                                  xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                                          <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+                                                    pid="2"
+                                                    name="X-Protective-Marking">
+                                              <vt:lpwstr>{{header}}</vt:lpwstr>
+                                          </property>
+                                      </Properties>
+                                      """);
         }
         else
         {
@@ -161,8 +170,11 @@ public static class OfficeDocHelper
     {
         var root = document.Root!;
         var propertyName = root.GetDefaultNamespace() + "property";
-        var properties = root.Elements(propertyName).ToList();
-        var property = properties.SingleOrDefault(_ => _.Attribute("name")?.Value == "X-Protective-Marking");
+        var properties = root
+            .Elements(propertyName)
+            .ToList();
+        var property = properties.SingleOrDefault(_ => _.Attribute("name")
+            ?.Value == "X-Protective-Marking");
         if (property == null)
         {
             var maxId = properties

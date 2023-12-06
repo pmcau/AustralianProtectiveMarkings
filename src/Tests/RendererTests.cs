@@ -27,7 +27,7 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.Secret,
+            Classification = Classification.Secret
         };
         return Verify(marking.RenderClassificationAndCaveats());
     }
@@ -44,7 +44,7 @@ public class RendererTests
     {
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.Secret,
+            Classification = Classification.Secret
         };
         return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
     }
@@ -79,8 +79,8 @@ public class RendererTests
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(date, TimeSpan.Zero),
-            },
+                GenDate = new DateTimeOffset(date, TimeSpan.Zero)
+            }
         };
         return Verify(marking.RenderEmailHeader());
     }
@@ -92,7 +92,7 @@ public class RendererTests
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero),
+                GenDate = new DateTimeOffset(2020, 10, 1, 0, 0, 0, TimeSpan.Zero)
             },
             Comment = "the comments",
             AuthorEmail = "a@b.com",

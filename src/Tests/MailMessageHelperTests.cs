@@ -8,7 +8,7 @@ public class MailMessageHelperTests
     {
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
 
         var mail = new MailMessage(
@@ -26,7 +26,7 @@ public class MailMessageHelperTests
     {
         var marking = new ProtectiveMarking
         {
-            Classification = Classification.TopSecret,
+            Classification = Classification.TopSecret
         };
 
         var mail = new MailMessage(

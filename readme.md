@@ -390,21 +390,21 @@ For readability, newlines are allowed to delineate key value pairs:
 <a id='snippet-parseemailheaderfullnewlines'></a>
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking("""
-    VER=2018.4,
-    NS=gov.au,
-    SEC=TOP-SECRET,
-    CAVEAT=C:CodeWord,
-    CAVEAT=FG:USA caveat,
-    CAVEAT=RI:AGAO,
-    CAVEAT=SH:CABINET,
-    CAVEAT=SH:EXCLUSIVE-FOR person,
-    CAVEAT=RI:REL AFG/DZA,
-    EXPIRES=2020-10-01,
-    DOWNTO=OFFICIAL,
-    ACCESS=Legal-Privilege,
-    NOTE=the comments,
-    ORIGIN=a@b.com
-    """);
+                                                      VER=2018.4,
+                                                      NS=gov.au,
+                                                      SEC=TOP-SECRET,
+                                                      CAVEAT=C:CodeWord,
+                                                      CAVEAT=FG:USA caveat,
+                                                      CAVEAT=RI:AGAO,
+                                                      CAVEAT=SH:CABINET,
+                                                      CAVEAT=SH:EXCLUSIVE-FOR person,
+                                                      CAVEAT=RI:REL AFG/DZA,
+                                                      EXPIRES=2020-10-01,
+                                                      DOWNTO=OFFICIAL,
+                                                      ACCESS=Legal-Privilege,
+                                                      NOTE=the comments,
+                                                      ORIGIN=a@b.com
+                                                      """);
 ```
 <sup><a href='/src/Tests/Samples.cs#L216-L235' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

@@ -148,5 +148,4 @@ public static partial class Renderer
             builder.Append($"CAVEAT=RI:REL {joined}, ");
         }
     }
-
 }

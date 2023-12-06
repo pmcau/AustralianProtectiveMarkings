@@ -79,7 +79,8 @@ public class ParserTests
             }
         }
 
-        return Verify(dictionary).DontScrubDateTimes();
+        return Verify(dictionary)
+            .DontScrubDateTimes();
     }
 
     [Test]
@@ -96,9 +97,9 @@ public class ParserTests
             "VER=Value ",
             "VER= Value",
             """
-                VER=Value,
-                NS=Value
-                """,
+            VER=Value,
+            NS=Value
+            """,
             "VER=Value,  NS=Value",
             "VER=Value,	NS=Value",
             "VER=Value, NS=Value2",
@@ -110,7 +111,9 @@ public class ParserTests
         {
             try
             {
-                var pair = Parser.ParseKeyValues(item).ToList();
+                var pair = Parser
+                    .ParseKeyValues(item)
+                    .ToList();
                 dictionary.Add(new
                 {
                     item,

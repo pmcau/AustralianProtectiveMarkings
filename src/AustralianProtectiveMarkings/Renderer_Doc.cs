@@ -13,13 +13,13 @@ public static partial class Renderer
 
         return (
             $"""
-                {primary}
-                {secondary}
-                """,
+             {primary}
+             {secondary}
+             """,
             $"""
-                {secondary}
-                {primary}
-                """);
+             {secondary}
+             {primary}
+             """);
     }
 
     static string? RenderOther(ProtectiveMarking marking)
@@ -111,6 +111,7 @@ public static partial class Renderer
             var joined = string.Join("/", caveats.CountryCodes.Select(_ => _.GetLettersForCode()));
             builder.Append($"//REL {joined}");
         }
+
         return builder.ToString();
     }
 }

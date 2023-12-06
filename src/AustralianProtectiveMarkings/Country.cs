@@ -1245,6 +1245,5 @@ public enum Country
     /// <summary>
     /// Zimbabwe - ZWE
     /// </summary>
-    Zimbabwe,
-
+    Zimbabwe
 }

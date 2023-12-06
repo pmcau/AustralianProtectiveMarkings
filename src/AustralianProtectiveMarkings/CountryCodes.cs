@@ -798,8 +798,7 @@ public static class CountryCodes
         },
         {
             "ZWE", Country.Zimbabwe
-        },
-
+        }
     };
 
     static Dictionary<Country, string> codeToLetters = new()
@@ -1550,6 +1549,6 @@ public static class CountryCodes
         },
         {
             Country.Zimbabwe, "ZWE"
-        },
+        }
     };
 }

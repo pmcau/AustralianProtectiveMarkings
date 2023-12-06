@@ -10,7 +10,7 @@ public class Tests
             Expiry = new Expiry
             {
                 DownTo = Classification.Official,
-                GenDate = new DateTimeOffset(new(2020, 10, 1)),
+                GenDate = new DateTimeOffset(new(2020, 10, 1))
             },
             LegalPrivilege = true,
             Caveats = new Caveats

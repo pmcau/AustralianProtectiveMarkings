@@ -34,13 +34,19 @@ public static partial class Parser
         {
             return new(classification);
         }
-        var pairs = ParseKeyValues(input).ToList();
-        var keys = pairs.Select(_ => _.Key).ToList();
+
+        var pairs = ParseKeyValues(input)
+            .ToList();
+        var keys = pairs
+            .Select(_ => _.Key)
+            .ToList();
         ValidateOrder(input, keys);
         ValidateVersion(input, pairs);
         ValidateNamespace(input, pairs);
 
-        var access = pairs.Where(_ => _.Key == "ACCESS").ToList();
+        var access = pairs
+            .Where(_ => _.Key == "ACCESS")
+            .ToList();
 
         return new()
         {
@@ -57,13 +63,17 @@ public static partial class Parser
 
     static Expiry? ReadExpiry(string input, List<Pair> pairs)
     {
-        var expiresItems = pairs.Where(_ => _.Key == "EXPIRES").ToList();
+        var expiresItems = pairs
+            .Where(_ => _.Key == "EXPIRES")
+            .ToList();
         if (expiresItems.Count > 1)
         {
             throw new($"Only a single EXPIRES is allowed. Input: {input}");
         }
 
-        var downToItems = pairs.Where(_ => _.Key == "DOWNTO").ToList();
+        var downToItems = pairs
+            .Where(_ => _.Key == "DOWNTO")
+            .ToList();
         if (downToItems.Count > 1)
         {
             throw new($"Only a single DOWNTO is allowed. Input: {input}");
@@ -99,21 +109,25 @@ public static partial class Parser
 
     static void ValidateOrder(string input, List<string> keys)
     {
-        var ordered = keys.OrderBy(_ => order.IndexOf(_)).ToList();
+        var ordered = keys
+            .OrderBy(_ => order.IndexOf(_))
+            .ToList();
         if (!ordered.SequenceEqual(keys))
         {
             throw new($"""
-                Incorrect order.
-                Order must be: {string.Join(", ", order)}.
-                Order is: {string.Join(", ", keys)}.
-                Input: {input}
-                """);
+                       Incorrect order.
+                       Order must be: {string.Join(", ", order)}.
+                       Order is: {string.Join(", ", keys)}.
+                       Input: {input}
+                       """);
         }
     }
 
     static Classification ReadClassification(string input, List<Pair> pairs)
     {
-        var security = pairs.Where(_ => _.Key == "SEC").ToList();
+        var security = pairs
+            .Where(_ => _.Key == "SEC")
+            .ToList();
         if (security.Count != 1)
         {
             throw new($"A single security 'SEC' must be defined. Input: {input}");
@@ -125,7 +139,9 @@ public static partial class Parser
 
     static string? ReadAuthorEmail(string input, List<Pair> pairs)
     {
-        var origins = pairs.Where(_ => _.Key == "ORIGIN").ToList();
+        var origins = pairs
+            .Where(_ => _.Key == "ORIGIN")
+            .ToList();
         if (origins.Count == 0)
         {
             return null;
@@ -142,7 +158,9 @@ public static partial class Parser
 
     static string? ReadComment(string input, List<Pair> pairs)
     {
-        var notes = pairs.Where(_ => _.Key == "NOTE").ToList();
+        var notes = pairs
+            .Where(_ => _.Key == "NOTE")
+            .ToList();
         if (notes.Count == 0)
         {
             return null;
@@ -159,7 +177,9 @@ public static partial class Parser
 
     static void ThrowForDuplicates<T>(string input, List<T> items, string name)
     {
-        if (items.Count != items.Distinct().Count())
+        if (items.Count != items
+                .Distinct()
+                .Count())
         {
             throw new($"Duplicates not allowed in '{name}'. Input: {input}");
         }
@@ -179,7 +199,9 @@ public static partial class Parser
 
     static void ValidateNamespace(string input, List<Pair> pairs)
     {
-        var namespaces = pairs.Where(_ => _.Key == "NS").ToList();
+        var namespaces = pairs
+            .Where(_ => _.Key == "NS")
+            .ToList();
         if (namespaces.Count > 1)
         {
             throw new($"Only one namespace 'NS' allowed. Input: {input}");
@@ -197,7 +219,9 @@ public static partial class Parser
 
     static void ValidateVersion(string input, List<Pair> pairs)
     {
-        var versions = pairs.Where(_ => _.Key == "VER").ToList();
+        var versions = pairs
+            .Where(_ => _.Key == "VER")
+            .ToList();
         if (versions.Count > 1)
         {
             throw new($"Only one version 'VER' allowed. Input: {input}");

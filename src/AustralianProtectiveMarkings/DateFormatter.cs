@@ -4,7 +4,7 @@ static class DateFormatter
 {
     public static bool TryParse(string value, [NotNullWhen(true)] out DateTimeOffset? result)
     {
-        if (!DateTimeOffset.TryParse(value,CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out var parsed))
+        if (!DateTimeOffset.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out var parsed))
         {
             result = null;
             return false;

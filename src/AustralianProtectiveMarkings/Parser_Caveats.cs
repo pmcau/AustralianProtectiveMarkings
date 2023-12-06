@@ -31,7 +31,7 @@ public static partial class Parser
             Codeword = codeword,
             ForeignGovernment = foreignGovernmentCaveat,
             ExclusiveFor = exclusiveFor,
-            CountryCodes = countryCodes,
+            CountryCodes = countryCodes
         };
     }
 
@@ -122,7 +122,9 @@ public static partial class Parser
 
     static bool TryReadCaveats(List<Pair> pairs, out List<Pair> caveats)
     {
-        caveats = pairs.Where(_ => _.Key == "CAVEAT").ToList();
+        caveats = pairs
+            .Where(_ => _.Key == "CAVEAT")
+            .ToList();
         if (caveats.Count == 0)
         {
             return true;

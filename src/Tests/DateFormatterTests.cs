@@ -17,7 +17,7 @@ public class DateFormatterTests
             "2019-07-01T12:10:01.123",
             "2019-07-01T12:10:01.123+10",
             "2019-07-01T12:10:01.123+10:08",
-            "2019-07-01T12:10:01.123Z",
+            "2019-07-01T12:10:01.123Z"
         };
 
         var dictionary = new Dictionary<string, DateTimeOffset?>();
@@ -27,7 +27,8 @@ public class DateFormatterTests
             dictionary.Add(item, result);
         }
 
-        return Verify(dictionary).DontScrubDateTimes();
+        return Verify(dictionary)
+            .DontScrubDateTimes();
     }
 
     [Test]
@@ -77,7 +78,8 @@ public class DateFormatterTests
             values.Add(name.ToString(), value.Render());
         }
 
-        await Verify(values).DontScrubDateTimes();
+        await Verify(values)
+            .DontScrubDateTimes();
     }
 
     static bool[] bools =

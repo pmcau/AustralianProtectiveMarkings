@@ -39,7 +39,7 @@
                 list.Add("NationalCabinet");
             }
 
-            writer.WriteValue(string.Join(", ",list));
+            writer.WriteValue(string.Join(", ", list));
 
             return;
         }
