@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/8kjm4utaiq58ok01/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/australianprotectivemarkings)
 [![NuGet Status](https://img.shields.io/nuget/v/AustralianProtectiveMarkings.svg)](https://www.nuget.org/packages/AustralianProtectiveMarkings/)
 
-A dotnet representation of Protective Markings defined in the [Australian Protective Security Policy Framework](https://www.protectivesecurity.gov.au/publications-library/policy-8-sensitive-and-classified-information)
+A dotnet representation of Protective Markings defined in the [Australian Protective Security Policy Framework](https://www.protectivesecurity.gov.au/publications-library/policy-8-classification-system)
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
