@@ -389,24 +389,25 @@ For readability, newlines are allowed to delineate key value pairs:
 <!-- snippet: ParseEmailHeaderFullNewlines -->
 <a id='snippet-parseemailheaderfullnewlines'></a>
 ```cs
-var protectiveMarking = Parser.ParseProtectiveMarking("""
-                                                      VER=2018.4,
-                                                      NS=gov.au,
-                                                      SEC=TOP-SECRET,
-                                                      CAVEAT=C:CodeWord,
-                                                      CAVEAT=FG:USA caveat,
-                                                      CAVEAT=RI:AGAO,
-                                                      CAVEAT=SH:CABINET,
-                                                      CAVEAT=SH:EXCLUSIVE-FOR person,
-                                                      CAVEAT=RI:REL AFG/DZA,
-                                                      EXPIRES=2020-10-01,
-                                                      DOWNTO=OFFICIAL,
-                                                      ACCESS=Legal-Privilege,
-                                                      NOTE=the comments,
-                                                      ORIGIN=a@b.com
-                                                      """);
+var protectiveMarking = Parser.ParseProtectiveMarking(
+    """
+    VER=2018.4,
+    NS=gov.au,
+    SEC=TOP-SECRET,
+    CAVEAT=C:CodeWord,
+    CAVEAT=FG:USA caveat,
+    CAVEAT=RI:AGAO,
+    CAVEAT=SH:CABINET,
+    CAVEAT=SH:EXCLUSIVE-FOR person,
+    CAVEAT=RI:REL AFG/DZA,
+    EXPIRES=2020-10-01,
+    DOWNTO=OFFICIAL,
+    ACCESS=Legal-Privilege,
+    NOTE=the comments,
+    ORIGIN=a@b.com
+    """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L216-L235' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L216-L236' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -425,7 +426,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(stream, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L279-L287' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L280-L288' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: OfficeDocHelperFile -->
@@ -437,7 +438,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(filePath, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L293-L301' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L294-L302' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <img src="/src/docxWithProps.png" width="400px">
