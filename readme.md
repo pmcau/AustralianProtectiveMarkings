@@ -9,8 +9,8 @@ A dotnet representation of Protective Markings defined in the [Australian Protec
 
 Spec:
 
- * [PSPF: Sensitive and classified information](https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf)
- * [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf)
+ * [PSPF: Sensitive and classified information](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
+ * [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
 
 
 ## NuGet package
@@ -36,7 +36,7 @@ All string members follow the convention of:
 
 Converts a protected marking to text that should be appended to an email subject line.
 
-See "Subject Field Marking" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf)
+See "Subject Field Marking" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
 
 > In this syntax, the protective marking is placed in the subject field of the message (RFC5322 ‘Subject’). As per
 > RFC5322, an Internet email message can have at most one subject field. Allowing for no more than one email protective
