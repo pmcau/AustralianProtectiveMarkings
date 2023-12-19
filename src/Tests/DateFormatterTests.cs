@@ -83,8 +83,8 @@ public class DateFormatterTests
     }
 
     static bool[] bools =
-    {
+    [
         true,
         false
-    };
+    ];
 }

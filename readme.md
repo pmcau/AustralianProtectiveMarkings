@@ -247,7 +247,7 @@ Results in:
 
 `RenderDocumentHeaderAndFooter` generated a header and footer for a document.
 
-See: [PSPF: Sensitive and classified information - Applying text-based protective markings](https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.5.1.1)
+See: [PSPF: Sensitive and classified information - Applying text-based protective markings](https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.5.1.1)
 
 <!-- snippet: RenderDocumentHeaderAndFooter -->
 <a id='snippet-renderdocumentheaderandfooter'></a>

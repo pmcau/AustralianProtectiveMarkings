@@ -4,7 +4,7 @@
 /// Caveats are a warning that the information has special protections in addition to those indicated by the security
 /// classification (or in the case of the NATIONAL CABINET caveat, a security classification or the OFFICIAL: Sensitive
 /// marking).
-/// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.3
+/// https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pdf#C.3
 /// </summary>
 public readonly record struct Caveats
 {

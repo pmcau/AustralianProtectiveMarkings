@@ -14,7 +14,7 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// Caveats are a warning that the information has special protections in addition to those indicated by the security
     /// classification (or in the case of the NATIONAL CABINET caveat, a security classification or the OFFICIAL: Sensitive
     /// marking).
-    /// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.3
+    /// https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.3
     /// </summary>
     public Caveats? Caveats { get; init; }
 
@@ -55,21 +55,21 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// <summary>
     /// The information is subject to legal professional privilege.
     /// Maps to: ACCESS=Personal-Privacy
-    /// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.3
+    /// https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.3
     /// </summary>
     public bool PersonalPrivacy { get; init; }
 
     /// <summary>
     /// The information is subject to one or more legislative secrecy provisions.
     /// Maps to: ACCESS=Legal-Privilege
-    /// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.3
+    /// https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.3
     /// </summary>
     public bool LegalPrivilege { get; init; }
 
     /// <summary>
     /// The information is personal information as defined in the Privacy Act 1988
     /// Maps to: ACCESS=Legislative-Secrecy
-    /// https://www.protectivesecurity.gov.au/system/files/2023-01/pspf-policy-08-sensitive-and-classified-information.pdf#C.3
+    /// https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.3
     /// </summary>
     public bool LegislativeSecrecy { get; init; }
 
