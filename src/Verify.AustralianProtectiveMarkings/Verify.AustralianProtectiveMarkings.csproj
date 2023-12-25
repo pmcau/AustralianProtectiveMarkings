@@ -5,7 +5,7 @@
     <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify AustralianProtectiveMarkings.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NodaTime" Version="3.1.9" />
+    <PackageReference Include="NodaTime" Version="3.1.10" />
     <PackageReference Include="Verify" Version="22.8.0" />
     <PackageReference Include="ProjectDefaults" Version="1.0.108" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
