@@ -146,17 +146,18 @@ public static class OfficeDocHelper
             entry = zip.CreateEntry(customPropsFileName);
             using var stream = entry.Open();
             using var writer = new StreamWriter(stream);
-            await writer.WriteAsync($$"""
-                                      <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                                      <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
-                                                  xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-                                          <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
-                                                    pid="2"
-                                                    name="X-Protective-Marking">
-                                              <vt:lpwstr>{{header}}</vt:lpwstr>
-                                          </property>
-                                      </Properties>
-                                      """);
+            await writer.WriteAsync(
+                $$"""
+                  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                  <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+                              xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                      <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+                                pid="2"
+                                name="X-Protective-Marking">
+                          <vt:lpwstr>{{header}}</vt:lpwstr>
+                      </property>
+                  </Properties>
+                  """);
         }
         else
         {
