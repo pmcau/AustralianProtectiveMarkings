@@ -33,8 +33,9 @@ public static class OfficeDocHelper
         var properties = root
             .Elements(propertyName)
             .ToList();
-        var property = properties.SingleOrDefault(_ => _.Attribute("name")
-            ?.Value == "X-Protective-Marking");
+        var property = properties.SingleOrDefault(
+            _ => _.Attribute("name")
+                ?.Value == "X-Protective-Marking");
 
         if (property == null)
         {
