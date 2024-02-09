@@ -39,7 +39,7 @@ public static partial class Parser
     {
         var codewords = caveats
             .Select(_ => _.Value)
-            .Where(_ => _.StartsWith("C:"))
+            .Where(_ => _.StartsWith("C:", StringComparison.Ordinal))
             .ToList();
         if (codewords.Count == 0)
         {
@@ -59,7 +59,7 @@ public static partial class Parser
         var prefix = "FG:";
         var fgCaveats = caveats
             .Select(_ => _.Value)
-            .Where(_ => _.StartsWith(prefix))
+            .Where(_ => _.StartsWith(prefix, StringComparison.Ordinal))
             .ToList();
         if (fgCaveats.Count == 0)
         {
@@ -79,7 +79,7 @@ public static partial class Parser
         var prefix = "RI:REL";
         var countries = caveats
             .Select(_ => _.Value)
-            .Where(_ => _.StartsWith(prefix))
+            .Where(_ => _.StartsWith(prefix, StringComparison.Ordinal))
             .ToList();
         if (countries.Count == 0)
         {
@@ -125,11 +125,6 @@ public static partial class Parser
         caveats = pairs
             .Where(_ => _.Key == "CAVEAT")
             .ToList();
-        if (caveats.Count == 0)
-        {
-            return true;
-        }
-
-        return false;
+        return caveats.Count == 0;
     }
 }
