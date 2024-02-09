@@ -13,4 +13,15 @@ public static partial class Renderer
             Classification.OfficialSensitive => "OFFICIAL:Sensitive",
             _ => throw new ArgumentOutOfRangeException(nameof(classification), classification, null)
         };
+
+    static void AppendCountryCodes(StringBuilder builder, IEnumerable<Country> codes)
+    {
+        foreach (var code in codes)
+        {
+            builder.Append(code.GetLettersForCode());
+            builder.Append('/');
+        }
+
+        builder.Length--;
+    }
 }

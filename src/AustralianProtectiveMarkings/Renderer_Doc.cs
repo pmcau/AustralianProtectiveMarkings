@@ -106,10 +106,11 @@ public static partial class Renderer
             builder.Append($"//EXCLUSIVE-FOR {caveats.ExclusiveFor}");
         }
 
-        if (caveats.CountryCodes != null)
+        var countryCodes = caveats.CountryCodes;
+        if (countryCodes != null)
         {
-            var joined = string.Join("/", caveats.CountryCodes.Select(_ => _.GetLettersForCode()));
-            builder.Append($"//REL {joined}");
+            builder.Append("//REL ");
+            AppendCountryCodes(builder, countryCodes);
         }
 
         return builder.ToString();

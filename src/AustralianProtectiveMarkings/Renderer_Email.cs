@@ -142,10 +142,12 @@ public static partial class Renderer
             builder.Append($"CAVEAT=SH:EXCLUSIVE-FOR {caveats.ExclusiveFor}, ");
         }
 
-        if (caveats.CountryCodes != null)
+        var countryCodes = caveats.CountryCodes;
+        if (countryCodes != null)
         {
-            var joined = string.Join("/", caveats.CountryCodes.Select(_ => _.GetLettersForCode()));
-            builder.Append($"CAVEAT=RI:REL {joined}, ");
+            builder.Append("CAVEAT=RI:REL ");
+            AppendCountryCodes(builder, countryCodes);
+            builder.Append(", ");
         }
     }
 }
