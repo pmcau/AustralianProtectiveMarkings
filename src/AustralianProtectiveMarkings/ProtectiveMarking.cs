@@ -30,13 +30,14 @@ public readonly record struct ProtectiveMarking(Classification Classification)
                 return;
             }
 
-            if (value.Value.DownTo >= Classification)
+            var inner = value.Value;
+            if (inner.DownTo >= Classification)
             {
-                throw new($"Expiry DownTo `{value.Value.DownTo}` must be less than the Classification of the ProtectiveMarking `{Classification}`.");
+                throw new($"Expiry DownTo `{inner.DownTo}` must be less than the Classification of the ProtectiveMarking `{Classification}`.");
             }
 
-            var @event = value.Value.Event;
-            var genDate = value.Value.GenDate;
+            var @event = inner.Event;
+            var genDate = inner.GenDate;
 
             if (genDate == null && @event == null)
             {
