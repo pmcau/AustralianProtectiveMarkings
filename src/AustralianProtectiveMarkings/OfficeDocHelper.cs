@@ -74,11 +74,8 @@ public static class OfficeDocHelper
     {
         var root = document.Root!;
         var overrideName = root.GetDefaultNamespace() + "Override";
-        var overrides = root
+        var overrideElement = root
             .Elements(overrideName)
-            .ToList();
-
-        var overrideElement = overrides
             .SingleOrDefault(_ => _.Attribute("PartName")
                 ?.Value == "/docProps/custom.xml");
 
