@@ -50,7 +50,7 @@ public static class CountryCodes
         throw new ArgumentException($"Could not find CountryCode for '{letters}'");
     }
 
-    static Dictionary<string, Country> lettersToCode = new()
+    static FrozenDictionary<string, Country> lettersToCode = new Dictionary<string, Country>
     {
         {
             "ABW", Country.Aruba
@@ -799,9 +799,9 @@ public static class CountryCodes
         {
             "ZWE", Country.Zimbabwe
         }
-    };
+    }.ToFrozenDictionary();
 
-    static Dictionary<Country, string> codeToLetters = new()
+    static FrozenDictionary<Country, string> codeToLetters = new Dictionary<Country, string>
     {
         {
             Country.Aruba, "ABW"
@@ -1550,5 +1550,5 @@ public static class CountryCodes
         {
             Country.Zimbabwe, "ZWE"
         }
-    };
+    }.ToFrozenDictionary();
 }
