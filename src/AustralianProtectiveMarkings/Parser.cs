@@ -110,8 +110,7 @@ public static partial class Parser
     static void ValidateOrder(string input, List<string> keys)
     {
         var ordered = keys
-            .OrderBy(_ => order.IndexOf(_))
-            .ToList();
+            .OrderBy(_ => order.IndexOf(_));
         if (!ordered.SequenceEqual(keys))
         {
             throw new($"""
