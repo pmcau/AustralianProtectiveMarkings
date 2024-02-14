@@ -5,10 +5,10 @@
     <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify AustralianProtectiveMarkings.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NodaTime" Version="3.1.10" />
-    <PackageReference Include="Verify" Version="23.0.1" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.109" PrivateAssets="all" />
-    <PackageReference Include="Polyfill" Version="2.1.0" PrivateAssets="all" />
+    <PackageReference Include="NodaTime" Version="3.1.11" />
+    <PackageReference Include="Verify" Version="23.2.0" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.110" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" Version="2.3.0" PrivateAssets="all" />
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
   </ItemGroup>
 </Project>
