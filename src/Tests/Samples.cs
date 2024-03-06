@@ -275,7 +275,7 @@ public class Samples
     }
 
     // ReSharper disable once ReplaceAsyncWithTaskReturn
-    async Task OfficeDocHelperSample(Stream stream)
+    static async Task OfficeDocHelperSample(Stream stream)
     {
         #region OfficeDocHelperStream
 
@@ -289,7 +289,7 @@ public class Samples
     }
 
     // ReSharper disable once ReplaceAsyncWithTaskReturn
-    async Task OfficeDocHelperSample(string filePath)
+    static async Task OfficeDocHelperSample(string filePath)
     {
         #region OfficeDocHelperFile
 
