@@ -50,7 +50,7 @@ See "Subject Field Marking" in  [PSPF: Sensitive and classified information - An
 ### Minimum content
 
 <!-- snippet: RenderEmailSubjectSuffixMinimum -->
-<a id='snippet-renderemailsubjectsuffixminimum'></a>
+<a id='snippet-RenderEmailSubjectSuffixMinimum'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -58,7 +58,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/Samples.cs#L9-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L9-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-RenderEmailSubjectSuffixMinimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -75,7 +75,7 @@ Results in:
 ### Full content
 
 <!-- snippet: RenderEmailSubjectSuffixFull -->
-<a id='snippet-renderemailsubjectsuffixfull'></a>
+<a id='snippet-RenderEmailSubjectSuffixFull'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -99,7 +99,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailSubjectSuffix();
 ```
-<sup><a href='/src/Tests/Samples.cs#L25-L49' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailsubjectsuffixfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L25-L49' title='Snippet source file'>snippet source</a> | <a href='#snippet-RenderEmailSubjectSuffixFull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -132,7 +132,7 @@ See "Internet Message Header Extension" in  [PSPF: Sensitive and classified info
 ### Minimum content
 
 <!-- snippet: RenderEmailHeaderMinimum -->
-<a id='snippet-renderemailheaderminimum'></a>
+<a id='snippet-RenderEmailHeaderMinimum'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -140,7 +140,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/Samples.cs#L57-L65' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderminimum' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L57-L65' title='Snippet source file'>snippet source</a> | <a href='#snippet-RenderEmailHeaderMinimum' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -157,7 +157,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET
 ### Full content
 
 <!-- snippet: RenderEmailHeaderFull -->
-<a id='snippet-renderemailheaderfull'></a>
+<a id='snippet-RenderEmailHeaderFull'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -181,7 +181,7 @@ var marking = new ProtectiveMarking
 };
 var result = marking.RenderEmailHeader();
 ```
-<sup><a href='/src/Tests/Samples.cs#L73-L97' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L73-L97' title='Snippet source file'>snippet source</a> | <a href='#snippet-RenderEmailHeaderFull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -200,7 +200,7 @@ VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, C
 Extension method to apply protective markings to a [MailMessage ](https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.mailmessage)
 
 <!-- snippet: ApplyProtectiveMarkings -->
-<a id='snippet-applyprotectivemarkings'></a>
+<a id='snippet-ApplyProtectiveMarkings'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -220,7 +220,7 @@ var mail = new MailMessage(
     body: "The body");
 mail.ApplyProtectiveMarkings(marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L150-L170' title='Snippet source file'>snippet source</a> | <a href='#snippet-applyprotectivemarkings' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L150-L170' title='Snippet source file'>snippet source</a> | <a href='#snippet-ApplyProtectiveMarkings' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -250,7 +250,7 @@ Results in:
 See: [PSPF: Sensitive and classified information - Applying text-based protective markings](https://www.protectivesecurity.gov.au/system/files/2023-11/policy-8-classification-system-pspf_0.pd#C.5.1.1)
 
 <!-- snippet: RenderDocumentHeaderAndFooter -->
-<a id='snippet-renderdocumentheaderandfooter'></a>
+<a id='snippet-RenderDocumentHeaderAndFooter'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -264,7 +264,7 @@ var marking = new ProtectiveMarking
 };
 var (header, footer) = marking.RenderDocumentHeaderAndFooter();
 ```
-<sup><a href='/src/Tests/Samples.cs#L190-L204' title='Snippet source file'>snippet source</a> | <a href='#snippet-renderdocumentheaderandfooter' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L190-L204' title='Snippet source file'>snippet source</a> | <a href='#snippet-RenderDocumentHeaderAndFooter' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -294,11 +294,11 @@ Also useful for when a protective marking needs to be store in a configuration f
 ### Minimum content
 
 <!-- snippet: ParseEmailHeaderMinimumOmit -->
-<a id='snippet-parseemailheaderminimumomit'></a>
+<a id='snippet-ParseEmailHeaderMinimumOmit'></a>
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-ParseEmailHeaderMinimumOmit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -326,22 +326,22 @@ Results in:
 The version and namespace is hard coded in the spec. Both can be omitted when parsing.
 
 <!-- snippet: ParseEmailHeaderMinimumOmit -->
-<a id='snippet-parseemailheaderminimumomit'></a>
+<a id='snippet-ParseEmailHeaderMinimumOmit'></a>
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 ```
-<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderminimumomit' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L105-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-ParseEmailHeaderMinimumOmit' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
 ### Full content
 
 <!-- snippet: ParseEmailHeaderFull -->
-<a id='snippet-parseemailheaderfull'></a>
+<a id='snippet-ParseEmailHeaderFull'></a>
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
-<sup><a href='/src/Tests/Samples.cs#L178-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfull' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L178-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-ParseEmailHeaderFull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Results in:
@@ -387,7 +387,7 @@ Results in:
 For readability, newlines are allowed to delineate key value pairs:
 
 <!-- snippet: ParseEmailHeaderFullNewlines -->
-<a id='snippet-parseemailheaderfullnewlines'></a>
+<a id='snippet-ParseEmailHeaderFullNewlines'></a>
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking(
     """
@@ -407,7 +407,7 @@ var protectiveMarking = Parser.ParseProtectiveMarking(
     ORIGIN=a@b.com
     """);
 ```
-<sup><a href='/src/Tests/Samples.cs#L216-L236' title='Snippet source file'>snippet source</a> | <a href='#snippet-parseemailheaderfullnewlines' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L216-L236' title='Snippet source file'>snippet source</a> | <a href='#snippet-ParseEmailHeaderFullNewlines' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -418,7 +418,7 @@ Protective markings can be applied to an office document (docx, xlsx, pptx) usin
 A custom property named `X-Protective-Marking` will be added.
 
 <!-- snippet: OfficeDocHelperStream -->
-<a id='snippet-officedochelperstream'></a>
+<a id='snippet-OfficeDocHelperStream'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -426,11 +426,11 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(stream, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L280-L288' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperstream' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L280-L288' title='Snippet source file'>snippet source</a> | <a href='#snippet-OfficeDocHelperStream' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: OfficeDocHelperFile -->
-<a id='snippet-officedochelperfile'></a>
+<a id='snippet-OfficeDocHelperFile'></a>
 ```cs
 var marking = new ProtectiveMarking
 {
@@ -438,7 +438,7 @@ var marking = new ProtectiveMarking
 };
 await OfficeDocHelper.Patch(filePath, marking);
 ```
-<sup><a href='/src/Tests/Samples.cs#L294-L302' title='Snippet source file'>snippet source</a> | <a href='#snippet-officedochelperfile' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L294-L302' title='Snippet source file'>snippet source</a> | <a href='#snippet-OfficeDocHelperFile' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <img src="/src/docxWithProps.png" width="400px">
