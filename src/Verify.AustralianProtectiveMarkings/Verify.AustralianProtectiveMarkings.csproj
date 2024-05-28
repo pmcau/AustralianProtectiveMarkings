@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify AustralianProtectiveMarkings.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NodaTime" Version="3.1.11" />
-    <PackageReference Include="Verify" Version="24.2.0" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.127" PrivateAssets="all" />
-    <PackageReference Include="Polyfill" Version="5.2.2" PrivateAssets="all" />
+    <PackageReference Include="NodaTime" />
+    <PackageReference Include="Verify" />
+    <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" PrivateAssets="all" />
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
   </ItemGroup>
 </Project>
