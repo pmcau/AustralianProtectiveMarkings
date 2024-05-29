@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageTags>Australia, Security, Classification</PackageTags>
-    <TargetFrameworks>net8.0;net48</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net48</TargetFrameworks>
     <Description>A dotnet representation of the Australian Protective Security Policy Framework</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Collections.Immutable" Condition="'$(TargetFramework)' != 'net8.0'" />
+    <PackageReference Include="System.Collections.Immutable" Condition="'$(TargetFramework)' == 'net48'" />
     <PackageReference Include="Polyfill" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="System.IO.Compression" Condition="$(TargetFramework) == net48" />
