@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents how/when a classification will be downgraded.
 /// </summary>
-public record struct Expiry
+public readonly record struct Expiry
 {
     readonly string? @event;
     readonly DateTimeOffset? genDate;
