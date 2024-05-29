@@ -30,12 +30,11 @@ public static class OfficeDocHelper
         var document = XDocument.Load(reader);
         var root = document.Root!;
         var propertyName = root.GetDefaultNamespace() + "property";
-        var properties = root
+        var property = root
             .Elements(propertyName)
-            .ToList();
-        var property = properties.SingleOrDefault(
-            _ => _.Attribute("name")
-                ?.Value == "X-Protective-Marking");
+            .SingleOrDefault(
+                _ => _.Attribute("name")
+                    ?.Value == "X-Protective-Marking");
 
         if (property == null)
         {
