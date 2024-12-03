@@ -8,8 +8,6 @@
 /// </summary>
 public readonly record struct Caveats
 {
-    readonly string? codeword;
-
     /// <summary>
     /// Sensitive compartmented information.
     /// Maps to: CAVEAT=C code-word
@@ -23,7 +21,7 @@ public readonly record struct Caveats
     /// </summary>
     public string? Codeword
     {
-        get => codeword;
+        get;
         init
         {
             if (value != null)
@@ -31,11 +29,9 @@ public readonly record struct Caveats
                 TextValidator.Validate(value);
             }
 
-            codeword = value;
+            field = value;
         }
     }
-
-    readonly string? foreignGovernment;
 
     /// <summary>
     /// Foreign government markings are applied to information created by Australian agencies from foreign source
@@ -45,7 +41,7 @@ public readonly record struct Caveats
     /// </summary>
     public string? ForeignGovernment
     {
-        get => foreignGovernment;
+        get;
         init
         {
             if (value != null)
@@ -53,11 +49,9 @@ public readonly record struct Caveats
                 TextValidator.Validate(value);
             }
 
-            foreignGovernment = value;
+            field = value;
         }
     }
-
-    readonly string? exclusiveFor;
 
     /// <summary>
     /// Identifies information intended for access by a named recipient only.
@@ -66,7 +60,7 @@ public readonly record struct Caveats
     /// </summary>
     public string? ExclusiveFor
     {
-        get => exclusiveFor;
+        get;
         init
         {
             if (value != null)
@@ -74,7 +68,7 @@ public readonly record struct Caveats
                 TextValidator.Validate(value);
             }
 
-            exclusiveFor = value;
+            field = value;
         }
     }
 

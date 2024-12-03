@@ -18,11 +18,9 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// </summary>
     public Caveats? Caveats { get; init; }
 
-    readonly Expiry? expiry;
-
     public Expiry? Expiry
     {
-        get => expiry;
+        get;
         init
         {
             if (value == null)
@@ -49,7 +47,7 @@ public readonly record struct ProtectiveMarking(Classification Classification)
                 throw new("GenDate and Event cannot be both defined");
             }
 
-            expiry = value;
+            field = value;
         }
     }
 
@@ -74,8 +72,6 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// </summary>
     public bool LegislativeSecrecy { get; init; }
 
-    readonly string? comment;
-
     /// <summary>
     /// Is a free-text field where the sender can specify some free-form information to include additional security
     /// classification information; the permitted characters are limited to those defined for `text` and has maximum
@@ -84,7 +80,7 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// </summary>
     public string? Comment
     {
-        get => comment;
+        get;
         init
         {
             if (value == null)
@@ -93,11 +89,9 @@ public readonly record struct ProtectiveMarking(Classification Classification)
             }
 
             TextValidator.Validate(value);
-            comment = value;
+            field = value;
         }
     }
-
-    readonly string? authorEmail;
 
     /// <summary>
     /// Captures the author’s email address so that the person who originally classified the email message is always
@@ -106,7 +100,7 @@ public readonly record struct ProtectiveMarking(Classification Classification)
     /// </summary>
     public string? AuthorEmail
     {
-        get => authorEmail;
+        get;
         init
         {
             if (value == null)
@@ -115,7 +109,7 @@ public readonly record struct ProtectiveMarking(Classification Classification)
             }
 
             TextValidator.Validate(value);
-            authorEmail = value;
+            field = value;
         }
     }
 }

@@ -5,9 +5,6 @@
 /// </summary>
 public readonly record struct Expiry
 {
-    readonly string? @event;
-    readonly DateTimeOffset? genDate;
-
     /// <summary>
     /// The classification that will be downgraded to when <see cref="Event" /> or <see cref="GenDate" /> occurs.
     /// </summary>
@@ -20,7 +17,7 @@ public readonly record struct Expiry
     /// <exception cref="Exception"></exception>
     public DateTimeOffset? GenDate
     {
-        readonly get => genDate;
+        get;
         init
         {
             if (value == null)
@@ -33,7 +30,7 @@ public readonly record struct Expiry
                 throw new("Cannot define GenDate when Event has a value");
             }
 
-            genDate = value;
+            field = value;
         }
     }
 
@@ -43,7 +40,7 @@ public readonly record struct Expiry
     /// </summary>
     public string? Event
     {
-        readonly get => @event;
+        get;
         init
         {
             if (value == null)
@@ -58,7 +55,7 @@ public readonly record struct Expiry
 
             TextValidator.Validate(value);
 
-            @event = value;
+            field = value;
         }
     }
 }
