@@ -79,12 +79,14 @@ public static partial class Parser
             throw new($"Only a single DOWNTO is allowed. Input: {input}");
         }
 
-        if (downToItems.Count == 0 && expiresItems.Count == 0)
+        if (downToItems.Count == 0 &&
+            expiresItems.Count == 0)
         {
             return null;
         }
 
-        if (downToItems.Count == 0 || expiresItems.Count == 0)
+        if (downToItems.Count == 0 ||
+            expiresItems.Count == 0)
         {
             throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input}");
         }
@@ -111,15 +113,17 @@ public static partial class Parser
     {
         var ordered = keys
             .OrderBy(_ => order.IndexOf(_));
-        if (!ordered.SequenceEqual(keys))
+        if (ordered.SequenceEqual(keys))
         {
-            throw new($"""
-                       Incorrect order.
-                       Order must be: {string.Join(", ", order)}.
-                       Order is: {string.Join(", ", keys)}.
-                       Input: {input}
-                       """);
+            return;
         }
+
+        throw new($"""
+                   Incorrect order.
+                   Order must be: {string.Join(", ", order)}.
+                   Order is: {string.Join(", ", keys)}.
+                   Input: {input}
+                   """);
     }
 
     static Classification ReadClassification(string input, List<Pair> pairs)
