@@ -7,17 +7,17 @@
     <PackageVersion Include="DocumentFormat.OpenXml" Version="3.3.0" />
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="27.0.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageVersion Include="NodaTime" Version="3.2.1" />
+    <PackageVersion Include="NodaTime" Version="3.2.2" />
     <PackageVersion Include="NUnit" Version="4.3.2" />
     <PackageVersion Include="NUnit3TestAdapter" Version="5.0.0" />
-    <PackageVersion Include="Polyfill" Version="7.24.0" />
+    <PackageVersion Include="Polyfill" Version="7.26.0" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.150" />
-    <PackageVersion Include="System.Collections.Immutable" Version="9.0.3" />
+    <PackageVersion Include="System.Collections.Immutable" Version="9.0.4" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
     <PackageVersion Include="Verify" Version="29.2.0" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.0" />
     <PackageVersion Include="Verify.NUnit" Version="29.2.0" />
     <!-- CVE -->
-    <PackageVersion Include="System.IO.Packaging" Version="9.0.3" />
+    <PackageVersion Include="System.IO.Packaging" Version="9.0.4" />
   </ItemGroup>
 </Project>
