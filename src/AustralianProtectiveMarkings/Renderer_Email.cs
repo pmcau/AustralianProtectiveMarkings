@@ -16,7 +16,7 @@ public static partial class Renderer
 
     public static string RenderEmailHeader(this ProtectiveMarking marking)
     {
-        var builder = new StringBuilder("VER=2018.4, NS=gov.au, ");
+        var builder = new StringBuilder("VER=2024.1, NS=gov.au, ");
         RenderMailClassification(marking, builder);
         RenderMailCaveats(marking, builder);
         RenderMailExpiry(marking, builder);

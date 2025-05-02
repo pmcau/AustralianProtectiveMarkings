@@ -6,9 +6,9 @@ public class ParserTests
     {
         var list = new List<string>
         {
-            "VER=2018.4",
-            "VER=2018.4, NS=gov.au",
-            "VER=2018.4, NS=gov.au, SEC=TOP-SECRET",
+            "VER=2024.1",
+            "VER=2024.1, NS=gov.au",
+            "VER=2024.1, NS=gov.au, SEC=TOP-SECRET",
             "SEC=TOP-SECRET",
             "SEC= TOP-SECRET",
             "SEC=OFFICIAL:Sensitive",
