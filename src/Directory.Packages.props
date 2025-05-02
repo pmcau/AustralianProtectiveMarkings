@@ -14,9 +14,9 @@
     <PackageVersion Include="ProjectDefaults" Version="1.0.150" />
     <PackageVersion Include="System.Collections.Immutable" Version="9.0.4" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
-    <PackageVersion Include="Verify" Version="29.5.0" />
+    <PackageVersion Include="Verify" Version="30.0.0" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.0" />
-    <PackageVersion Include="Verify.NUnit" Version="29.5.0" />
+    <PackageVersion Include="Verify.NUnit" Version="30.0.0" />
     <!-- CVE -->
     <PackageVersion Include="System.IO.Packaging" Version="9.0.4" />
   </ItemGroup>
