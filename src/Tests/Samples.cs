@@ -137,7 +137,7 @@ public class Samples
     {
         #region ParseEmailHeaderMinimum
 
-        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive");
 
         #endregion
 
@@ -177,7 +177,7 @@ public class Samples
     {
         #region ParseEmailHeaderFull
 
-        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 
         #endregion
 
@@ -217,7 +217,7 @@ public class Samples
 
         var protectiveMarking = Parser.ParseProtectiveMarking(
             """
-            VER=2018.4,
+            VER=2024.1,
             NS=gov.au,
             SEC=TOP-SECRET,
             CAVEAT=C:CodeWord,

@@ -3,15 +3,13 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/8kjm4utaiq58ok01/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/australianprotectivemarkings)
 [![NuGet Status](https://img.shields.io/nuget/v/AustralianProtectiveMarkings.svg)](https://www.nuget.org/packages/AustralianProtectiveMarkings/)
 
-A dotnet representation of Protective Markings defined in the [Australian Protective Security Policy Framework](https://www.protectivesecurity.gov.au/publications-library/policy-8-classification-system)
+A dotnet representation of Protective Markings defined in the [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf)
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
 Spec:
 
- * [PSPF: Sensitive and classified information](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
- * [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
-
+ * [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf)
 
 ## NuGet package
 
@@ -36,16 +34,15 @@ All string members follow the convention of:
 
 Converts a protected marking to text that should be appended to an email subject line.
 
-See "Subject Field Marking" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2023-08/annex-f-policy-8-classification-system-pspf.pdf)
+See [6.1. Subject Field Marking](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf#page=5)
 
 > In this syntax, the protective marking is placed in the subject field of the message (RFC5322 ‘Subject’). As per
-> RFC5322, an Internet email message can have at most one subject field. Allowing for no more than one email protective
-> marking in the subject line minimises confusion and potential conflict.
+> RFC5322, an Internet email message can have at most one subject field. Allowing for no more than one email
+> protective marking in the subject line minimises confusion and potential conflict.
 > 
 > A Subject Field Marking is less sophisticated than an Internet Message Header Extension as it is possible to
-> manipulate an email’s subject during message generation or transport. However, it is easy to apply as a human
-> user can construct (and interpret) the protective marking without the need for additional tools.
-
+> manipulate an email’s subject during message generation or transport. However, it is easy to apply as a human user
+> can construct (and interpret) the protective marking without the need for additional tools.
 
 ### Minimum content
 
@@ -117,17 +114,16 @@ Results in:
 
 Converts a protected marking to text that should be added as the value opf the `X-Protective-Marking` email header.
 
-See "Internet Message Header Extension" in  [PSPF: Sensitive and classified information - Annex F (email clarifications)](https://www.protectivesecurity.gov.au/system/files/2022-12/annex-f-pspf-policy8-sensitive-and-classified-information.pdf)
+See [6.2. Internet Message Header Extension ](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf#page=5)
 
 > In this syntax, the protective marking is carried as a custom Internet Message Header Extension
-> ‘X-Protective-Marking’. Allowing for no more than one ‘X-Protective-Marking’ field minimises confusion and potential
-> conflict.
+> ‘X-Protective-Marking’. Allowing for no more than one ‘X-Protective-Marking’ field minimises confusion and
+> potential conflict.
 > 
 > Using an Internet Message Header Extension is more sophisticated than a Subject Field Marking. It is designed for
-> construction and parsing by email agents (clients, gateways and servers) as they have accessto internet message
+> construction and parsing by email agents (clients, gateways and servers) as they have access to internet message
 > headers. In this way a richer syntax can be used and email agents can perform more complex handling based on
-> the protective marking
-
+> the protective marking.
 
 ### Minimum content
 
@@ -148,7 +144,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderMinimum.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderMinimum.verified.txt'></a>
 ```txt
-VER=2018.4, NS=gov.au, SEC=TOP-SECRET
+VER=2024.1, NS=gov.au, SEC=TOP-SECRET
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -189,7 +185,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
-VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
+VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -233,7 +229,7 @@ Results in:
   To: to@mail.com,
   Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
   Headers: {
-    X-Protective-Marking: VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+    X-Protective-Marking: VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
   },
   IsBodyHtml: false,
   Body: The body
@@ -339,7 +335,7 @@ var protectiveMarking = Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive");
 <!-- snippet: ParseEmailHeaderFull -->
 <a id='snippet-ParseEmailHeaderFull'></a>
 ```cs
-var protectiveMarking = Parser.ParseProtectiveMarking("VER=2018.4, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+var protectiveMarking = Parser.ParseProtectiveMarking("VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:CodeWord, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
 ```
 <sup><a href='/src/Tests/Samples.cs#L178-L182' title='Snippet source file'>snippet source</a> | <a href='#snippet-ParseEmailHeaderFull' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -391,7 +387,7 @@ For readability, newlines are allowed to delineate key value pairs:
 ```cs
 var protectiveMarking = Parser.ParseProtectiveMarking(
     """
-    VER=2018.4,
+    VER=2024.1,
     NS=gov.au,
     SEC=TOP-SECRET,
     CAVEAT=C:CodeWord,

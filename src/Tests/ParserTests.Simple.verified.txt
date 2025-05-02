@@ -182,13 +182,13 @@
   TOPSECRET: TopSecret,
   Unofficial: Unofficial,
   UNOFFICIAL: Unofficial,
-  VER=2018.4: {
+  VER=2024.1: {
     Type: Exception,
-    Message: A single security 'SEC' must be defined. Input: VER=2018.4
+    Message: A single security 'SEC' must be defined. Input: VER=2024.1
   },
-  VER=2018.4, NS=gov.au: {
+  VER=2024.1, NS=gov.au: {
     Type: Exception,
-    Message: A single security 'SEC' must be defined. Input: VER=2018.4, NS=gov.au
+    Message: A single security 'SEC' must be defined. Input: VER=2024.1, NS=gov.au
   },
-  VER=2018.4, NS=gov.au, SEC=TOP-SECRET: TopSecret
+  VER=2024.1, NS=gov.au, SEC=TOP-SECRET: TopSecret
 }
