@@ -15,9 +15,9 @@
     <PackageVersion Include="Polyfill" Version="8.7.4" />
     <PackageVersion Include="System.Collections.Immutable" Version="9.0.8" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
-    <PackageVersion Include="Verify" Version="30.7.0" />
+    <PackageVersion Include="Verify" Version="30.7.1" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.1" />
-    <PackageVersion Include="Verify.NUnit" Version="30.7.0" />
+    <PackageVersion Include="Verify.NUnit" Version="30.7.1" />
     <!-- CVE -->
     <PackageVersion Include="System.IO.Packaging" Version="9.0.8" />
   </ItemGroup>
