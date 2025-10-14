@@ -4,55 +4,55 @@
 
 Values:
 
- * `Unofficial`
+ * `Unofficial`<br>
    Value: `new ProtectiveMarking(Classification.Unofficial)`
- * `UnofficialEmailHeader`
+ * `UnofficialEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=UNOFFICIAL`
- * `UnofficialEmailSubjectSuffix`
+ * `UnofficialEmailSubjectSuffix`<br>
    Value: `[SEC=UNOFFICIAL]`
- * `UnofficialClassificationAndCaveats`
+ * `UnofficialClassificationAndCaveats`<br>
    Value: `UNOFFICIAL`
- * `Official`
+ * `Official`<br>
    Value: `new ProtectiveMarking(Classification.Official)`
- * `OfficialEmailHeader`
+ * `OfficialEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=OFFICIAL`
- * `OfficialEmailSubjectSuffix`
+ * `OfficialEmailSubjectSuffix`<br>
    Value: `[SEC=OFFICIAL]`
- * `OfficialClassificationAndCaveats`
+ * `OfficialClassificationAndCaveats`<br>
    Value: `OFFICIAL`
- * `OfficialSensitive`
+ * `OfficialSensitive`<br>
    Value: `new ProtectiveMarking(Classification.OfficialSensitive)`
- * `OfficialSensitiveEmailHeader`
+ * `OfficialSensitiveEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive`
- * `OfficialSensitiveEmailSubjectSuffix`
+ * `OfficialSensitiveEmailSubjectSuffix`<br>
    Value: `[SEC=OFFICIAL:Sensitive]`
- * `OfficialSensitiveClassificationAndCaveats`
+ * `OfficialSensitiveClassificationAndCaveats`<br>
    Value: `OFFICIAL:Sensitive`
- * `Protected`
+ * `Protected`<br>
    Value: `new ProtectiveMarking(Classification.Protected)`
- * `ProtectedEmailHeader`
+ * `ProtectedEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=PROTECTED`
- * `ProtectedEmailSubjectSuffix`
+ * `ProtectedEmailSubjectSuffix`<br>
    Value: `[SEC=PROTECTED]`
- * `ProtectedClassificationAndCaveats`
+ * `ProtectedClassificationAndCaveats`<br>
    Value: `PROTECTED`
- * `Secret`
+ * `Secret`<br>
    Value: `new ProtectiveMarking(Classification.Secret)`
- * `SecretEmailHeader`
+ * `SecretEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=SECRET`
- * `SecretEmailSubjectSuffix`
+ * `SecretEmailSubjectSuffix`<br>
    Value: `[SEC=SECRET]`
- * `SecretClassificationAndCaveats`
+ * `SecretClassificationAndCaveats`<br>
    Value: `SECRET`
- * `TopSecret`
+ * `TopSecret`<br>
    Value: `new ProtectiveMarking(Classification.TopSecret)`
- * `TopSecretEmailHeader`
+ * `TopSecretEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=TOP-SECRET`
- * `TopSecretEmailSubjectSuffix`
+ * `TopSecretEmailSubjectSuffix`<br>
    Value: `[SEC=TOP-SECRET]`
- * `TopSecretClassificationAndCaveats`
+ * `TopSecretClassificationAndCaveats`<br>
    Value: `TOP-SECRET`
- * `ProtectedCabinet`
+ * `ProtectedCabinet`<br>
    Value:
    ```
    new ProtectiveMarking(Classification.Protected)
@@ -63,9 +63,9 @@ Values:
      }
    }
    ```
- * `ProtectedCabinetEmailHeader`
+ * `ProtectedCabinetEmailHeader`<br>
    Value: `VER=2024.1, NS=gov.au, SEC=PROTECTED, CAVEAT=SH:CABINET`
- * `ProtectedCabinetEmailSubjectSuffix`
+ * `ProtectedCabinetEmailSubjectSuffix`<br>
    Value: `[SEC=PROTECTED, CAVEAT=SH:CABINET]`
- * `ProtectedCabinetClassificationAndCaveats`
+ * `ProtectedCabinetClassificationAndCaveats`<br>
    Value: `PROTECTED//CABINET`

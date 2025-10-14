@@ -61,7 +61,7 @@ public class Tests
             {
                 await writer.WriteLineAsync(
                     """
-                     * `ProtectedCabinet`
+                     * `ProtectedCabinet`<br>
                        Value:
                        ```
                        new ProtectiveMarking(Classification.Protected)
@@ -78,7 +78,7 @@ public class Tests
             {
                 await writer.WriteLineAsync(
                     $"""
-                      * `{property.Name}`
+                      * `{property.Name}`<br>
                         Value: `new ProtectiveMarking(Classification.{property.Name})`
                      """);
             }
@@ -95,7 +95,7 @@ public class Tests
             // ReSharper disable once AccessToDisposedClosure
             return writer.WriteLineAsync(
                 $"""
-                  * `{stringProperty.Name}`
+                  * `{stringProperty.Name}`<br>
                     Value: `{stringProperty.GetValue(null)}`
                  """);
         }
