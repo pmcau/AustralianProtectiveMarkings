@@ -444,8 +444,6 @@ await OfficeDocHelper.Patch(filePath, marking);
 
 `AustralianProtectiveMarkings.CommonMarkings` is a static helper class that gives access regularly use and pre-calculated values.
 
-Values:
-
 | Property | Value |
 |----------|-------|
 | `Unofficial` | `new ProtectiveMarking(Unofficial)` |
