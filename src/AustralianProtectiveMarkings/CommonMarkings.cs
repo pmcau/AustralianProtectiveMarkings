@@ -34,7 +34,7 @@ public static class CommonMarkings
 
     public static ProtectiveMarking ProtectedCabinet { get; } = new(Classification.Protected)
     {
-        Caveats = new Caveats
+        Caveats = new()
         {
             Cabinet = true
         }

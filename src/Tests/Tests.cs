@@ -33,4 +33,73 @@ public class Tests
         AreEqual(serialized1, serialized2);
         return Verify(marking);
     }
+#if NET9_0
+
+    [Test]
+    public async Task WriteCommonMarkings()
+    {
+        var md = Path.Combine(SolutionDirectoryFinder.Find(), "common-markings.include.md");
+        File.Delete(md);
+        await using var writer = File.CreateText(md);
+
+        await writer.WriteLineAsync(
+            """
+            ## CommonMarkings
+
+            `AustralianProtectiveMarkings.CommonMarkings` is a static helper class that gives access regularly use and pre-calculated values.
+
+            Values:
+
+            """);
+        var properties = typeof(CommonMarkings)
+            .GetProperties(BindingFlags.Public | BindingFlags.Static);
+
+        foreach (var property in properties
+                     .Where(_ => _.PropertyType == typeof(ProtectiveMarking)))
+        {
+            if (property.Name == "ProtectedCabinet")
+            {
+                await writer.WriteLineAsync(
+                    """
+                     * `ProtectedCabinet`
+                       Value:
+                       ```
+                       new ProtectiveMarking(Classification.Protected)
+                       {
+                         Caveats = new()
+                         {
+                             Cabinet = true
+                         }
+                       }
+                       ```
+                    """);
+            }
+            else
+            {
+                await writer.WriteLineAsync(
+                    $"""
+                      * `{property.Name}`
+                        Value: `new ProtectiveMarking(Classification.{property.Name})`
+                     """);
+            }
+
+            await WriteMember(property, "EmailHeader");
+            await WriteMember(property, "EmailSubjectSuffix");
+            await WriteMember(property, "ClassificationAndCaveats");
+        }
+
+        Task WriteMember(PropertyInfo property, string suffix)
+        {
+            var stringProperty = properties.Single(_ => _.Name == property.Name + suffix);
+
+            // ReSharper disable once AccessToDisposedClosure
+            return writer.WriteLineAsync(
+                $"""
+                  * `{stringProperty.Name}`
+                    Value: `{stringProperty.GetValue(null)}`
+                 """);
+        }
+    }
+
+#endif
 }
