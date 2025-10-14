@@ -62,11 +62,11 @@ public class Tests
             if (property.Name == "ProtectedCabinet")
             {
                 await writer.WriteLineAsync(
-                    "| `ProtectedCabinet` | `new ProtectiveMarking(Classification.Protected){Caveats = new(){Cabinet = true}}` |");
+                    "| `ProtectedCabinet` | `new ProtectiveMarking(Protected){Caveats = {Cabinet = true}}` |");
             }
             else
             {
-                await writer.WriteLineAsync($"| `{property.Name}` | `new ProtectiveMarking(Classification.{property.Name})` |");
+                await writer.WriteLineAsync($"| `{property.Name}` | `new ProtectiveMarking({property.Name})` |");
             }
 
             await WriteMember(property, "EmailHeader");
