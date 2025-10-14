@@ -34,7 +34,6 @@ public class Tests
         return Verify(marking);
     }
 #if NET9_0
-
     [Test]
     public async Task WriteCommonMarkings()
     {
@@ -50,7 +49,10 @@ public class Tests
 
             Values:
 
+            | Property | Type | Value |
+            |----------|------|-------|
             """);
+
         var properties = typeof(CommonMarkings)
             .GetProperties(BindingFlags.Public | BindingFlags.Static);
 
@@ -60,27 +62,11 @@ public class Tests
             if (property.Name == "ProtectedCabinet")
             {
                 await writer.WriteLineAsync(
-                    """
-                     * `ProtectedCabinet`<br>
-                       Value:
-                       ```
-                       new ProtectiveMarking(Classification.Protected)
-                       {
-                         Caveats = new()
-                         {
-                             Cabinet = true
-                         }
-                       }
-                       ```
-                    """);
+                    "| `ProtectedCabinet` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Protected){Caveats = new(){Cabinet = true}}` |");
             }
             else
             {
-                await writer.WriteLineAsync(
-                    $"""
-                      * `{property.Name}`<br>
-                        Value: `new ProtectiveMarking(Classification.{property.Name})`
-                     """);
+                await writer.WriteLineAsync($"| `{property.Name}` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.{property.Name})` |");
             }
 
             await WriteMember(property, "EmailHeader");
@@ -91,13 +77,10 @@ public class Tests
         Task WriteMember(PropertyInfo property, string suffix)
         {
             var stringProperty = properties.Single(_ => _.Name == property.Name + suffix);
+            var value = stringProperty.GetValue(null)?.ToString() ?? string.Empty;
 
             // ReSharper disable once AccessToDisposedClosure
-            return writer.WriteLineAsync(
-                $"""
-                  * `{stringProperty.Name}`<br>
-                    Value: `{stringProperty.GetValue(null)}`
-                 """);
+            return writer.WriteLineAsync($"| `{stringProperty.Name}` | `string` | `{value}` |");
         }
     }
 

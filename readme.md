@@ -446,71 +446,37 @@ await OfficeDocHelper.Patch(filePath, marking);
 
 Values:
 
- * `Unofficial`
-   Value: `new ProtectiveMarking(Classification.Unofficial)`
- * `UnofficialEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=UNOFFICIAL`
- * `UnofficialEmailSubjectSuffix`
-   Value: `[SEC=UNOFFICIAL]`
- * `UnofficialClassificationAndCaveats`
-   Value: `UNOFFICIAL`
- * `Official`
-   Value: `new ProtectiveMarking(Classification.Official)`
- * `OfficialEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=OFFICIAL`
- * `OfficialEmailSubjectSuffix`
-   Value: `[SEC=OFFICIAL]`
- * `OfficialClassificationAndCaveats`
-   Value: `OFFICIAL`
- * `OfficialSensitive`
-   Value: `new ProtectiveMarking(Classification.OfficialSensitive)`
- * `OfficialSensitiveEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive`
- * `OfficialSensitiveEmailSubjectSuffix`
-   Value: `[SEC=OFFICIAL:Sensitive]`
- * `OfficialSensitiveClassificationAndCaveats`
-   Value: `OFFICIAL:Sensitive`
- * `Protected`
-   Value: `new ProtectiveMarking(Classification.Protected)`
- * `ProtectedEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=PROTECTED`
- * `ProtectedEmailSubjectSuffix`
-   Value: `[SEC=PROTECTED]`
- * `ProtectedClassificationAndCaveats`
-   Value: `PROTECTED`
- * `Secret`
-   Value: `new ProtectiveMarking(Classification.Secret)`
- * `SecretEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=SECRET`
- * `SecretEmailSubjectSuffix`
-   Value: `[SEC=SECRET]`
- * `SecretClassificationAndCaveats`
-   Value: `SECRET`
- * `TopSecret`
-   Value: `new ProtectiveMarking(Classification.TopSecret)`
- * `TopSecretEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=TOP-SECRET`
- * `TopSecretEmailSubjectSuffix`
-   Value: `[SEC=TOP-SECRET]`
- * `TopSecretClassificationAndCaveats`
-   Value: `TOP-SECRET`
- * `ProtectedCabinet`
-   Value:
-   ```
-   new ProtectiveMarking(Classification.Protected)
-   {
-     Caveats = new()
-     {
-         Cabinet = true
-     }
-   }
-   ```
- * `ProtectedCabinetEmailHeader`
-   Value: `VER=2024.1, NS=gov.au, SEC=PROTECTED, CAVEAT=SH:CABINET`
- * `ProtectedCabinetEmailSubjectSuffix`
-   Value: `[SEC=PROTECTED, CAVEAT=SH:CABINET]`
- * `ProtectedCabinetClassificationAndCaveats`
-   Value: `PROTECTED//CABINET`<!-- endInclude -->
+| Property | Type | Value |
+|----------|------|-------|
+| `Unofficial` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Unofficial)` |
+| `UnofficialEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=UNOFFICIAL` |
+| `UnofficialEmailSubjectSuffix` | `string` | `[SEC=UNOFFICIAL]` |
+| `UnofficialClassificationAndCaveats` | `string` | `UNOFFICIAL` |
+| `Official` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Official)` |
+| `OfficialEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=OFFICIAL` |
+| `OfficialEmailSubjectSuffix` | `string` | `[SEC=OFFICIAL]` |
+| `OfficialClassificationAndCaveats` | `string` | `OFFICIAL` |
+| `OfficialSensitive` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.OfficialSensitive)` |
+| `OfficialSensitiveEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive` |
+| `OfficialSensitiveEmailSubjectSuffix` | `string` | `[SEC=OFFICIAL:Sensitive]` |
+| `OfficialSensitiveClassificationAndCaveats` | `string` | `OFFICIAL:Sensitive` |
+| `Protected` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Protected)` |
+| `ProtectedEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=PROTECTED` |
+| `ProtectedEmailSubjectSuffix` | `string` | `[SEC=PROTECTED]` |
+| `ProtectedClassificationAndCaveats` | `string` | `PROTECTED` |
+| `Secret` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Secret)` |
+| `SecretEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=SECRET` |
+| `SecretEmailSubjectSuffix` | `string` | `[SEC=SECRET]` |
+| `SecretClassificationAndCaveats` | `string` | `SECRET` |
+| `TopSecret` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.TopSecret)` |
+| `TopSecretEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=TOP-SECRET` |
+| `TopSecretEmailSubjectSuffix` | `string` | `[SEC=TOP-SECRET]` |
+| `TopSecretClassificationAndCaveats` | `string` | `TOP-SECRET` |
+| `ProtectedCabinet` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Protected){Caveats = new(){Cabinet = true}}` |
+| `ProtectedCabinetEmailHeader` | `string` | `VER=2024.1, NS=gov.au, SEC=PROTECTED, CAVEAT=SH:CABINET` |
+| `ProtectedCabinetEmailSubjectSuffix` | `string` | `[SEC=PROTECTED, CAVEAT=SH:CABINET]` |
+| `ProtectedCabinetClassificationAndCaveats` | `string` | `PROTECTED//CABINET` |
+<!-- endInclude -->
 
 ## Icon
 
