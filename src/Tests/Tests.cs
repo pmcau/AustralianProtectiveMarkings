@@ -49,8 +49,8 @@ public class Tests
 
             Values:
 
-            | Property | Type | Value |
-            |----------|------|-------|
+            | Property | Value |
+            |----------|-------|
             """);
 
         var properties = typeof(CommonMarkings)
@@ -62,11 +62,11 @@ public class Tests
             if (property.Name == "ProtectedCabinet")
             {
                 await writer.WriteLineAsync(
-                    "| `ProtectedCabinet` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.Protected){Caveats = new(){Cabinet = true}}` |");
+                    "| `ProtectedCabinet` | `new ProtectiveMarking(Classification.Protected){Caveats = new(){Cabinet = true}}` |");
             }
             else
             {
-                await writer.WriteLineAsync($"| `{property.Name}` | `ProtectiveMarking` | `new ProtectiveMarking(Classification.{property.Name})` |");
+                await writer.WriteLineAsync($"| `{property.Name}` | `new ProtectiveMarking(Classification.{property.Name})` |");
             }
 
             await WriteMember(property, "EmailHeader");
@@ -80,7 +80,7 @@ public class Tests
             var value = stringProperty.GetValue(null)?.ToString() ?? string.Empty;
 
             // ReSharper disable once AccessToDisposedClosure
-            return writer.WriteLineAsync($"| `{stringProperty.Name}` | `string` | `{value}` |");
+            return writer.WriteLineAsync($"| `{stringProperty.Name}` | string: `{value}` |");
         }
     }
 
