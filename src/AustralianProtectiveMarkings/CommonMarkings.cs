@@ -32,13 +32,14 @@ public static class CommonMarkings
     public static string TopSecretEmailSubjectSuffix { get; } = TopSecret.RenderEmailSubjectSuffix();
     public static string TopSecretClassificationAndCaveats { get; } = TopSecret.RenderClassificationAndCaveats();
 
-    public static ProtectiveMarking ProtectedCabinet { get; } = new(Classification.Protected)
-    {
-        Caveats = new()
+    public static ProtectiveMarking ProtectedCabinet { get; } =
+        new(Classification.Protected)
         {
-            Cabinet = true
-        }
-    };
+            Caveats = new()
+            {
+                Cabinet = true
+            }
+        };
 
     public static string ProtectedCabinetEmailHeader { get; } = ProtectedCabinet.RenderEmailHeader();
     public static string ProtectedCabinetEmailSubjectSuffix { get; } = ProtectedCabinet.RenderEmailSubjectSuffix();
