@@ -3,13 +3,13 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/8kjm4utaiq58ok01/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/australianprotectivemarkings)
 [![NuGet Status](https://img.shields.io/nuget/v/AustralianProtectiveMarkings.svg)](https://www.nuget.org/packages/AustralianProtectiveMarkings/)
 
-A dotnet representation of Protective Markings defined in the [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf)
+A dotnet representation of Protective Markings defined in the [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2025-07/australian-government-email-protective-marking-standard-2025.PDF)
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
 Spec:
 
- * [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf)
+ * [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2025-07/australian-government-email-protective-marking-standard-2025.PDF)
 
 ## NuGet package
 
@@ -34,7 +34,7 @@ All string members follow the convention of:
 
 Converts a protected marking to text that should be appended to an email subject line.
 
-See [6.1. Subject Field Marking](https://www.protectivesecurity.gov.au/system/files/2024-10/australian-government-email-protective-marking-standard.pdf#page=5)
+See [6.1. Subject Field Marking](https://www.protectivesecurity.gov.au/system/files/2025-07/australian-government-email-protective-marking-standard-2025.PDF#page=7)
 
 > In this syntax, the protective marking is placed in the subject field of the message (RFC5322 ‘Subject’). As per
 > RFC5322, an Internet email message can have at most one subject field. Allowing for no more than one email
@@ -144,7 +144,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderMinimum.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderMinimum.verified.txt'></a>
 ```txt
-VER=2024.1, NS=gov.au, SEC=TOP-SECRET
+VER=2025.1, NS=gov.au, SEC=TOP-SECRET
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -185,7 +185,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
-VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
+VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -229,7 +229,7 @@ Results in:
   To: to@mail.com,
   Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
   Headers: {
-    X-Protective-Marking: VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
   },
   IsBodyHtml: false,
   Body: The body
@@ -447,31 +447,31 @@ await OfficeDocHelper.Patch(filePath, marking);
 | Property | Value |
 |----------|-------|
 | `Unofficial` | `new ProtectiveMarking(Unofficial)` |
-| `UnofficialEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=UNOFFICIAL` |
+| `UnofficialEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=UNOFFICIAL` |
 | `UnofficialEmailSubjectSuffix` | string: `[SEC=UNOFFICIAL]` |
 | `UnofficialClassificationAndCaveats` | string: `UNOFFICIAL` |
 | `Official` | `new ProtectiveMarking(Official)` |
-| `OfficialEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=OFFICIAL` |
+| `OfficialEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=OFFICIAL` |
 | `OfficialEmailSubjectSuffix` | string: `[SEC=OFFICIAL]` |
 | `OfficialClassificationAndCaveats` | string: `OFFICIAL` |
 | `OfficialSensitive` | `new ProtectiveMarking(OfficialSensitive)` |
-| `OfficialSensitiveEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive` |
+| `OfficialSensitiveEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=OFFICIAL:Sensitive` |
 | `OfficialSensitiveEmailSubjectSuffix` | string: `[SEC=OFFICIAL:Sensitive]` |
 | `OfficialSensitiveClassificationAndCaveats` | string: `OFFICIAL:Sensitive` |
 | `Protected` | `new ProtectiveMarking(Protected)` |
-| `ProtectedEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=PROTECTED` |
+| `ProtectedEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=PROTECTED` |
 | `ProtectedEmailSubjectSuffix` | string: `[SEC=PROTECTED]` |
 | `ProtectedClassificationAndCaveats` | string: `PROTECTED` |
 | `Secret` | `new ProtectiveMarking(Secret)` |
-| `SecretEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=SECRET` |
+| `SecretEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=SECRET` |
 | `SecretEmailSubjectSuffix` | string: `[SEC=SECRET]` |
 | `SecretClassificationAndCaveats` | string: `SECRET` |
 | `TopSecret` | `new ProtectiveMarking(TopSecret)` |
-| `TopSecretEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=TOP-SECRET` |
+| `TopSecretEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=TOP-SECRET` |
 | `TopSecretEmailSubjectSuffix` | string: `[SEC=TOP-SECRET]` |
 | `TopSecretClassificationAndCaveats` | string: `TOP-SECRET` |
 | `ProtectedCabinet` | `new ProtectiveMarking(Protected){Caveats = {Cabinet = true}}` |
-| `ProtectedCabinetEmailHeader` | string: `VER=2024.1, NS=gov.au, SEC=PROTECTED, CAVEAT=SH:CABINET` |
+| `ProtectedCabinetEmailHeader` | string: `VER=2025.1, NS=gov.au, SEC=PROTECTED, CAVEAT=SH:CABINET` |
 | `ProtectedCabinetEmailSubjectSuffix` | string: `[SEC=PROTECTED, CAVEAT=SH:CABINET]` |
 | `ProtectedCabinetClassificationAndCaveats` | string: `PROTECTED//CABINET` |
 <!-- endInclude -->

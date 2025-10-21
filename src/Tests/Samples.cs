@@ -137,7 +137,7 @@ public class Samples
     {
         #region ParseEmailHeaderMinimum
 
-        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2024.1, NS=gov.au, SEC=OFFICIAL:Sensitive");
+        var protectiveMarking = Parser.ParseProtectiveMarking("VER=2025.1, NS=gov.au, SEC=OFFICIAL:Sensitive");
 
         #endregion
 

@@ -3,7 +3,7 @@
   To: to@mail.com,
   Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
   Headers: {
-    X-Protective-Marking: VER=2024.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
   },
   IsBodyHtml: false,
   Body: The body
