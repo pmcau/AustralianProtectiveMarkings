@@ -2,16 +2,17 @@ namespace AustralianProtectiveMarkings;
 
 public static partial class Parser
 {
-    internal static IEnumerable<Pair> ParseKeyValues(string input)
+    internal static List<Pair> ParseKeyValues(string input)
     {
-        input = input.Trim();
+        var pairs = new List<Pair>();
+        var span = input.AsSpan().Trim();
         var state = State.Key;
 
         var keyBuilder = new StringBuilder();
         var valueBuilder = new StringBuilder();
-        for (var index = 0; index < input.Length; index++)
+        for (var index = 0; index < span.Length; index++)
         {
-            var ch = input[index];
+            var ch = span[index];
             switch (state)
             {
                 case State.EatWhitespace:
@@ -20,7 +21,7 @@ public static partial class Parser
                         continue;
                     }
 
-                    ValidateKeyChar(input, ch);
+                    ValidateKeyChar(span, ch);
                     keyBuilder.Append(ch);
                     state = State.Key;
                     continue;
@@ -31,11 +32,11 @@ public static partial class Parser
                         continue;
                     }
 
-                    ValidateKeyChar(input, ch);
+                    ValidateKeyChar(span, ch);
                     keyBuilder.Append(ch);
                     continue;
                 case State.Value:
-                    var isLast = index == input.Length - 1;
+                    var isLast = index == span.Length - 1;
                     if (ch == ',' || isLast)
                     {
                         if (isLast)
@@ -45,18 +46,18 @@ public static partial class Parser
 
                         var value = valueBuilder.ToString();
                         var key = keyBuilder.ToString();
-                        ValidateValueWhiteSpace(input, value);
+                        ValidateValueWhiteSpace(span, value);
 
-                        CheckForUnknownKeys(input, key);
+                        CheckForUnknownKeys(span, key);
 
-                        yield return new(key, value);
+                        pairs.Add(new(key, value));
                         valueBuilder.Clear();
                         keyBuilder.Clear();
                         state = State.EatWhitespace;
 
                         if (isLast)
                         {
-                            yield break;
+                            return pairs;
                         }
 
                         continue;
@@ -68,7 +69,7 @@ public static partial class Parser
                         continue;
                     }
 
-                    ValidateValueChar(input, ch);
+                    ValidateValueChar(span, ch);
 
                     valueBuilder.Append(ch);
                     continue;
@@ -87,15 +88,15 @@ public static partial class Parser
         throw new($"Incorrect ending state. Input: {input}");
     }
 
-    static void CheckForUnknownKeys(string input, string key)
+    static void CheckForUnknownKeys(CharSpan input, string key)
     {
         if (!order.Contains(key))
         {
-            throw new($"Unknown key '{key}'. Input: {input}");
+            throw new($"Unknown key '{key}'. Input: {input.ToString()}");
         }
     }
 
-    static void ValidateValueChar(string input, char ch)
+    static void ValidateValueChar(CharSpan input, char ch)
     {
         if (ch >= 32 && ch <= 44)
         {
@@ -112,27 +113,27 @@ public static partial class Parser
             return;
         }
 
-        throw new($"Character '{ch}' not allowed in value. Input: {input}");
+        throw new($"Character '{ch}' not allowed in value. Input: {input.ToString()}");
     }
 
-    static void ValidateValueWhiteSpace(string input, string value)
+    static void ValidateValueWhiteSpace(CharSpan input, string value)
     {
         if (value.EndsWith(' '))
         {
-            throw new($"Trailing whitespace in value '{value}'. Input: {input}");
+            throw new($"Trailing whitespace in value '{value}'. Input: {input.ToString()}");
         }
 
         if (value.StartsWith(' '))
         {
-            throw new($"Leading whitespace in value '{value}'. Input: {input}");
+            throw new($"Leading whitespace in value '{value}'. Input: {input.ToString()}");
         }
     }
 
-    static void ValidateKeyChar(string input, char ch)
+    static void ValidateKeyChar(CharSpan input, char ch)
     {
         if (!char.IsLetter(ch))
         {
-            throw new($"Invalid character '{ch}' in key. Input: {input}");
+            throw new($"Invalid character '{ch}' in key. Input: {input.ToString()}");
         }
     }
 }

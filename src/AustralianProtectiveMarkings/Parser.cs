@@ -35,8 +35,7 @@ public static partial class Parser
             return new(classification);
         }
 
-        var pairs = ParseKeyValues(input)
-            .ToList();
+        var pairs = ParseKeyValues(input);
         var keys = pairs
             .Select(_ => _.Key)
             .ToList();
