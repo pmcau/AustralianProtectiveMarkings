@@ -14,7 +14,7 @@ public readonly record struct Expiry
     /// The date that will trigger the classification expiry.
     /// Maps to: the EXPIRES=genDate
     /// </summary>
-    /// <exception cref="Exception"></exception>
+    /// <exception cref="Exception">Cannot define GenDate when Event has a value</exception>
     public DateTimeOffset? GenDate
     {
         get;
@@ -38,6 +38,7 @@ public readonly record struct Expiry
     /// The event that will trigger the classification expiry.
     /// Maps to: the EXPIRES=genDate
     /// </summary>
+    /// <exception cref="Exception">Cannot define Event when GenDate has a value</exception>
     public string? Event
     {
         get;
