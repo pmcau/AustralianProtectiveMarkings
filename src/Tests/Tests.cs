@@ -33,7 +33,7 @@ public class Tests
         AreEqual(serialized1, serialized2);
         return Verify(marking);
     }
-#if NET9_0
+
     [Test]
     public async Task WriteCommonMarkings()
     {
@@ -81,6 +81,4 @@ public class Tests
             return writer.WriteLineAsync($"| `{stringProperty.Name}` | string: `{value}` |");
         }
     }
-
-#endif
 }
