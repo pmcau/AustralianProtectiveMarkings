@@ -1,4 +1,4 @@
-﻿namespace AustralianProtectiveMarkings;
+namespace AustralianProtectiveMarkings;
 
 public static class CountryCodes
 {
@@ -50,1505 +50,511 @@ public static class CountryCodes
         throw new ArgumentException($"Could not find CountryCode for '{letters}'");
     }
 
-    static FrozenDictionary<string, Country> lettersToCode = new Dictionary<string, Country>
-    {
-        {
-            "ABW", Country.Aruba
-        },
-        {
-            "AFG", Country.Afghanistan
-        },
-        {
-            "AGO", Country.Angola
-        },
-        {
-            "AIA", Country.Anguilla
-        },
-        {
-            "ALA", Country.ÅlandIslands
-        },
-        {
-            "ALB", Country.Albania
-        },
-        {
-            "AND", Country.Andorra
-        },
-        {
-            "ARE", Country.UnitedArabEmirates
-        },
-        {
-            "ARG", Country.Argentina
-        },
-        {
-            "ARM", Country.Armenia
-        },
-        {
-            "ASM", Country.AmericanSamoa
-        },
-        {
-            "ATA", Country.Antarctica
-        },
-        {
-            "ATF", Country.FrenchSouthernTerritories
-        },
-        {
-            "ATG", Country.AntiguaAndBarbuda
-        },
-        {
-            "AUS", Country.Australia
-        },
-        {
-            "AUT", Country.Austria
-        },
-        {
-            "AZE", Country.Azerbaijan
-        },
-        {
-            "BDI", Country.Burundi
-        },
-        {
-            "BEL", Country.Belgium
-        },
-        {
-            "BEN", Country.Benin
-        },
-        {
-            "BES", Country.CaribbeanNetherlands
-        },
-        {
-            "BFA", Country.BurkinaFaso
-        },
-        {
-            "BGD", Country.Bangladesh
-        },
-        {
-            "BGR", Country.Bulgaria
-        },
-        {
-            "BHR", Country.Bahrain
-        },
-        {
-            "BHS", Country.Bahamas
-        },
-        {
-            "BIH", Country.BosniaAndHerzegovina
-        },
-        {
-            "BLM", Country.SaintBarthélemy
-        },
-        {
-            "BLR", Country.Belarus
-        },
-        {
-            "BLZ", Country.Belize
-        },
-        {
-            "BMU", Country.Bermuda
-        },
-        {
-            "BOL", Country.Bolivia
-        },
-        {
-            "BRA", Country.Brazil
-        },
-        {
-            "BRB", Country.Barbados
-        },
-        {
-            "BRN", Country.Brunei
-        },
-        {
-            "BTN", Country.Bhutan
-        },
-        {
-            "BVT", Country.BouvetIsland
-        },
-        {
-            "BWA", Country.Botswana
-        },
-        {
-            "CAF", Country.CentralAfricanRepublic
-        },
-        {
-            "CAN", Country.Canada
-        },
-        {
-            "CCK", Country.CocosKeelingIslands
-        },
-        {
-            "CHE", Country.Switzerland
-        },
-        {
-            "CHL", Country.Chile
-        },
-        {
-            "CHN", Country.China
-        },
-        {
-            "CIV", Country.IvoryCoast
-        },
-        {
-            "CMR", Country.Cameroon
-        },
-        {
-            "COD", Country.DemocraticRepublicOfTheCongo
-        },
-        {
-            "COG", Country.RepublicOfTheCongo
-        },
-        {
-            "COK", Country.CookIslands
-        },
-        {
-            "COL", Country.Colombia
-        },
-        {
-            "COM", Country.Comoros
-        },
-        {
-            "CPV", Country.CaboVerde
-        },
-        {
-            "CRI", Country.CostaRica
-        },
-        {
-            "CUB", Country.Cuba
-        },
-        {
-            "CUW", Country.Curaçao
-        },
-        {
-            "CXR", Country.ChristmasIsland
-        },
-        {
-            "CYM", Country.CaymanIslands
-        },
-        {
-            "CYP", Country.Cyprus
-        },
-        {
-            "CZE", Country.Czechia
-        },
-        {
-            "DEU", Country.Germany
-        },
-        {
-            "DJI", Country.Djibouti
-        },
-        {
-            "DMA", Country.Dominica
-        },
-        {
-            "DNK", Country.Denmark
-        },
-        {
-            "DOM", Country.DominicanRepublic
-        },
-        {
-            "DZA", Country.Algeria
-        },
-        {
-            "ECU", Country.Ecuador
-        },
-        {
-            "EGY", Country.Egypt
-        },
-        {
-            "ERI", Country.Eritrea
-        },
-        {
-            "ESH", Country.WesternSahara
-        },
-        {
-            "ESP", Country.Spain
-        },
-        {
-            "EST", Country.Estonia
-        },
-        {
-            "ETH", Country.Ethiopia
-        },
-        {
-            "FIN", Country.Finland
-        },
-        {
-            "FJI", Country.Fiji
-        },
-        {
-            "FLK", Country.FalklandIslands
-        },
-        {
-            "FRA", Country.France
-        },
-        {
-            "FRO", Country.FaroeIslands
-        },
-        {
-            "FSM", Country.Micronesia
-        },
-        {
-            "GAB", Country.Gabon
-        },
-        {
-            "GBR", Country.UnitedKingdom
-        },
-        {
-            "GEO", Country.Georgia
-        },
-        {
-            "GGY", Country.Guernsey
-        },
-        {
-            "GHA", Country.Ghana
-        },
-        {
-            "GIB", Country.Gibraltar
-        },
-        {
-            "GIN", Country.Guinea
-        },
-        {
-            "GLP", Country.Guadeloupe
-        },
-        {
-            "GMB", Country.Gambia
-        },
-        {
-            "GNB", Country.GuineaBissau
-        },
-        {
-            "GNQ", Country.EquatorialGuinea
-        },
-        {
-            "GRC", Country.Greece
-        },
-        {
-            "GRD", Country.Grenada
-        },
-        {
-            "GRL", Country.Greenland
-        },
-        {
-            "GTM", Country.Guatemala
-        },
-        {
-            "GUF", Country.FrenchGuiana
-        },
-        {
-            "GUM", Country.Guam
-        },
-        {
-            "GUY", Country.Guyana
-        },
-        {
-            "HKG", Country.HongKong
-        },
-        {
-            "HMD", Country.HeardIslandAndMcDonaldIslands
-        },
-        {
-            "HND", Country.Honduras
-        },
-        {
-            "HRV", Country.Croatia
-        },
-        {
-            "HTI", Country.Haiti
-        },
-        {
-            "HUN", Country.Hungary
-        },
-        {
-            "IDN", Country.Indonesia
-        },
-        {
-            "IMN", Country.IsleOfMan
-        },
-        {
-            "IND", Country.India
-        },
-        {
-            "IOT", Country.BritishIndianOceanTerritory
-        },
-        {
-            "IRL", Country.Ireland
-        },
-        {
-            "IRN", Country.Iran
-        },
-        {
-            "IRQ", Country.Iraq
-        },
-        {
-            "ISL", Country.Iceland
-        },
-        {
-            "ISR", Country.Israel
-        },
-        {
-            "ITA", Country.Italy
-        },
-        {
-            "JAM", Country.Jamaica
-        },
-        {
-            "JEY", Country.Jersey
-        },
-        {
-            "JOR", Country.Jordan
-        },
-        {
-            "JPN", Country.Japan
-        },
-        {
-            "KAZ", Country.Kazakhstan
-        },
-        {
-            "KEN", Country.Kenya
-        },
-        {
-            "KGZ", Country.Kyrgyzstan
-        },
-        {
-            "KHM", Country.Cambodia
-        },
-        {
-            "KIR", Country.Kiribati
-        },
-        {
-            "KNA", Country.SaintKittsAndNevis
-        },
-        {
-            "KOR", Country.SouthKorea
-        },
-        {
-            "KWT", Country.Kuwait
-        },
-        {
-            "LAO", Country.Laos
-        },
-        {
-            "LBN", Country.Lebanon
-        },
-        {
-            "LBR", Country.Liberia
-        },
-        {
-            "LBY", Country.Libya
-        },
-        {
-            "LCA", Country.SaintLucia
-        },
-        {
-            "LIE", Country.Liechtenstein
-        },
-        {
-            "LKA", Country.SriLanka
-        },
-        {
-            "LSO", Country.Lesotho
-        },
-        {
-            "LTU", Country.Lithuania
-        },
-        {
-            "LUX", Country.Luxembourg
-        },
-        {
-            "LVA", Country.Latvia
-        },
-        {
-            "MAC", Country.Macao
-        },
-        {
-            "MAF", Country.CollectivityOfSaintMartin
-        },
-        {
-            "MAR", Country.Morocco
-        },
-        {
-            "MCO", Country.Monaco
-        },
-        {
-            "MDA", Country.Moldova
-        },
-        {
-            "MDG", Country.Madagascar
-        },
-        {
-            "MDV", Country.Maldives
-        },
-        {
-            "MEX", Country.Mexico
-        },
-        {
-            "MHL", Country.MarshallIslands
-        },
-        {
-            "MKD", Country.NorthMacedonia
-        },
-        {
-            "MLI", Country.Mali
-        },
-        {
-            "MLT", Country.Malta
-        },
-        {
-            "MMR", Country.Myanmar
-        },
-        {
-            "MNE", Country.Montenegro
-        },
-        {
-            "MNG", Country.Mongolia
-        },
-        {
-            "MNP", Country.NorthernMarianaIslands
-        },
-        {
-            "MOZ", Country.Mozambique
-        },
-        {
-            "MRT", Country.Mauritania
-        },
-        {
-            "MSR", Country.Montserrat
-        },
-        {
-            "MTQ", Country.Martinique
-        },
-        {
-            "MUS", Country.Mauritius
-        },
-        {
-            "MWI", Country.Malawi
-        },
-        {
-            "MYS", Country.Malaysia
-        },
-        {
-            "MYT", Country.Mayotte
-        },
-        {
-            "NAM", Country.Namibia
-        },
-        {
-            "NCL", Country.NewCaledonia
-        },
-        {
-            "NER", Country.Niger
-        },
-        {
-            "NFK", Country.NorfolkIsland
-        },
-        {
-            "NGA", Country.Nigeria
-        },
-        {
-            "NIC", Country.Nicaragua
-        },
-        {
-            "NIU", Country.Niue
-        },
-        {
-            "NLD", Country.Netherlands
-        },
-        {
-            "NOR", Country.Norway
-        },
-        {
-            "NPL", Country.Nepal
-        },
-        {
-            "NRU", Country.Nauru
-        },
-        {
-            "NZL", Country.NewZealand
-        },
-        {
-            "OMN", Country.Oman
-        },
-        {
-            "PAK", Country.Pakistan
-        },
-        {
-            "PAN", Country.Panama
-        },
-        {
-            "PCN", Country.Pitcairn
-        },
-        {
-            "PER", Country.Peru
-        },
-        {
-            "PHL", Country.Philippines
-        },
-        {
-            "PLW", Country.Palau
-        },
-        {
-            "PNG", Country.PapuaNewGuinea
-        },
-        {
-            "POL", Country.Poland
-        },
-        {
-            "PRI", Country.PuertoRico
-        },
-        {
-            "PRK", Country.NorthKorea
-        },
-        {
-            "PRT", Country.Portugal
-        },
-        {
-            "PRY", Country.Paraguay
-        },
-        {
-            "PSE", Country.Palestine
-        },
-        {
-            "PYF", Country.FrenchPolynesia
-        },
-        {
-            "QAT", Country.Qatar
-        },
-        {
-            "REU", Country.Réunion
-        },
-        {
-            "ROU", Country.Romania
-        },
-        {
-            "RUS", Country.Russia
-        },
-        {
-            "RWA", Country.Rwanda
-        },
-        {
-            "SAU", Country.SaudiArabia
-        },
-        {
-            "SDN", Country.Sudan
-        },
-        {
-            "SEN", Country.Senegal
-        },
-        {
-            "SGP", Country.Singapore
-        },
-        {
-            "SGS", Country.SouthGeorgiaAndTheSouthSandwichIslands
-        },
-        {
-            "SHN", Country.SaintHelenaAscensionAndTristandaCunha
-        },
-        {
-            "SJM", Country.SvalbardAndJanMayen
-        },
-        {
-            "SLB", Country.SolomonIslands
-        },
-        {
-            "SLE", Country.SierraLeone
-        },
-        {
-            "SLV", Country.ElSalvador
-        },
-        {
-            "SMR", Country.SanMarino
-        },
-        {
-            "SOM", Country.Somalia
-        },
-        {
-            "SPM", Country.SaintPierreAndMiquelon
-        },
-        {
-            "SRB", Country.Serbia
-        },
-        {
-            "SSD", Country.SouthSudan
-        },
-        {
-            "STP", Country.SãoToméAndPríncipe
-        },
-        {
-            "SUR", Country.Suriname
-        },
-        {
-            "SVK", Country.Slovakia
-        },
-        {
-            "SVN", Country.Slovenia
-        },
-        {
-            "SWE", Country.Sweden
-        },
-        {
-            "SWZ", Country.Eswatini
-        },
-        {
-            "SXM", Country.SintMaarten
-        },
-        {
-            "SYC", Country.Seychelles
-        },
-        {
-            "SYR", Country.Syria
-        },
-        {
-            "TCA", Country.TurksAndCaicosIslands
-        },
-        {
-            "TCD", Country.Chad
-        },
-        {
-            "TGO", Country.Togo
-        },
-        {
-            "THA", Country.Thailand
-        },
-        {
-            "TJK", Country.Tajikistan
-        },
-        {
-            "TKL", Country.Tokelau
-        },
-        {
-            "TKM", Country.Turkmenistan
-        },
-        {
-            "TLS", Country.TimorLeste
-        },
-        {
-            "TON", Country.Tonga
-        },
-        {
-            "TTO", Country.TrinidadAndTobago
-        },
-        {
-            "TUN", Country.Tunisia
-        },
-        {
-            "TUR", Country.Turkey
-        },
-        {
-            "TUV", Country.Tuvalu
-        },
-        {
-            "TWN", Country.Taiwan
-        },
-        {
-            "TZA", Country.Tanzania
-        },
-        {
-            "UGA", Country.Uganda
-        },
-        {
-            "UKR", Country.Ukraine
-        },
-        {
-            "UMI", Country.UnitedStatesMinorOutlyingIslands
-        },
-        {
-            "URY", Country.Uruguay
-        },
-        {
-            "USA", Country.UnitedStatesOfAmerica
-        },
-        {
-            "UZB", Country.Uzbekistan
-        },
-        {
-            "VAT", Country.VaticanCity
-        },
-        {
-            "VCT", Country.SaintVincentAndTheGrenadines
-        },
-        {
-            "VEN", Country.Venezuela
-        },
-        {
-            "VGB", Country.BritishVirginIslands
-        },
-        {
-            "VIR", Country.UnitedStatesVirginIslands
-        },
-        {
-            "VNM", Country.VietNam
-        },
-        {
-            "VUT", Country.Vanuatu
-        },
-        {
-            "WLF", Country.WallisAndFutuna
-        },
-        {
-            "WSM", Country.Samoa
-        },
-        {
-            "YEM", Country.Yemen
-        },
-        {
-            "ZAF", Country.SouthAfrica
-        },
-        {
-            "ZMB", Country.Zambia
-        },
-        {
-            "ZWE", Country.Zimbabwe
-        }
-    }.ToFrozenDictionary();
+    static FrozenDictionary<string, Country> lettersToCode =
+        FrozenDictionary.Create<string, Country>(
+        [
+            new("ABW", Country.Aruba),
+            new("AFG", Country.Afghanistan),
+            new("AGO", Country.Angola),
+            new("AIA", Country.Anguilla),
+            new("ALA", Country.ÅlandIslands),
+            new("ALB", Country.Albania),
+            new("AND", Country.Andorra),
+            new("ARE", Country.UnitedArabEmirates),
+            new("ARG", Country.Argentina),
+            new("ARM", Country.Armenia),
+            new("ASM", Country.AmericanSamoa),
+            new("ATA", Country.Antarctica),
+            new("ATF", Country.FrenchSouthernTerritories),
+            new("ATG", Country.AntiguaAndBarbuda),
+            new("AUS", Country.Australia),
+            new("AUT", Country.Austria),
+            new("AZE", Country.Azerbaijan),
+            new("BDI", Country.Burundi),
+            new("BEL", Country.Belgium),
+            new("BEN", Country.Benin),
+            new("BES", Country.CaribbeanNetherlands),
+            new("BFA", Country.BurkinaFaso),
+            new("BGD", Country.Bangladesh),
+            new("BGR", Country.Bulgaria),
+            new("BHR", Country.Bahrain),
+            new("BHS", Country.Bahamas),
+            new("BIH", Country.BosniaAndHerzegovina),
+            new("BLM", Country.SaintBarthélemy),
+            new("BLR", Country.Belarus),
+            new("BLZ", Country.Belize),
+            new("BMU", Country.Bermuda),
+            new("BOL", Country.Bolivia),
+            new("BRA", Country.Brazil),
+            new("BRB", Country.Barbados),
+            new("BRN", Country.Brunei),
+            new("BTN", Country.Bhutan),
+            new("BVT", Country.BouvetIsland),
+            new("BWA", Country.Botswana),
+            new("CAF", Country.CentralAfricanRepublic),
+            new("CAN", Country.Canada),
+            new("CCK", Country.CocosKeelingIslands),
+            new("CHE", Country.Switzerland),
+            new("CHL", Country.Chile),
+            new("CHN", Country.China),
+            new("CIV", Country.IvoryCoast),
+            new("CMR", Country.Cameroon),
+            new("COD", Country.DemocraticRepublicOfTheCongo),
+            new("COG", Country.RepublicOfTheCongo),
+            new("COK", Country.CookIslands),
+            new("COL", Country.Colombia),
+            new("COM", Country.Comoros),
+            new("CPV", Country.CaboVerde),
+            new("CRI", Country.CostaRica),
+            new("CUB", Country.Cuba),
+            new("CUW", Country.Curaçao),
+            new("CXR", Country.ChristmasIsland),
+            new("CYM", Country.CaymanIslands),
+            new("CYP", Country.Cyprus),
+            new("CZE", Country.Czechia),
+            new("DEU", Country.Germany),
+            new("DJI", Country.Djibouti),
+            new("DMA", Country.Dominica),
+            new("DNK", Country.Denmark),
+            new("DOM", Country.DominicanRepublic),
+            new("DZA", Country.Algeria),
+            new("ECU", Country.Ecuador),
+            new("EGY", Country.Egypt),
+            new("ERI", Country.Eritrea),
+            new("ESH", Country.WesternSahara),
+            new("ESP", Country.Spain),
+            new("EST", Country.Estonia),
+            new("ETH", Country.Ethiopia),
+            new("FIN", Country.Finland),
+            new("FJI", Country.Fiji),
+            new("FLK", Country.FalklandIslands),
+            new("FRA", Country.France),
+            new("FRO", Country.FaroeIslands),
+            new("FSM", Country.Micronesia),
+            new("GAB", Country.Gabon),
+            new("GBR", Country.UnitedKingdom),
+            new("GEO", Country.Georgia),
+            new("GGY", Country.Guernsey),
+            new("GHA", Country.Ghana),
+            new("GIB", Country.Gibraltar),
+            new("GIN", Country.Guinea),
+            new("GLP", Country.Guadeloupe),
+            new("GMB", Country.Gambia),
+            new("GNB", Country.GuineaBissau),
+            new("GNQ", Country.EquatorialGuinea),
+            new("GRC", Country.Greece),
+            new("GRD", Country.Grenada),
+            new("GRL", Country.Greenland),
+            new("GTM", Country.Guatemala),
+            new("GUF", Country.FrenchGuiana),
+            new("GUM", Country.Guam),
+            new("GUY", Country.Guyana),
+            new("HKG", Country.HongKong),
+            new("HMD", Country.HeardIslandAndMcDonaldIslands),
+            new("HND", Country.Honduras),
+            new("HRV", Country.Croatia),
+            new("HTI", Country.Haiti),
+            new("HUN", Country.Hungary),
+            new("IDN", Country.Indonesia),
+            new("IMN", Country.IsleOfMan),
+            new("IND", Country.India),
+            new("IOT", Country.BritishIndianOceanTerritory),
+            new("IRL", Country.Ireland),
+            new("IRN", Country.Iran),
+            new("IRQ", Country.Iraq),
+            new("ISL", Country.Iceland),
+            new("ISR", Country.Israel),
+            new("ITA", Country.Italy),
+            new("JAM", Country.Jamaica),
+            new("JEY", Country.Jersey),
+            new("JOR", Country.Jordan),
+            new("JPN", Country.Japan),
+            new("KAZ", Country.Kazakhstan),
+            new("KEN", Country.Kenya),
+            new("KGZ", Country.Kyrgyzstan),
+            new("KHM", Country.Cambodia),
+            new("KIR", Country.Kiribati),
+            new("KNA", Country.SaintKittsAndNevis),
+            new("KOR", Country.SouthKorea),
+            new("KWT", Country.Kuwait),
+            new("LAO", Country.Laos),
+            new("LBN", Country.Lebanon),
+            new("LBR", Country.Liberia),
+            new("LBY", Country.Libya),
+            new("LCA", Country.SaintLucia),
+            new("LIE", Country.Liechtenstein),
+            new("LKA", Country.SriLanka),
+            new("LSO", Country.Lesotho),
+            new("LTU", Country.Lithuania),
+            new("LUX", Country.Luxembourg),
+            new("LVA", Country.Latvia),
+            new("MAC", Country.Macao),
+            new("MAF", Country.CollectivityOfSaintMartin),
+            new("MAR", Country.Morocco),
+            new("MCO", Country.Monaco),
+            new("MDA", Country.Moldova),
+            new("MDG", Country.Madagascar),
+            new("MDV", Country.Maldives),
+            new("MEX", Country.Mexico),
+            new("MHL", Country.MarshallIslands),
+            new("MKD", Country.NorthMacedonia),
+            new("MLI", Country.Mali),
+            new("MLT", Country.Malta),
+            new("MMR", Country.Myanmar),
+            new("MNE", Country.Montenegro),
+            new("MNG", Country.Mongolia),
+            new("MNP", Country.NorthernMarianaIslands),
+            new("MOZ", Country.Mozambique),
+            new("MRT", Country.Mauritania),
+            new("MSR", Country.Montserrat),
+            new("MTQ", Country.Martinique),
+            new("MUS", Country.Mauritius),
+            new("MWI", Country.Malawi),
+            new("MYS", Country.Malaysia),
+            new("MYT", Country.Mayotte),
+            new("NAM", Country.Namibia),
+            new("NCL", Country.NewCaledonia),
+            new("NER", Country.Niger),
+            new("NFK", Country.NorfolkIsland),
+            new("NGA", Country.Nigeria),
+            new("NIC", Country.Nicaragua),
+            new("NIU", Country.Niue),
+            new("NLD", Country.Netherlands),
+            new("NOR", Country.Norway),
+            new("NPL", Country.Nepal),
+            new("NRU", Country.Nauru),
+            new("NZL", Country.NewZealand),
+            new("OMN", Country.Oman),
+            new("PAK", Country.Pakistan),
+            new("PAN", Country.Panama),
+            new("PCN", Country.Pitcairn),
+            new("PER", Country.Peru),
+            new("PHL", Country.Philippines),
+            new("PLW", Country.Palau),
+            new("PNG", Country.PapuaNewGuinea),
+            new("POL", Country.Poland),
+            new("PRI", Country.PuertoRico),
+            new("PRK", Country.NorthKorea),
+            new("PRT", Country.Portugal),
+            new("PRY", Country.Paraguay),
+            new("PSE", Country.Palestine),
+            new("PYF", Country.FrenchPolynesia),
+            new("QAT", Country.Qatar),
+            new("REU", Country.Réunion),
+            new("ROU", Country.Romania),
+            new("RUS", Country.Russia),
+            new("RWA", Country.Rwanda),
+            new("SAU", Country.SaudiArabia),
+            new("SDN", Country.Sudan),
+            new("SEN", Country.Senegal),
+            new("SGP", Country.Singapore),
+            new("SGS", Country.SouthGeorgiaAndTheSouthSandwichIslands),
+            new("SHN", Country.SaintHelenaAscensionAndTristandaCunha),
+            new("SJM", Country.SvalbardAndJanMayen),
+            new("SLB", Country.SolomonIslands),
+            new("SLE", Country.SierraLeone),
+            new("SLV", Country.ElSalvador),
+            new("SMR", Country.SanMarino),
+            new("SOM", Country.Somalia),
+            new("SPM", Country.SaintPierreAndMiquelon),
+            new("SRB", Country.Serbia),
+            new("SSD", Country.SouthSudan),
+            new("STP", Country.SãoToméAndPríncipe),
+            new("SUR", Country.Suriname),
+            new("SVK", Country.Slovakia),
+            new("SVN", Country.Slovenia),
+            new("SWE", Country.Sweden),
+            new("SWZ", Country.Eswatini),
+            new("SXM", Country.SintMaarten),
+            new("SYC", Country.Seychelles),
+            new("SYR", Country.Syria),
+            new("TCA", Country.TurksAndCaicosIslands),
+            new("TCD", Country.Chad),
+            new("TGO", Country.Togo),
+            new("THA", Country.Thailand),
+            new("TJK", Country.Tajikistan),
+            new("TKL", Country.Tokelau),
+            new("TKM", Country.Turkmenistan),
+            new("TLS", Country.TimorLeste),
+            new("TON", Country.Tonga),
+            new("TTO", Country.TrinidadAndTobago),
+            new("TUN", Country.Tunisia),
+            new("TUR", Country.Turkey),
+            new("TUV", Country.Tuvalu),
+            new("TWN", Country.Taiwan),
+            new("TZA", Country.Tanzania),
+            new("UGA", Country.Uganda),
+            new("UKR", Country.Ukraine),
+            new("UMI", Country.UnitedStatesMinorOutlyingIslands),
+            new("URY", Country.Uruguay),
+            new("USA", Country.UnitedStatesOfAmerica),
+            new("UZB", Country.Uzbekistan),
+            new("VAT", Country.VaticanCity),
+            new("VCT", Country.SaintVincentAndTheGrenadines),
+            new("VEN", Country.Venezuela),
+            new("VGB", Country.BritishVirginIslands),
+            new("VIR", Country.UnitedStatesVirginIslands),
+            new("VNM", Country.VietNam),
+            new("VUT", Country.Vanuatu),
+            new("WLF", Country.WallisAndFutuna),
+            new("WSM", Country.Samoa),
+            new("YEM", Country.Yemen),
+            new("ZAF", Country.SouthAfrica),
+            new("ZMB", Country.Zambia),
+            new("ZWE", Country.Zimbabwe),
+        ]);
 
-    static FrozenDictionary<Country, string> codeToLetters = new Dictionary<Country, string>
-    {
-        {
-            Country.Aruba, "ABW"
-        },
-        {
-            Country.Afghanistan, "AFG"
-        },
-        {
-            Country.Angola, "AGO"
-        },
-        {
-            Country.Anguilla, "AIA"
-        },
-        {
-            Country.ÅlandIslands, "ALA"
-        },
-        {
-            Country.Albania, "ALB"
-        },
-        {
-            Country.Andorra, "AND"
-        },
-        {
-            Country.UnitedArabEmirates, "ARE"
-        },
-        {
-            Country.Argentina, "ARG"
-        },
-        {
-            Country.Armenia, "ARM"
-        },
-        {
-            Country.AmericanSamoa, "ASM"
-        },
-        {
-            Country.Antarctica, "ATA"
-        },
-        {
-            Country.FrenchSouthernTerritories, "ATF"
-        },
-        {
-            Country.AntiguaAndBarbuda, "ATG"
-        },
-        {
-            Country.Australia, "AUS"
-        },
-        {
-            Country.Austria, "AUT"
-        },
-        {
-            Country.Azerbaijan, "AZE"
-        },
-        {
-            Country.Burundi, "BDI"
-        },
-        {
-            Country.Belgium, "BEL"
-        },
-        {
-            Country.Benin, "BEN"
-        },
-        {
-            Country.CaribbeanNetherlands, "BES"
-        },
-        {
-            Country.BurkinaFaso, "BFA"
-        },
-        {
-            Country.Bangladesh, "BGD"
-        },
-        {
-            Country.Bulgaria, "BGR"
-        },
-        {
-            Country.Bahrain, "BHR"
-        },
-        {
-            Country.Bahamas, "BHS"
-        },
-        {
-            Country.BosniaAndHerzegovina, "BIH"
-        },
-        {
-            Country.SaintBarthélemy, "BLM"
-        },
-        {
-            Country.Belarus, "BLR"
-        },
-        {
-            Country.Belize, "BLZ"
-        },
-        {
-            Country.Bermuda, "BMU"
-        },
-        {
-            Country.Bolivia, "BOL"
-        },
-        {
-            Country.Brazil, "BRA"
-        },
-        {
-            Country.Barbados, "BRB"
-        },
-        {
-            Country.Brunei, "BRN"
-        },
-        {
-            Country.Bhutan, "BTN"
-        },
-        {
-            Country.BouvetIsland, "BVT"
-        },
-        {
-            Country.Botswana, "BWA"
-        },
-        {
-            Country.CentralAfricanRepublic, "CAF"
-        },
-        {
-            Country.Canada, "CAN"
-        },
-        {
-            Country.CocosKeelingIslands, "CCK"
-        },
-        {
-            Country.Switzerland, "CHE"
-        },
-        {
-            Country.Chile, "CHL"
-        },
-        {
-            Country.China, "CHN"
-        },
-        {
-            Country.IvoryCoast, "CIV"
-        },
-        {
-            Country.Cameroon, "CMR"
-        },
-        {
-            Country.DemocraticRepublicOfTheCongo, "COD"
-        },
-        {
-            Country.RepublicOfTheCongo, "COG"
-        },
-        {
-            Country.CookIslands, "COK"
-        },
-        {
-            Country.Colombia, "COL"
-        },
-        {
-            Country.Comoros, "COM"
-        },
-        {
-            Country.CaboVerde, "CPV"
-        },
-        {
-            Country.CostaRica, "CRI"
-        },
-        {
-            Country.Cuba, "CUB"
-        },
-        {
-            Country.Curaçao, "CUW"
-        },
-        {
-            Country.ChristmasIsland, "CXR"
-        },
-        {
-            Country.CaymanIslands, "CYM"
-        },
-        {
-            Country.Cyprus, "CYP"
-        },
-        {
-            Country.Czechia, "CZE"
-        },
-        {
-            Country.Germany, "DEU"
-        },
-        {
-            Country.Djibouti, "DJI"
-        },
-        {
-            Country.Dominica, "DMA"
-        },
-        {
-            Country.Denmark, "DNK"
-        },
-        {
-            Country.DominicanRepublic, "DOM"
-        },
-        {
-            Country.Algeria, "DZA"
-        },
-        {
-            Country.Ecuador, "ECU"
-        },
-        {
-            Country.Egypt, "EGY"
-        },
-        {
-            Country.Eritrea, "ERI"
-        },
-        {
-            Country.WesternSahara, "ESH"
-        },
-        {
-            Country.Spain, "ESP"
-        },
-        {
-            Country.Estonia, "EST"
-        },
-        {
-            Country.Ethiopia, "ETH"
-        },
-        {
-            Country.Finland, "FIN"
-        },
-        {
-            Country.Fiji, "FJI"
-        },
-        {
-            Country.FalklandIslands, "FLK"
-        },
-        {
-            Country.France, "FRA"
-        },
-        {
-            Country.FaroeIslands, "FRO"
-        },
-        {
-            Country.Micronesia, "FSM"
-        },
-        {
-            Country.Gabon, "GAB"
-        },
-        {
-            Country.UnitedKingdom, "GBR"
-        },
-        {
-            Country.Georgia, "GEO"
-        },
-        {
-            Country.Guernsey, "GGY"
-        },
-        {
-            Country.Ghana, "GHA"
-        },
-        {
-            Country.Gibraltar, "GIB"
-        },
-        {
-            Country.Guinea, "GIN"
-        },
-        {
-            Country.Guadeloupe, "GLP"
-        },
-        {
-            Country.Gambia, "GMB"
-        },
-        {
-            Country.GuineaBissau, "GNB"
-        },
-        {
-            Country.EquatorialGuinea, "GNQ"
-        },
-        {
-            Country.Greece, "GRC"
-        },
-        {
-            Country.Grenada, "GRD"
-        },
-        {
-            Country.Greenland, "GRL"
-        },
-        {
-            Country.Guatemala, "GTM"
-        },
-        {
-            Country.FrenchGuiana, "GUF"
-        },
-        {
-            Country.Guam, "GUM"
-        },
-        {
-            Country.Guyana, "GUY"
-        },
-        {
-            Country.HongKong, "HKG"
-        },
-        {
-            Country.HeardIslandAndMcDonaldIslands, "HMD"
-        },
-        {
-            Country.Honduras, "HND"
-        },
-        {
-            Country.Croatia, "HRV"
-        },
-        {
-            Country.Haiti, "HTI"
-        },
-        {
-            Country.Hungary, "HUN"
-        },
-        {
-            Country.Indonesia, "IDN"
-        },
-        {
-            Country.IsleOfMan, "IMN"
-        },
-        {
-            Country.India, "IND"
-        },
-        {
-            Country.BritishIndianOceanTerritory, "IOT"
-        },
-        {
-            Country.Ireland, "IRL"
-        },
-        {
-            Country.Iran, "IRN"
-        },
-        {
-            Country.Iraq, "IRQ"
-        },
-        {
-            Country.Iceland, "ISL"
-        },
-        {
-            Country.Israel, "ISR"
-        },
-        {
-            Country.Italy, "ITA"
-        },
-        {
-            Country.Jamaica, "JAM"
-        },
-        {
-            Country.Jersey, "JEY"
-        },
-        {
-            Country.Jordan, "JOR"
-        },
-        {
-            Country.Japan, "JPN"
-        },
-        {
-            Country.Kazakhstan, "KAZ"
-        },
-        {
-            Country.Kenya, "KEN"
-        },
-        {
-            Country.Kyrgyzstan, "KGZ"
-        },
-        {
-            Country.Cambodia, "KHM"
-        },
-        {
-            Country.Kiribati, "KIR"
-        },
-        {
-            Country.SaintKittsAndNevis, "KNA"
-        },
-        {
-            Country.SouthKorea, "KOR"
-        },
-        {
-            Country.Kuwait, "KWT"
-        },
-        {
-            Country.Laos, "LAO"
-        },
-        {
-            Country.Lebanon, "LBN"
-        },
-        {
-            Country.Liberia, "LBR"
-        },
-        {
-            Country.Libya, "LBY"
-        },
-        {
-            Country.SaintLucia, "LCA"
-        },
-        {
-            Country.Liechtenstein, "LIE"
-        },
-        {
-            Country.SriLanka, "LKA"
-        },
-        {
-            Country.Lesotho, "LSO"
-        },
-        {
-            Country.Lithuania, "LTU"
-        },
-        {
-            Country.Luxembourg, "LUX"
-        },
-        {
-            Country.Latvia, "LVA"
-        },
-        {
-            Country.Macao, "MAC"
-        },
-        {
-            Country.CollectivityOfSaintMartin, "MAF"
-        },
-        {
-            Country.Morocco, "MAR"
-        },
-        {
-            Country.Monaco, "MCO"
-        },
-        {
-            Country.Moldova, "MDA"
-        },
-        {
-            Country.Madagascar, "MDG"
-        },
-        {
-            Country.Maldives, "MDV"
-        },
-        {
-            Country.Mexico, "MEX"
-        },
-        {
-            Country.MarshallIslands, "MHL"
-        },
-        {
-            Country.NorthMacedonia, "MKD"
-        },
-        {
-            Country.Mali, "MLI"
-        },
-        {
-            Country.Malta, "MLT"
-        },
-        {
-            Country.Myanmar, "MMR"
-        },
-        {
-            Country.Montenegro, "MNE"
-        },
-        {
-            Country.Mongolia, "MNG"
-        },
-        {
-            Country.NorthernMarianaIslands, "MNP"
-        },
-        {
-            Country.Mozambique, "MOZ"
-        },
-        {
-            Country.Mauritania, "MRT"
-        },
-        {
-            Country.Montserrat, "MSR"
-        },
-        {
-            Country.Martinique, "MTQ"
-        },
-        {
-            Country.Mauritius, "MUS"
-        },
-        {
-            Country.Malawi, "MWI"
-        },
-        {
-            Country.Malaysia, "MYS"
-        },
-        {
-            Country.Mayotte, "MYT"
-        },
-        {
-            Country.Namibia, "NAM"
-        },
-        {
-            Country.NewCaledonia, "NCL"
-        },
-        {
-            Country.Niger, "NER"
-        },
-        {
-            Country.NorfolkIsland, "NFK"
-        },
-        {
-            Country.Nigeria, "NGA"
-        },
-        {
-            Country.Nicaragua, "NIC"
-        },
-        {
-            Country.Niue, "NIU"
-        },
-        {
-            Country.Netherlands, "NLD"
-        },
-        {
-            Country.Norway, "NOR"
-        },
-        {
-            Country.Nepal, "NPL"
-        },
-        {
-            Country.Nauru, "NRU"
-        },
-        {
-            Country.NewZealand, "NZL"
-        },
-        {
-            Country.Oman, "OMN"
-        },
-        {
-            Country.Pakistan, "PAK"
-        },
-        {
-            Country.Panama, "PAN"
-        },
-        {
-            Country.Pitcairn, "PCN"
-        },
-        {
-            Country.Peru, "PER"
-        },
-        {
-            Country.Philippines, "PHL"
-        },
-        {
-            Country.Palau, "PLW"
-        },
-        {
-            Country.PapuaNewGuinea, "PNG"
-        },
-        {
-            Country.Poland, "POL"
-        },
-        {
-            Country.PuertoRico, "PRI"
-        },
-        {
-            Country.NorthKorea, "PRK"
-        },
-        {
-            Country.Portugal, "PRT"
-        },
-        {
-            Country.Paraguay, "PRY"
-        },
-        {
-            Country.Palestine, "PSE"
-        },
-        {
-            Country.FrenchPolynesia, "PYF"
-        },
-        {
-            Country.Qatar, "QAT"
-        },
-        {
-            Country.Réunion, "REU"
-        },
-        {
-            Country.Romania, "ROU"
-        },
-        {
-            Country.Russia, "RUS"
-        },
-        {
-            Country.Rwanda, "RWA"
-        },
-        {
-            Country.SaudiArabia, "SAU"
-        },
-        {
-            Country.Sudan, "SDN"
-        },
-        {
-            Country.Senegal, "SEN"
-        },
-        {
-            Country.Singapore, "SGP"
-        },
-        {
-            Country.SouthGeorgiaAndTheSouthSandwichIslands, "SGS"
-        },
-        {
-            Country.SaintHelenaAscensionAndTristandaCunha, "SHN"
-        },
-        {
-            Country.SvalbardAndJanMayen, "SJM"
-        },
-        {
-            Country.SolomonIslands, "SLB"
-        },
-        {
-            Country.SierraLeone, "SLE"
-        },
-        {
-            Country.ElSalvador, "SLV"
-        },
-        {
-            Country.SanMarino, "SMR"
-        },
-        {
-            Country.Somalia, "SOM"
-        },
-        {
-            Country.SaintPierreAndMiquelon, "SPM"
-        },
-        {
-            Country.Serbia, "SRB"
-        },
-        {
-            Country.SouthSudan, "SSD"
-        },
-        {
-            Country.SãoToméAndPríncipe, "STP"
-        },
-        {
-            Country.Suriname, "SUR"
-        },
-        {
-            Country.Slovakia, "SVK"
-        },
-        {
-            Country.Slovenia, "SVN"
-        },
-        {
-            Country.Sweden, "SWE"
-        },
-        {
-            Country.Eswatini, "SWZ"
-        },
-        {
-            Country.SintMaarten, "SXM"
-        },
-        {
-            Country.Seychelles, "SYC"
-        },
-        {
-            Country.Syria, "SYR"
-        },
-        {
-            Country.TurksAndCaicosIslands, "TCA"
-        },
-        {
-            Country.Chad, "TCD"
-        },
-        {
-            Country.Togo, "TGO"
-        },
-        {
-            Country.Thailand, "THA"
-        },
-        {
-            Country.Tajikistan, "TJK"
-        },
-        {
-            Country.Tokelau, "TKL"
-        },
-        {
-            Country.Turkmenistan, "TKM"
-        },
-        {
-            Country.TimorLeste, "TLS"
-        },
-        {
-            Country.Tonga, "TON"
-        },
-        {
-            Country.TrinidadAndTobago, "TTO"
-        },
-        {
-            Country.Tunisia, "TUN"
-        },
-        {
-            Country.Turkey, "TUR"
-        },
-        {
-            Country.Tuvalu, "TUV"
-        },
-        {
-            Country.Taiwan, "TWN"
-        },
-        {
-            Country.Tanzania, "TZA"
-        },
-        {
-            Country.Uganda, "UGA"
-        },
-        {
-            Country.Ukraine, "UKR"
-        },
-        {
-            Country.UnitedStatesMinorOutlyingIslands, "UMI"
-        },
-        {
-            Country.Uruguay, "URY"
-        },
-        {
-            Country.UnitedStatesOfAmerica, "USA"
-        },
-        {
-            Country.Uzbekistan, "UZB"
-        },
-        {
-            Country.VaticanCity, "VAT"
-        },
-        {
-            Country.SaintVincentAndTheGrenadines, "VCT"
-        },
-        {
-            Country.Venezuela, "VEN"
-        },
-        {
-            Country.BritishVirginIslands, "VGB"
-        },
-        {
-            Country.UnitedStatesVirginIslands, "VIR"
-        },
-        {
-            Country.VietNam, "VNM"
-        },
-        {
-            Country.Vanuatu, "VUT"
-        },
-        {
-            Country.WallisAndFutuna, "WLF"
-        },
-        {
-            Country.Samoa, "WSM"
-        },
-        {
-            Country.Yemen, "YEM"
-        },
-        {
-            Country.SouthAfrica, "ZAF"
-        },
-        {
-            Country.Zambia, "ZMB"
-        },
-        {
-            Country.Zimbabwe, "ZWE"
-        }
-    }.ToFrozenDictionary();
+    static FrozenDictionary<Country, string> codeToLetters =
+        FrozenDictionary.Create<Country, string>(
+        [
+            new(Country.Aruba, "ABW"),
+            new(Country.Afghanistan, "AFG"),
+            new(Country.Angola, "AGO"),
+            new(Country.Anguilla, "AIA"),
+            new(Country.ÅlandIslands, "ALA"),
+            new(Country.Albania, "ALB"),
+            new(Country.Andorra, "AND"),
+            new(Country.UnitedArabEmirates, "ARE"),
+            new(Country.Argentina, "ARG"),
+            new(Country.Armenia, "ARM"),
+            new(Country.AmericanSamoa, "ASM"),
+            new(Country.Antarctica, "ATA"),
+            new(Country.FrenchSouthernTerritories, "ATF"),
+            new(Country.AntiguaAndBarbuda, "ATG"),
+            new(Country.Australia, "AUS"),
+            new(Country.Austria, "AUT"),
+            new(Country.Azerbaijan, "AZE"),
+            new(Country.Burundi, "BDI"),
+            new(Country.Belgium, "BEL"),
+            new(Country.Benin, "BEN"),
+            new(Country.CaribbeanNetherlands, "BES"),
+            new(Country.BurkinaFaso, "BFA"),
+            new(Country.Bangladesh, "BGD"),
+            new(Country.Bulgaria, "BGR"),
+            new(Country.Bahrain, "BHR"),
+            new(Country.Bahamas, "BHS"),
+            new(Country.BosniaAndHerzegovina, "BIH"),
+            new(Country.SaintBarthélemy, "BLM"),
+            new(Country.Belarus, "BLR"),
+            new(Country.Belize, "BLZ"),
+            new(Country.Bermuda, "BMU"),
+            new(Country.Bolivia, "BOL"),
+            new(Country.Brazil, "BRA"),
+            new(Country.Barbados, "BRB"),
+            new(Country.Brunei, "BRN"),
+            new(Country.Bhutan, "BTN"),
+            new(Country.BouvetIsland, "BVT"),
+            new(Country.Botswana, "BWA"),
+            new(Country.CentralAfricanRepublic, "CAF"),
+            new(Country.Canada, "CAN"),
+            new(Country.CocosKeelingIslands, "CCK"),
+            new(Country.Switzerland, "CHE"),
+            new(Country.Chile, "CHL"),
+            new(Country.China, "CHN"),
+            new(Country.IvoryCoast, "CIV"),
+            new(Country.Cameroon, "CMR"),
+            new(Country.DemocraticRepublicOfTheCongo, "COD"),
+            new(Country.RepublicOfTheCongo, "COG"),
+            new(Country.CookIslands, "COK"),
+            new(Country.Colombia, "COL"),
+            new(Country.Comoros, "COM"),
+            new(Country.CaboVerde, "CPV"),
+            new(Country.CostaRica, "CRI"),
+            new(Country.Cuba, "CUB"),
+            new(Country.Curaçao, "CUW"),
+            new(Country.ChristmasIsland, "CXR"),
+            new(Country.CaymanIslands, "CYM"),
+            new(Country.Cyprus, "CYP"),
+            new(Country.Czechia, "CZE"),
+            new(Country.Germany, "DEU"),
+            new(Country.Djibouti, "DJI"),
+            new(Country.Dominica, "DMA"),
+            new(Country.Denmark, "DNK"),
+            new(Country.DominicanRepublic, "DOM"),
+            new(Country.Algeria, "DZA"),
+            new(Country.Ecuador, "ECU"),
+            new(Country.Egypt, "EGY"),
+            new(Country.Eritrea, "ERI"),
+            new(Country.WesternSahara, "ESH"),
+            new(Country.Spain, "ESP"),
+            new(Country.Estonia, "EST"),
+            new(Country.Ethiopia, "ETH"),
+            new(Country.Finland, "FIN"),
+            new(Country.Fiji, "FJI"),
+            new(Country.FalklandIslands, "FLK"),
+            new(Country.France, "FRA"),
+            new(Country.FaroeIslands, "FRO"),
+            new(Country.Micronesia, "FSM"),
+            new(Country.Gabon, "GAB"),
+            new(Country.UnitedKingdom, "GBR"),
+            new(Country.Georgia, "GEO"),
+            new(Country.Guernsey, "GGY"),
+            new(Country.Ghana, "GHA"),
+            new(Country.Gibraltar, "GIB"),
+            new(Country.Guinea, "GIN"),
+            new(Country.Guadeloupe, "GLP"),
+            new(Country.Gambia, "GMB"),
+            new(Country.GuineaBissau, "GNB"),
+            new(Country.EquatorialGuinea, "GNQ"),
+            new(Country.Greece, "GRC"),
+            new(Country.Grenada, "GRD"),
+            new(Country.Greenland, "GRL"),
+            new(Country.Guatemala, "GTM"),
+            new(Country.FrenchGuiana, "GUF"),
+            new(Country.Guam, "GUM"),
+            new(Country.Guyana, "GUY"),
+            new(Country.HongKong, "HKG"),
+            new(Country.HeardIslandAndMcDonaldIslands, "HMD"),
+            new(Country.Honduras, "HND"),
+            new(Country.Croatia, "HRV"),
+            new(Country.Haiti, "HTI"),
+            new(Country.Hungary, "HUN"),
+            new(Country.Indonesia, "IDN"),
+            new(Country.IsleOfMan, "IMN"),
+            new(Country.India, "IND"),
+            new(Country.BritishIndianOceanTerritory, "IOT"),
+            new(Country.Ireland, "IRL"),
+            new(Country.Iran, "IRN"),
+            new(Country.Iraq, "IRQ"),
+            new(Country.Iceland, "ISL"),
+            new(Country.Israel, "ISR"),
+            new(Country.Italy, "ITA"),
+            new(Country.Jamaica, "JAM"),
+            new(Country.Jersey, "JEY"),
+            new(Country.Jordan, "JOR"),
+            new(Country.Japan, "JPN"),
+            new(Country.Kazakhstan, "KAZ"),
+            new(Country.Kenya, "KEN"),
+            new(Country.Kyrgyzstan, "KGZ"),
+            new(Country.Cambodia, "KHM"),
+            new(Country.Kiribati, "KIR"),
+            new(Country.SaintKittsAndNevis, "KNA"),
+            new(Country.SouthKorea, "KOR"),
+            new(Country.Kuwait, "KWT"),
+            new(Country.Laos, "LAO"),
+            new(Country.Lebanon, "LBN"),
+            new(Country.Liberia, "LBR"),
+            new(Country.Libya, "LBY"),
+            new(Country.SaintLucia, "LCA"),
+            new(Country.Liechtenstein, "LIE"),
+            new(Country.SriLanka, "LKA"),
+            new(Country.Lesotho, "LSO"),
+            new(Country.Lithuania, "LTU"),
+            new(Country.Luxembourg, "LUX"),
+            new(Country.Latvia, "LVA"),
+            new(Country.Macao, "MAC"),
+            new(Country.CollectivityOfSaintMartin, "MAF"),
+            new(Country.Morocco, "MAR"),
+            new(Country.Monaco, "MCO"),
+            new(Country.Moldova, "MDA"),
+            new(Country.Madagascar, "MDG"),
+            new(Country.Maldives, "MDV"),
+            new(Country.Mexico, "MEX"),
+            new(Country.MarshallIslands, "MHL"),
+            new(Country.NorthMacedonia, "MKD"),
+            new(Country.Mali, "MLI"),
+            new(Country.Malta, "MLT"),
+            new(Country.Myanmar, "MMR"),
+            new(Country.Montenegro, "MNE"),
+            new(Country.Mongolia, "MNG"),
+            new(Country.NorthernMarianaIslands, "MNP"),
+            new(Country.Mozambique, "MOZ"),
+            new(Country.Mauritania, "MRT"),
+            new(Country.Montserrat, "MSR"),
+            new(Country.Martinique, "MTQ"),
+            new(Country.Mauritius, "MUS"),
+            new(Country.Malawi, "MWI"),
+            new(Country.Malaysia, "MYS"),
+            new(Country.Mayotte, "MYT"),
+            new(Country.Namibia, "NAM"),
+            new(Country.NewCaledonia, "NCL"),
+            new(Country.Niger, "NER"),
+            new(Country.NorfolkIsland, "NFK"),
+            new(Country.Nigeria, "NGA"),
+            new(Country.Nicaragua, "NIC"),
+            new(Country.Niue, "NIU"),
+            new(Country.Netherlands, "NLD"),
+            new(Country.Norway, "NOR"),
+            new(Country.Nepal, "NPL"),
+            new(Country.Nauru, "NRU"),
+            new(Country.NewZealand, "NZL"),
+            new(Country.Oman, "OMN"),
+            new(Country.Pakistan, "PAK"),
+            new(Country.Panama, "PAN"),
+            new(Country.Pitcairn, "PCN"),
+            new(Country.Peru, "PER"),
+            new(Country.Philippines, "PHL"),
+            new(Country.Palau, "PLW"),
+            new(Country.PapuaNewGuinea, "PNG"),
+            new(Country.Poland, "POL"),
+            new(Country.PuertoRico, "PRI"),
+            new(Country.NorthKorea, "PRK"),
+            new(Country.Portugal, "PRT"),
+            new(Country.Paraguay, "PRY"),
+            new(Country.Palestine, "PSE"),
+            new(Country.FrenchPolynesia, "PYF"),
+            new(Country.Qatar, "QAT"),
+            new(Country.Réunion, "REU"),
+            new(Country.Romania, "ROU"),
+            new(Country.Russia, "RUS"),
+            new(Country.Rwanda, "RWA"),
+            new(Country.SaudiArabia, "SAU"),
+            new(Country.Sudan, "SDN"),
+            new(Country.Senegal, "SEN"),
+            new(Country.Singapore, "SGP"),
+            new(Country.SouthGeorgiaAndTheSouthSandwichIslands, "SGS"),
+            new(Country.SaintHelenaAscensionAndTristandaCunha, "SHN"),
+            new(Country.SvalbardAndJanMayen, "SJM"),
+            new(Country.SolomonIslands, "SLB"),
+            new(Country.SierraLeone, "SLE"),
+            new(Country.ElSalvador, "SLV"),
+            new(Country.SanMarino, "SMR"),
+            new(Country.Somalia, "SOM"),
+            new(Country.SaintPierreAndMiquelon, "SPM"),
+            new(Country.Serbia, "SRB"),
+            new(Country.SouthSudan, "SSD"),
+            new(Country.SãoToméAndPríncipe, "STP"),
+            new(Country.Suriname, "SUR"),
+            new(Country.Slovakia, "SVK"),
+            new(Country.Slovenia, "SVN"),
+            new(Country.Sweden, "SWE"),
+            new(Country.Eswatini, "SWZ"),
+            new(Country.SintMaarten, "SXM"),
+            new(Country.Seychelles, "SYC"),
+            new(Country.Syria, "SYR"),
+            new(Country.TurksAndCaicosIslands, "TCA"),
+            new(Country.Chad, "TCD"),
+            new(Country.Togo, "TGO"),
+            new(Country.Thailand, "THA"),
+            new(Country.Tajikistan, "TJK"),
+            new(Country.Tokelau, "TKL"),
+            new(Country.Turkmenistan, "TKM"),
+            new(Country.TimorLeste, "TLS"),
+            new(Country.Tonga, "TON"),
+            new(Country.TrinidadAndTobago, "TTO"),
+            new(Country.Tunisia, "TUN"),
+            new(Country.Turkey, "TUR"),
+            new(Country.Tuvalu, "TUV"),
+            new(Country.Taiwan, "TWN"),
+            new(Country.Tanzania, "TZA"),
+            new(Country.Uganda, "UGA"),
+            new(Country.Ukraine, "UKR"),
+            new(Country.UnitedStatesMinorOutlyingIslands, "UMI"),
+            new(Country.Uruguay, "URY"),
+            new(Country.UnitedStatesOfAmerica, "USA"),
+            new(Country.Uzbekistan, "UZB"),
+            new(Country.VaticanCity, "VAT"),
+            new(Country.SaintVincentAndTheGrenadines, "VCT"),
+            new(Country.Venezuela, "VEN"),
+            new(Country.BritishVirginIslands, "VGB"),
+            new(Country.UnitedStatesVirginIslands, "VIR"),
+            new(Country.VietNam, "VNM"),
+            new(Country.Vanuatu, "VUT"),
+            new(Country.WallisAndFutuna, "WLF"),
+            new(Country.Samoa, "WSM"),
+            new(Country.Yemen, "YEM"),
+            new(Country.SouthAfrica, "ZAF"),
+            new(Country.Zambia, "ZMB"),
+            new(Country.Zimbabwe, "ZWE"),
+        ]);
 }
