@@ -98,21 +98,21 @@ public class OfficeDocHelperTests
         if (resourceName.EndsWith("docx"))
         {
             using var document = WordprocessingDocument.Open(stream, false);
-            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            var property = document.CustomFilePropertiesPart!.Properties!.Single();
             return property.OuterXml;
         }
 
         if (resourceName.EndsWith("pptx"))
         {
             using var document = PresentationDocument.Open(stream, false);
-            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            var property = document.CustomFilePropertiesPart!.Properties!.Single();
             return property.OuterXml;
         }
 
         if (resourceName.EndsWith("xlsx"))
         {
             using var document = SpreadsheetDocument.Open(stream, false);
-            var property = document.CustomFilePropertiesPart!.Properties.Single();
+            var property = document.CustomFilePropertiesPart!.Properties!.Single();
             return property.OuterXml;
         }
 

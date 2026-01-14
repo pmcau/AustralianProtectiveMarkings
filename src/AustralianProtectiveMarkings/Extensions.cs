@@ -4,7 +4,7 @@ static class Extensions
 {
     public static async Task EditXmlEntry(this ZipArchiveEntry entry, Action<XDocument> func)
     {
-        using var stream = entry.Open();
+        using var stream = await entry.OpenAsync();
         using var reader = new StreamReader(stream);
         var document = XDocument.Load(reader);
         func(document);

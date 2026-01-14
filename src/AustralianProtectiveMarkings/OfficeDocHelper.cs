@@ -141,7 +141,7 @@ public static class OfficeDocHelper
         if (entry == null)
         {
             entry = zip.CreateEntry(customPropsFileName);
-            using var stream = entry.Open();
+            using var stream = await entry.OpenAsync();
             using var writer = new StreamWriter(stream);
             await writer.WriteAsync(
                 $$"""

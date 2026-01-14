@@ -5,7 +5,7 @@
     <Description>A dotnet representation of the Australian Protective Security Policy Framework</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Collections.Immutable" Condition="'$(TargetFramework)' == 'net48'" />
+    <PackageReference Include="System.Collections.Immutable" Condition="'$(TargetFramework)' != 'net10.0'" />
     <PackageReference Include="Polyfill" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" />
