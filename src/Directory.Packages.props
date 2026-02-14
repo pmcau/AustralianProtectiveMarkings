@@ -15,10 +15,14 @@
     <PackageVersion Include="Polyfill" Version="9.8.1" />
     <PackageVersion Include="System.Collections.Immutable" Version="10.0.3" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
-    <PackageVersion Include="Verify" Version="31.12.4" />
+    <PackageVersion Include="Verify" Version="31.12.5" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.1" />
-    <PackageVersion Include="Verify.NUnit" Version="31.12.4" />
+    <PackageVersion Include="Verify.NUnit" Version="31.12.5" />
     <!-- CVE -->
     <PackageVersion Include="System.IO.Packaging" Version="10.0.3" />
+    <PackageVersion Include="Argon" Version="0.33.5" />
+    <PackageVersion Include="DiffEngine" Version="18.4.1" />
+    <PackageVersion Include="EmptyFiles" Version="8.17.2" />
+    <PackageVersion Include="SimpleInfoName" Version="3.2.0" />
   </ItemGroup>
 </Project>
