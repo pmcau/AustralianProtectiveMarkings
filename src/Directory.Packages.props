@@ -12,12 +12,12 @@
     <PackageVersion Include="NUnit" Version="4.4.0" />
     <PackageVersion Include="NUnit3TestAdapter" Version="5.2.0" Pinned="true" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.172" />
-    <PackageVersion Include="Polyfill" Version="9.8.1" />
+    <PackageVersion Include="Polyfill" Version="9.9.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="10.0.3" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
-    <PackageVersion Include="Verify" Version="31.12.5" />
+    <PackageVersion Include="Verify" Version="31.13.0" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.1" />
-    <PackageVersion Include="Verify.NUnit" Version="31.12.5" />
+    <PackageVersion Include="Verify.NUnit" Version="31.13.0" />
     <!-- CVE -->
     <PackageVersion Include="System.IO.Packaging" Version="10.0.3" />
     <PackageVersion Include="Argon" Version="0.33.5" />
