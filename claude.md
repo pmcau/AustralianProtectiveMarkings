@@ -43,7 +43,7 @@ Requires .NET 10 SDK (preview). See `src/global.json` for version details.
 
 ## Testing
 
-Uses **NUnit** with **Verify** (approval/snapshot testing). Tests are in `src/Tests/`. Verified outputs are `.verified.txt` files alongside test files — review and accept changes with your Verify workflow when output changes intentionally.
+Uses **NUnit** with **Verify** (approval/snapshot testing). Tests are in `src/Tests/`. Verified outputs are `.verified.txt` files alongside test files — review and accept changes with the Verify workflow when output changes intentionally.
 
 `ModuleInitializer.cs` in Tests registers Verify converters for `ProtectiveMarking` and `Caveats`.
 
