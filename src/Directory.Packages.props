@@ -15,9 +15,9 @@
     <PackageVersion Include="Polyfill" Version="10.3.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="10.0.6" />
     <PackageVersion Include="System.IO.Compression" Version="4.3.0" />
-    <PackageVersion Include="Verify" Version="31.16.0" />
+    <PackageVersion Include="Verify" Version="31.16.1" />
     <PackageVersion Include="Verify.MailMessage" Version="1.1.1" />
-    <PackageVersion Include="Verify.NUnit" Version="31.16.0" />
+    <PackageVersion Include="Verify.NUnit" Version="31.16.1" />
     <PackageVersion Include="Argon" Version="0.33.5" />
     <PackageVersion Include="DiffEngine" Version="19.1.2" />
     <PackageVersion Include="EmptyFiles" Version="8.18.0" />
