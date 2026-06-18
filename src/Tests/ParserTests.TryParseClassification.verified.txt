@@ -1,0 +1,71 @@
+﻿{
+  : {
+    success: false
+  },
+   : {
+    success: false
+  },
+   Protected : {
+    success: true,
+    classification: Protected
+  },
+  <null>: {
+    success: false
+  },
+  0: {
+    success: false
+  },
+  3: {
+    success: false
+  },
+  5: {
+    success: false
+  },
+  official: {
+    success: true,
+    classification: Official
+  },
+  Official: {
+    success: true,
+    classification: Official
+  },
+  Official, Protected: {
+    success: false
+  },
+  Official, Secret: {
+    success: false
+  },
+  OFFICIAL:Sensitive: {
+    success: false
+  },
+  OfficialSensitive: {
+    success: true,
+    classification: OfficialSensitive
+  },
+  Protected: {
+    success: true,
+    classification: Protected
+  },
+  Secret: {
+    success: true,
+    classification: Secret
+  },
+  TOP-SECRET: {
+    success: false
+  },
+  TopSecret: {
+    success: true,
+    classification: TopSecret
+  },
+  Unknown: {
+    success: false
+  },
+  Unofficial: {
+    success: true,
+    classification: Unofficial
+  },
+  UNOFFICIAL: {
+    success: true,
+    classification: Unofficial
+  }
+}
