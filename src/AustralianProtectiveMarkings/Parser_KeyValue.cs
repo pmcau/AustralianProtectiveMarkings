@@ -2,7 +2,7 @@ namespace AustralianProtectiveMarkings;
 
 public static partial class Parser
 {
-    internal static List<Pair> ParseKeyValues(ReadOnlySpan<char> input)
+    internal static List<Pair> ParseKeyValues(CharSpan input)
     {
         input = input.Trim();
         var state = State.Key;
@@ -88,7 +88,7 @@ public static partial class Parser
         throw new($"Incorrect ending state. Input: {input.ToString()}");
     }
 
-    static void CheckForUnknownKeys(ReadOnlySpan<char> input, string key)
+    static void CheckForUnknownKeys(CharSpan input, string key)
     {
         if (!order.Contains(key))
         {
@@ -96,7 +96,7 @@ public static partial class Parser
         }
     }
 
-    static void ValidateValueChar(ReadOnlySpan<char> input, char ch)
+    static void ValidateValueChar(CharSpan input, char ch)
     {
         if (ch >= 32 && ch <= 44)
         {
@@ -116,7 +116,7 @@ public static partial class Parser
         throw new($"Character '{ch}' not allowed in value. Input: {input.ToString()}");
     }
 
-    static void ValidateValueWhiteSpace(ReadOnlySpan<char> input, string value)
+    static void ValidateValueWhiteSpace(CharSpan input, string value)
     {
         if (value.EndsWith(' '))
         {
@@ -129,7 +129,7 @@ public static partial class Parser
         }
     }
 
-    static void ValidateKeyChar(ReadOnlySpan<char> input, char ch)
+    static void ValidateKeyChar(CharSpan input, char ch)
     {
         if (!char.IsLetter(ch))
         {

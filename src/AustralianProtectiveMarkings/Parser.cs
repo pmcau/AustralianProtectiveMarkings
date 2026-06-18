@@ -35,7 +35,7 @@ public static partial class Parser
     /// Parses a <see cref="ProtectiveMarking"/> from a bare classification name or an email-header-style
     /// key-value string. Allocation-free for the bare-classification case.
     /// </summary>
-    public static ProtectiveMarking ParseProtectiveMarking(ReadOnlySpan<char> input)
+    public static ProtectiveMarking ParseProtectiveMarking(CharSpan input)
     {
         if (TryParseClassification(input, out var classification))
         {
@@ -45,7 +45,7 @@ public static partial class Parser
         return ParseKeyValueMarking(input);
     }
 
-    static ProtectiveMarking ParseKeyValueMarking(ReadOnlySpan<char> input)
+    static ProtectiveMarking ParseKeyValueMarking(CharSpan input)
     {
         var pairs = ParseKeyValues(input);
         var keys = pairs
@@ -95,7 +95,7 @@ public static partial class Parser
         TryParseClassification(input.AsSpan(), out classification);
 
     /// <inheritdoc cref="TryParseClassification(string, out Classification)"/>
-    public static bool TryParseClassification(ReadOnlySpan<char> input, out Classification classification)
+    public static bool TryParseClassification(CharSpan input, out Classification classification)
     {
         // Trim and compare over spans (OrdinalIgnoreCase) to avoid allocating from Trim()/ToUpper().
         var trimmed = input.Trim();
@@ -112,7 +112,7 @@ public static partial class Parser
         return false;
     }
 
-    static Expiry? ReadExpiry(ReadOnlySpan<char> input, List<Pair> pairs)
+    static Expiry? ReadExpiry(CharSpan input, List<Pair> pairs)
     {
         var expiresItems = pairs
             .Where(_ => _.Key == "EXPIRES")
@@ -160,7 +160,7 @@ public static partial class Parser
         };
     }
 
-    static void ValidateOrder(ReadOnlySpan<char> input, List<string> keys)
+    static void ValidateOrder(CharSpan input, List<string> keys)
     {
         var ordered = keys
             .OrderBy(_ => order.IndexOf(_));
@@ -178,7 +178,7 @@ public static partial class Parser
              """);
     }
 
-    static Classification ReadClassification(ReadOnlySpan<char> input, List<Pair> pairs)
+    static Classification ReadClassification(CharSpan input, List<Pair> pairs)
     {
         var security = pairs
             .Where(_ => _.Key == "SEC")
@@ -192,7 +192,7 @@ public static partial class Parser
         return ParseClassification(value);
     }
 
-    static string? ReadAuthorEmail(ReadOnlySpan<char> input, List<Pair> pairs)
+    static string? ReadAuthorEmail(CharSpan input, List<Pair> pairs)
     {
         var origins = pairs
             .Where(_ => _.Key == "ORIGIN")
@@ -211,7 +211,7 @@ public static partial class Parser
         return origins[0].Value;
     }
 
-    static string? ReadComment(ReadOnlySpan<char> input, List<Pair> pairs)
+    static string? ReadComment(CharSpan input, List<Pair> pairs)
     {
         var notes = pairs
             .Where(_ => _.Key == "NOTE")
@@ -230,7 +230,7 @@ public static partial class Parser
         return notes[0].Value;
     }
 
-    static void ThrowForDuplicates<T>(ReadOnlySpan<char> input, List<T> items, string name)
+    static void ThrowForDuplicates<T>(CharSpan input, List<T> items, string name)
     {
         if (items.Count != items
                 .Distinct()
@@ -254,7 +254,7 @@ public static partial class Parser
         throw new($"Unknown classification: {value}");
     }
 
-    static void ValidateNamespace(ReadOnlySpan<char> input, List<Pair> pairs)
+    static void ValidateNamespace(CharSpan input, List<Pair> pairs)
     {
         var namespaces = pairs
             .Where(_ => _.Key == "NS")
@@ -274,7 +274,7 @@ public static partial class Parser
         }
     }
 
-    static void ValidateVersion(ReadOnlySpan<char> input, List<Pair> pairs)
+    static void ValidateVersion(CharSpan input, List<Pair> pairs)
     {
         var versions = pairs
             .Where(_ => _.Key == "VER")

@@ -2,7 +2,7 @@ namespace AustralianProtectiveMarkings;
 
 public static partial class Parser
 {
-    static Caveats? ReadCaveats(ReadOnlySpan<char> input, List<Pair> pairs)
+    static Caveats? ReadCaveats(CharSpan input, List<Pair> pairs)
     {
         if (TryReadCaveats(pairs, out var caveats))
         {
@@ -35,7 +35,7 @@ public static partial class Parser
         };
     }
 
-    static string? ReadCodeword(ReadOnlySpan<char> input, List<Pair> caveats)
+    static string? ReadCodeword(CharSpan input, List<Pair> caveats)
     {
         var codewords = caveats
             .Select(_ => _.Value)
@@ -54,7 +54,7 @@ public static partial class Parser
         return codewords[0][2..];
     }
 
-    static string? ReadForeignGovernmentCaveat(ReadOnlySpan<char> input, List<Pair> caveats)
+    static string? ReadForeignGovernmentCaveat(CharSpan input, List<Pair> caveats)
     {
         var prefix = "FG:";
         var fgCaveats = caveats
@@ -74,7 +74,7 @@ public static partial class Parser
         return fgCaveats[0][3..];
     }
 
-    static List<Country>? ReadCountryCaveats(ReadOnlySpan<char> input, List<Pair> caveats)
+    static List<Country>? ReadCountryCaveats(CharSpan input, List<Pair> caveats)
     {
         var prefix = "RI:REL";
         var countries = caveats
@@ -100,7 +100,7 @@ public static partial class Parser
         return countryCodes;
     }
 
-    static string? ReadExclusiveForCaveat(ReadOnlySpan<char> input, List<Pair> caveats)
+    static string? ReadExclusiveForCaveat(CharSpan input, List<Pair> caveats)
     {
         var prefix = "SH:EXCLUSIVE-FOR";
         var exclusiveFors = caveats
