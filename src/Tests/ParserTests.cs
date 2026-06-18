@@ -171,8 +171,8 @@ public class ParserTests
         {
             var stringResult = Parser.TryParseClassification(input, out var fromString);
             var spanResult = Parser.TryParseClassification(input.AsSpan(), out var fromSpan);
-            Assert.That(spanResult, Is.EqualTo(stringResult), input);
-            Assert.That(fromSpan, Is.EqualTo(fromString), input);
+            That(spanResult, Is.EqualTo(stringResult), input);
+            That(fromSpan, Is.EqualTo(fromString), input);
         }
     }
 
@@ -180,15 +180,15 @@ public class ParserTests
     public void ParseProtectiveMarking_SpanOverload_MatchesStringOverload()
     {
         // bare-classification fast path
-        Assert.That(
+        That(
             Parser.ParseProtectiveMarking("Protected".AsSpan()),
             Is.EqualTo(Parser.ParseProtectiveMarking("Protected")));
         // key-value path
-        Assert.That(
+        That(
             Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive".AsSpan()),
             Is.EqualTo(Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive")));
         // rejection still throws through the span overload
-        Assert.Throws<Exception>(() => Parser.ParseProtectiveMarking("0".AsSpan()));
+        Throws<Exception>(() => Parser.ParseProtectiveMarking("0".AsSpan()));
     }
 
     [Test]
@@ -198,13 +198,13 @@ public class ParserTests
         // produced a marking (e.g. "0" -> Unofficial, "Official, Secret" -> TopSecret). They must now be rejected.
         foreach (var input in new[] { "0", "3", "5", "Official, Secret", "Official, Protected" })
         {
-            Assert.Throws<Exception>(
+            Throws<Exception>(
                 () => Parser.ParseProtectiveMarking(input),
                 $"Expected '{input}' to be rejected");
         }
 
         // Legitimate bare names still parse to the correct classification.
-        Assert.That(Parser.ParseProtectiveMarking("Protected").Classification, Is.EqualTo(Classification.Protected));
-        Assert.That(Parser.ParseProtectiveMarking("TopSecret").Classification, Is.EqualTo(Classification.TopSecret));
+        That(Parser.ParseProtectiveMarking("Protected").Classification, Is.EqualTo(Classification.Protected));
+        That(Parser.ParseProtectiveMarking("TopSecret").Classification, Is.EqualTo(Classification.TopSecret));
     }
 }

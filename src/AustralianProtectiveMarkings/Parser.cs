@@ -169,12 +169,13 @@ public static partial class Parser
             return;
         }
 
-        throw new($"""
-                   Incorrect order.
-                   Order must be: {string.Join(", ", order)}.
-                   Order is: {string.Join(", ", keys)}.
-                   Input: {input.ToString()}
-                   """);
+        throw new(
+            $"""
+             Incorrect order.
+             Order must be: {string.Join(", ", order)}.
+             Order is: {string.Join(", ", keys)}.
+             Input: {input.ToString()}
+             """);
     }
 
     static Classification ReadClassification(ReadOnlySpan<char> input, List<Pair> pairs)
