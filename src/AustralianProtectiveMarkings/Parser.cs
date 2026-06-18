@@ -42,14 +42,12 @@ public static partial class Parser
             return new(classification);
         }
 
-        // The key-value parser operates on strings, so the non-bare path materialises the input once.
-        return ParseKeyValueMarking(input.ToString());
+        return ParseKeyValueMarking(input);
     }
 
-    static ProtectiveMarking ParseKeyValueMarking(string input)
+    static ProtectiveMarking ParseKeyValueMarking(ReadOnlySpan<char> input)
     {
-        var pairs = ParseKeyValues(input)
-            .ToList();
+        var pairs = ParseKeyValues(input);
         var keys = pairs
             .Select(_ => _.Key)
             .ToList();
@@ -74,14 +72,17 @@ public static partial class Parser
         };
     }
 
-    static (string Name, Classification Classification)[] classifications =
+    // Single source of truth for the classification set: the strict PSPF marking text used in SEC=/DOWNTO=
+    // values (matched case-sensitively by ParseClassification) and the enum name accepted as a bare
+    // classification (matched case-insensitively by TryParseClassification).
+    static (Classification Classification, string Marking, string Name)[] classifications =
     [
-        ("Unofficial", Classification.Unofficial),
-        ("Official", Classification.Official),
-        ("OfficialSensitive", Classification.OfficialSensitive),
-        ("Protected", Classification.Protected),
-        ("Secret", Classification.Secret),
-        ("TopSecret", Classification.TopSecret)
+        (Classification.Unofficial, "UNOFFICIAL", "Unofficial"),
+        (Classification.Official, "OFFICIAL", "Official"),
+        (Classification.OfficialSensitive, "OFFICIAL:Sensitive", "OfficialSensitive"),
+        (Classification.Protected, "PROTECTED", "Protected"),
+        (Classification.Secret, "SECRET", "Secret"),
+        (Classification.TopSecret, "TOP-SECRET", "TopSecret")
     ];
 
     /// <summary>
@@ -98,7 +99,7 @@ public static partial class Parser
     {
         // Trim and compare over spans (OrdinalIgnoreCase) to avoid allocating from Trim()/ToUpper().
         var trimmed = input.Trim();
-        foreach (var (name, value) in classifications)
+        foreach (var (value, _, name) in classifications)
         {
             if (trimmed.Equals(name, StringComparison.OrdinalIgnoreCase))
             {
@@ -111,14 +112,14 @@ public static partial class Parser
         return false;
     }
 
-    static Expiry? ReadExpiry(string input, List<Pair> pairs)
+    static Expiry? ReadExpiry(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var expiresItems = pairs
             .Where(_ => _.Key == "EXPIRES")
             .ToList();
         if (expiresItems.Count > 1)
         {
-            throw new($"Only a single EXPIRES is allowed. Input: {input}");
+            throw new($"Only a single EXPIRES is allowed. Input: {input.ToString()}");
         }
 
         var downToItems = pairs
@@ -126,7 +127,7 @@ public static partial class Parser
             .ToList();
         if (downToItems.Count > 1)
         {
-            throw new($"Only a single DOWNTO is allowed. Input: {input}");
+            throw new($"Only a single DOWNTO is allowed. Input: {input.ToString()}");
         }
 
         if (downToItems.Count == 0 &&
@@ -138,7 +139,7 @@ public static partial class Parser
         if (downToItems.Count == 0 ||
             expiresItems.Count == 0)
         {
-            throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input}");
+            throw new($"EXPIRES and DOWNTO cannot be defined without the other. Input: {input.ToString()}");
         }
 
         var downTo = ParseClassification(downToItems[0].Value);
@@ -159,7 +160,7 @@ public static partial class Parser
         };
     }
 
-    static void ValidateOrder(string input, List<string> keys)
+    static void ValidateOrder(ReadOnlySpan<char> input, List<string> keys)
     {
         var ordered = keys
             .OrderBy(_ => order.IndexOf(_));
@@ -172,25 +173,25 @@ public static partial class Parser
                    Incorrect order.
                    Order must be: {string.Join(", ", order)}.
                    Order is: {string.Join(", ", keys)}.
-                   Input: {input}
+                   Input: {input.ToString()}
                    """);
     }
 
-    static Classification ReadClassification(string input, List<Pair> pairs)
+    static Classification ReadClassification(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var security = pairs
             .Where(_ => _.Key == "SEC")
             .ToList();
         if (security.Count != 1)
         {
-            throw new($"A single security 'SEC' must be defined. Input: {input}");
+            throw new($"A single security 'SEC' must be defined. Input: {input.ToString()}");
         }
 
         var value = security[0].Value;
         return ParseClassification(value);
     }
 
-    static string? ReadAuthorEmail(string input, List<Pair> pairs)
+    static string? ReadAuthorEmail(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var origins = pairs
             .Where(_ => _.Key == "ORIGIN")
@@ -202,14 +203,14 @@ public static partial class Parser
 
         if (origins.Count > 1)
         {
-            throw new($"Only one ORIGIN is allowed. Input: {input}");
+            throw new($"Only one ORIGIN is allowed. Input: {input.ToString()}");
         }
 
         ThrowForDuplicates(input, origins, "ORIGIN");
         return origins[0].Value;
     }
 
-    static string? ReadComment(string input, List<Pair> pairs)
+    static string? ReadComment(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var notes = pairs
             .Where(_ => _.Key == "NOTE")
@@ -221,43 +222,45 @@ public static partial class Parser
 
         if (notes.Count > 1)
         {
-            throw new($"Only one NOTE is allowed. Input: {input}");
+            throw new($"Only one NOTE is allowed. Input: {input.ToString()}");
         }
 
         ThrowForDuplicates(input, notes, "NOTE");
         return notes[0].Value;
     }
 
-    static void ThrowForDuplicates<T>(string input, List<T> items, string name)
+    static void ThrowForDuplicates<T>(ReadOnlySpan<char> input, List<T> items, string name)
     {
         if (items.Count != items
                 .Distinct()
                 .Count())
         {
-            throw new($"Duplicates not allowed in '{name}'. Input: {input}");
+            throw new($"Duplicates not allowed in '{name}'. Input: {input.ToString()}");
         }
     }
 
-    static Classification ParseClassification(string value) =>
-        value switch
+    // Strict PSPF marking text (case-sensitive), used for SEC=/DOWNTO= values.
+    static Classification ParseClassification(string value)
+    {
+        foreach (var (classification, marking, _) in classifications)
         {
-            "TOP-SECRET" => Classification.TopSecret,
-            "SECRET" => Classification.Secret,
-            "PROTECTED" => Classification.Protected,
-            "UNOFFICIAL" => Classification.Unofficial,
-            "OFFICIAL" => Classification.Official,
-            "OFFICIAL:Sensitive" => Classification.OfficialSensitive,
-            _ => throw new($"Unknown classification: {value}")
-        };
+            if (marking == value)
+            {
+                return classification;
+            }
+        }
 
-    static void ValidateNamespace(string input, List<Pair> pairs)
+        throw new($"Unknown classification: {value}");
+    }
+
+    static void ValidateNamespace(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var namespaces = pairs
             .Where(_ => _.Key == "NS")
             .ToList();
         if (namespaces.Count > 1)
         {
-            throw new($"Only one namespace 'NS' allowed. Input: {input}");
+            throw new($"Only one namespace 'NS' allowed. Input: {input.ToString()}");
         }
 
         if (namespaces.Count == 1)
@@ -265,19 +268,19 @@ public static partial class Parser
             var value = namespaces[0];
             if (value.Value != "gov.au")
             {
-                throw new($"Namespace 'NS' must be 'gov.au'. Input: {input}");
+                throw new($"Namespace 'NS' must be 'gov.au'. Input: {input.ToString()}");
             }
         }
     }
 
-    static void ValidateVersion(string input, List<Pair> pairs)
+    static void ValidateVersion(ReadOnlySpan<char> input, List<Pair> pairs)
     {
         var versions = pairs
             .Where(_ => _.Key == "VER")
             .ToList();
         if (versions.Count > 1)
         {
-            throw new($"Only one version 'VER' allowed. Input: {input}");
+            throw new($"Only one version 'VER' allowed. Input: {input.ToString()}");
         }
     }
 }
