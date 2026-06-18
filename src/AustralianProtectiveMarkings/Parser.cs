@@ -28,13 +28,26 @@ public static partial class Parser
     static bool AnyValue(this List<Pair> list, string value) =>
         list.Any(_ => _.Value == value);
 
-    public static ProtectiveMarking ParseProtectiveMarking(string input)
+    public static ProtectiveMarking ParseProtectiveMarking(string input) =>
+        ParseProtectiveMarking(input.AsSpan());
+
+    /// <summary>
+    /// Parses a <see cref="ProtectiveMarking"/> from a bare classification name or an email-header-style
+    /// key-value string. Allocation-free for the bare-classification case.
+    /// </summary>
+    public static ProtectiveMarking ParseProtectiveMarking(ReadOnlySpan<char> input)
     {
-        if (Enum.TryParse<Classification>(input, true, out var classification))
+        if (TryParseClassification(input, out var classification))
         {
             return new(classification);
         }
 
+        // The key-value parser operates on strings, so the non-bare path materialises the input once.
+        return ParseKeyValueMarking(input.ToString());
+    }
+
+    static ProtectiveMarking ParseKeyValueMarking(string input)
+    {
         var pairs = ParseKeyValues(input)
             .ToList();
         var keys = pairs
@@ -59,6 +72,43 @@ public static partial class Parser
             Comment = ReadComment(input, pairs),
             Expiry = ReadExpiry(input, pairs)
         };
+    }
+
+    static (string Name, Classification Classification)[] classifications =
+    [
+        ("Unofficial", Classification.Unofficial),
+        ("Official", Classification.Official),
+        ("OfficialSensitive", Classification.OfficialSensitive),
+        ("Protected", Classification.Protected),
+        ("Secret", Classification.Secret),
+        ("TopSecret", Classification.TopSecret)
+    ];
+
+    /// <summary>
+    /// Strictly parses a bare <see cref="Classification"/> name (e.g. "Protected", "OfficialSensitive"),
+    /// case-insensitively and ignoring surrounding whitespace. Unlike <c>Enum.TryParse</c> this rejects
+    /// numeric input (e.g. "0"), comma/flag-combined input (e.g. "Official, Secret") and anything that is
+    /// not exactly one of the defined classification names.
+    /// </summary>
+    public static bool TryParseClassification(string input, out Classification classification) =>
+        TryParseClassification(input.AsSpan(), out classification);
+
+    /// <inheritdoc cref="TryParseClassification(string, out Classification)"/>
+    public static bool TryParseClassification(ReadOnlySpan<char> input, out Classification classification)
+    {
+        // Trim and compare over spans (OrdinalIgnoreCase) to avoid allocating from Trim()/ToUpper().
+        var trimmed = input.Trim();
+        foreach (var (name, value) in classifications)
+        {
+            if (trimmed.Equals(name, StringComparison.OrdinalIgnoreCase))
+            {
+                classification = value;
+                return true;
+            }
+        }
+
+        classification = default;
+        return false;
     }
 
     static Expiry? ReadExpiry(string input, List<Pair> pairs)

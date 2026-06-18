@@ -132,4 +132,79 @@ public class ParserTests
 
         return Verify(dictionary);
     }
+
+    [Test]
+    public Task TryParseClassification()
+    {
+        var inputs = new List<string?>
+        {
+            // valid bare names (case-insensitive, whitespace-trimmed)
+            "Unofficial", "Official", "OfficialSensitive", "Protected", "Secret", "TopSecret",
+            "UNOFFICIAL", "official", " Protected ",
+            // previously accepted by the lenient Enum.TryParse fast-path, now rejected
+            "0", "3", "5",
+            "Official, Secret", "Official, Protected",
+            "OFFICIAL:Sensitive", "TOP-SECRET",
+            "Unknown", "", " ", null
+        };
+
+        var results = new Dictionary<string, object>();
+        foreach (var input in inputs)
+        {
+            var success = Parser.TryParseClassification(input!, out var classification);
+            results.Add(
+                input ?? "<null>",
+                new
+                {
+                    success,
+                    classification = success ? classification : (Classification?)null
+                });
+        }
+
+        return Verify(results);
+    }
+
+    [Test]
+    public void TryParseClassification_SpanOverload_MatchesStringOverload()
+    {
+        foreach (var input in new[] { "Protected", "official", " Secret ", "0", "Official, Secret", "Unknown", "" })
+        {
+            var stringResult = Parser.TryParseClassification(input, out var fromString);
+            var spanResult = Parser.TryParseClassification(input.AsSpan(), out var fromSpan);
+            Assert.That(spanResult, Is.EqualTo(stringResult), input);
+            Assert.That(fromSpan, Is.EqualTo(fromString), input);
+        }
+    }
+
+    [Test]
+    public void ParseProtectiveMarking_SpanOverload_MatchesStringOverload()
+    {
+        // bare-classification fast path
+        Assert.That(
+            Parser.ParseProtectiveMarking("Protected".AsSpan()),
+            Is.EqualTo(Parser.ParseProtectiveMarking("Protected")));
+        // key-value path
+        Assert.That(
+            Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive".AsSpan()),
+            Is.EqualTo(Parser.ParseProtectiveMarking("SEC=OFFICIAL:Sensitive")));
+        // rejection still throws through the span overload
+        Assert.Throws<Exception>(() => Parser.ParseProtectiveMarking("0".AsSpan()));
+    }
+
+    [Test]
+    public void ParseProtectiveMarking_RejectsLenientClassificationInputs()
+    {
+        // Numeric and comma/flag inputs previously parsed (incorrectly) via Enum.TryParse and silently
+        // produced a marking (e.g. "0" -> Unofficial, "Official, Secret" -> TopSecret). They must now be rejected.
+        foreach (var input in new[] { "0", "3", "5", "Official, Secret", "Official, Protected" })
+        {
+            Assert.Throws<Exception>(
+                () => Parser.ParseProtectiveMarking(input),
+                $"Expected '{input}' to be rejected");
+        }
+
+        // Legitimate bare names still parse to the correct classification.
+        Assert.That(Parser.ParseProtectiveMarking("Protected").Classification, Is.EqualTo(Classification.Protected));
+        Assert.That(Parser.ParseProtectiveMarking("TopSecret").Classification, Is.EqualTo(Classification.TopSecret));
+    }
 }
