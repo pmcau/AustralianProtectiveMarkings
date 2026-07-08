@@ -63,7 +63,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailSubjectSuffixMinimum.verified.txt -->
 <a id='snippet-Samples.RenderEmailSubjectSuffixMinimum.verified.txt'></a>
 ```txt
-
+[SEC=TOP-SECRET]
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -104,7 +104,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailSubjectSuffixFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt'></a>
 ```txt
-
+[SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailSubjectSuffixFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailSubjectSuffixFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -144,7 +144,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderMinimum.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderMinimum.verified.txt'></a>
 ```txt
-
+VER=2025.1, NS=gov.au, SEC=TOP-SECRET
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderMinimum.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderMinimum.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -185,7 +185,7 @@ Results in:
 <!-- snippet: Samples.RenderEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.RenderEmailHeaderFull.verified.txt'></a>
 ```txt
-
+VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com
 ```
 <sup><a href='/src/Tests/Samples.RenderEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.RenderEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -224,9 +224,18 @@ Results in:
 <!-- snippet: Samples.ApplyProtectiveMarkings.verified.txt -->
 <a id='snippet-Samples.ApplyProtectiveMarkings.verified.txt'></a>
 ```txt
-
+{
+  From: from@mail.com,
+  To: to@mail.com,
+  Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
+  Headers: {
+    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+  },
+  IsBodyHtml: false,
+  Body: The body
+}
 ```
-<sup><a href='/src/Tests/Samples.ApplyProtectiveMarkings.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ApplyProtectiveMarkings.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ApplyProtectiveMarkings.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ApplyProtectiveMarkings.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -293,9 +302,18 @@ Results in:
 <!-- snippet: Samples.ParseEmailHeaderMinimumOmit.verified.txt -->
 <a id='snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt'></a>
 ```txt
-
+{
+  Classification: OfficialSensitive,
+  Caveats: null,
+  Expiry: null,
+  PersonalPrivacy: false,
+  LegalPrivilege: false,
+  LegislativeSecrecy: false,
+  Comment: null,
+  AuthorEmail: null
+}
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderMinimumOmit.verified.txt#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderMinimumOmit.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -327,9 +345,36 @@ Results in:
 <!-- snippet: Samples.ParseEmailHeaderFull.verified.txt -->
 <a id='snippet-Samples.ParseEmailHeaderFull.verified.txt'></a>
 ```txt
-
+{
+  Classification: TopSecret,
+  Caveats: {
+    Codeword: CodeWord,
+    ForeignGovernment: USA caveat,
+    ExclusiveFor:  person,
+    CountryCodes: [
+      Afghanistan,
+      Algeria
+    ],
+    Agao: true,
+    Austeo: false,
+    DelicateSource: false,
+    Orcon: false,
+    Cabinet: true,
+    NationalCabinet: false
+  },
+  Expiry: {
+    DownTo: Official,
+    GenDate: 2020-10-01T00:00:00+00:00,
+    Event: null
+  },
+  PersonalPrivacy: false,
+  LegalPrivilege: true,
+  LegislativeSecrecy: false,
+  Comment: the comments,
+  AuthorEmail: a@b.com
+}
 ```
-<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L1' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.ParseEmailHeaderFull.verified.txt#L1-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.ParseEmailHeaderFull.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
