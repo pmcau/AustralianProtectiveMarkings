@@ -9,9 +9,6 @@
     success: true,
     classification: Protected
   },
-  <null>: {
-    success: false
-  },
   0: {
     success: false
   },
@@ -21,11 +18,14 @@
   5: {
     success: false
   },
-  official: {
+  <null>: {
+    success: false
+  },
+  Official: {
     success: true,
     classification: Official
   },
-  Official: {
+  official: {
     success: true,
     classification: Official
   },

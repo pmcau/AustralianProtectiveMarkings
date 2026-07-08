@@ -37,7 +37,7 @@ public class Tests
     [Test]
     public async Task WriteCommonMarkings()
     {
-        var md = Path.Combine(SolutionDirectoryFinder.Find(), "common-markings.include.md");
+        var md = Path.Combine(ProjectFiles.SolutionDirectory.Path, "common-markings.include.md");
         File.Delete(md);
         await using var writer = File.CreateText(md);
 

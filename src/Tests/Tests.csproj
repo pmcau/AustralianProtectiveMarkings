@@ -18,6 +18,7 @@
     <PackageReference Include="Verify.MailMessage" />
     <ProjectReference Include="..\AustralianProtectiveMarkings\AustralianProtectiveMarkings.csproj" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
+    <PackageReference Include="ProjectFiles" PrivateAssets="all" />
     <EmbeddedResource Include="docs\*.*" />
     <ProjectReference Include="..\Verify.AustralianProtectiveMarkings\Verify.AustralianProtectiveMarkings.csproj" />
     <Using Include="NUnit.Framework.Legacy.ClassicAssert" Static="True" />

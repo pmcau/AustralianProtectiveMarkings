@@ -1,5 +1,3 @@
-using System.Net.Mail;
-
 namespace AustralianProtectiveMarkings;
 
 public static class MailMessageHelper
