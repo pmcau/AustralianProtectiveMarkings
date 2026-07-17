@@ -50,7 +50,8 @@ public static class OfficeDocHelper
 
     public static async Task Patch(string file, ProtectiveMarking marking)
     {
-        using var stream = File.OpenRead(file);
+        // ZipArchiveMode.Update requires read, write, and seek
+        using var stream = new FileStream(file, FileMode.Open, FileAccess.ReadWrite);
         await Patch(stream, marking);
     }
 

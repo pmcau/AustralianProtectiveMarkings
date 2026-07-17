@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using DocumentFormat.OpenXml.Packaging;
 
 [TestFixture]
@@ -24,6 +25,115 @@ public class OfficeDocHelperTests
         }
 
         await Verify(dictionary);
+    }
+
+    [Test]
+    public Task PatchDocx() =>
+        PatchDocType("Tests.docs.noProps.docx", "docx");
+
+    [Test]
+    public Task PatchPptx() =>
+        PatchDocType("Tests.docs.sample.pptx", "pptx");
+
+    [Test]
+    public Task PatchXlsx() =>
+        PatchDocType("Tests.docs.sample.xlsx", "xlsx");
+
+    static async Task PatchDocType(string resourceName, string extension)
+    {
+        var stream = await GetResource(resourceName);
+
+        await OfficeDocHelper.Patch(
+            stream,
+            new()
+            {
+                Classification = Classification.Protected
+            });
+
+        FlattenTimestamps(stream);
+
+        stream.Position = 0;
+        await Verify(stream, extension);
+    }
+
+    // new zip entries are stamped with the current time, so flatten to keep the snapshot byte stable
+    static void FlattenTimestamps(Stream stream)
+    {
+        using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
+        foreach (var entry in zip.Entries)
+        {
+            entry.LastWriteTime = new(1980, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        }
+    }
+
+    [Test]
+    public async Task Patch_file()
+    {
+        var file = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.docx");
+        try
+        {
+            await CopyResourceToFile("Tests.docs.noProps.docx", file);
+
+            await OfficeDocHelper.Patch(
+                file,
+                new()
+                {
+                    Classification = Classification.Protected
+                });
+
+            OfficeDocHelper.TryReadProtectiveMarkings(file, out var marking);
+
+            await Verify(marking);
+        }
+        finally
+        {
+            File.Delete(file);
+        }
+    }
+
+    // patching in place must truncate, otherwise a shorter marking leaves a corrupt tail
+    [Test]
+    public async Task Patch_file_twice_shorter()
+    {
+        var file = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.docx");
+        try
+        {
+            await CopyResourceToFile("Tests.docs.noProps.docx", file);
+
+            await OfficeDocHelper.Patch(
+                file,
+                new()
+                {
+                    Classification = Classification.TopSecret,
+                    Caveats = new()
+                    {
+                        Codeword = "LOBSTER",
+                        ExclusiveFor = "a very long exclusive for value"
+                    }
+                });
+
+            await OfficeDocHelper.Patch(
+                file,
+                new()
+                {
+                    Classification = Classification.Official
+                });
+
+            OfficeDocHelper.TryReadProtectiveMarkings(file, out var marking);
+
+            await Verify(marking);
+        }
+        finally
+        {
+            File.Delete(file);
+        }
+    }
+
+    static async Task CopyResourceToFile(string name, string file)
+    {
+        await using var resource = assembly.GetManifestResourceStream(name)!;
+        await using var target = File.Create(file);
+        await resource.CopyToAsync(target);
     }
 
     [Test]
@@ -80,6 +190,49 @@ public class OfficeDocHelperTests
             out var marking);
 
         await Verify(marking);
+    }
+
+    [Test]
+    public async Task TryReadProtectiveMarkings_no_custom_xml()
+    {
+        using var stream = await GetResource("Tests.docs.noProps.docx");
+
+        var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
+
+        IsFalse(found);
+        IsNull(marking);
+    }
+
+    [Test]
+    public async Task TryReadProtectiveMarkings_no_marking_property()
+    {
+        using var stream = await GetResource("Tests.docs.noProps.docx");
+        AddUnrelatedCustomProperty(stream);
+
+        var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
+
+        IsFalse(found);
+        IsNull(marking);
+    }
+
+    static void AddUnrelatedCustomProperty(Stream stream)
+    {
+        using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
+        var entry = zip.CreateEntry("docProps/custom.xml");
+        using var entryStream = entry.Open();
+        using var writer = new StreamWriter(entryStream);
+        writer.Write(
+            """
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+                        xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+                          pid="2"
+                          name="otherKey">
+                    <vt:lpwstr>value</vt:lpwstr>
+                </property>
+            </Properties>
+            """);
     }
 
     static async Task<MemoryStream> GetResource(string name)
