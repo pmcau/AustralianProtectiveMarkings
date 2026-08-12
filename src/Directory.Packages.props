@@ -24,6 +24,6 @@
     <PackageVersion Include="EmptyFiles" Version="8.18.2" />
     <PackageVersion Include="SimpleInfoName" Version="3.2.0" />
     <!-- CVE -->
-    <PackageVersion Include="System.IO.Packaging" Version="10.0.10" />
+    <PackageVersion Include="System.IO.Packaging" Version="10.0.11" />
   </ItemGroup>
 </Project>
