@@ -5,21 +5,24 @@ public class RendererTests
     public Task RenderEmailSubject()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderEmailSubjectSuffix());
+        return Verify(marking.RenderEmailSubjectSuffix())
+            .Snapshot("[SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:usa caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]");
     }
 
     [Test]
     public Task RenderEmailHeader()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderEmailHeader());
+        return Verify(marking.RenderEmailHeader())
+            .Snapshot("VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:usa caveat, CAVEAT=RI:AGAO, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG/DZA, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
     }
 
     [Test]
     public Task RenderClassificationAndCaveats()
     {
         var marking = BuildMarking();
-        return Verify(marking.RenderClassificationAndCaveats());
+        return Verify(marking.RenderClassificationAndCaveats())
+            .Snapshot("TOP-SECRET//C LOBSTER//FG usa caveat//AGAO//CABINET//EXCLUSIVE-FOR person//REL AFG/DZA");
     }
 
     [Test]
@@ -29,14 +32,26 @@ public class RendererTests
         {
             Classification = Classification.Secret
         };
-        return Verify(marking.RenderClassificationAndCaveats());
+        return Verify(marking.RenderClassificationAndCaveats())
+            .Snapshot("SECRET");
     }
 
     [Test]
     public Task RenderDocumentHeaderAndFooter()
     {
         var marking = BuildMarking();
-        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
+        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter())
+            .Snapshot(
+                """
+                {
+                  footer:
+                Legal-Privilege
+                TOP-SECRET//C LOBSTER//FG usa caveat//AGAO//CABINET//EXCLUSIVE-FOR person//REL AFG/DZA,
+                  header:
+                TOP-SECRET//C LOBSTER//FG usa caveat//AGAO//CABINET//EXCLUSIVE-FOR person//REL AFG/DZA
+                Legal-Privilege
+                }
+                """);
     }
 
     [Test]
@@ -46,7 +61,14 @@ public class RendererTests
         {
             Classification = Classification.Secret
         };
-        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter());
+        return VerifyTuple(() => marking.RenderDocumentHeaderAndFooter())
+            .Snapshot(
+                """
+                {
+                  footer: SECRET,
+                  header: SECRET
+                }
+                """);
     }
 
     [Test]
@@ -56,7 +78,8 @@ public class RendererTests
         {
             Classification = Classification.Secret
         };
-        return Verify(marking.RenderEmailSubjectSuffix());
+        return Verify(marking.RenderEmailSubjectSuffix())
+            .Snapshot("[SEC=SECRET]");
     }
 
     [Test]
@@ -66,7 +89,8 @@ public class RendererTests
         {
             Classification = Classification.Secret
         };
-        return Verify(marking.RenderEmailHeader());
+        return Verify(marking.RenderEmailHeader())
+            .Snapshot("VER=2025.1, NS=gov.au, SEC=SECRET");
     }
 
     [Test]
@@ -82,7 +106,8 @@ public class RendererTests
                 GenDate = new DateTimeOffset(date, TimeSpan.Zero)
             }
         };
-        return Verify(marking.RenderEmailHeader());
+        return Verify(marking.RenderEmailHeader())
+            .Snapshot("VER=2025.1, NS=gov.au, SEC=SECRET, EXPIRES=2020-10-01T00:00:00.0000001, DOWNTO=OFFICIAL");
     }
 
     static ProtectiveMarking BuildMarking() =>

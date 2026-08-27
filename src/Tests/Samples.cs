@@ -16,7 +16,8 @@ public class Samples
 
         #endregion
 
-        return Verify(result);
+        return Verify(result)
+            .Snapshot("[SEC=TOP-SECRET]");
     }
 
     [Test]
@@ -48,7 +49,8 @@ public class Samples
 
         #endregion
 
-        return Verify(result);
+        return Verify(result)
+            .Snapshot("[SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]");
     }
 
     [Test]
@@ -64,7 +66,8 @@ public class Samples
 
         #endregion
 
-        return Verify(result);
+        return Verify(result)
+            .Snapshot("VER=2025.1, NS=gov.au, SEC=TOP-SECRET");
     }
 
     [Test]
@@ -96,7 +99,8 @@ public class Samples
 
         #endregion
 
-        return Verify(result);
+        return Verify(result)
+            .Snapshot("VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
     }
 
     [Test]
@@ -108,7 +112,20 @@ public class Samples
 
         #endregion
 
-        return Verify(SerializeForDocs(protectiveMarking));
+        return Verify(SerializeForDocs(protectiveMarking))
+            .Snapshot(
+                """
+                {
+                  Classification: OfficialSensitive,
+                  Caveats: null,
+                  Expiry: null,
+                  PersonalPrivacy: false,
+                  LegalPrivilege: false,
+                  LegislativeSecrecy: false,
+                  Comment: null,
+                  AuthorEmail: null
+                }
+                """);
     }
 
     static string SerializeForDocs(object value)
@@ -141,7 +158,8 @@ public class Samples
 
         #endregion
 
-        return Verify(protectiveMarking);
+        return Verify(protectiveMarking)
+            .Snapshot("OfficialSensitive");
     }
 
     [Test]
@@ -169,7 +187,20 @@ public class Samples
 
         #endregion
 
-        return Verify(mail);
+        return Verify(mail)
+            .Snapshot(
+                """
+                {
+                  From: from@mail.com,
+                  To: to@mail.com,
+                  Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
+                  Headers: {
+                    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
+                  },
+                  IsBodyHtml: false,
+                  Body: The body
+                }
+                """);
     }
 
     [Test]
@@ -207,7 +238,18 @@ public class Samples
         {
             header,
             footer
-        });
+        })
+        .Snapshot(
+            """
+            {
+              header:
+            SECRET//AUSTEO//CABINET
+            Legislative-Secrecy,
+              footer:
+            Legislative-Secrecy
+            SECRET//AUSTEO//CABINET
+            }
+            """);
     }
 
     [Test]

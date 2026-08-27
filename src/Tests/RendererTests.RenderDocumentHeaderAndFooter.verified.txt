@@ -1,8 +1,0 @@
-﻿{
-  footer:
-Legal-Privilege
-TOP-SECRET//C LOBSTER//FG usa caveat//AGAO//CABINET//EXCLUSIVE-FOR person//REL AFG/DZA,
-  header:
-TOP-SECRET//C LOBSTER//FG usa caveat//AGAO//CABINET//EXCLUSIVE-FOR person//REL AFG/DZA
-Legal-Privilege
-}

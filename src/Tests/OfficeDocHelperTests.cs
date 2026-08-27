@@ -83,7 +83,8 @@ public class OfficeDocHelperTests
 
             OfficeDocHelper.TryReadProtectiveMarkings(file, out var marking);
 
-            await Verify(marking);
+            await Verify(marking)
+                .Snapshot("Protected");
         }
         finally
         {
@@ -121,7 +122,8 @@ public class OfficeDocHelperTests
 
             OfficeDocHelper.TryReadProtectiveMarkings(file, out var marking);
 
-            await Verify(marking);
+            await Verify(marking)
+                .Snapshot("Official");
         }
         finally
         {
@@ -288,7 +290,18 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.SetHeader(document, "value");
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                  <property fmtid="Guid_1" pid="1" name="otherKey">
+                    <vt:lpwstr>value</vt:lpwstr>
+                  </property>
+                  <property fmtid="Guid_1" pid="2" name="X-Protective-Marking">
+                    <lpwstr xmlns="vt">value</lpwstr>
+                  </property>
+                </Properties>
+                """);
     }
 
     [Test]
@@ -307,7 +320,15 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.SetHeader(document, "newValue");
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+                  <property fmtid="Guid_1" pid="1" name="X-Protective-Marking">
+                    <vt:lpwstr>newValue</vt:lpwstr>
+                  </property>
+                </Properties>
+                """);
     }
 
     [Test]
@@ -324,7 +345,15 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.EnsureCustomXmlInContentTypes(document);
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+                  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" />
+                  <Override PartName="/word/webSettings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml" />
+                  <Override PartName="/docProps/custom.xml" ContentType="application/vnd.openxmlformats-officedocument.custom-properties+xml" />
+                </Types>
+                """);
     }
 
     [Test]
@@ -343,7 +372,15 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.EnsureCustomXmlInContentTypes(document);
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+                  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" />
+                  <Override PartName="/word/webSettings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml" />
+                  <Override PartName="/docProps/custom.xml" ContentType="application/vnd.openxmlformats-officedocument.custom-properties+xml" />
+                </Types>
+                """);
     }
 
     [Test]
@@ -359,7 +396,14 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.EnsureCustomXmlInRels(document);
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+                  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml" />
+                  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties" Target="docProps/custom.xml" />
+                </Relationships>
+                """);
     }
 
     [Test]
@@ -378,6 +422,13 @@ public class OfficeDocHelperTests
                   """;
         var document = XDocument.Load(new StringReader(xml));
         OfficeDocHelper.EnsureCustomXmlInRels(document);
-        return Verify(document);
+        return Verify(document)
+            .Snapshot(
+                """
+                <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+                  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml" />
+                  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties" Target="docProps/custom.xml" />
+                </Relationships>
+                """);
     }
 }

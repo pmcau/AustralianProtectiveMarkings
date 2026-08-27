@@ -1,4 +1,0 @@
-﻿{
-  footer: SECRET,
-  header: SECRET
-}

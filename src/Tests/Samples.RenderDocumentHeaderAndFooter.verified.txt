@@ -1,8 +1,0 @@
-﻿{
-  header:
-SECRET//AUSTEO//CABINET
-Legislative-Secrecy,
-  footer:
-Legislative-Secrecy
-SECRET//AUSTEO//CABINET
-}

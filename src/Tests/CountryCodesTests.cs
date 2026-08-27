@@ -21,7 +21,14 @@ public class CountryCodesTests
 
     [Test]
     public Task GetCodeForLettersMissing() =>
-        Throws(() => CountryCodes.GetCodeForLetters("AAAA"));
+        Throws(() => CountryCodes.GetCodeForLetters("AAAA"))
+            .Snapshot(
+                """
+                {
+                  Type: ArgumentException,
+                  Message: Could not find CountryCode for 'AAAA'
+                }
+                """);
 
     [Test]
     public void GetLettersForCode()
@@ -45,6 +52,13 @@ public class CountryCodesTests
     public Task GetLettersForCodeMissing()
     {
         var countryCode = (Country) 999;
-        return Throws(() => countryCode.GetLettersForCode());
+        return Throws(() => countryCode.GetLettersForCode())
+            .Snapshot(
+                """
+                {
+                  Type: ArgumentException,
+                  Message: Could not find country code letters for '999'
+                }
+                """);
     }
 }

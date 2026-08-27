@@ -18,7 +18,20 @@ public class MailMessageHelperTests
             body: "The body");
         mail.ApplyProtectiveMarkings(marking);
 
-        return Verify(mail);
+        return Verify(mail)
+            .Snapshot(
+                """
+                {
+                  From: from@mail.com,
+                  To: to@mail.com,
+                  Subject: The subject [SEC=TOP-SECRET],
+                  Headers: {
+                    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET
+                  },
+                  IsBodyHtml: false,
+                  Body: The body
+                }
+                """);
     }
 
     [Test]
@@ -36,6 +49,7 @@ public class MailMessageHelperTests
             body: "The body");
         mail.ApplyProtectiveMarkings(marking);
         IsTrue(mail.TryReadProtectiveMarkings(out var result));
-        return Verify(result);
+        return Verify(result)
+            .Snapshot("TopSecret");
     }
 }
