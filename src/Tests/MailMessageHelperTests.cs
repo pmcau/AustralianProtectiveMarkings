@@ -19,19 +19,7 @@ public class MailMessageHelperTests
         mail.ApplyProtectiveMarkings(marking);
 
         return Verify(mail)
-            .Snapshot(
-                """
-                {
-                  From: from@mail.com,
-                  To: to@mail.com,
-                  Subject: The subject [SEC=TOP-SECRET],
-                  Headers: {
-                    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET
-                  },
-                  IsBodyHtml: false,
-                  Body: The body
-                }
-                """);
+            .NotInline();
     }
 
     [Test]

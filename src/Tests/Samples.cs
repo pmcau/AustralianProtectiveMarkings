@@ -16,8 +16,7 @@ public class Samples
 
         #endregion
 
-        return Verify(result)
-            .Snapshot("[SEC=TOP-SECRET]");
+        return Verify(result).NotInline();
     }
 
     [Test]
@@ -67,7 +66,7 @@ public class Samples
         #endregion
 
         return Verify(result)
-            .Snapshot("VER=2025.1, NS=gov.au, SEC=TOP-SECRET");
+            .NotInline();
     }
 
     [Test]
@@ -100,7 +99,7 @@ public class Samples
         #endregion
 
         return Verify(result)
-            .Snapshot("VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=RI:AGAO, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege, NOTE=the comments, ORIGIN=a@b.com");
+            .NotInline();
     }
 
     [Test]
@@ -113,19 +112,7 @@ public class Samples
         #endregion
 
         return Verify(SerializeForDocs(protectiveMarking))
-            .Snapshot(
-                """
-                {
-                  Classification: OfficialSensitive,
-                  Caveats: null,
-                  Expiry: null,
-                  PersonalPrivacy: false,
-                  LegalPrivilege: false,
-                  LegislativeSecrecy: false,
-                  Comment: null,
-                  AuthorEmail: null
-                }
-                """);
+            .NotInline();
     }
 
     static string SerializeForDocs(object value)
