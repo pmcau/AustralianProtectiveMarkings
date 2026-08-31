@@ -1,4 +1,5 @@
-﻿namespace AustralianProtectiveMarkings;
+﻿// ReSharper disable UseAwaitUsing
+namespace AustralianProtectiveMarkings;
 
 static class Extensions
 {

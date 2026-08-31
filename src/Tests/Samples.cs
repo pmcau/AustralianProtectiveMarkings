@@ -49,7 +49,7 @@ public class Samples
         #endregion
 
         return Verify(result)
-            .Snapshot("[SEC=TOP-SECRET, CAVEAT=C:LOBSTER, CAVEAT=FG:USA caveat, CAVEAT=SH:CABINET, CAVEAT=SH:EXCLUSIVE-FOR person, CAVEAT=RI:REL AFG, EXPIRES=2020-10-01, DOWNTO=OFFICIAL, ACCESS=Legal-Privilege]");
+            .NotInline();
     }
 
     [Test]
@@ -175,19 +175,7 @@ public class Samples
         #endregion
 
         return Verify(mail)
-            .Snapshot(
-                """
-                {
-                  From: from@mail.com,
-                  To: to@mail.com,
-                  Subject: The subject [SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege],
-                  Headers: {
-                    X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=TOP-SECRET, CAVEAT=SH:CABINET, CAVEAT=RI:REL AFG, ACCESS=Legal-Privilege
-                  },
-                  IsBodyHtml: false,
-                  Body: The body
-                }
-                """);
+            .NotInline();
     }
 
     [Test]

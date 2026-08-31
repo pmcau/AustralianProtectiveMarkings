@@ -51,6 +51,7 @@ public static class OfficeDocHelper
     public static async Task Patch(string file, ProtectiveMarking marking)
     {
         // ZipArchiveMode.Update requires read, write, and seek
+        // ReSharper disable once UseAwaitUsing
         using var stream = new FileStream(file, FileMode.Open, FileAccess.ReadWrite);
         await Patch(stream, marking);
     }
@@ -58,6 +59,7 @@ public static class OfficeDocHelper
     public static async Task Patch(Stream stream, ProtectiveMarking marking)
     {
         var header = marking.RenderEmailHeader();
+        // ReSharper disable once UseAwaitUsing
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
         await EnsureCustomPropertyEntry(zip, header);
         await EnsureCustomXmlInContentTypes(zip);
@@ -142,7 +144,9 @@ public static class OfficeDocHelper
         if (entry == null)
         {
             entry = zip.CreateEntry(customPropsFileName);
+            // ReSharper disable once UseAwaitUsing
             using var stream = await entry.OpenAsync();
+            // ReSharper disable once UseAwaitUsing
             using var writer = new StreamWriter(stream);
             await writer.WriteAsync(
                 $$"""
