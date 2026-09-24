@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> Australian Protective Markings
 
-[![Build status](https://img.shields.io/appveyor/build/SimonCropp/australianprotectivemarkings)](https://ci.appveyor.com/project/SimonCropp/australianprotectivemarkings)
+[![Build status](https://github.com/pmcau/AustralianProtectiveMarkings/actions/workflows/build.yml/badge.svg)](https://github.com/pmcau/AustralianProtectiveMarkings/actions/workflows/build.yml)
 [![NuGet Status](https://img.shields.io/nuget/v/AustralianProtectiveMarkings.svg)](https://www.nuget.org/packages/AustralianProtectiveMarkings/)
 
 A dotnet representation of Protective Markings defined in the [Australian Government Email Protective Marking Standard](https://www.protectivesecurity.gov.au/system/files/2025-07/australian-government-email-protective-marking-standard-2025.PDF)

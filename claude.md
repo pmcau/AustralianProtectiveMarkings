@@ -57,5 +57,5 @@ Uses **NUnit** with **Verify** (approval/snapshot testing). Tests are in `src/Te
 
 ## CI
 
-- **AppVeyor** (`appveyor.yml`): builds and tests, publishes NuGet packages
+- **GitHub Actions** (`.github/workflows/build.yml`): builds and tests, publishes NuGet packages on a tag via trusted publishing
 - **GitHub Actions**: auto-generates docs from code snippets (`on-push-do-docs.yml`), milestone-based releases, dependabot auto-merge
