@@ -1,22 +1,21 @@
-﻿[TestFixture]
-public class CountryCodesTests
+﻿public class CountryCodesTests
 {
     [Test]
-    public void GetCodeForLetters()
+    public async Task GetCodeForLetters()
     {
         var code = CountryCodes.GetCodeForLetters("ABW");
-        AreEqual(Country.Aruba, code);
+        await Assert.That(code).IsEqualTo(Country.Aruba);
     }
 
     [Test]
-    public void TryGetCodeForLetters()
+    public async Task TryGetCodeForLetters()
     {
         var found = CountryCodes.TryGetCodeForLetters("ABW", out var code);
-        IsTrue(found);
-        AreEqual(Country.Aruba, code);
+        await Assert.That(found).IsTrue();
+        await Assert.That(code).IsEqualTo(Country.Aruba);
         found = CountryCodes.TryGetCodeForLetters("AAA", out code);
-        IsFalse(found);
-        IsNull(code);
+        await Assert.That(found).IsFalse();
+        await Assert.That(code).IsNull();
     }
 
     [Test]
@@ -31,21 +30,21 @@ public class CountryCodesTests
                 """);
 
     [Test]
-    public void GetLettersForCode()
+    public async Task GetLettersForCode()
     {
         var letters = Country.Aruba.GetLettersForCode();
-        AreEqual("ABW", letters);
+        await Assert.That(letters).IsEqualTo("ABW");
     }
 
     [Test]
-    public void TryGetLettersForCode()
+    public async Task TryGetLettersForCode()
     {
         var found = CountryCodes.TryGetLettersForCode(Country.Aruba, out var letters);
-        IsTrue(found);
-        AreEqual("ABW", letters);
+        await Assert.That(found).IsTrue();
+        await Assert.That(letters).IsEqualTo("ABW");
         found = CountryCodes.TryGetLettersForCode((Country) 999, out letters);
-        IsFalse(found);
-        IsNull(letters);
+        await Assert.That(found).IsFalse();
+        await Assert.That(letters).IsNull();
     }
 
     [Test]

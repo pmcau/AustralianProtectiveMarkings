@@ -1,8 +1,9 @@
-[TestFixture]
+namespace Tests;
+
 public class Tests
 {
     [Test]
-    public Task Serialization()
+    public async Task Serialization()
     {
         var marking = new ProtectiveMarking
         {
@@ -30,8 +31,8 @@ public class Tests
         var serialized1 = JsonConvert.SerializeObject(marking);
         var deserialized = JsonConvert.DeserializeObject<ProtectiveMarking>(serialized1);
         var serialized2 = JsonConvert.SerializeObject(deserialized);
-        AreEqual(serialized1, serialized2);
-        return Verify(marking);
+        await Assert.That(serialized2).IsEqualTo(serialized1);
+        await Verify(marking);
     }
 
     [Test]

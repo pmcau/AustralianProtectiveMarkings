@@ -1,5 +1,4 @@
-﻿[TestFixture]
-public class DateFormatterTests
+﻿public class DateFormatterTests
 {
     [Test]
     public Task Parse()

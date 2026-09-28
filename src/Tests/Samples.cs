@@ -1,6 +1,5 @@
 using System.Net.Mail;
 
-[TestFixture]
 public class Samples
 {
     [Test]

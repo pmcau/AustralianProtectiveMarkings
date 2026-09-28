@@ -1,6 +1,5 @@
 ﻿using System.Net.Mail;
 
-[TestFixture]
 public class MailMessageHelperTests
 {
     [Test]
@@ -23,7 +22,7 @@ public class MailMessageHelperTests
     }
 
     [Test]
-    public Task TryReadProtectiveMarkings()
+    public async Task TryReadProtectiveMarkings()
     {
         var marking = new ProtectiveMarking
         {
@@ -36,8 +35,9 @@ public class MailMessageHelperTests
             subject: "The subject",
             body: "The body");
         mail.ApplyProtectiveMarkings(marking);
-        IsTrue(mail.TryReadProtectiveMarkings(out var result));
-        return Verify(result)
+        var found = mail.TryReadProtectiveMarkings(out var result);
+        await Assert.That(found).IsTrue();
+        await Verify(result)
             .Snapshot("TopSecret");
     }
 }

@@ -1,7 +1,6 @@
 using System.IO.Compression;
 using DocumentFormat.OpenXml.Packaging;
 
-[TestFixture]
 public class OfficeDocHelperTests
 {
     static Assembly assembly = typeof(OfficeDocHelperTests).Assembly;
@@ -201,8 +200,8 @@ public class OfficeDocHelperTests
 
         var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
 
-        IsFalse(found);
-        IsNull(marking);
+        await Assert.That(found).IsFalse();
+        await Assert.That(marking).IsNull();
     }
 
     [Test]
@@ -213,8 +212,8 @@ public class OfficeDocHelperTests
 
         var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
 
-        IsFalse(found);
-        IsNull(marking);
+        await Assert.That(found).IsFalse();
+        await Assert.That(marking).IsNull();
     }
 
     static void AddUnrelatedCustomProperty(Stream stream)
