@@ -1,5 +1,9 @@
 using System.IO.Compression;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.CustomProperties;
 using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.VariantTypes;
 
 public class OfficeDocHelperTests
 {
@@ -297,10 +301,133 @@ public class OfficeDocHelperTests
                     <vt:lpwstr>value</vt:lpwstr>
                   </property>
                   <property fmtid="Guid_1" pid="2" name="X-Protective-Marking">
-                    <lpwstr xmlns="vt">value</lpwstr>
+                    <vt:lpwstr>value</vt:lpwstr>
                   </property>
                 </Properties>
                 """);
+    }
+
+    // The OpenXml SDK names the parts it adds "R" and 16 hex digits rather than rId1, rId2 - so a
+    // package it built has a workbook relationship that is not numbered at all.
+    [Test]
+    public async Task Patch_sdk_built_spreadsheet()
+    {
+        using var stream = SdkSpreadsheet();
+        await Assert.That(WorkbookRelationshipId(stream)).DoesNotStartWith("rId");
+
+        await OfficeDocHelper.Patch(
+            stream,
+            new()
+            {
+                Classification = Classification.Protected
+            });
+
+        await Assert.That(SdkProperties(stream)).IsEquivalentTo(
+        [
+            "X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=PROTECTED"
+        ]);
+
+        stream.Position = 0;
+        var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
+        await Assert.That(found).IsTrue();
+        await Assert.That(marking!.Value.Classification).IsEqualTo(Classification.Protected);
+    }
+
+    // The SDK writes custom properties with an "op" prefix rather than as the default namespace, so
+    // a lookup in the default namespace finds none of them.
+    [Test]
+    public async Task Patch_sdk_written_custom_properties()
+    {
+        using var stream = SdkSpreadsheet(AddUnrelatedSdkProperty);
+
+        await OfficeDocHelper.Patch(
+            stream,
+            new()
+            {
+                Classification = Classification.Protected
+            });
+
+        await OfficeDocHelper.Patch(
+            stream,
+            new()
+            {
+                Classification = Classification.Official
+            });
+
+        await Assert.That(SdkProperties(stream)).IsEquivalentTo(
+        [
+            "otherKey: value",
+            "X-Protective-Marking: VER=2025.1, NS=gov.au, SEC=OFFICIAL"
+        ]);
+
+        stream.Position = 0;
+        var found = OfficeDocHelper.TryReadProtectiveMarkings(stream, out var marking);
+        await Assert.That(found).IsTrue();
+        await Assert.That(marking!.Value.Classification).IsEqualTo(Classification.Official);
+    }
+
+    [Test]
+    public async Task Patch_not_an_office_document()
+    {
+        using var stream = new MemoryStream();
+        using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, leaveOpen: true))
+        {
+            zip.CreateEntry("readme.txt");
+        }
+
+        await Assert.That(
+                () => OfficeDocHelper.Patch(
+                    stream,
+                    new()
+                    {
+                        Classification = Classification.Protected
+                    }))
+            .Throws<ArgumentException>()
+            .WithMessageContaining("[Content_Types].xml");
+    }
+
+    static MemoryStream SdkSpreadsheet(Action<SpreadsheetDocument>? configure = null)
+    {
+        var stream = new MemoryStream();
+        using (var document = SpreadsheetDocument.Create(stream, SpreadsheetDocumentType.Workbook))
+        {
+            var workbookPart = document.AddWorkbookPart();
+            workbookPart.Workbook = new(new Sheets());
+            configure?.Invoke(document);
+        }
+
+        return stream;
+    }
+
+    static void AddUnrelatedSdkProperty(SpreadsheetDocument document)
+    {
+        var part = document.AddCustomFilePropertiesPart();
+        part.Properties = new(
+            new CustomDocumentProperty(new VTLPWSTR("value"))
+            {
+                FormatId = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+                PropertyId = 2,
+                Name = "otherKey"
+            });
+    }
+
+    static string WorkbookRelationshipId(MemoryStream stream)
+    {
+        stream.Position = 0;
+        using var document = SpreadsheetDocument.Open(stream, false);
+        return document.GetIdOfPart(document.WorkbookPart!);
+    }
+
+    // Read through the SDK, which is how Office sees the file: it follows the package relationship to
+    // the part and reads the values by their namespace, where a raw look at the zip entry does neither.
+    static List<string> SdkProperties(MemoryStream stream)
+    {
+        stream.Position = 0;
+        using var document = SpreadsheetDocument.Open(stream, false);
+        return document.CustomFilePropertiesPart!.Properties!
+            .Elements<CustomDocumentProperty>()
+            .Select(_ => $"{_.Name!.Value}: {_.VTLPWSTR!.Text}")
+            .ToList();
     }
 
     [Test]
