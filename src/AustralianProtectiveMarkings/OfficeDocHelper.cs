@@ -29,7 +29,7 @@ public static class OfficeDocHelper
         using var reader = new StreamReader(docStream);
         var document = XDocument.Load(reader);
         var root = document.Root!;
-        var propertyName = root.GetDefaultNamespace() + "property";
+        var propertyName = root.Name.Namespace + "property";
         var property = root
             .Elements(propertyName)
             .SingleOrDefault(
@@ -61,21 +61,30 @@ public static class OfficeDocHelper
         var header = marking.RenderEmailHeader();
         // ReSharper disable once UseAwaitUsing
         using var zip = new ZipArchive(stream, ZipArchiveMode.Update, leaveOpen: true);
+        // Both looked up before anything is written, so a zip that is not an Office document is
+        // refused whole rather than left with a custom properties part and nothing pointing at it.
+        var contentTypes = GetPackageEntry(zip, "[Content_Types].xml", nameof(stream));
+        var relationships = GetPackageEntry(zip, "_rels/.rels", nameof(stream));
         await EnsureCustomPropertyEntry(zip, header);
-        await EnsureCustomXmlInContentTypes(zip);
-        await EnsureCustomXmlInRels(zip);
+        await contentTypes.EditXmlEntry(EnsureCustomXmlInContentTypes);
+        await relationships.EditXmlEntry(EnsureCustomXmlInRels);
     }
 
-    static Task EnsureCustomXmlInContentTypes(ZipArchive zip)
+    static ZipArchiveEntry GetPackageEntry(ZipArchive zip, string name, string parameter)
     {
-        var entry = zip.GetEntry("[Content_Types].xml")!;
-        return entry.EditXmlEntry(EnsureCustomXmlInContentTypes);
+        var entry = zip.GetEntry(name);
+        if (entry == null)
+        {
+            throw new ArgumentException($"Not an Office document. The package has no '{name}'.", parameter);
+        }
+
+        return entry;
     }
 
     internal static void EnsureCustomXmlInContentTypes(XDocument document)
     {
         var root = document.Root!;
-        var overrideName = root.GetDefaultNamespace() + "Override";
+        var overrideName = root.Name.Namespace + "Override";
         var overrideElement = root
             .Elements(overrideName)
             .SingleOrDefault(_ => _.Attribute("PartName")
@@ -93,16 +102,10 @@ public static class OfficeDocHelper
                 new XAttribute("ContentType", "application/vnd.openxmlformats-officedocument.custom-properties+xml")));
     }
 
-    static Task EnsureCustomXmlInRels(ZipArchive zip)
-    {
-        var entry = zip.GetEntry("_rels/.rels")!;
-        return entry.EditXmlEntry(EnsureCustomXmlInRels);
-    }
-
     internal static void EnsureCustomXmlInRels(XDocument document)
     {
         var root = document.Root!;
-        var relationshipName = root.GetDefaultNamespace() + "Relationship";
+        var relationshipName = root.Name.Namespace + "Relationship";
         var relationships = root
             .Elements(relationshipName)
             .ToList();
@@ -115,27 +118,31 @@ public static class OfficeDocHelper
             return;
         }
 
-        var maxId = relationships
-            .Select(_ =>
-            {
-                var id = _.Attribute("Id")!.Value;
-                return int.Parse(id[3..]);
-            })
-            .OrderBy(_ => _)
-            .LastOrDefault();
+        // A relationship id is any unique string. Office numbers them rId1, rId2 and so on, but the
+        // OpenXml SDK names a part it adds "R" and 16 hex digits. So the new id is numbered after
+        // the highest one of the rId shape, which no id of another shape can collide with.
+        var number = relationships
+            .Select(_ => RelationshipNumber(_.Attribute("Id")!.Value))
+            .DefaultIfEmpty(0)
+            .Max() + 1;
 
-        if (maxId is 0)
-        {
-            maxId = 1;
-        }
-
-        var newid = maxId + 1;
         root.Add(
             new XElement(
                 relationshipName,
-                new XAttribute("Id", $"rId{newid}"),
+                new XAttribute("Id", $"rId{number}"),
                 new XAttribute("Type", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"),
                 new XAttribute("Target", "docProps/custom.xml")));
+    }
+
+    static int RelationshipNumber(string id)
+    {
+        if (id.StartsWith("rId", StringComparison.Ordinal) &&
+            int.TryParse(id[3..], NumberStyles.None, CultureInfo.InvariantCulture, out var number))
+        {
+            return number;
+        }
+
+        return 0;
     }
 
     static async Task EnsureCustomPropertyEntry(ZipArchive zip, string header)
@@ -167,12 +174,17 @@ public static class OfficeDocHelper
         }
     }
 
-    static XNamespace vtNamespace = "vt";
+    // The namespace itself, not the "vt" prefix it is usually bound to: an element named with a
+    // prefix as its namespace is written as <lpwstr xmlns="vt">, which no reader recognises as a
+    // string value.
+    static XNamespace vtNamespace = "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes";
 
     internal static void SetHeader(XDocument document, string marking)
     {
         var root = document.Root!;
-        var propertyName = root.GetDefaultNamespace() + "property";
+        // The root's own namespace rather than the default one: Office declares it as the default,
+        // but the OpenXml SDK writes it with an "op" prefix, which leaves the default namespace empty.
+        var propertyName = root.Name.Namespace + "property";
         var properties = root
             .Elements(propertyName)
             .ToList();
