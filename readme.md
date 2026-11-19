@@ -440,7 +440,8 @@ await OfficeDocHelper.Patch(filePath, marking);
 <img src="/src/docxWithProps.png" width="400px">
 
 
-## CommonMarkings<!-- include: common-markings. path: /src/common-markings.include.md -->
+<!-- include: common-markings. path: /src/common-markings.include.md -->
+## CommonMarkings
 
 `AustralianProtectiveMarkings.CommonMarkings` is a static helper class that gives access regularly use and pre-calculated values.
 
